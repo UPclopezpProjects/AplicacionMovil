@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.Login">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="216dp"
+            android:layout_height="161dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.089"
+            app:srcCompat="@drawable/logo"
+            android:contentDescription="@string/todo" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/iniciar_sesi_n"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.19"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.069" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="40dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_baseline_email_24"
+                android:contentDescription="@string/todo" />
+
+            <EditText
+                android:id="@+id/ETEmail"
+                android:layout_width="250dp"
+                android:layout_height="55dp"
+                android:layout_marginEnd="40dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintVertical_bias="0.066" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/a4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="40dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_baseline_lock_24"
+                android:contentDescription="@string/todo" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="250dp"
+                android:layout_height="55dp"
+                android:layout_marginEnd="40dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/contrase_a"
+                android:inputType="textPassword"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/ETEmail"
+                app:layout_constraintTop_toBottomOf="@+id/ETEmail"
+                app:layout_constraintVertical_bias="0.077" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/BTLogin"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:text="@string/iniciar_sesion"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.872" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/BTRecuperar"
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="40dp"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:rotationX="0"
+                android:text="@string/olvid_mi_contrase_a"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <Button
+                android:id="@+id/BTRegistro"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="40dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:text="@string/registrarme" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
+            android:text="@string/saltar_login" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/loguear_con_redes_sociales"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="80dp"
+                android:background="@drawable/googlei"
+                android:foreground="?android:attr/selectableItemBackground" />
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/facebooki"
+                android:foreground="?android:attr/selectableItemBackground" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

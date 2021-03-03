@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.RegistroUsuario">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50sp"
+            android:layout_marginBottom="50sp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/registro_de_usuario"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginEnd="40sp"
+            android:layout_marginBottom="10sp"
+            android:ems="10"
+            android:hint="Nombre"
+            android:inputType="textPersonName"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginEnd="40sp"
+            android:layout_marginBottom="10sp"
+            android:ems="10"
+            android:hint="Apellido Paterno"
+            android:inputType="textPersonName"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginEnd="40sp"
+            android:layout_marginBottom="10sp"
+            android:ems="10"
+            android:hint="Apellido Materno"
+            android:inputType="textPersonName"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/editTextTextEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginEnd="40sp"
+            android:layout_marginBottom="10sp"
+            android:ems="10"
+            android:hint="Username (Email)"
+            android:inputType="textEmailAddress"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/editTextTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginEnd="40sp"
+            android:layout_marginBottom="10sp"
+            android:ems="10"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/BTRegistrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="153sp"
+            android:background="@android:color/holo_green_light"
+            android:text="Registrar"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+</ScrollView>

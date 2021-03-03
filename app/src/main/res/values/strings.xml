@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">desarrolloResidencia</string>
+    <string name="registrarme">Registrarme</string>
+    <string name="iniciar_sesi_n">Iniciar Sesión</string>
+    <string name="loguear_con_redes_sociales">Loguear con redes sociales</string>
+    <string name="saltar_login">Saltar Login</string>
+    <string name="olvid_mi_contrase_a">Olvidé mi contraseña</string>
+    <string name="email">Email</string>
+    <string name="contrase_a">contraseña</string>
+    <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="todo">TODO</string>
+    <string name="registro_de_usuario">Registro de Usuario</string>
+</resources>
