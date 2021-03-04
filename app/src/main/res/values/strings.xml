@@ -6,8 +6,13 @@
     <string name="saltar_login">Saltar Login</string>
     <string name="olvid_mi_contrase_a">Olvidé mi contraseña</string>
     <string name="email">Email</string>
-    <string name="contrase_a">contraseña</string>
+    <string name="contrase_a">Contraseña</string>
     <string name="iniciar_sesion">Iniciar Sesion</string>
     <string name="todo">TODO</string>
     <string name="registro_de_usuario">Registro de Usuario</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido_paterno">Apellido Paterno</string>
+    <string name="apellido_materno">Apellido Materno</string>
+    <string name="username_email">Username (Email)</string>
+    <string name="registrar">Registrar</string>
 </resources>

@@ -23,7 +23,7 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/ETNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40sp"
@@ -31,12 +31,13 @@
             android:layout_marginEnd="40sp"
             android:layout_marginBottom="10sp"
             android:ems="10"
-            android:hint="Nombre"
+            android:hint="@string/nombre"
             android:inputType="textPersonName"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:autofillHints="" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/ETApellidoP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40sp"
@@ -44,12 +45,13 @@
             android:layout_marginEnd="40sp"
             android:layout_marginBottom="10sp"
             android:ems="10"
-            android:hint="Apellido Paterno"
+            android:hint="@string/apellido_paterno"
             android:inputType="textPersonName"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:autofillHints="" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName4"
+            android:id="@+id/ETApellidoM"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40sp"
@@ -57,12 +59,13 @@
             android:layout_marginEnd="40sp"
             android:layout_marginBottom="10sp"
             android:ems="10"
-            android:hint="Apellido Materno"
+            android:hint="@string/apellido_materno"
             android:inputType="textPersonName"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:autofillHints="" />
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress"
+            android:id="@+id/ETUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40sp"
@@ -70,20 +73,22 @@
             android:layout_marginEnd="40sp"
             android:layout_marginBottom="10sp"
             android:ems="10"
-            android:hint="Username (Email)"
+            android:hint="@string/username_email"
             android:inputType="textEmailAddress"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:autofillHints="" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/ETContrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40sp"
             android:layout_marginTop="10sp"
             android:layout_marginEnd="40sp"
             android:layout_marginBottom="10sp"
+            android:autofillHints=""
             android:ems="10"
-            android:hint="Contraseña"
+            android:hint="@string/contrase_a"
             android:inputType="textPassword"
             android:textAlignment="center" />
 
@@ -93,7 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="153sp"
             android:background="@android:color/holo_green_light"
-            android:text="Registrar"
+            android:text="@string/registrar"
             android:textAlignment="center" />
 
     </LinearLayout>
