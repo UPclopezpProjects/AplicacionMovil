@@ -1,19 +1,16 @@
 package com.example.desarrolloresidencia.UI
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.ViewModelStores.of
 import com.example.borradoraplicacin.API.data.model.User
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.ViewModel.LoginViewModel
-import com.example.desarrolloresidencia.utils.AuthListener
+import com.example.desarrolloresidencia.utils.Auth.AuthListener
 import com.example.desarrolloresidencia.utils.ValidarR
 
 

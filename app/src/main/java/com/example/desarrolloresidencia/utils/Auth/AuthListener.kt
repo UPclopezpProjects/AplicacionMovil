@@ -1,4 +1,4 @@
-package com.example.desarrolloresidencia.utils
+package com.example.desarrolloresidencia.utils.Auth
 
 import android.os.Message
 import androidx.lifecycle.LiveData
