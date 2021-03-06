@@ -1,4 +1,4 @@
-package com.example.borradoraplicacin.API.data.model
+package com.example.desarrolloresidencia.Network.model.Login
 
 data class LoginUsers(
     val message: Boolean,

@@ -1,8 +1,6 @@
 package com.example.desarrolloresidencia.utils.Auth
 
-import android.os.Message
-import androidx.lifecycle.LiveData
-import com.example.borradoraplicacin.API.data.model.User
+import com.example.desarrolloresidencia.Network.model.Login.User
 
 interface AuthListener {
     fun onStarted()

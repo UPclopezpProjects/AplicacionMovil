@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
+import com.example.desarrolloresidencia.Network.model.CreationC.User
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.ViewModel.LoginViewModel
 import com.example.desarrolloresidencia.ViewModel.RegistroViewModel
@@ -37,8 +38,6 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
                 Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
             }
         }
-
-
 
         registro.setOnClickListener {
             ValidationE()
@@ -95,14 +94,15 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
     override fun onStarted() {
     }
 
-    override fun onSuccess(message: String) {
-        Toast.makeText(this, "REGISTRO SATISFACTORIO", Toast.LENGTH_SHORT).show()
-        /*val intent: Intent = Intent(applicationContext, Login::class.java)
-        startActivity(intent)*/
+    override fun onSuccess(message: Boolean, token: String, user: User) {
+        //Toast.makeText(applicationContext, "$message", Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, "Usuario Registrado", Toast.LENGTH_SHORT).show()
     }
 
+
     override fun onFailure(message: String) {
-        Log.d("respuesta de error: ", message)
-        Toast.makeText(this, "No se ha podido registrar el usuario", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "$message", Toast.LENGTH_SHORT).show()
     }
+
+
 }

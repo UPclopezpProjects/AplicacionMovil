@@ -22,13 +22,21 @@ class RegistroViewModel(): ViewModel() {
         Coroutines.main {
             val response = UserRepository().userRegistro(nombre!!, apellidoP!!, apellidoM!!, email!!, password!!)
             if (response.isSuccessful){
-                authListener?.onSuccess(response.body()!!.message)
+                authListener?.onSuccess(response.body()!!.message, response.body()!!.token, response.body()!!.user)
+                Log.d("si jaló", "${response.body()!!.message}")
             } else{
-                Log.d("viewmodel", response.errorBody().toString())
-
-                authListener?.onFailure("Error Code: ${response.code()}")
+                //authListener?.onFailure("${response.code()}")
+                validacionErr(response.code().toString())
             }
         }
 
+    }
+
+    fun validacionErr (error : String){
+        if (error == "404"){
+            authListener?.onFailure("El email $email ya está en uso")
+        }else{
+            authListener?.onFailure("Código de error $error")
+        }
     }
 }

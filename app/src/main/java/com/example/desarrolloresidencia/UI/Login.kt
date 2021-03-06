@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
-import com.example.borradoraplicacin.API.data.model.User
+import com.example.desarrolloresidencia.Network.model.Login.User
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.ViewModel.LoginViewModel
 import com.example.desarrolloresidencia.utils.Auth.AuthListener
@@ -78,6 +78,6 @@ class Login : AppCompatActivity(), AuthListener {
     }
 
     override fun onFailure(message: String) {
-        Toast.makeText(this, "El correo y/o Constraseña son incorrectos", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
