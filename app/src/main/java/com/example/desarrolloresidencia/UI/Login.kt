@@ -3,6 +3,7 @@ package com.example.desarrolloresidencia.UI
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -12,6 +13,7 @@ import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.ViewModel.LoginViewModel
 import com.example.desarrolloresidencia.utils.Auth.AuthListener
 import com.example.desarrolloresidencia.utils.ValidarR
+import java.lang.Exception
 
 
 class Login : AppCompatActivity(), AuthListener {
@@ -28,6 +30,7 @@ class Login : AppCompatActivity(), AuthListener {
 
         var logear = findViewById<Button>(R.id.BTLogin)
         var registro = findViewById<Button>(R.id.BTRegistro)
+        var saltar = findViewById<Button>(R.id.BTSaltar)
 
         logear.setOnClickListener {
 
@@ -45,28 +48,37 @@ class Login : AppCompatActivity(), AuthListener {
 
         }
 
+        saltar.setOnClickListener {
+            val intent: Intent = Intent(applicationContext, ScannerQR::class.java)
+            startActivity(intent)
+        }
+
 
     }
 
     private fun ValidationE(){
-        var email = findViewById<EditText>(R.id.ETEmail)
-        var contraseña = findViewById<EditText>(R.id.password)
+        try {
+            var email = findViewById<EditText>(R.id.ETEmail)
+            var contraseña = findViewById<EditText>(R.id.password)
 
-        if (email.text.toString() ==""){
-            email.error = "Ingresa el correo"
-            email.requestFocus()
-            return
+            if (email.text.toString() == "") {
+                email.error = "Ingresa el correo"
+                email.requestFocus()
+                return
+            }
+
+            if (contraseña.text.toString() == "") {
+                contraseña.error = "Ingresa la contraseña"
+                contraseña.requestFocus()
+                return
+            }
+            loginViewModel.email = email.text.toString()
+            loginViewModel.password = contraseña.text.toString()
+
+            loginViewModel.onLoginButtonClick()
+        } catch (e: Exception){
+            Log.e("Error UI", "$e")
         }
-
-        if (contraseña.text.toString() ==""){
-            contraseña.error = "Ingresa la contraseña"
-            contraseña.requestFocus()
-            return
-        }
-        loginViewModel.email = email.text.toString()
-        loginViewModel.password = contraseña.text.toString()
-
-        loginViewModel.onLoginButtonClick()
     }
 
     override fun onStarted() {

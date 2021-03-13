@@ -59,4 +59,8 @@ dependencies {
     implementation 'com.xwray:groupie-databinding:2.3.0'
 
     implementation "androidx.preference:preference-ktx:1.1.1"
+
+    //Código QR
+    implementation 'com.journeyapps:zxing-android-embedded:3.2.0'
+    implementation 'com.google.zxing:core:3.3.0'
 }

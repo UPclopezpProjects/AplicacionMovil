@@ -1,4 +1,4 @@
-package com.example.desarrolloresidencia.Network
+package com.example.desarrolloresidencia.Network.Apis
 
 import com.example.desarrolloresidencia.Network.model.CreationC.CreacionConsumidor
 import com.example.desarrolloresidencia.Network.model.Login.LoginUsers

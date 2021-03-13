@@ -1,10 +1,12 @@
 package com.example.desarrolloresidencia.ViewModel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.desarrolloresidencia.Network.model.Login.User
 import com.example.desarrolloresidencia.Repository.UserRepository
 import com.example.desarrolloresidencia.utils.Auth.AuthListener
 import com.example.desarrolloresidencia.utils.Coroutines
+import java.lang.Exception
 
 class LoginViewModel() : ViewModel()  {
 
@@ -14,6 +16,7 @@ class LoginViewModel() : ViewModel()  {
     var authListener: AuthListener?= null
 
     fun onLoginButtonClick(){
+        try {
         authListener?.onStarted()
 
         Coroutines.main {
@@ -25,7 +28,9 @@ class LoginViewModel() : ViewModel()  {
                 authListener?.onFailure("Error Code: ${response.code()}")
             }
         }
-
+        } catch (e: Exception){
+            Log.e("Error ViewModel", "$e")
+        }
     }
 
     fun validarU(message: Boolean, token: String, user: User){

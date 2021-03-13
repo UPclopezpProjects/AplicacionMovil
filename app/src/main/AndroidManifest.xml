@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- el permiso del internet -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -14,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UI.RegistroUsuario"></activity>
+        <activity android:name=".UI.ScannerQR"></activity>
+        <activity android:name=".UI.RegistroUsuario" />
         <activity android:name=".UI.Login" />
         <activity android:name=".UI.SplashScreen">
             <intent-filter>
