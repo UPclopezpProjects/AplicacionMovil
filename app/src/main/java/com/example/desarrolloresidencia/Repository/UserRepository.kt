@@ -4,11 +4,14 @@ import android.util.Log
 import com.example.desarrolloresidencia.Network.model.Login.LoginUsers
 import com.example.desarrolloresidencia.Network.Apis.MyApi
 import com.example.desarrolloresidencia.Network.model.CreationC.CreacionConsumidor
+import com.example.desarrolloresidencia.UI.Login
+import okhttp3.ResponseBody
 import retrofit2.Response
+import java.lang.Exception
 
 class UserRepository {
 
-    suspend fun userLogin(email: String, password: String): Response<LoginUsers>{
+    suspend fun userLogin(email: String, password: String): Response<LoginUsers> {
             Log.d("Repository", "$email $password")
             return MyApi().Logearse(email, password, "authentication", "loginUser")
     }

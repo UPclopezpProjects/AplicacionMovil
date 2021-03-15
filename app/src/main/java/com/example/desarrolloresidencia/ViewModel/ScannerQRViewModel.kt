@@ -31,8 +31,9 @@ class ScannerQRViewModel : ViewModel(){
             Log.d("QR", "$QR")
             val response = TrazabilidadRepository().trazabilidadConsulta(QR!!)
             Log.d("consulta", response.body()!!.message.toString())
+            com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta.consulta =response.body()!!.message
+            Log.d("el objeto", com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta.consulta.toString())
             if (response.isSuccessful){
-                Log.d("prueba", "${response.body()!!.message}")
                 val message : Message = response.body()!!.message
                 authListener?.onSuccess(message)
                 Log.d("success", "si lo mandó")

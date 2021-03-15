@@ -17,6 +17,8 @@ class LoginViewModel() : ViewModel()  {
 
     fun onLoginButtonClick(){
         try {
+
+
         authListener?.onStarted()
 
         Coroutines.main {

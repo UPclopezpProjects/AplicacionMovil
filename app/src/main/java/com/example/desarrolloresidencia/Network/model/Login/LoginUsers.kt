@@ -2,6 +2,6 @@ package com.example.desarrolloresidencia.Network.model.Login
 
 data class LoginUsers(
     val message: Boolean,
-    val token: String,
+    var token: String,
     val user: User
 )

@@ -36,8 +36,7 @@ class ScannerQR : AppCompatActivity(), AuthQr {
         viewModel = ViewModelProviders.of(this).get(ScannerQRViewModel::class.java)
         viewModel.authListener = this
 
-        Nota = findViewById<EditText>(R.id.textView5)
-        Nota?.setText(viewModel.QR)
+
 
         //permisos()
         viewModel.solicitudP(this, this)
@@ -48,9 +47,7 @@ class ScannerQR : AppCompatActivity(), AuthQr {
 
         val volver = findViewById<Button>(R.id.BTVolver)
         volver.setOnClickListener {
-            val intent: Intent = Intent(applicationContext, Login::class.java)
-            startActivity(intent)
-
+            finish()
         }
     }
 
@@ -59,9 +56,14 @@ class ScannerQR : AppCompatActivity(), AuthQr {
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         val datos = result.contents
         viewModel.QR=datos
-        Nota?.setText(viewModel.QR)
         //viewModel.sobrescribir(datos, baseContext)
         viewModel.consulta()
+        TrazabilidadScreen()
+    }
+
+    fun TrazabilidadScreen(){
+        var intent : Intent = Intent(applicationContext, Trazabilidad::class.java)
+        startActivity(intent)
     }
 
     override fun onStarted() {

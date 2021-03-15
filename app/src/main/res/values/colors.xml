@@ -3,7 +3,7 @@
     <color name="colorPrimary">@android:color/holo_green_light</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="ColorBase">#00630e</color>
+    <color name="ColorBase">#1CBA24</color>
     <color name="ColorBotón">#008f0e</color>
     <color name="ColorCaja">#76440e</color>
     <color name="ColorSuperior">#003d0e</color>
