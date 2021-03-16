@@ -1,48 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/TVId"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10sp"
         android:layout_marginTop="10sp"
         android:layout_marginEnd="10sp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Id: " />
+        android:layout_marginBottom="10sp">
 
-    <TextView
-        android:id="@+id/TVFecha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10sp"
-        android:layout_marginTop="10sp"
-        android:layout_marginEnd="10sp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Fecha: " />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/TVEscenario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10sp"
-        android:layout_marginTop="10sp"
-        android:layout_marginEnd="10sp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Escenario: " />
+            <TextView
+                android:id="@+id/TVDescripcion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="10sp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Descripción: " />
 
-    <TextView
-        android:id="@+id/TVDescripcion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10sp"
-        android:layout_marginTop="10sp"
-        android:layout_marginEnd="10sp"
-        android:layout_marginBottom="10sp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Descripción: " />
+            <TextView
+                android:id="@+id/TVFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="10sp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Fecha: " />
+
+            <TextView
+                android:id="@+id/TVEscenario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="10sp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Escenario: " />
+
+            <TextView
+                android:id="@+id/TVId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="10sp"
+                android:layout_marginBottom="10sp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Id: " />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
