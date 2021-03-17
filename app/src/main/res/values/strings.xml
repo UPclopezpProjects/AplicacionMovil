@@ -17,5 +17,6 @@
     <string name="m_s_informaci_n">Más información</string>
     <string name="tips">Tips</string>
     <string name="c_lculo_nutricional">Cálculo Nutricional</string>
+    <string name="title_activity_datos_trazabilidad">Map</string>
     <string name="todo">TODO</string>
 </resources>
