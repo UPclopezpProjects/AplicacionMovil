@@ -18,22 +18,14 @@
             android:orientation="vertical">
 
             <TextView
-<<<<<<< HEAD
-                android:id="@+id/TVId"
-=======
                 android:id="@+id/TVDescripcion"
->>>>>>> bb1c98bce4fc5ee12e2c21c57d1bde5b6278e291
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
                 android:layout_marginTop="10sp"
                 android:layout_marginEnd="10sp"
                 android:fontFamily="sans-serif-medium"
-<<<<<<< HEAD
-                android:text="Id: " />
-=======
                 android:text="Descripción: " />
->>>>>>> bb1c98bce4fc5ee12e2c21c57d1bde5b6278e291
 
             <TextView
                 android:id="@+id/TVFecha"
@@ -56,11 +48,7 @@
                 android:text="Escenario: " />
 
             <TextView
-<<<<<<< HEAD
-                android:id="@+id/TVDescripcion"
-=======
                 android:id="@+id/TVId"
->>>>>>> bb1c98bce4fc5ee12e2c21c57d1bde5b6278e291
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
@@ -68,12 +56,7 @@
                 android:layout_marginEnd="10sp"
                 android:layout_marginBottom="10sp"
                 android:fontFamily="sans-serif-medium"
-<<<<<<< HEAD
-                android:text="Descripción: " />
-
-=======
                 android:text="Id: " />
->>>>>>> bb1c98bce4fc5ee12e2c21c57d1bde5b6278e291
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
