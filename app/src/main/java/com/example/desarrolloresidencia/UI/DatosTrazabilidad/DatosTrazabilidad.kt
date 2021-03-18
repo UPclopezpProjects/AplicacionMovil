@@ -36,8 +36,14 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val sydney = LatLng(-33.86785899233898, 151.22047064065282)
+        val michoacan = LatLng(19.570748230318785, -101.713008550864)
+        val veracruz = LatLng(19.199792279167177, -96.1308935976641)
+        val mercado = LatLng(-33.871970665526234, 151.09359167939488)
+        mMap.addMarker(MarkerOptions().position(michoacan).title("Productora de aguacate"))
+        mMap.addMarker(MarkerOptions().position(veracruz).title("Puerto Exportador de Veracruz"))
+        mMap.addMarker(MarkerOptions().position(sydney).title("Puerto de Importación de Sidney"))
+        mMap.addMarker(MarkerOptions().position(mercado).title("Usted está comprando aquí"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(michoacan))
     }
 }
