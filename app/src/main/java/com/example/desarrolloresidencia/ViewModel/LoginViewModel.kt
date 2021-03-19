@@ -17,11 +17,9 @@ class LoginViewModel() : ViewModel()  {
 
     fun onLoginButtonClick(){
         try {
-
-
         authListener?.onStarted()
 
-        Coroutines.main {
+        Coroutines.main() {
             val response = UserRepository().userLogin(email!!, password!!)
             if (response.isSuccessful){
                 validarU(response.body()!!.message, response.body()!!.token, response.body()!!.user)

@@ -78,6 +78,8 @@ class Login : AppCompatActivity(), AuthListener {
             loginViewModel.onLoginButtonClick()
         } catch (e: Exception){
             Log.e("Error UI", "$e")
+        }catch (e: java.io.IOException){
+            Toast.makeText(this, "Error al conectar con el servidor", Toast.LENGTH_SHORT).show()
         }
     }
 
