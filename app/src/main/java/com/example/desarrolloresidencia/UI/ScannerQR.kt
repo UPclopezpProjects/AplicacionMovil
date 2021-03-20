@@ -55,10 +55,15 @@ class ScannerQR : AppCompatActivity(), AuthQr {
         super.onActivityResult(requestCode, resultCode, data)
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         val datos = result.contents
-        viewModel.QR=datos
-        //viewModel.sobrescribir(datos, baseContext)
-        viewModel.consulta()
-        TrazabilidadScreen()
+        Log.d("datos", "$datos")
+        if (datos != null){
+            viewModel.QR=datos
+            //viewModel.sobrescribir(datos, baseContext)
+            viewModel.consulta()
+            TrazabilidadScreen()
+        }
+
+
     }
 
     fun TrazabilidadScreen(){
