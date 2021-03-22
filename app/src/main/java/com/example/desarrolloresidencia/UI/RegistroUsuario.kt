@@ -14,6 +14,7 @@ import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.ViewModel.LoginViewModel
 import com.example.desarrolloresidencia.ViewModel.RegistroViewModel
 import com.example.desarrolloresidencia.utils.Auth.AuthRegistro
+import com.example.desarrolloresidencia.utils.Coroutines
 import com.example.desarrolloresidencia.utils.ValidarR
 
 class RegistroUsuario : AppCompatActivity(), AuthRegistro {
@@ -26,6 +27,7 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
 
         registroViewModel= ViewModelProviders.of(this).get(RegistroViewModel::class.java)
         registroViewModel.authListener = this
+        Coroutines.contexto = this
 
         var registro = findViewById<Button>(R.id.BTRegistrar)
 

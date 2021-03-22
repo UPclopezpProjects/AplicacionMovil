@@ -35,6 +35,7 @@
                 android:layout_width="70sp"
                 android:layout_height="70sp"
                 android:background="@drawable/ic_baseline_arrow_back_24"
+                android:foreground="?android:attr/selectableItemBackground"
                 app:layout_constraintEnd_toEndOf="parent" />
 
 

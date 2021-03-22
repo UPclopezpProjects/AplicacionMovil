@@ -12,6 +12,7 @@ import com.example.desarrolloresidencia.Network.model.Login.User
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.ViewModel.LoginViewModel
 import com.example.desarrolloresidencia.utils.Auth.AuthListener
+import com.example.desarrolloresidencia.utils.Coroutines
 import com.example.desarrolloresidencia.utils.ValidarR
 import java.lang.Exception
 
@@ -27,7 +28,7 @@ class Login : AppCompatActivity(), AuthListener {
         loginViewModel= ViewModelProviders.of(this).get(LoginViewModel::class.java)
         loginViewModel.authListener = this
 
-
+        Coroutines.contexto = this
         var logear = findViewById<Button>(R.id.BTLogin)
         var registro = findViewById<Button>(R.id.BTRegistro)
         var saltar = findViewById<Button>(R.id.BTSaltar)

@@ -17,6 +17,7 @@ import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.ViewModel.ScannerQRViewModel
 import com.example.desarrolloresidencia.utils.Auth.AuthQr
+import com.example.desarrolloresidencia.utils.Coroutines
 import com.google.zxing.integration.android.IntentIntegrator
 import java.io.BufferedReader
 import java.io.File
@@ -35,7 +36,7 @@ class ScannerQR : AppCompatActivity(), AuthQr {
         setContentView(R.layout.activity_scanner_q_r)
         viewModel = ViewModelProviders.of(this).get(ScannerQRViewModel::class.java)
         viewModel.authListener = this
-
+        Coroutines.contexto = this
 
 
         //permisos()
@@ -55,10 +56,15 @@ class ScannerQR : AppCompatActivity(), AuthQr {
         super.onActivityResult(requestCode, resultCode, data)
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         val datos = result.contents
-        viewModel.QR=datos
-        //viewModel.sobrescribir(datos, baseContext)
-        viewModel.consulta()
-        TrazabilidadScreen()
+        Log.d("datos", "$datos")
+        if (datos != null){
+            viewModel.QR=datos
+            //viewModel.sobrescribir(datos, baseContext)
+            viewModel.consulta()
+            TrazabilidadScreen()
+        }
+
+
     }
 
     fun TrazabilidadScreen(){

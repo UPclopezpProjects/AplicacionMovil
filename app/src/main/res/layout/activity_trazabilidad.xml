@@ -62,7 +62,8 @@
                 android:fontFamily="sans-serif"
                 android:text="Trazabilidad"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:foreground="?android:attr/selectableItemBackground"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
@@ -89,7 +90,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/ic_baseline_settings_24"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:layout_editor_absoluteY="0dp" />
+                tools:layout_editor_absoluteY="0dp"
+                android:foreground="?android:attr/selectableItemBackground"/>
 
             <Button
                 android:id="@+id/button4"
@@ -99,7 +101,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/ic_baseline_exit_to_app_24"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="0dp" />
+                tools:layout_editor_absoluteY="0dp"
+                android:foreground="?android:attr/selectableItemBackground"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
