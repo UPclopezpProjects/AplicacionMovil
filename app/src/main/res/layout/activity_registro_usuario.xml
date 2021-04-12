@@ -92,14 +92,30 @@
             android:inputType="textPassword"
             android:textAlignment="center" />
 
+        <ProgressBar
+            android:id="@+id/PB"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50sp"
+            android:layout_marginBottom="50sp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints" />
+
         <Button
             android:id="@+id/BTRegistrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="153sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="40sp"
+            android:layout_marginEnd="40sp"
+            android:layout_marginBottom="10sp"
             android:background="@android:color/holo_green_light"
             android:text="@string/registrar"
             android:textAlignment="center" />
+
 
     </LinearLayout>
 

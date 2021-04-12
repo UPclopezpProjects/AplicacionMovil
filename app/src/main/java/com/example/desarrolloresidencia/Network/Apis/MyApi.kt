@@ -22,14 +22,21 @@ interface MyApi {
     ): Response<LoginUsers>
 
     @FormUrlEncoded
-    @POST("register")
+    @POST("userCreation")
     suspend  fun Registrarse(
             @Field("email") email: String?,
             @Field("password") password: String?,
+            @Field("surnameA") surnameA: String?,
+            @Field("surnameB") surnameB: String?,
             @Field("nameOfUser") nameOfUser: String?,
-            @Field("surnameP") surnameP: String?,
-            @Field("surnameM") surnameM: String?,
-            @Field("typeOfUser") typeOfUser: String?
+            @Field("typeOfUser") typeOfUser: String?,
+            @Field("status") status: String?,
+            @Field("creationDate") creationDate: String?,
+            @Field("dp") dp: String?,
+            @Field("addressU") addressU: String?,
+            @Field("typeOfOperation") typeOfOperation: String?,
+            @Field("nameOfOperation") nameOfOperation: String?,
+            @Field("hashX") hashX: String?
     ): Response<CreacionConsumidor>
 
 

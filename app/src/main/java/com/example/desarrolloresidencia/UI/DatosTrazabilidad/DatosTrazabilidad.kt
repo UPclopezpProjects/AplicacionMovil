@@ -64,11 +64,10 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback {
         )
 
 
-
-                        mMap.addMarker(MarkerOptions().position(michoacan).title("Productora de aguacate"))
-        mMap.addMarker(MarkerOptions().position(oaxaca).title("Puerto Exportador de Veracruz"))
-        mMap.addMarker(MarkerOptions().position(sydney).title("Puerto de Importación de Sidney"))
-        mMap.addMarker(MarkerOptions().position(mercado).title("Usted está comprando aquí"))
+        mMap.addMarker(MarkerOptions().position(mercado).title("Id:A01, Usted está comprando aquí").icon(BitmapDescriptorFactory.fromResource(R.mipmap.comerciante_round)).anchor(0.5f, 0.5f))
+        mMap.addMarker(MarkerOptions().position(sydney).title("Id:B01, Puerto de importaciones de Sydney").icon(BitmapDescriptorFactory.fromResource(R.mipmap.transportista_round)).anchor(0.5f, 0.5f))
+        mMap.addMarker(MarkerOptions().position(oaxaca).title("Id:C01, Puerto de exportaciones de Oaxaca").icon(BitmapDescriptorFactory.fromResource(R.mipmap.acopio_round)).anchor(0.5f, 0.5f))
+        mMap.addMarker(MarkerOptions().position(michoacan).title("Id:D01, Productor de aguacate").icon(BitmapDescriptorFactory.fromResource(R.mipmap.productor_round)).anchor(0.5f, 0.5f))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(oaxaca))
     }
 

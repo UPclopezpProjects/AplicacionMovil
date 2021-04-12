@@ -6,23 +6,13 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
 import com.example.desarrolloresidencia.Repository.TrazabilidadRepository
-import com.example.desarrolloresidencia.Repository.UserRepository
-import com.example.desarrolloresidencia.utils.Auth.AuthListener
 import com.example.desarrolloresidencia.utils.Auth.AuthQr
-import com.example.desarrolloresidencia.utils.Coroutines
+import com.example.desarrolloresidencia.utils.Corutinas.Coroutines
 import com.example.desarrolloresidencia.utils.LEArchivos
 
 class ScannerQRViewModel : ViewModel(){
     var QR:String ?= null
     var authListener: AuthQr ?= null
-
-    fun sobrescribir(texto: String, baseContext: Context){
-            LEArchivos.sobrescribir(texto, baseContext)
-    }
-
-    fun solicitudP(contexto:Context, actividad:Activity){
-
-    }
 
     fun consulta(){
         authListener?.onStarted()
@@ -38,7 +28,7 @@ class ScannerQRViewModel : ViewModel(){
                 authListener?.onSuccess(message)
                 Log.d("success", "si lo mandó")
             } else{
-                authListener?.onFailure("Error Code: ${response.code()}")
+                authListener?.onFailure("${response.errorBody()?.string()}")
             }
         }
     }

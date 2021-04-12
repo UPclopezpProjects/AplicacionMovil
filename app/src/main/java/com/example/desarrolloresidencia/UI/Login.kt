@@ -4,56 +4,71 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import com.example.desarrolloresidencia.Network.model.Login.User
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.ViewModel.LoginViewModel
+import com.example.desarrolloresidencia.databinding.ActivityLoginBinding
 import com.example.desarrolloresidencia.utils.Auth.AuthListener
-import com.example.desarrolloresidencia.utils.Coroutines
+import com.example.desarrolloresidencia.utils.Corutinas.Coroutines
 import com.example.desarrolloresidencia.utils.ValidarR
 import java.lang.Exception
 
 
 class Login : AppCompatActivity(), AuthListener {
     lateinit var loginViewModel: LoginViewModel
+    private lateinit var binding:ActivityLoginBinding
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        //setContentView(R.layout.activity_login)
+        setContentView(binding.root)
 
         loginViewModel= ViewModelProviders.of(this).get(LoginViewModel::class.java)
         loginViewModel.authListener = this
 
-        Coroutines.contexto = this
-        var logear = findViewById<Button>(R.id.BTLogin)
-        var registro = findViewById<Button>(R.id.BTRegistro)
-        var saltar = findViewById<Button>(R.id.BTSaltar)
 
-        logear.setOnClickListener {
+        //Coroutines.contexto = this
+        Coroutines.authListener= this
+        //var logear = findViewById<Button>(R.id.BTLogin)
+        //var registro = findViewById<Button>(R.id.BTRegistro)
+        //var saltar = findViewById<Button>(R.id.BTSaltar)
 
-                if (ValidarR.hayRed(this)){
-                    //Toast.makeText(this, "Hay red", Toast.LENGTH_SHORT).show()
-                    ValidationE()
-                } else {
-                    Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
-                }
+        //logear.setOnClickListener {
+        binding.BTLogin.setOnClickListener {
+            if (ValidarR.hayRed(this)){
+                //Toast.makeText(this, "Hay red", Toast.LENGTH_SHORT).show()
+                ValidationE()
+            } else {
+                Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
+            }
         }
 
-        registro.setOnClickListener {
+        //}
+
+        //registro.setOnClickListener {
+        binding.BTRegistro.setOnClickListener {
             val intent: Intent = Intent(applicationContext, RegistroUsuario::class.java)
             startActivity(intent)
-
         }
 
-        saltar.setOnClickListener {
+
+        //}
+
+        //saltar.setOnClickListener {
+        binding.BTSaltar.setOnClickListener {
             val intent: Intent = Intent(applicationContext, ScannerQR::class.java)
             startActivity(intent)
         }
 
+        //}
 
     }
 
@@ -83,14 +98,43 @@ class Login : AppCompatActivity(), AuthListener {
     }
 
     override fun onStarted() {
+        binding.PB.visibility = VISIBLE
+        binding.BTRegistro.isEnabled= false
+        binding.BTSaltar.isEnabled= false
+        binding.BTLogin.isEnabled= false
+        binding.ETEmail.isEnabled= false
+        binding.password.isEnabled= false
+
     }
 
     override fun onSuccess(message: Boolean, token: String, user: User) {
         //Toast.makeText(this, "$message $token $user", Toast.LENGTH_SHORT).show()
-        Toast.makeText(this, "ACCESO CORRECTO", Toast.LENGTH_SHORT).show()
+        binding.PB.visibility = GONE
+        binding.BTRegistro.isEnabled= true
+        binding.BTSaltar.isEnabled= true
+        binding.ETEmail.isEnabled= true
+        binding.password.isEnabled= true
+        binding.BTLogin.isEnabled= true
+        validarStatus(user.status)
     }
 
     override fun onFailure(message: String) {
+        binding.PB.visibility = GONE
+        binding.BTRegistro.isEnabled= true
+        binding.BTSaltar.isEnabled= true
+        binding.ETEmail.isEnabled= true
+        binding.password.isEnabled= true
+        binding.BTLogin.isEnabled= true
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    fun validarStatus (status : String){
+        if (status=="false"){
+            Toast.makeText(applicationContext, "Verifica tu correo electrónico", Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(applicationContext, "Tu correo electrónico está verificado", Toast.LENGTH_SHORT).show()
+            var pasar:Intent = Intent(applicationContext, ScannerQR::class.java)
+            startActivity(pasar)
+        }
     }
 }

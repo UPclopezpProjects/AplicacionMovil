@@ -1,11 +1,14 @@
 package com.example.desarrolloresidencia.ViewModel
 
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.desarrolloresidencia.Network.model.Login.User
 import com.example.desarrolloresidencia.Repository.UserRepository
+import com.example.desarrolloresidencia.UI.ScannerQR
 import com.example.desarrolloresidencia.utils.Auth.AuthListener
-import com.example.desarrolloresidencia.utils.Coroutines
+import com.example.desarrolloresidencia.utils.Corutinas.Coroutines
 import java.lang.Exception
 
 class LoginViewModel() : ViewModel()  {
@@ -27,7 +30,7 @@ class LoginViewModel() : ViewModel()  {
                 validarU(response.body()!!.message, response.body()!!.token, response.body()!!.user)
                 //authListener?.onSuccess(response.body()!!.message, response.body()!!.token, response.body()!!.user)
             } else{
-                authListener?.onFailure("Error Code: ${response.code()}")
+                authListener?.onFailure("${response.errorBody()?.string()}")
             }
         }
         } catch (e: Exception){
@@ -36,10 +39,11 @@ class LoginViewModel() : ViewModel()  {
     }
 
     fun validarU(message: Boolean, token: String, user: User){
-        if(user.typeOfUser=="consumer"){
+        if(user.typeOfUser=="Consumer"){
             authListener?.onSuccess(message, token, user)
         }else{
             authListener?.onFailure("Solo pueden ingresar los usuarios de tipo consumidor")
         }
     }
+
 }
