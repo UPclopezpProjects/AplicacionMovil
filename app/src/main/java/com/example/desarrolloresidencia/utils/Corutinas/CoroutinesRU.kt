@@ -20,9 +20,4 @@ object CoroutinesRU {
 
             }
 
-    fun IO (work: suspend (() -> Unit)) =
-            CoroutineScope(Dispatchers.IO).launch {
-                work()
-            }
-
 }

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.Trazabilidad">
+    tools:context=".UI.Trazabilidad"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -40,42 +41,125 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout1"
-        tools:ignore="DuplicateIds,MissingConstraints">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="Tips"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/BTTips"
+                app:layout_constraintStart_toStartOf="@+id/BTTips"
+                app:layout_constraintTop_toBottomOf="@+id/BTTips" />
+
+            <Button
+                android:id="@+id/BTTips"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:background="@drawable/tips"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/BTTrazabilidad"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="Trazabilidad"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/BTTrazabilidad"
+                app:layout_constraintStart_toStartOf="@+id/BTTrazabilidad"
+                app:layout_constraintTop_toBottomOf="@+id/BTTrazabilidad" />
 
             <Button
                 android:id="@+id/BTTrazabilidad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/ColorBotón"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:background="@drawable/trazabilidad"
                 android:fontFamily="sans-serif"
-                android:text="Trazabilidad"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/BTTips"
                 app:layout_constraintStart_toStartOf="parent"
-                android:foreground="?android:attr/selectableItemBackground"/>
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="70sp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
-        tools:ignore="DuplicateIds,MissingConstraints">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="Cálculo Nutricional"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/button5"
+                app:layout_constraintStart_toStartOf="@+id/button5"
+                app:layout_constraintTop_toBottomOf="@+id/button5" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:background="@drawable/masinformation"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="Información"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/button4"
+                app:layout_constraintStart_toStartOf="@+id/button4"
+                app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:background="@drawable/calculonutricional"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button4"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -83,64 +167,50 @@
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/button5"
-                android:layout_width="70sp"
-                android:layout_height="70sp"
-                android:layout_marginEnd="76dp"
-                android:layout_weight="1"
-                android:background="@drawable/ic_baseline_settings_24"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:layout_editor_absoluteY="0dp"
-                android:foreground="?android:attr/selectableItemBackground"/>
+                android:id="@+id/button6"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:background="@drawable/ic_twotone_manage_accounts_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="Salir"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/button6"
+                app:layout_constraintStart_toStartOf="@+id/button6"
+                app:layout_constraintTop_toBottomOf="@+id/button6" />
 
             <Button
-                android:id="@+id/button4"
-                android:layout_width="70sp"
-                android:layout_height="70sp"
-                android:layout_marginStart="76dp"
-                android:layout_weight="1"
-                android:background="@drawable/ic_baseline_exit_to_app_24"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="0dp"
-                android:foreground="?android:attr/selectableItemBackground"/>
+                android:id="@+id/button9"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:background="@drawable/ic_twotone_settings_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button6"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="Ajustes"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/button9"
+                app:layout_constraintStart_toStartOf="@+id/button9"
+                app:layout_constraintTop_toBottomOf="@+id/button9" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="DuplicateIds,MissingConstraints">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/ColorBase"
-            app:tabMode="fixed"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Más Información" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tips" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cálculo Nutricional" />
-        </com.google.android.material.tabs.TabLayout>
-
     </LinearLayout>
 
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

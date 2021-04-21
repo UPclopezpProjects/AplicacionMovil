@@ -320,7 +320,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/store/baseline_store_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialiconstwotone/manage_accounts/twotone_manage_accounts_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -331,7 +331,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="008f67" />
-                            <entry key="outputName" value="comerciante" />
+                            <entry key="outputName" value="ic_twotone_manage_accounts_24" />
                             <entry key="sourceFile" value="E:\miscosas\itvo\residenciaprofesional\borrador\conMVVM" />
                           </map>
                         </option>

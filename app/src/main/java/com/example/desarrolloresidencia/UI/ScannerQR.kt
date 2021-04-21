@@ -49,8 +49,8 @@ class ScannerQR : AppCompatActivity(), AuthQr {
 
         //}
 
-        val volver = findViewById<Button>(R.id.BTVolver)
-        volver.setOnClickListener {
+        //val volver = findViewById<Button>(R.id.BTVolver)
+        binding.BTVolver.setOnClickListener {
             finish()
         }
     }
