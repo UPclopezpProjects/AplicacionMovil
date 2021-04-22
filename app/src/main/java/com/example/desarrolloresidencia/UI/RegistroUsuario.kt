@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
@@ -59,7 +58,7 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
         var nombre = findViewById<EditText>(R.id.ETNombre)
         var apellidoP = findViewById<EditText>(R.id.ETApellidoP)
         var apellidoM = findViewById<EditText>(R.id.ETApellidoM)
-        var username = findViewById<EditText>(R.id.ETUsername)
+        var username = findViewById<EditText>(R.id.ETEmail)
         var contrasena = findViewById<EditText>(R.id.ETContrasena)
 
         if (nombre.text.toString() ==""){
@@ -107,7 +106,7 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
         binding.ETNombre.isEnabled = false
         binding.ETApellidoP.isEnabled = false
         binding.ETApellidoM.isEnabled = false
-        binding.ETUsername.isEnabled = false
+        binding.ETEmail.isEnabled = false
         binding.ETContrasena.isEnabled = false
         binding.BTRegistrar.isEnabled = false
     }
@@ -117,7 +116,7 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
         binding.ETNombre.isEnabled = true
         binding.ETApellidoP.isEnabled = true
         binding.ETApellidoM.isEnabled = true
-        binding.ETUsername.isEnabled = true
+        binding.ETEmail.isEnabled = true
         binding.ETContrasena.isEnabled = true
         binding.BTRegistrar.isEnabled = true
         Log.d("respuesta correcta", "$message, $token, $user")
@@ -131,7 +130,7 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
         binding.ETNombre.isEnabled = true
         binding.ETApellidoP.isEnabled = true
         binding.ETApellidoM.isEnabled = true
-        binding.ETUsername.isEnabled = true
+        binding.ETEmail.isEnabled = true
         binding.ETContrasena.isEnabled = true
         binding.BTRegistrar.isEnabled = true
         Log.e("Error en registro", message)

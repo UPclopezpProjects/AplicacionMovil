@@ -6,20 +6,29 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.UI.DatosTrazabilidad.DatosTrazabilidad
+import com.example.desarrolloresidencia.databinding.ActivityLoginBinding
+import com.example.desarrolloresidencia.databinding.ActivityTrazabilidadBinding
 
 class Trazabilidad : AppCompatActivity() {
+    private lateinit var binding: ActivityTrazabilidadBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_trazabilidad)
+        //setContentView(R.layout.activity_trazabilidad)
+        binding = ActivityTrazabilidadBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        var boton = findViewById<Button>(R.id.BTVolver)
-        boton.setOnClickListener {
+        binding.BTVolver.setOnClickListener {
             finish()
         }
 
-        var trazabilidad = findViewById<Button>(R.id.BTTrazabilidad)
-        trazabilidad.setOnClickListener {
+        binding.BTTrazabilidad.setOnClickListener {
             val pasar: Intent = Intent(applicationContext, DatosTrazabilidad::class.java)
+            startActivity(pasar)
+        }
+
+        binding.BTAjustes.setOnClickListener {
+            val pasar: Intent = Intent(applicationContext, ModificacionUsuario::class.java)
             startActivity(pasar)
         }
     }

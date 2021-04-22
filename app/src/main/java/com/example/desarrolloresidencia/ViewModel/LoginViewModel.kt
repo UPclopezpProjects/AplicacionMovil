@@ -9,6 +9,7 @@ import com.example.desarrolloresidencia.Repository.UserRepository
 import com.example.desarrolloresidencia.UI.ScannerQR
 import com.example.desarrolloresidencia.utils.Auth.AuthListener
 import com.example.desarrolloresidencia.utils.Corutinas.Coroutines
+import com.example.desarrolloresidencia.utils.responseUser
 import java.lang.Exception
 
 class LoginViewModel() : ViewModel()  {
@@ -26,7 +27,12 @@ class LoginViewModel() : ViewModel()  {
 
         Coroutines.main {
             val response = UserRepository().userLogin(email!!, password!!)
+
             if (response.isSuccessful){
+                responseUser.message = response.body()!!.message
+                responseUser.token = response.body()!!.token
+                responseUser.user = response.body()!!.user
+                Log.d("login token", "${responseUser.token}")
                 validarU(response.body()!!.message, response.body()!!.token, response.body()!!.user)
                 //authListener?.onSuccess(response.body()!!.message, response.body()!!.token, response.body()!!.user)
             } else{

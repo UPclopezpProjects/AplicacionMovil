@@ -1,5 +1,6 @@
 package com.example.desarrolloresidencia.utils.Corutinas
 
+import android.util.Log
 import com.example.desarrolloresidencia.utils.Auth.AuthListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,6 +16,7 @@ object Coroutines {
                 } catch (e: java.io.IOException){
                     //Toast.makeText(contexto, "Error al conectar con el servidor", Toast.LENGTH_SHORT).show()
                     authListener?.onFailure("Error al conectar con el servidor")
+                    Log.e("Error de coroutine", e.toString())
                 }
 
 
