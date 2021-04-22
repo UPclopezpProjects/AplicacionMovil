@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UI.ModificacionUsuario"></activity>
+        <activity android:name=".UI.RecuperacionContrasena"></activity>
+        <activity android:name=".UI.ModificacionUsuario" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

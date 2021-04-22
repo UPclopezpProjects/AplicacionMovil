@@ -6,6 +6,7 @@
     <color name="ColorBase">#1CBA24</color>
     <color name="ColorBotón">#008f0e</color>
     <color name="ColorCaja">#76440e</color>
+    <color name="base">#008F67</color>
     <color name="ColorSuperior">#003d0e</color>
     <color name="ColorVerde">#1eb800</color>
     <color name="ColorRojo">#ff0000</color>

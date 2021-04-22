@@ -68,6 +68,11 @@ class Login : AppCompatActivity(), AuthListener {
             startActivity(intent)
         }
 
+        binding.BTRecuperar.setOnClickListener {
+            val intent: Intent = Intent(applicationContext, RecuperacionContrasena::class.java)
+            startActivity(intent)
+        }
+
         //}
 
     }
