@@ -3,18 +3,25 @@ package com.example.desarrolloresidencia.UI
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
+import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import com.example.desarrolloresidencia.R
+import com.example.desarrolloresidencia.ViewModel.LoginViewModel
+import com.example.desarrolloresidencia.ViewModel.RecuperarPVM
 import com.example.desarrolloresidencia.databinding.ActivityLoginBinding
 import com.example.desarrolloresidencia.databinding.ActivityRecuperacionContrasenaBinding
+import com.example.desarrolloresidencia.utils.Auth.AuthRecuperar
+import com.example.desarrolloresidencia.utils.Corutinas.Coroutines
+import com.example.desarrolloresidencia.utils.Corutinas.CoroutinesRecCont
 import com.example.desarrolloresidencia.utils.ValidarR
 import java.util.regex.Pattern
 
 
-class RecuperacionContrasena : AppCompatActivity() {
-
+class RecuperacionContrasena : AppCompatActivity(), AuthRecuperar {
+    lateinit var loginViewModel: RecuperarPVM
     private lateinit var binding: ActivityRecuperacionContrasenaBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +29,11 @@ class RecuperacionContrasena : AppCompatActivity() {
         //setContentView(R.layout.activity_recuperacion_contrasena)
         binding = ActivityRecuperacionContrasenaBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        loginViewModel= ViewModelProviders.of(this).get(RecuperarPVM::class.java)
+        loginViewModel.authListener = this
+
+        CoroutinesRecCont.authListener= this
 
         binding.BTEnviar.setOnClickListener {
             if (ValidarR.hayRed(this)){
@@ -43,6 +55,9 @@ class RecuperacionContrasena : AppCompatActivity() {
                 email.requestFocus()
                 return
             }
+
+            loginViewModel.email = email.text.toString()
+            loginViewModel.recuperar()
         } catch (e: Exception){
             Log.e("Error UI", "$e")
         }
@@ -51,5 +66,25 @@ class RecuperacionContrasena : AppCompatActivity() {
     private fun validarEmail(email: String): Boolean {
         val pattern: Pattern = Patterns.EMAIL_ADDRESS
         return pattern.matcher(email).matches()
+    }
+
+    override fun onStarted() {
+        binding.PB.visibility = View.VISIBLE
+        binding.BTEnviar.isEnabled = false
+        binding.ETCorreo.isEnabled = false
+    }
+
+    override fun onSuccess(message: String) {
+        binding.PB.visibility = View.INVISIBLE
+        binding.BTEnviar.isEnabled = true
+        binding.ETCorreo.isEnabled = true
+        Toast.makeText(applicationContext, "$message", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onFailure(message: String) {
+        binding.PB.visibility = View.INVISIBLE
+        binding.BTEnviar.isEnabled = true
+        binding.ETCorreo.isEnabled = true
+        Toast.makeText(applicationContext, "$message", Toast.LENGTH_SHORT).show()
     }
 }

@@ -24,6 +24,10 @@ class UserRepository {
         return MyApi().actualizarUsurio("$email", "$contrasena", "$nombre", "true", "$apellidoP", "$apellidoM", "update", "updateMe", "48d6adacee72fea2034b636a029d3ea9", "$id", "$token")
     }
 
+    suspend fun recuperarPassword(email: String):Response<com.example.desarrolloresidencia.Network.model.RecuperarPass.Response>{
+        return MyApi().recuperarPassword("$email")
+    }
+
     suspend fun userRegistro(nombre:String, apellidoP:String, apellidoM:String, email:String, contrasena:String, dp:String): Response<CreacionConsumidor> {
         var jsonOsman = """{"email":"$email","password":"$contrasena","surnameA":"$apellidoP","surnameB":"$apellidoM","nameOfUser":"$nombre","typeOfUser":"Consumer","status":"false","creationDate":"xx-xx-xxxx","dp":$dp,"addressU":"0xf26F59ac3801F419Abe44CA7d56FfC8fB8142BbB","typeOfOperation":"create","nameOfOperation":"createConsumer"}"""
 

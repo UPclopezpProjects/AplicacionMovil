@@ -26,7 +26,6 @@ interface MyApi {
             @Field("nameOfOperation") nameOfOperation: String?
     ): Response<LoginUsers>
 
-
     @FormUrlEncoded
     @PUT("userUpdate/{id}")
     suspend fun actualizarUsurio(
@@ -42,6 +41,12 @@ interface MyApi {
             @Path("id") id:String,
             @Header("Authorization") Authorization:String
     ): Response<LoginUsers>
+
+    @FormUrlEncoded
+    @POST("emailToReset")
+    suspend fun recuperarPassword(
+            @Field("email") email: String?
+    ): Response<com.example.desarrolloresidencia.Network.model.RecuperarPass.Response>
 
     @FormUrlEncoded
     @POST("userCreation")
@@ -60,7 +65,6 @@ interface MyApi {
             @Field("nameOfOperation") nameOfOperation: String?,
             @Field("hashX") hashX: String?
     ): Response<CreacionConsumidor>
-
     
     companion object{
         operator fun invoke() : MyApi {

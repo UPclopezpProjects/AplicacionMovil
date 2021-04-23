@@ -7,7 +7,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 object Coroutines {
-    //var contexto: Context ?= null
     var authListener: AuthListener?= null
     fun main (work:suspend (() -> Unit))=
             CoroutineScope(Dispatchers.Main).launch {
@@ -21,5 +20,4 @@ object Coroutines {
 
 
             }
-
 }
