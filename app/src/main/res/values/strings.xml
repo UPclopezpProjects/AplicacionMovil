@@ -20,4 +20,8 @@
     <string name="title_activity_datos_trazabilidad">Map</string>
     <string name="todo">TODO</string>
     <string name="por_favor_escanea_el_c_digo_qr_de_tu_aguacate_para_poder_continuar">Por favor escanea el código QR de tu aguacate para poder continuar</string>
+    <string name="trazabilidad">Trazabilidad</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="salir">Salir</string>
+    <string name="informaci_n">Información</string>
 </resources>
