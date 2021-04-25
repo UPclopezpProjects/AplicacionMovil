@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.utils.AdaptadorCustom
@@ -24,7 +25,7 @@ class ListaPuntos : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        var contexto = requireContext().applicationContext
+        /* var contexto = requireContext().applicationContext
 
         val puntos = ArrayList<Ubicacion>()
         puntos.add(Ubicacion(consulta.consulta!!.A.id, consulta.consulta!!.A.date, consulta.consulta!!.A.stage, consulta.consulta!!.A.description))
@@ -40,6 +41,9 @@ class ListaPuntos : Fragment() {
 
         adaptador = AdaptadorCustom(contexto, puntos)
         lista?.adapter = adaptador
+
+         */
+        mapearpuntos()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
@@ -49,7 +53,52 @@ class ListaPuntos : Fragment() {
 
     }
 
-    private fun inflarRecycler(){
+    private fun mapearpuntos(){
+        var contexto = requireContext().applicationContext
+        val puntos = ArrayList<Ubicacion>()
+        for (i in 0..(consulta.consulta!!.size - 1)) {
+                    if (consulta.consulta!!.get(i).code != null){
+                        puntos.add(
+                                Ubicacion(
+                                        consulta.consulta!!.get(i).__v,
+                                        consulta.consulta!!.get(i)._id,
+                                        consulta.consulta!!.get(i).code,
+                                        consulta.consulta!!.get(i).currentStage,
+                                        consulta.consulta!!.get(i).fid,
+                                        consulta.consulta!!.get(i).id,
+                                        consulta.consulta!!.get(i).name,
+                                        consulta.consulta!!.get(i).previousStage,
+                                        consulta.consulta!!.get(i).ubication
+                                )
+                        )
+                    }else{
+                        puntos.add(
+                                Ubicacion(
+                                        consulta.consulta!!.get(i).__v,
+                                        consulta.consulta!!.get(i)._id,
+                                        "",
+                                        consulta.consulta!!.get(i).currentStage,
+                                        consulta.consulta!!.get(i).fid,
+                                        consulta.consulta!!.get(i).id,
+                                        consulta.consulta!!.get(i).name,
+                                        consulta.consulta!!.get(i).previousStage,
+                                        consulta.consulta!!.get(i).ubication
+                                )
+                        )
+                    }
+
+
+        }
+
+        lista = activity?.findViewById(R.id.lista)
+        lista?.setHasFixedSize(true)
+
+        layoutManager = LinearLayoutManager(context)
+        lista?.layoutManager = layoutManager
+
+        adaptador = AdaptadorCustom(contexto, puntos)
+        lista?.adapter = adaptador
+
     }
 
 

@@ -24,4 +24,11 @@
     <string name="ajustes">Ajustes</string>
     <string name="salir">Salir</string>
     <string name="informaci_n">Información</string>
+    <string name="c_digo">Código:</string>
+    <string name="v">__V:</string>
+    <string name="ubicaci_n">Ubicación:</string>
+    <string name="fid">FId:</string>
+    <string name="id">Id:</string>
+    <string name="escenario">Escenario:</string>
+    <string name="escenario_previo">Escenario previo:</string>
 </resources>

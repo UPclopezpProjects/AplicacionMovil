@@ -6,7 +6,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="10sp"
         android:layout_marginTop="10sp"
         android:layout_marginEnd="10sp"
@@ -19,22 +19,67 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/TVId"
+                android:id="@+id/TV_Id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="10sp"
+                android:fontFamily="sans-serif-medium"
+                android:text="_Id:" />
+
+            <TextView
+                android:id="@+id/TVID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="10sp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/id" />
+
+            <TextView
+                android:id="@+id/TVFId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="10sp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/fid" />
+
+            <TextView
+                android:id="@+id/TVCodigo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="10sp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/c_digo" />
+
+            <TextView
+                android:id="@+id/TVUbicacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="10sp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/ubicaci_n" />
+
+            <TextView
+                android:id="@+id/TVNombreTP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
                 android:layout_marginTop="10sp"
                 android:layout_marginBottom="10sp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Id: " />
+                android:text="Nombre:" />
 
             <TextView
-                android:id="@+id/TVFecha"
+                android:id="@+id/TVEscenarioPrevio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Fecha: " />
+                android:text="@string/escenario_previo" />
 
             <TextView
                 android:id="@+id/TVEscenario"
@@ -43,18 +88,17 @@
                 android:layout_marginStart="10sp"
                 android:layout_marginTop="10sp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Escenario: " />
+                android:text="@string/escenario" />
 
             <TextView
-                android:id="@+id/TVDescripcion"
+                android:id="@+id/TV__V"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
                 android:layout_marginTop="10sp"
-                android:layout_marginEnd="10sp"
                 android:layout_marginBottom="10sp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Descripción: " />
+                android:text="@string/v" />
 
         </LinearLayout>
 

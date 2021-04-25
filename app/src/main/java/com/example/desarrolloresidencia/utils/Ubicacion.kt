@@ -1,16 +1,25 @@
 package com.example.desarrolloresidencia.utils
 
-class Ubicacion(id:String, date:String, stage:String, descripcion:String) {
-
-    var id= ""
-    var date = ""
-    var stage =""
-    var descripcion = ""
+class Ubicacion(__v: Int, _id : String, code : String, currentStage : String, fid : String, id : String, name : String, previousStage : String, ubication : String) {
+    var __v= 0
+    var _id = ""
+    var code =""
+    var currentStage = ""
+    var fid = ""
+    var id = ""
+    var name = ""
+    var previousStage = ""
+    var ubication = ""
 
     init {
-        this.id = id
-        this.date = date
-        this.stage = stage
-        this.descripcion = descripcion
+        this.__v = __v
+        this._id = _id
+        this.code = code
+        this.currentStage = currentStage
+        this.fid = fid
+        this.id =  id
+        this.name = name
+        this.previousStage = previousStage
+        this.ubication = ubication
     }
 }

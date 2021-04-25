@@ -1,29 +1,25 @@
 package com.example.desarrolloresidencia.UI.DatosTrazabilidad
 
-import android.content.Context
-import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
-import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
 import com.example.desarrolloresidencia.R
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import kotlin.math.log
 
 
 class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
+    var letra= ArrayList<String>()
 
-    val sydney = LatLng(-33.86785899233898, 151.22047064065282)
-    val michoacan = LatLng(19.570748230318785, -101.713008550864)
-    val oaxaca = LatLng(16.17222473768736, -95.19379468760363)
-    val mercado = LatLng(-33.871970665526234, 151.09359167939488)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,32 +35,79 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback {
         }
 
 
+
+
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        //mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
+        abecedario()
         mMap = googleMap
-        //mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
         mMap.uiSettings.isZoomControlsEnabled=true
 
-        val polyline1 = googleMap.addPolyline(PolylineOptions()
+        var polilinea = PolylineOptions()
+        Log.d("tamaño", consulta.consulta!!.size.toString())
+        var i = consulta.consulta!!.size-1
+        while (i >=0){
+        polilinea.add(separaLL(consulta.consulta!!.get(i).ubication))
+
+            when (consulta.consulta!!.get(i).currentStage) {
+                "Productor" -> mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.productor_round)).anchor(0.5f, 0.5f).title(letra?.get(i)))
+                "Carrier" -> mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.transportista_round)).anchor(0.5f, 0.5f).title(letra?.get(i)))
+                "Acopio" -> mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.acopio_round)).anchor(0.5f, 0.5f).title(letra?.get(i)))
+                "Merchant" -> mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.comerciante_round)).anchor(0.5f, 0.5f).title(letra?.get(i)))
+                else -> { // Note the block
+                    mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.acopio_round)).anchor(0.5f, 0.5f).title(letra?.get(i)))
+                }
+            }
+
+            i=i-1
+        }
+        var polyline = googleMap.addPolyline(polilinea
                 .clickable(true)
-                .add(michoacan)
-                .add(oaxaca)
-                .add(sydney)
-                .add(mercado)
                 .color(Color.rgb(0, 143, 103))
                 .width(15F)
                 .pattern(arrayListOf<PatternItem>(Dash(50F), Gap(25F)))
         )
-
-
-        mMap.addMarker(MarkerOptions().position(mercado).title("Id:A01, Usted está comprando aquí").icon(BitmapDescriptorFactory.fromResource(R.drawable.comerciante_round)).anchor(0.5f, 0.5f))
-        mMap.addMarker(MarkerOptions().position(sydney).title("Id:B01, Puerto de importaciones de Sydney").icon(BitmapDescriptorFactory.fromResource(R.drawable.transportista_round)).anchor(0.5f, 0.5f))
-        mMap.addMarker(MarkerOptions().position(oaxaca).title("Id:C01, Puerto de exportaciones de Oaxaca").icon(BitmapDescriptorFactory.fromResource(R.drawable.acopio_round)).anchor(0.5f, 0.5f))
-        mMap.addMarker(MarkerOptions().position(michoacan).title("Id:D01, Productor de aguacate").icon(BitmapDescriptorFactory.fromResource(R.drawable.productor_round)).anchor(0.5f, 0.5f))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(oaxaca))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(separaLL(consulta.consulta!!.get(consulta.consulta!!.size-1).ubication)))
     }
 
 
+    private fun separaLL(coordenadas: String): LatLng {
+        val latlong = coordenadas.split(", ".toRegex()).toTypedArray()
+        val latitude = latlong[0].toDouble()
+        val longitude = latlong[1].toDouble()
+        Log.d("las cordenadas", latitude.toString()+" "+longitude.toString())
+        return LatLng(latitude, longitude)
+    }
+
+
+    private fun abecedario(){
+        letra!!.add("A")
+        letra!!.add("B")
+        letra!!.add("C")
+        letra!!.add("D")
+        letra!!.add("E")
+        letra!!.add("F")
+        letra!!.add("G")
+        letra!!.add("H")
+        letra!!.add("I")
+        letra!!.add("J")
+        letra!!.add("K")
+        letra!!.add("L")
+        letra!!.add("M")
+        letra!!.add("N")
+        letra!!.add("Ñ")
+        letra!!.add("O")
+        letra!!.add("P")
+        letra!!.add("Q")
+        letra!!.add("R")
+        letra!!.add("S")
+        letra!!.add("T")
+        letra!!.add("U")
+        letra!!.add("V")
+        letra!!.add("W")
+        letra!!.add("X")
+        letra!!.add("Y")
+        letra!!.add("Z")
+    }
 }

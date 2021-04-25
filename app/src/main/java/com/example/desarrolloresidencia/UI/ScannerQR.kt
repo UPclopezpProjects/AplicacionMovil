@@ -3,15 +3,12 @@ package com.example.desarrolloresidencia.UI
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
-import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.ViewModel.ScannerQRViewModel
-import com.example.desarrolloresidencia.databinding.ActivityRegistroUsuarioBinding
 import com.example.desarrolloresidencia.databinding.ActivityScannerQRBinding
 import com.example.desarrolloresidencia.utils.Auth.AuthQr
 import com.example.desarrolloresidencia.utils.ValidarR
@@ -63,7 +60,7 @@ class ScannerQR : AppCompatActivity(), AuthQr {
         if (datos != null){
             viewModel.QR=datos
             //viewModel.sobrescribir(datos, baseContext)
-            viewModel.consulta()
+            viewModel.mapeoJS()
             TrazabilidadScreen()
         }
     }
@@ -77,9 +74,10 @@ class ScannerQR : AppCompatActivity(), AuthQr {
 
     }
 
-    override fun onSuccess(message: Message) {
+    override fun onSuccess(message: List<Message>) {
         //Log.d("success", "terminé")
         Toast.makeText(this, "Se hizo la consulta", Toast.LENGTH_SHORT).show()
+        Log.d("la matriz", "${message.get(1)}")
     }
 
     override fun onFailure(message: String) {

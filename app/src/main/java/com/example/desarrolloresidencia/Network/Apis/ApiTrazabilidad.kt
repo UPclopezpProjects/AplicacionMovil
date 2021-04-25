@@ -1,6 +1,5 @@
 package com.example.desarrolloresidencia.Network.Apis
 
-import com.example.desarrolloresidencia.Network.model.Login.LoginUsers
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.Trazabilidad
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -13,7 +12,8 @@ interface ApiTrazabilidad {
     @FormUrlEncoded
     @POST("traceability")
     suspend  fun Trazabilidad(
-            @Field("QR") QR: String?
+            @Field("QR") QR: String?,
+            @Field("ID") ID: String?
     ): Response<Trazabilidad>
 
 

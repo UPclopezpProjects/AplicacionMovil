@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desarrolloresidencia.R
-import com.example.desarrolloresidencia.UI.DatosTrazabilidad.ListaPuntos
 
 class AdaptadorCustom(var contexto: Context, items:ArrayList<Ubicacion>): RecyclerView.Adapter<AdaptadorCustom.ViewHolder>() {
 
@@ -27,11 +26,22 @@ class AdaptadorCustom(var contexto: Context, items:ArrayList<Ubicacion>): Recycl
 
     override fun onBindViewHolder(holder: AdaptadorCustom.ViewHolder, position: Int) {
         val item = items?.get(position)
+        holder._id?.text = "_Id: " + item?._id
         holder.id?.text = "Id: " + item?.id
-        holder.date?.text = "Date: " + item?.date
-        holder.stage?.text = "Stage: " + item?.stage
-        holder.descripcion?.text = "Description: " + item?.descripcion
-        //Log.d("onBindViewHolder ","pasó")
+        holder.fid?.text = "FId: " + item?.fid
+        holder.ubicacion?.text = "Ubicación: " + item?.ubication
+        holder.nombre?.text = "Nombre: " + item?.name
+        holder.escenarioP?.text = "Escenario previo: " + item?.previousStage
+        holder.escenario?.text = "Escenario: " + item?.currentStage
+        holder.__V?.text = "__V: " + item?.__v
+
+        if (item?.code !=""){
+            holder.codigo?.text = "Código: " + item?.code
+        }else{
+            holder.codigo?.visibility = View.GONE
+        }
+
+    //Log.d("onBindViewHolder ","pasó")
     }
 
     override fun getItemCount(): Int {
@@ -41,16 +51,27 @@ class AdaptadorCustom(var contexto: Context, items:ArrayList<Ubicacion>): Recycl
 
     class ViewHolder(vista: View): RecyclerView.ViewHolder(vista){
         var vista = vista
+        var _id: TextView ?= null
         var id: TextView ?= null
-        var date: TextView ?= null
-        var stage: TextView ?= null
-        var descripcion: TextView ?= null
+        var fid: TextView ?= null
+        var codigo: TextView ?= null
+        var ubicacion: TextView ?= null
+        var nombre: TextView ?= null
+        var escenarioP: TextView ?= null
+        var escenario: TextView ?= null
+        var __V: TextView ?= null
+
 
         init {
-            id = vista.findViewById(R.id.TVId)
-            date = vista.findViewById(R.id.TVFecha)
-            stage = vista.findViewById(R.id.TVEscenario)
-            descripcion = vista.findViewById(R.id.TVDescripcion)
+            _id= vista.findViewById(R.id.TV_Id)
+            id = vista.findViewById(R.id.TVID)
+            fid= vista.findViewById(R.id.TVFId)
+            codigo= vista.findViewById(R.id.TVCodigo)
+            ubicacion= vista.findViewById(R.id.TVUbicacion)
+            nombre= vista.findViewById(R.id.TVNombreTP)
+            escenarioP= vista.findViewById(R.id.TVEscenarioPrevio)
+            escenario= vista.findViewById(R.id.TVEscenario)
+            __V= vista.findViewById(R.id.TV__V)
         }
     }
 
