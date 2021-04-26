@@ -51,10 +51,10 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback {
         polilinea.add(separaLL(consulta.consulta!!.get(i).ubication))
 
             when (consulta.consulta!!.get(i).currentStage) {
-                "Productor" -> mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.productor_round)).anchor(0.5f, 0.5f).title(letra?.get(i)))
-                "Carrier" -> mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.transportista_round)).anchor(0.5f, 0.5f).title(letra?.get(i)))
-                "Acopio" -> mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.acopio_round)).anchor(0.5f, 0.5f).title(letra?.get(i)))
-                "Merchant" -> mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.comerciante_round)).anchor(0.5f, 0.5f).title(letra?.get(i)))
+                "Productor" -> mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.productor_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+" Productor"))
+                "Carrier" -> mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.transportista_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+" Transportista"))
+                "Acopio" -> mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.acopio_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+" Acopio"))
+                "Merchant" -> mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.comerciante_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+" Comerciante"))
                 else -> { // Note the block
                     mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.acopio_round)).anchor(0.5f, 0.5f).title(letra?.get(i)))
                 }
