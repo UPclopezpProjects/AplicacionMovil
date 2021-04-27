@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desarrolloresidencia.R
 
-class AdaptadorCustom(var contexto: Context, items:ArrayList<Ubicacion>): RecyclerView.Adapter<AdaptadorCustom.ViewHolder>() {
+class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): RecyclerView.Adapter<AdaptadorCustom.ViewHolder>() {
 
     var items: ArrayList<Ubicacion> ?= null
 
@@ -18,25 +18,25 @@ class AdaptadorCustom(var contexto: Context, items:ArrayList<Ubicacion>): Recycl
 
     //crea el view holder y mete el archivo xml a la vista
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdaptadorCustom.ViewHolder {
-        val vista = LayoutInflater.from(contexto).inflate(R.layout.template_puntos, parent, false)
-        val viewHolder = ViewHolder(vista)
+        val vista = LayoutInflater.from(parent.context).inflate(R.layout.template_puntos, parent, false)
+        val viewHolder = ViewHolder(vista, listener)
         //Log.d("onCreateViewHolder ","pasó")
         return viewHolder
     }
 
     override fun onBindViewHolder(holder: AdaptadorCustom.ViewHolder, position: Int) {
         val item = items?.get(position)
-        holder._id?.text = "_Id: " + item?._id
-        holder.id?.text = "Id: " + item?.id
-        holder.fid?.text = "FId: " + item?.fid
-        holder.ubicacion?.text = "Ubicación: " + item?.ubication
-        holder.nombre?.text = "Nombre: " + item?.name
-        holder.escenarioP?.text = "Escenario previo: " + item?.previousStage
-        holder.escenario?.text = "Escenario: " + item?.currentStage
-        holder.__V?.text = "__V: " + item?.__v
+        holder._id?.text = item?._id
+        holder.id?.text = item?.id
+        holder.fid?.text = item?.fid
+        holder.ubicacion?.text = item?.ubication
+        holder.nombre?.text = item?.name
+        holder.escenarioP?.text = item?.previousStage
+        holder.escenario?.text = item?.currentStage
+        holder.__V?.text = item?.__v.toString()
 
         if (item?.code !=""){
-            holder.codigo?.text = "Código: " + item?.code
+            holder.codigo?.text = item?.code
         }else{
             holder.codigo?.visibility = View.GONE
         }
@@ -49,7 +49,7 @@ class AdaptadorCustom(var contexto: Context, items:ArrayList<Ubicacion>): Recycl
         //Log.d("getItemCount","pasó")
     }
 
-    class ViewHolder(vista: View): RecyclerView.ViewHolder(vista){
+    class ViewHolder(vista: View, listener: ClickListener): RecyclerView.ViewHolder(vista), View.OnClickListener{
         var vista = vista
         var _id: TextView ?= null
         var id: TextView ?= null
@@ -60,6 +60,7 @@ class AdaptadorCustom(var contexto: Context, items:ArrayList<Ubicacion>): Recycl
         var escenarioP: TextView ?= null
         var escenario: TextView ?= null
         var __V: TextView ?= null
+        var listener: ClickListener ?= null
 
 
         init {
@@ -72,6 +73,12 @@ class AdaptadorCustom(var contexto: Context, items:ArrayList<Ubicacion>): Recycl
             escenarioP= vista.findViewById(R.id.TVEscenarioPrevio)
             escenario= vista.findViewById(R.id.TVEscenario)
             __V= vista.findViewById(R.id.TV__V)
+            this.listener = listener
+            vista.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            this.listener?.onClick(v!!, adapterPosition)
         }
     }
 

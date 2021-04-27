@@ -7,15 +7,15 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
 import com.example.desarrolloresidencia.R
+import com.example.desarrolloresidencia.utils.FragmentarString
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-import kotlin.math.log
 
 
-class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback {
+class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.MoverCamara {
 
     private lateinit var mMap: GoogleMap
     var letra= ArrayList<String>()
@@ -48,15 +48,15 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback {
         Log.d("tamaño", consulta.consulta!!.size.toString())
         var i = consulta.consulta!!.size-1
         while (i >=0){
-        polilinea.add(separaLL(consulta.consulta!!.get(i).ubication))
+        polilinea.add(FragmentarString().separaLL(consulta.consulta!!.get(i).ubication))
 
             when (consulta.consulta!!.get(i).currentStage) {
-                "Productor" -> mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.productor_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+" Productor"))
-                "Carrier" -> mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.transportista_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+" Transportista"))
-                "Acopio" -> mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.acopio_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+" Acopio"))
-                "Merchant" -> mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.comerciante_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+" Comerciante"))
+                "Productor" -> mMap.addMarker(MarkerOptions().position(FragmentarString().separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.productor_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+" Productor"))
+                "Carrier" -> mMap.addMarker(MarkerOptions().position(FragmentarString().separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.transportista_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+" Transportista"))
+                "Acopio" -> mMap.addMarker(MarkerOptions().position(FragmentarString().separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.acopio_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+" Acopio"))
+                "Merchant" -> mMap.addMarker(MarkerOptions().position(FragmentarString().separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.comerciante_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+" Comerciante"))
                 else -> { // Note the block
-                    mMap.addMarker(MarkerOptions().position(separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.acopio_round)).anchor(0.5f, 0.5f).title(letra?.get(i)))
+                    mMap.addMarker(MarkerOptions().position(FragmentarString().separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.acopio_round)).anchor(0.5f, 0.5f).title(letra?.get(i)))
                 }
             }
 
@@ -68,18 +68,13 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback {
                 .width(15F)
                 .pattern(arrayListOf<PatternItem>(Dash(50F), Gap(25F)))
         )
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(separaLL(consulta.consulta!!.get(consulta.consulta!!.size-1).ubication)))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(FragmentarString().separaLL(consulta.consulta!!.get(consulta.consulta!!.size-1).ubication)))
     }
 
-
-    private fun separaLL(coordenadas: String): LatLng {
-        val latlong = coordenadas.split(", ".toRegex()).toTypedArray()
-        val latitude = latlong[0].toDouble()
-        val longitude = latlong[1].toDouble()
-        Log.d("las cordenadas", latitude.toString()+" "+longitude.toString())
-        return LatLng(latitude, longitude)
+    override fun obtenerPosicion(latlong: String) {
+        super.obtenerPosicion(latlong)
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(FragmentarString().separaLL(latlong)))
     }
-
 
     private fun abecedario(){
         letra!!.add("A")
