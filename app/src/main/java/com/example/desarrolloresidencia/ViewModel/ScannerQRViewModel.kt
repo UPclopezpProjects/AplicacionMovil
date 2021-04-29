@@ -42,4 +42,14 @@ class ScannerQRViewModel : ViewModel(){
             }
         }
     }
+<<<<<<< Updated upstream
+=======
+
+    fun mapeoJS(){
+        var testModel = Gson().fromJson(QR, com.example.desarrolloresidencia.Network.model.Trazabilidad.QR::class.java)
+        Log.d("EL QR","${testModel.QR}")
+        Log.d("EL ID","${testModel.ID}")
+        consulta(testModel.QR, testModel.ID)
+    }
+>>>>>>> Stashed changes
 }

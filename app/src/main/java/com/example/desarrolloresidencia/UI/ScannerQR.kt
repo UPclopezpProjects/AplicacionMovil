@@ -14,7 +14,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
+<<<<<<< Updated upstream
 import com.example.desarrolloresidencia.R
+=======
+import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
+>>>>>>> Stashed changes
 import com.example.desarrolloresidencia.ViewModel.ScannerQRViewModel
 import com.example.desarrolloresidencia.utils.Auth.AuthQr
 import com.google.zxing.integration.android.IntentIntegrator
@@ -55,10 +59,23 @@ class ScannerQR : AppCompatActivity(), AuthQr {
         super.onActivityResult(requestCode, resultCode, data)
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         val datos = result.contents
+<<<<<<< Updated upstream
         viewModel.QR=datos
         //viewModel.sobrescribir(datos, baseContext)
         viewModel.consulta()
         TrazabilidadScreen()
+=======
+        Log.d("datos", "$datos")
+        if (datos != null){
+            viewModel.QR=datos
+            //viewModel.sobrescribir(datos, baseContext)
+            viewModel.mapeoJS()
+        }
+        /*if (consulta.consulta != null){
+            TrazabilidadScreen()
+        }*/
+
+>>>>>>> Stashed changes
     }
 
     fun TrazabilidadScreen(){
@@ -73,6 +90,11 @@ class ScannerQR : AppCompatActivity(), AuthQr {
     override fun onSuccess(message: Message) {
         //Log.d("success", "terminé")
         Toast.makeText(this, "Se hizo la consulta", Toast.LENGTH_SHORT).show()
+<<<<<<< Updated upstream
+=======
+        Log.d("la matriz", "${message.get(1)}")
+        TrazabilidadScreen()
+>>>>>>> Stashed changes
     }
 
     override fun onFailure(message: String) {
