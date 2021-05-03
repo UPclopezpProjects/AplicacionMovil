@@ -5,6 +5,7 @@ import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.desarrolloresidencia.Network.model.Login.User
+import com.example.desarrolloresidencia.Repository.AmazonRepository
 import com.example.desarrolloresidencia.Repository.UserRepository
 import com.example.desarrolloresidencia.UI.ScannerQR
 import com.example.desarrolloresidencia.utils.Auth.AuthListener
@@ -26,12 +27,14 @@ class LoginViewModel() : ViewModel()  {
         authListener?.onStarted()
 
         Coroutines.main {
-            val response = UserRepository().userLogin(email!!, password!!)
+            //val response = UserRepository().userLogin(email!!, password!!)
+            val response = AmazonRepository().userLogin(email!!, password!!)
 
             if (response.isSuccessful){
                 responseUser.message = response.body()!!.message
                 responseUser.token = response.body()!!.token
                 responseUser.user = response.body()!!.user
+
                 Log.d("login token", "${responseUser.token}")
                 validarU(response.body()!!.message, response.body()!!.token, response.body()!!.user)
                 //authListener?.onSuccess(response.body()!!.message, response.body()!!.token, response.body()!!.user)

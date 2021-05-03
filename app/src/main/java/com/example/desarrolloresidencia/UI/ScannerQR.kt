@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
+import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
 import com.example.desarrolloresidencia.ViewModel.ScannerQRViewModel
 import com.example.desarrolloresidencia.databinding.ActivityScannerQRBinding
 import com.example.desarrolloresidencia.utils.Auth.AuthQr
@@ -17,13 +18,11 @@ import com.google.zxing.integration.android.IntentIntegrator
 
 class ScannerQR : AppCompatActivity(), AuthQr {
 
-    var Nota: TextView? = null
     lateinit var viewModel: ScannerQRViewModel
     private lateinit var binding:ActivityScannerQRBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_scanner_q_r)
         binding = ActivityScannerQRBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -61,8 +60,10 @@ class ScannerQR : AppCompatActivity(), AuthQr {
             viewModel.QR=datos
             //viewModel.sobrescribir(datos, baseContext)
             viewModel.mapeoJS()
-            TrazabilidadScreen()
         }
+        /*if (consulta.consulta != null){
+            TrazabilidadScreen()
+        }*/
     }
 
     fun TrazabilidadScreen(){
@@ -78,6 +79,7 @@ class ScannerQR : AppCompatActivity(), AuthQr {
         //Log.d("success", "terminé")
         Toast.makeText(this, "Se hizo la consulta", Toast.LENGTH_SHORT).show()
         Log.d("la matriz", "${message.get(1)}")
+        TrazabilidadScreen()
     }
 
     override fun onFailure(message: String) {

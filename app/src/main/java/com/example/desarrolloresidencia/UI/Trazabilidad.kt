@@ -31,6 +31,11 @@ class Trazabilidad : AppCompatActivity() {
             val pasar: Intent = Intent(applicationContext, ModificacionUsuario::class.java)
             startActivity(pasar)
         }
+
+        binding.BTTips.setOnClickListener{
+            val pasar: Intent = Intent(applicationContext, Tips::class.java)
+            startActivity(pasar)
+        }
     }
 
 

@@ -1,5 +1,6 @@
 package com.example.desarrolloresidencia.UI
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,48 +22,35 @@ import java.lang.Exception
 
 class Login : AppCompatActivity(), AuthListener {
     lateinit var loginViewModel: LoginViewModel
-    private lateinit var binding:ActivityLoginBinding
-    //
+    private lateinit var binding: ActivityLoginBinding
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
-        //setContentView(R.layout.activity_login)
         setContentView(binding.root)
 
         loginViewModel= ViewModelProviders.of(this).get(LoginViewModel::class.java)
         loginViewModel.authListener = this
 
-
-        //Coroutines.contexto = this
         Coroutines.authListener= this
-        //var logear = findViewById<Button>(R.id.BTLogin)
-        //var registro = findViewById<Button>(R.id.BTRegistro)
-        //var saltar = findViewById<Button>(R.id.BTSaltar)
 
-        //logear.setOnClickListener {
         binding.BTLogin.setOnClickListener {
             if (ValidarR.hayRed(this)){
-                //Toast.makeText(this, "Hay red", Toast.LENGTH_SHORT).show()
                 ValidationE()
             } else {
                 Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
             }
         }
 
-        //}
 
-        //registro.setOnClickListener {
         binding.BTRegistro.setOnClickListener {
             val intent: Intent = Intent(applicationContext, RegistroUsuario::class.java)
             startActivity(intent)
         }
 
 
-        //}
-
-        //saltar.setOnClickListener {
         binding.BTSaltar.setOnClickListener {
             val intent: Intent = Intent(applicationContext, ScannerQR::class.java)
             startActivity(intent)
@@ -73,7 +61,6 @@ class Login : AppCompatActivity(), AuthListener {
             startActivity(intent)
         }
 
-        //}
 
     }
 
@@ -134,6 +121,7 @@ class Login : AppCompatActivity(), AuthListener {
     }
 
     fun validarStatus (status : String){
+        
         if (status=="false"){
             Toast.makeText(applicationContext, "Verifica tu correo electrónico", Toast.LENGTH_SHORT).show()
         }else{

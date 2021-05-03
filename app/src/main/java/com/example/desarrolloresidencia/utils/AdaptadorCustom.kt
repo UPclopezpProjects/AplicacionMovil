@@ -41,7 +41,7 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
             holder.codigo?.visibility = View.GONE
         }
 
-    //Log.d("onBindViewHolder ","pasó")
+
     }
 
     override fun getItemCount(): Int {

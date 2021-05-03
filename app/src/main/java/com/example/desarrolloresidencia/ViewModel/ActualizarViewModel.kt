@@ -1,6 +1,7 @@
 package com.example.desarrolloresidencia.ViewModel
 
 import androidx.lifecycle.ViewModel
+import com.example.desarrolloresidencia.Repository.AmazonRepository
 import com.example.desarrolloresidencia.Repository.UserRepository
 import com.example.desarrolloresidencia.utils.Auth.AuthListener
 import com.example.desarrolloresidencia.utils.Corutinas.Coroutines
@@ -19,7 +20,7 @@ class ActualizarViewModel(): ViewModel() {
         authListener?.onStarted()
 
         Coroutines.main {
-            val response = UserRepository().actualizarUsuario("$nombre", "$apellidoP", "$apellidoM", "$email", "$password", "${responseUser.user?.email}", "${responseUser.token}")
+            val response = AmazonRepository().actualizarUsuario("$nombre", "$apellidoP", "$apellidoM", "$email", "$password", "${responseUser.user?.email}", "${responseUser.token}")
 
             if (response.isSuccessful){
                 responseUser.message = response.body()!!.message

@@ -34,9 +34,6 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
             finish()
         }
 
-
-
-
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.Trazabilidad
+import com.example.desarrolloresidencia.Repository.AmazonRepository
 import com.example.desarrolloresidencia.Repository.TrazabilidadRepository
 import com.example.desarrolloresidencia.utils.Auth.AuthQr
 import com.example.desarrolloresidencia.utils.Corutinas.Coroutines
@@ -18,7 +19,7 @@ class ScannerQRViewModel : ViewModel(){
 
         Coroutines.main {
             Log.d("QR", "$QR")
-            val response = TrazabilidadRepository().trazabilidadConsulta("$qr", "$id")
+            val response = AmazonRepository().trazabilidadConsulta("$qr", "$id")
             Log.d("consulta", response.body()!!.message.toString())
             com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta.consulta =response.body()!!.message
             Log.d("el id", com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta.consulta!!.get(0).id)
@@ -34,6 +35,8 @@ class ScannerQRViewModel : ViewModel(){
 
     fun mapeoJS(){
         var testModel = Gson().fromJson(QR, com.example.desarrolloresidencia.Network.model.Trazabilidad.QR::class.java)
+        Log.d("EL QR","${testModel.QR}")
+        Log.d("EL ID","${testModel.ID}")
         consulta(testModel.QR, testModel.ID)
     }
 }

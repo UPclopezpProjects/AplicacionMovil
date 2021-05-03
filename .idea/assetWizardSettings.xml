@@ -330,9 +330,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="008f67" />
-                            <entry key="outputName" value="salir" />
-                            <entry key="sourceFile" value="E:\miscosas\itvo\residenciaprofesional\borrador\conMVVM" />
+                            <entry key="outputName" value="ic_aguacatitob" />
+                            <entry key="sourceFile" value="E:\miscosas\itvo\residenciaprofesional\aguacatitob.psd" />
                           </map>
                         </option>
                       </PersistentState>

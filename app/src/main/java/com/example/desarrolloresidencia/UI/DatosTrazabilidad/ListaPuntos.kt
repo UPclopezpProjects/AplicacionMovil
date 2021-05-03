@@ -35,13 +35,11 @@ class ListaPuntos : Fragment() {
         // Inflate the layout for this fragment
         val vista = inflater.inflate(R.layout.fragment_lista_puntos, container, false)
         return vista
-
-
     }
 
     private fun mapearpuntos(){
         var contexto = requireContext().applicationContext
-        val puntos = ArrayList<Ubicacion>()
+        //val puntos = ArrayList<Ubicacion>()
         for (i in 0..(consulta.consulta!!.size - 1)) {
                     if (consulta.consulta!!.get(i).code != null){
                         puntos.add(

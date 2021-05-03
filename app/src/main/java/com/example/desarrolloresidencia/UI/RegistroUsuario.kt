@@ -29,29 +29,18 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
         registroViewModel= ViewModelProviders.of(this).get(RegistroViewModel::class.java)
         registroViewModel.authListener = this
         registroViewModel.contexto = this
+
         CoroutinesRU.authListener= this
-        //Coroutines.contexto = this
-        //Coroutines.authListener = this
 
-        //var registro = findViewById<Button>(R.id.BTRegistrar)
-
-        //registro.setOnClickListener {
         binding.BTRegistrar.setOnClickListener {
             if (ValidarR.hayRed(this)){
-                //Toast.makeText(this, "Hay red", Toast.LENGTH_SHORT).show()
                 ValidationE()
             } else {
                 Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
             }
         }
-        //}
 
 
-        //registro.setOnClickListener {
-          binding.BTRegistrar.setOnClickListener {
-              ValidationE()
-          }
-        //}
     }
 
     fun ValidationE(){
