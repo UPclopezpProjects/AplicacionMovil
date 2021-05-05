@@ -31,4 +31,6 @@
     <string name="id">Id:</string>
     <string name="escenario">Escenario:</string>
     <string name="escenario_previo">Escenario previo:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
