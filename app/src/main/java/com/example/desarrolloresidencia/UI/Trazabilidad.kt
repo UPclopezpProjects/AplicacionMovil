@@ -36,6 +36,11 @@ class Trazabilidad : AppCompatActivity() {
             val pasar: Intent = Intent(applicationContext, Tips::class.java)
             startActivity(pasar)
         }
+
+        binding.BTCalculo.setOnClickListener {
+            val pasar: Intent = Intent(applicationContext, CalculoNutricional::class.java)
+            startActivity(pasar)
+        }
     }
 
 
