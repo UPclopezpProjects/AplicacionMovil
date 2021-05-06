@@ -13,6 +13,7 @@ import com.example.desarrolloresidencia.ViewModel.ScannerQRViewModel
 import com.example.desarrolloresidencia.databinding.ActivityScannerQRBinding
 import com.example.desarrolloresidencia.utils.Auth.AuthQr
 import com.example.desarrolloresidencia.utils.ValidarR
+import com.example.desarrolloresidencia.utils.responseUser
 import com.google.zxing.integration.android.IntentIntegrator
 
 
@@ -67,6 +68,10 @@ class ScannerQR : AppCompatActivity(), AuthQr {
     }
 
     fun TrazabilidadScreen(){
+        consulta.consulta = null
+        responseUser.message  = null
+        responseUser.user = null
+        responseUser.token = null
         var intent : Intent = Intent(applicationContext, Trazabilidad::class.java)
         startActivity(intent)
     }
