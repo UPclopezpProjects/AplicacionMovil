@@ -185,7 +185,7 @@
                     android:id="@+id/BTSalir"
                     android:layout_width="100sp"
                     android:layout_height="100sp"
-                    android:background="@drawable/salir"
+                    android:background="@drawable/ic_baseline_logout_24"
                     android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/BTAjustes"
