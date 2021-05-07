@@ -48,7 +48,12 @@ class ScannerQR : AppCompatActivity(), AuthQr {
 
         //val volver = findViewById<Button>(R.id.BTVolver)
         binding.BTVolver.setOnClickListener {
+            consulta.consulta = null
+            responseUser.message  = null
+            responseUser.user = null
+            responseUser.token = null
             finish()
+            Toast.makeText(applicationContext, "Cerraste Sesión", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -68,10 +73,7 @@ class ScannerQR : AppCompatActivity(), AuthQr {
     }
 
     fun TrazabilidadScreen(){
-        consulta.consulta = null
-        responseUser.message  = null
-        responseUser.user = null
-        responseUser.token = null
+
         var intent : Intent = Intent(applicationContext, Trazabilidad::class.java)
         startActivity(intent)
     }
