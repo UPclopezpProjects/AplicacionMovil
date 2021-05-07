@@ -53,6 +53,7 @@ class ScannerQR : AppCompatActivity(), AuthQr {
             responseUser.user = null
             responseUser.token = null
             finish()
+            Toast.makeText(applicationContext, "Cerraste Sesión", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -72,6 +73,7 @@ class ScannerQR : AppCompatActivity(), AuthQr {
     }
 
     fun TrazabilidadScreen(){
+
         var intent : Intent = Intent(applicationContext, Trazabilidad::class.java)
         startActivity(intent)
     }
