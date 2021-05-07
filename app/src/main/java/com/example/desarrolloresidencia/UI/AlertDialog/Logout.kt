@@ -42,6 +42,7 @@ class Logout : DialogFragment() {
 
     }
 
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

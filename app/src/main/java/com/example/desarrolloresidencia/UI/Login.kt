@@ -126,6 +126,7 @@ class Login : AppCompatActivity(), AuthListener {
             Toast.makeText(applicationContext, "Verifica tu correo electrónico", Toast.LENGTH_SHORT).show()
         }else{
             Toast.makeText(applicationContext, "Tu correo electrónico está verificado", Toast.LENGTH_SHORT).show()
+
             var pasar:Intent = Intent(applicationContext, ScannerQR::class.java)
             startActivity(pasar)
         }

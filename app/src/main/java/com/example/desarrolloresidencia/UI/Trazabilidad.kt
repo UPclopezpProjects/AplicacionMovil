@@ -1,5 +1,6 @@
 package com.example.desarrolloresidencia.UI
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
@@ -57,7 +58,17 @@ class Trazabilidad : AppCompatActivity() {
 
             builder.setPositiveButton("Si") { dialog, id ->
                 // User clicked Update Now button
-                
+                consulta.consulta = null
+                responseUser.message  = null
+                responseUser.user = null
+                responseUser.token = null
+                finish()
+                startActivity(
+                    Intent(baseContext, SplashScreen::class.java)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                )
+
+
             }
 
             builder.show()
@@ -65,4 +76,8 @@ class Trazabilidad : AppCompatActivity() {
 
 
     }
+
+
+
+
 }

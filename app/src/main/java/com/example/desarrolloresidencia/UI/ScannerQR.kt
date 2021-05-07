@@ -13,6 +13,7 @@ import com.example.desarrolloresidencia.ViewModel.ScannerQRViewModel
 import com.example.desarrolloresidencia.databinding.ActivityScannerQRBinding
 import com.example.desarrolloresidencia.utils.Auth.AuthQr
 import com.example.desarrolloresidencia.utils.ValidarR
+import com.example.desarrolloresidencia.utils.responseUser
 import com.google.zxing.integration.android.IntentIntegrator
 
 
@@ -47,6 +48,10 @@ class ScannerQR : AppCompatActivity(), AuthQr {
 
         //val volver = findViewById<Button>(R.id.BTVolver)
         binding.BTVolver.setOnClickListener {
+            consulta.consulta = null
+            responseUser.message  = null
+            responseUser.user = null
+            responseUser.token = null
             finish()
         }
     }

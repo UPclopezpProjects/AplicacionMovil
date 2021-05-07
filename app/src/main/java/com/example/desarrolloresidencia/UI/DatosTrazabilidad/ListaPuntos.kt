@@ -79,7 +79,7 @@ class ListaPuntos : Fragment() {
         lista?.setHasFixedSize(true)
         //lista?.layoutManager = LinearLayoutManager(ListaPuntos().context, LinearLayoutManager.HORIZONTAL, false)
 
-        layoutManager = LinearLayoutManager(context)
+        layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         lista?.layoutManager = layoutManager
 
         //adaptador = AdaptadorCustom(contexto, puntos)
