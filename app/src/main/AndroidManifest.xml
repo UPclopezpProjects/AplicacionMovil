@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UI.CalculoNutricional"></activity>
+        <activity android:name=".UI.Informacion"></activity>
+        <activity android:name=".UI.CalculoNutricional" />
         <activity android:name=".UI.Tips" />
         <activity android:name=".UI.RecuperacionContrasena" />
         <activity android:name=".UI.ModificacionUsuario" />

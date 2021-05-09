@@ -74,6 +74,12 @@ class Trazabilidad : AppCompatActivity() {
             builder.show()
         }
 
+        binding.BTInformacion.setOnClickListener{
+            val pasar: Intent = Intent(applicationContext, Informacion::class.java)
+            startActivity(pasar)
+
+        }
+
 
     }
 
