@@ -17,6 +17,7 @@ import com.example.desarrolloresidencia.databinding.ActivityLoginBinding
 import com.example.desarrolloresidencia.utils.Auth.AuthListener
 import com.example.desarrolloresidencia.utils.Corutinas.Coroutines
 import com.example.desarrolloresidencia.utils.ValidarR
+import org.w3c.dom.Text
 import java.lang.Exception
 
 
@@ -96,6 +97,7 @@ class Login : AppCompatActivity(), AuthListener {
         binding.BTLogin.isEnabled= false
         binding.ETEmail.isEnabled= false
         binding.password.isEnabled= false
+        binding.BTRecuperar.isEnabled = false
 
     }
 
@@ -107,6 +109,9 @@ class Login : AppCompatActivity(), AuthListener {
         binding.ETEmail.isEnabled= true
         binding.password.isEnabled= true
         binding.BTLogin.isEnabled= true
+        binding.BTRecuperar.isEnabled = true
+        binding.ETEmail.setText("")
+        binding.password.setText("")
         validarStatus(user.status)
     }
 
@@ -117,6 +122,7 @@ class Login : AppCompatActivity(), AuthListener {
         binding.ETEmail.isEnabled= true
         binding.password.isEnabled= true
         binding.BTLogin.isEnabled= true
+        binding.BTRecuperar.isEnabled = true
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
