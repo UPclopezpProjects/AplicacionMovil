@@ -67,9 +67,10 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="color" value="008f67" />
+                                                <entry key="color" value="ffffff" />
                                                 <entry key="imagePath" value="C:\Users\frank\AppData\Local\Temp\twotone_store_24.xml" />
                                                 <entry key="scalingPercent" value="92" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -92,6 +93,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
+                                                <entry key="imagePath" value="E:\miscosas\itvo\residenciaprofesional\borrador\conMVVM\app\src\main\res\drawable-v24\logo.png" />
+                                                <entry key="scalingPercent" value="67" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -125,7 +128,6 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="foregroundAssetType" value="CLIP_ART" />
                                       <entry key="outputName" value="comerciante" />
                                     </map>
                                   </option>
@@ -320,7 +322,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/logout/baseline_logout_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialiconstwotone/error/twotone_error_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -330,8 +332,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="008f67" />
-                            <entry key="outputName" value="ic_baseline_logout_24" />
+                            <entry key="color" value="ff0000" />
+                            <entry key="outputName" value="ic_twotone_error_24" />
                             <entry key="sourceFile" value="E:\miscosas\itvo\residenciaprofesional\aguacatitob.psd" />
                           </map>
                         </option>

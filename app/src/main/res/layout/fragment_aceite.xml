@@ -47,6 +47,6 @@
         app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView27"
-        app:srcCompat="@drawable/aceite" />
+        app:srcCompat="@drawable/img_20210508_075358" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

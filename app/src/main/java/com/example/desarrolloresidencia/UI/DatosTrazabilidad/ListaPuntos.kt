@@ -41,6 +41,8 @@ class ListaPuntos : Fragment() {
         var contexto = requireContext().applicationContext
         //val puntos = ArrayList<Ubicacion>()
         for (i in 0..(consulta.consulta!!.size - 1)) {
+                    var nuevaI = consulta.consulta!!.get(i).image.replace("http://0.0.0.0", "http://10.0.0.5")
+                    Log.e("nueva imagen", nuevaI)
                     if (consulta.consulta!!.get(i).code != null){
                         puntos.add(
                                 Ubicacion(
@@ -50,6 +52,8 @@ class ListaPuntos : Fragment() {
                                         consulta.consulta!!.get(i).currentStage,
                                         consulta.consulta!!.get(i).fid,
                                         consulta.consulta!!.get(i).id,
+                                        //consulta.consulta!!.get(i).image,
+                                        nuevaI,
                                         consulta.consulta!!.get(i).name,
                                         consulta.consulta!!.get(i).previousStage,
                                         consulta.consulta!!.get(i).ubication
@@ -64,6 +68,8 @@ class ListaPuntos : Fragment() {
                                         consulta.consulta!!.get(i).currentStage,
                                         consulta.consulta!!.get(i).fid,
                                         consulta.consulta!!.get(i).id,
+                                        //consulta.consulta!!.get(i).image,
+                                        nuevaI,
                                         consulta.consulta!!.get(i).name,
                                         consulta.consulta!!.get(i).previousStage,
                                         consulta.consulta!!.get(i).ubication
@@ -73,7 +79,7 @@ class ListaPuntos : Fragment() {
 
 
         }
-
+        //Log.d("nueva matriz", "${puntos.get(1).image}")
         lista = activity?.findViewById(R.id.lista)
 
         lista?.setHasFixedSize(true)
@@ -106,6 +112,5 @@ class ListaPuntos : Fragment() {
             throw ClassCastException(context.toString() + "debes implementar la interfaz")
         }
     }
-
 
     }

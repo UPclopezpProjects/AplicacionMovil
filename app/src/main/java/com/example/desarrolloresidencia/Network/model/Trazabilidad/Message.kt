@@ -7,6 +7,7 @@ data class Message(
     val currentStage: String,
     val fid: String,
     val id: String,
+    val image: String,
     val name: String,
     val previousStage: String,
     val ubication: String

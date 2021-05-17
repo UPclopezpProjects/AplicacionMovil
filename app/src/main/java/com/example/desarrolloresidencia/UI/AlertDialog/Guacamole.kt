@@ -27,15 +27,12 @@ class Guacamole : DialogFragment() {
         _binding = FragmentGuacamoleBinding.inflate(inflater, container, false)
         val view = binding.root
         return  view
-    //return inflater.inflate(R.layout.fragment_guacamole, container, false)
-
-
     }
 
     override fun onStart() {
         super.onStart()
         val width = (resources.displayMetrics.widthPixels * 0.85).toInt()
-        val height = (resources.displayMetrics.heightPixels * 0.40).toInt()
+        val height = (resources.displayMetrics.heightPixels * 0.55).toInt()
         dialog!!.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
 
 

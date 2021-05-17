@@ -1,12 +1,13 @@
 package com.example.desarrolloresidencia.utils
 
-class Ubicacion(__v: Int, _id : String, code : String, currentStage : String, fid : String, id : String, name : String, previousStage : String, ubication : String) {
+class Ubicacion(__v: Int, _id : String, code : String, currentStage : String, fid : String, id : String, image : String, name : String, previousStage : String, ubication : String) {
     var __v= 0
     var _id = ""
     var code =""
     var currentStage = ""
     var fid = ""
     var id = ""
+    var image = ""
     var name = ""
     var previousStage = ""
     var ubication = ""
@@ -18,6 +19,7 @@ class Ubicacion(__v: Int, _id : String, code : String, currentStage : String, fi
         this.currentStage = currentStage
         this.fid = fid
         this.id =  id
+        this.image = image
         this.name = name
         this.previousStage = previousStage
         this.ubication = ubication

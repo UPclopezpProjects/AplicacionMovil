@@ -40,12 +40,13 @@
         android:layout_width="165dp"
         android:layout_height="161dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView27"
-        app:srcCompat="@drawable/belleza" />
+        app:srcCompat="@drawable/img_20210508_075409" />
 </androidx.constraintlayout.widget.ConstraintLayout>

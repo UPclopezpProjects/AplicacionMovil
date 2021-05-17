@@ -72,4 +72,7 @@ dependencies {
     //Código QR
     implementation 'com.journeyapps:zxing-android-embedded:3.2.0'
     implementation 'com.google.zxing:core:3.3.0'
+
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.8'
 }

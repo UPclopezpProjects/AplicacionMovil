@@ -1,14 +1,17 @@
 package com.example.desarrolloresidencia.utils
 
 import android.content.Context
+import android.media.Image
 import android.opengl.Visibility
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desarrolloresidencia.R
+import com.squareup.picasso.Picasso
 import org.w3c.dom.Text
 
 class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): RecyclerView.Adapter<AdaptadorCustom.ViewHolder>() {
@@ -37,6 +40,11 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
         holder.ubicacion = item?.ubication
         holder.nombre?.text = item?.name
         holder.escenario?.text = item?.currentStage
+        Picasso.get()
+            .load(item?.image)
+            .placeholder(R.drawable.logo)
+            .error(R.drawable.ic_twotone_error_24)
+            .into(holder.imagen);
         //holder.__V?.text = item?.__v.toString()
 
         if(item?.previousStage != "null"){
@@ -67,6 +75,7 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
         var escenarioP: TextView ?= null
         var escenarioPE: TextView ?= null
         var escenario: TextView ?= null
+        var imagen : ImageView ?= null
         //var __V: TextView ?= null
         var listener: ClickListener ?= null
 
@@ -83,6 +92,7 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
             escenarioP= vista.findViewById(R.id.TVEscenarioPrevio)
             escenarioPE = vista.findViewById(R.id.textView18)
             escenario= vista.findViewById(R.id.TVEscenario)
+            imagen= vista.findViewById(R.id.imageView10)
             //__V= vista.findViewById(R.id.TV__V)
             this.listener = listener
             vista.setOnClickListener(this)

@@ -3,6 +3,7 @@ package com.example.desarrolloresidencia.UI
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
@@ -30,18 +31,33 @@ class Trazabilidad : AppCompatActivity() {
         }
 
         binding.BTAjustes.setOnClickListener {
-            val pasar: Intent = Intent(applicationContext, ModificacionUsuario::class.java)
-            startActivity(pasar)
+            if(responseUser.user != null){
+                val pasar: Intent = Intent(applicationContext, ModificacionUsuario::class.java)
+                startActivity(pasar)
+            }else{
+                Toast.makeText(this, "Debes iniciar sesión para poder usar esta función", Toast.LENGTH_LONG).show()
+            }
+
         }
 
         binding.BTTips.setOnClickListener{
-            val pasar: Intent = Intent(applicationContext, Tips::class.java)
-            startActivity(pasar)
+            if(responseUser.user != null){
+                val pasar: Intent = Intent(applicationContext, Tips::class.java)
+                startActivity(pasar)
+            }else{
+                Toast.makeText(this, "Debes iniciar sesión para poder usar esta función", Toast.LENGTH_LONG).show()
+            }
+
         }
 
         binding.BTCalculo.setOnClickListener {
-            val pasar: Intent = Intent(applicationContext, CalculoNutricional::class.java)
-            startActivity(pasar)
+            if(responseUser.user != null){
+                val pasar: Intent = Intent(applicationContext, CalculoNutricional::class.java)
+                startActivity(pasar)
+            }else{
+                Toast.makeText(this, "Debes iniciar sesión para poder usar esta función", Toast.LENGTH_LONG).show()
+            }
+
         }
 
         binding.BTSalir.setOnClickListener{
@@ -75,9 +91,12 @@ class Trazabilidad : AppCompatActivity() {
         }
 
         binding.BTInformacion.setOnClickListener{
-            val pasar: Intent = Intent(applicationContext, Informacion::class.java)
-            startActivity(pasar)
-
+            if(responseUser.user != null){
+                val pasar: Intent = Intent(applicationContext, Informacion::class.java)
+                startActivity(pasar)
+            }else{
+                Toast.makeText(this, "Debes iniciar sesión para poder usar esta función", Toast.LENGTH_LONG).show()
+            }
         }
 
 
