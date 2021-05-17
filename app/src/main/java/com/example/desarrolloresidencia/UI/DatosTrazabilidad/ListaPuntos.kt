@@ -25,6 +25,46 @@ class ListaPuntos : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         var contexto = requireContext().applicationContext
+<<<<<<< Updated upstream
+=======
+        //val puntos = ArrayList<Ubicacion>()
+        for (i in 0..(consulta.consulta!!.size - 1)) {
+                    var nuevaI = consulta.consulta!!.get(i).image.replace("http://0.0.0.0", "http://52.202.214.13")
+                    Log.e("nueva imagen", nuevaI)
+                    if (consulta.consulta!!.get(i).code != null){
+                        puntos.add(
+                                Ubicacion(
+                                        consulta.consulta!!.get(i).__v,
+                                        consulta.consulta!!.get(i)._id,
+                                        consulta.consulta!!.get(i).code,
+                                        consulta.consulta!!.get(i).currentStage,
+                                        consulta.consulta!!.get(i).fid,
+                                        consulta.consulta!!.get(i).id,
+                                        //consulta.consulta!!.get(i).image,
+                                        nuevaI,
+                                        consulta.consulta!!.get(i).name,
+                                        consulta.consulta!!.get(i).previousStage,
+                                        consulta.consulta!!.get(i).ubication
+                                )
+                        )
+                    }else{
+                        puntos.add(
+                                Ubicacion(
+                                        consulta.consulta!!.get(i).__v,
+                                        consulta.consulta!!.get(i)._id,
+                                        "",
+                                        consulta.consulta!!.get(i).currentStage,
+                                        consulta.consulta!!.get(i).fid,
+                                        consulta.consulta!!.get(i).id,
+                                        //consulta.consulta!!.get(i).image,
+                                        nuevaI,
+                                        consulta.consulta!!.get(i).name,
+                                        consulta.consulta!!.get(i).previousStage,
+                                        consulta.consulta!!.get(i).ubication
+                                )
+                        )
+                    }
+>>>>>>> Stashed changes
 
         val puntos = ArrayList<Ubicacion>()
         puntos.add(Ubicacion(consulta.consulta!!.A.id, consulta.consulta!!.A.date, consulta.consulta!!.A.stage, consulta.consulta!!.A.description))
