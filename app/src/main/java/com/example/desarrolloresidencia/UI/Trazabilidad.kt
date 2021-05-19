@@ -98,11 +98,5 @@ class Trazabilidad : AppCompatActivity() {
                 Toast.makeText(this, "Debes iniciar sesión para poder usar esta función", Toast.LENGTH_LONG).show()
             }
         }
-
-
     }
-
-
-
-
 }

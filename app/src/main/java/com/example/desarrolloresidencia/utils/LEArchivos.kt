@@ -55,6 +55,17 @@ class LEArchivos {
                     .getExternalFilesDir(null)?.absolutePath
             val miCarpeta = File(rutaSD, "datos")
             val ficheroFisico = File(miCarpeta, "datos.txt")
+
+            if (!miCarpeta.exists()) {
+                Log.d("LEArchivos", "no existía la carpeta")
+                miCarpeta.mkdir()
+            }
+            if (!ficheroFisico.exists()) {
+                Log.d("LEArchivos", "no existe el archivo")
+                ficheroFisico.createNewFile()
+                sobrescribir("""{"createAdministrator":false,"createTUser":false,"updateMe":true,"updateAdministrator":false,"updateTUser":false,"deleteMe":true,"deleteAdministrator":false,"deleteTUser":false,"readMe":true,"readAdministrator":false,"readTUser":false,"loginUser":true}""", baseContext)
+            }
+
             val fichero = BufferedReader(InputStreamReader(
                     FileInputStream(ficheroFisico)))
             val texto = fichero.use(BufferedReader::readText)

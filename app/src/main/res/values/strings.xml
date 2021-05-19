@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">desarrolloResidencia</string>
+    <string name="app_name">Avocado Path</string>
     <string name="registrarme">Registrarme</string>
     <string name="iniciar_sesi_n">Iniciar Sesión</string>
     <string name="loguear_con_redes_sociales">Loguear con redes sociales</string>
@@ -31,7 +31,6 @@
     <string name="id">Id:</string>
     <string name="escenario">Escenario:</string>
     <string name="escenario_previo">Escenario previo:</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="name">Name</string>
     <string name="propiedades">Propiedades</string>

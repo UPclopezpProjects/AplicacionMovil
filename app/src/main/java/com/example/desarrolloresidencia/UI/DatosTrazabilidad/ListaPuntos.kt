@@ -41,7 +41,7 @@ class ListaPuntos : Fragment() {
         var contexto = requireContext().applicationContext
         //val puntos = ArrayList<Ubicacion>()
         for (i in 0..(consulta.consulta!!.size - 1)) {
-                    var nuevaI = consulta.consulta!!.get(i).image.replace("http://0.0.0.0", "http://10.0.0.5")
+                    var nuevaI = consulta.consulta!!.get(i).image.replace("http://0.0.0.0", "http://52.202.214.13")
                     Log.e("nueva imagen", nuevaI)
                     if (consulta.consulta!!.get(i).code != null){
                         puntos.add(

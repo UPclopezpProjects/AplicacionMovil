@@ -75,7 +75,7 @@ interface APIAmazon {
     companion object{
         operator fun invoke() : APIAmazon {
             return Retrofit.Builder()
-                    .baseUrl("http://10.0.0.5:80")
+                    .baseUrl("http://52.202.214.13:80")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                     .create(APIAmazon::class.java)
