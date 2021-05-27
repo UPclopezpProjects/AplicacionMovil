@@ -75,31 +75,41 @@ class Trazabilidad : AppCompatActivity() {
         }
 
         binding.BTSalir.setOnClickListener{
-            val builder = AlertDialog.Builder(this)
+            if(responseUser.user != null){
+                val builder = AlertDialog.Builder(this)
 
-            builder.setView(R.layout.fragment_logout)
+                builder.setView(R.layout.fragment_logout)
 
-            //set positive button
-            builder.setNegativeButton(
-                "No"
-            ) { dialog, id ->
-                // User cancelled the dialog
+                //set positive button
+                builder.setNegativeButton(
+                        "No"
+                ) { dialog, id ->
+                    // User cancelled the dialog
+                }
+
+                builder.setPositiveButton("Si") { dialog, id ->
+                    // User clicked Update Now button
+                    consulta.consulta = null
+                    responseUser.message  = null
+                    responseUser.user = null
+                    responseUser.token = null
+                    finish()
+                    startActivity(
+                            Intent(baseContext, SplashScreen::class.java)
+                                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    )
+                }
+
+                builder.show()
+            }else{
+                val builder = android.app.AlertDialog.Builder(this)
+                builder.setTitle("Acceso denegado").setIcon(R.drawable.logo)
+                builder.setMessage("Debes iniciar sesión para poder usar esta función")
+                builder.setPositiveButton("ok"){dialog, id ->}
+                builder.show()
             }
 
-            builder.setPositiveButton("Si") { dialog, id ->
-                // User clicked Update Now button
-                consulta.consulta = null
-                responseUser.message  = null
-                responseUser.user = null
-                responseUser.token = null
-                finish()
-                startActivity(
-                    Intent(baseContext, SplashScreen::class.java)
-                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                )
-            }
 
-            builder.show()
         }
 
         binding.BTInformacion.setOnClickListener{

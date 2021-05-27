@@ -11,6 +11,7 @@ import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.UI.AlertDialog.Guacamole
 import com.example.desarrolloresidencia.UI.AlertDialog.mapaInformacion
 import com.example.desarrolloresidencia.utils.FragmentarString
+import com.example.desarrolloresidencia.utils.responseUser
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -46,7 +47,17 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
     override fun onMapReady(googleMap: GoogleMap) {
         abecedario()
         mMap = googleMap
-        mMap.uiSettings.isZoomControlsEnabled=true
+
+        if (responseUser.message != null){
+            mMap.uiSettings.isZoomControlsEnabled=true
+        }else{
+            mMap.uiSettings.isZoomGesturesEnabled=false
+            mMap.uiSettings.isRotateGesturesEnabled=false
+            mMap.uiSettings.isScrollGesturesEnabled=false
+        }
+
+
+
 
         var polilinea = PolylineOptions()
         Log.d("tamaño", consulta.consulta!!.size.toString())
