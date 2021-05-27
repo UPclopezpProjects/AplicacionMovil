@@ -11,7 +11,7 @@ class ActualizarViewModel(): ViewModel() {
     var nombre: String? = null
     var apellidoP: String? = null
     var apellidoM: String? = null
-    var email: String? = null
+    //var email: String? = null
     var password: String? = null
 
     var authListener: AuthListener? = null
@@ -21,7 +21,7 @@ class ActualizarViewModel(): ViewModel() {
             authListener?.onStarted()
             try {
                 //Coroutines.main {
-                val response = AmazonRepository().actualizarUsuario("$nombre", "$apellidoP", "$apellidoM", "$email", "$password", "${responseUser.user?.email}", "${responseUser.token}")
+                val response = AmazonRepository().actualizarUsuario("$nombre", "$apellidoP", "$apellidoM", "$password", "${responseUser.user?.email}", "${responseUser.token}")
 
                 if (response.isSuccessful) {
                     responseUser.message = response.body()!!.message

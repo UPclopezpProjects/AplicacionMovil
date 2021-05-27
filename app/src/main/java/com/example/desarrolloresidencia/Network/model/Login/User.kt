@@ -13,5 +13,7 @@ data class User(
     val nameOfUser: String,
     val password: String,
     val status: String,
-    val typeOfUser: String
+    val typeOfUser: String,
+    val surnameA: String,
+    val surnameB: String
 )

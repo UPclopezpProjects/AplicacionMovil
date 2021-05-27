@@ -27,7 +27,6 @@ interface APIAmazon {
     @FormUrlEncoded
     @PUT("userUpdate/{id}")
     suspend fun actualizarUsurio(
-            @Field("email") email: String?,
             @Field("password") password: String?,
             @Field("nameOfUser") nameOfUser: String?,
             @Field("status") status: String?,

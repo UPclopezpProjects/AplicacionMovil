@@ -21,11 +21,11 @@ class AmazonRepository {
         return APIAmazon().Logearse(email, password, "authentication", "loginUser")
     }
 
-    suspend fun actualizarUsuario(nombre:String, apellidoP:String, apellidoM:String, email:String, contrasena:String, id:String, token:String):Response<LoginUsers>{
+    suspend fun actualizarUsuario(nombre:String, apellidoP:String, apellidoM:String, contrasena:String, id:String, token:String):Response<LoginUsers>{
         Log.d("repositorio id", "$id")
         Log.d("repositorio token", "$token")
         //return MyApi().actualizarUsurio("$email", "$contrasena", "$nombre", "true", "$apellidoP", "$apellidoM", "update", "updateMe", "48d6adacee72fea2034b636a029d3ea9", "$id", "$token")
-        return APIAmazon().actualizarUsurio("$email", "$contrasena", "$nombre", "true", "$apellidoP", "$apellidoM", "update", "updateMe", "48d6adacee72fea2034b636a029d3ea9", "$id", "$token")
+        return APIAmazon().actualizarUsurio("$contrasena", "$nombre", "true", "$apellidoP", "$apellidoM", "update", "updateMe", "48d6adacee72fea2034b636a029d3ea9", "$id", "$token")
     }
 
     suspend fun recuperarPassword(email: String):Response<com.example.desarrolloresidencia.Network.model.RecuperarPass.Response>{

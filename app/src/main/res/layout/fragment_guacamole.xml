@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     tools:context=".UI.AlertDialog.Guacamole">
 
     <TextView
@@ -15,6 +14,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-light"
         android:text="Guacamole"
+        android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
 
     <TextView
         android:id="@+id/textView23"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -30,6 +30,7 @@
         android:fontFamily="sans-serif-light"
         android:text="El guacamole está repleto de grasas monoinstaturadas, es decir, que son benéficas para el corazón y de fácil digestión"
         android:textAlignment="textStart"
+        android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,12 +39,11 @@
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="match_parent"
-        android:layout_height="494px"
-        android:layout_marginTop="16sp"
-        android:foregroundGravity="bottom"
+        android:layout_height="498px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView23"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/img_20210508_075746" />
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

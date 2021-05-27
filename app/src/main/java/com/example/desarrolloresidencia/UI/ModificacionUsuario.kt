@@ -34,6 +34,9 @@ class ModificacionUsuario : AppCompatActivity(), AuthListener {
         //Coroutines.authListener= this
 
         //Toast.makeText(this, responseUser.user?.email, Toast.LENGTH_SHORT).show()
+        binding.ETNombre.setText(responseUser.user?.nameOfUser.toString())
+        binding.ETApellidoP.setText(responseUser.user?.surnameA.toString())
+        binding.ETApellidoM.setText(responseUser.user?.surnameB.toString())
 
         binding.BTRegistrar.setOnClickListener {
 
@@ -58,7 +61,6 @@ class ModificacionUsuario : AppCompatActivity(), AuthListener {
         var nombre = findViewById<EditText>(R.id.ETNombre)
         var apellidoP = findViewById<EditText>(R.id.ETApellidoP)
         var apellidoM = findViewById<EditText>(R.id.ETApellidoM)
-        var username = findViewById<EditText>(R.id.ETEmail)
         var contrasena = findViewById<EditText>(R.id.ETContrasena)
 
         if (nombre.text.toString() ==""){
@@ -79,19 +81,12 @@ class ModificacionUsuario : AppCompatActivity(), AuthListener {
             return
         }
 
-        if (username.text.toString() ==""){
-            username.error = "Ingresa el Email"
-            username.requestFocus()
-            return
-        }
-
         if (contrasena.text.toString() ==""){
             contrasena.error = "Ingresa la contraseña"
             contrasena.requestFocus()
             return
         }
 
-        modificacionViewModel.email = username.text.toString()
         modificacionViewModel.password = contrasena.text.toString()
         modificacionViewModel.nombre = nombre.text.toString()
         modificacionViewModel.apellidoP = apellidoP.text.toString()
@@ -106,7 +101,7 @@ class ModificacionUsuario : AppCompatActivity(), AuthListener {
         binding.ETApellidoP.isEnabled= false
         binding.ETApellidoM.isEnabled= false
         binding.ETContrasena.isEnabled= false
-        binding.ETEmail.isEnabled= false
+        //binding.ETEmail.isEnabled= false
     }
 
     override fun onSuccess(message: Boolean, token: String, user: User) {
@@ -115,7 +110,7 @@ class ModificacionUsuario : AppCompatActivity(), AuthListener {
         binding.ETApellidoP.isEnabled= true
         binding.ETApellidoM.isEnabled= true
         binding.ETContrasena.isEnabled= true
-        binding.ETEmail.isEnabled= true
+        //binding.ETEmail.isEnabled= true
         validarStatus(user.status)
     }
 
@@ -125,7 +120,7 @@ class ModificacionUsuario : AppCompatActivity(), AuthListener {
         binding.ETApellidoP.isEnabled= true
         binding.ETApellidoM.isEnabled= true
         binding.ETContrasena.isEnabled= true
-        binding.ETEmail.isEnabled= true
+        //binding.ETEmail.isEnabled= true
         //Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         mensajeE(message)
     }
