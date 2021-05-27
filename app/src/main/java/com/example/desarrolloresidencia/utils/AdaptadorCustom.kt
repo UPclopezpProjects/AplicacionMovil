@@ -39,7 +39,17 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
         //Log.e("codigoQR", "${item?.code.toString()}")
         holder.ubicacion = item?.ubication
         holder.nombre?.text = item?.name
-        holder.escenario?.text = item?.currentStage
+
+        //holder.escenario?.text = item?.currentStage
+        when (item?.currentStage) {
+            "Productor" -> holder.escenario?.setImageResource(R.drawable.productor_round)
+            "Acopio" -> holder.escenario?.setImageResource(R.drawable.acopio_round)
+            "Carrier"-> holder.escenario?.setImageResource(R.drawable.transportista_round)
+            "Merchant"->holder.escenario?.setImageResource(R.drawable.comerciante_round)
+            "null"->holder.escenario?.visibility = View.GONE
+        }
+
+
         Picasso.get()
             .load(item?.image)
             .placeholder(R.drawable.logo)
@@ -48,7 +58,14 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
         //holder.__V?.text = item?.__v.toString()
 
         if(item?.previousStage != "null"){
-            holder.escenarioP?.text = item?.previousStage
+            //holder.escenarioP?.text = item?.previousStage
+            when (item?.previousStage) {
+                "Productor" -> holder.escenarioP?.setImageResource(R.drawable.productor_round)
+                "Acopio" -> holder.escenarioP?.setImageResource(R.drawable.acopio_round)
+                "Carrier"-> holder.escenarioP?.setImageResource(R.drawable.transportista_round)
+                "Merchant"->holder.escenarioP?.setImageResource(R.drawable.comerciante_round)
+                "null"->holder.escenarioP?.visibility = View.GONE
+            }
         }else{
             holder.escenarioPE?.visibility = View.GONE
             holder.escenarioP?.visibility = View.GONE
@@ -72,9 +89,9 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
         //var codigoE:TextView ?= null
         var ubicacion: String ?= null
         var nombre: TextView ?= null
-        var escenarioP: TextView ?= null
+        var escenarioP: ImageView ?= null
         var escenarioPE: TextView ?= null
-        var escenario: TextView ?= null
+        var escenario: ImageView ?= null
         var imagen : ImageView ?= null
         //var __V: TextView ?= null
         var listener: ClickListener ?= null
@@ -89,9 +106,9 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
             //codigoE= vista.findViewById(R.id.textView15)
             ubicacion= ""
             nombre= vista.findViewById(R.id.TVNombreTP)
-            escenarioP= vista.findViewById(R.id.TVEscenarioPrevio)
+            escenarioP= vista.findViewById(R.id.imageView17)
             escenarioPE = vista.findViewById(R.id.textView18)
-            escenario= vista.findViewById(R.id.TVEscenario)
+            escenario= vista.findViewById(R.id.imageView18)
             imagen= vista.findViewById(R.id.imageView10)
             //__V= vista.findViewById(R.id.TV__V)
             this.listener = listener

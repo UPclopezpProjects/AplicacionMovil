@@ -42,9 +42,11 @@
 
             <TextView
                 android:id="@+id/textView6"
-                android:layout_width="137dp"
-                android:layout_height="110dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:layout_marginBottom="12dp"
                 android:fontFamily="sans-serif-light"
                 android:text="Scrolea los elementos(izquierda o derecha) del carrusel y da clic sobre alguno para encontrarlo en el mapa."

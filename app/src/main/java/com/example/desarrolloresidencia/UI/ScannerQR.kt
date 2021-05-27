@@ -11,8 +11,10 @@ import com.example.desarrolloresidencia.Network.model.MessageError.Error
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
 import com.example.desarrolloresidencia.R
+import com.example.desarrolloresidencia.UI.DatosTrazabilidad.DatosTrazabilidad
 import com.example.desarrolloresidencia.ViewModel.ScannerQRViewModel
 import com.example.desarrolloresidencia.databinding.ActivityScannerQRBinding
+import com.example.desarrolloresidencia.databinding.DatosTrazabilidadBinding
 import com.example.desarrolloresidencia.utils.Auth.AuthQr
 import com.example.desarrolloresidencia.utils.ValidarR
 import com.example.desarrolloresidencia.utils.responseUser
@@ -79,8 +81,10 @@ class ScannerQR : AppCompatActivity(), AuthQr {
     }
 
     fun TrazabilidadScreen(){
-        var intent : Intent = Intent(applicationContext, Trazabilidad::class.java)
-        startActivity(intent)
+        var intent1 : Intent = Intent(applicationContext, Trazabilidad::class.java)
+        startActivity(intent1)
+        var intent2 : Intent = Intent(applicationContext, DatosTrazabilidad::class.java)
+        startActivity(intent2)
     }
 
     override fun onStarted() {
