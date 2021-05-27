@@ -1,6 +1,5 @@
 package com.example.desarrolloresidencia.UI
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -35,7 +34,12 @@ class Trazabilidad : AppCompatActivity() {
                 val pasar: Intent = Intent(applicationContext, ModificacionUsuario::class.java)
                 startActivity(pasar)
             }else{
-                Toast.makeText(this, "Debes iniciar sesión para poder usar esta función", Toast.LENGTH_LONG).show()
+                //Toast.makeText(this, "Debes iniciar sesión para poder usar esta función", Toast.LENGTH_LONG).show()
+                val builder = android.app.AlertDialog.Builder(this)
+                builder.setTitle("Acceso denegado").setIcon(R.drawable.logo)
+                builder.setMessage("Debes iniciar sesión para poder usar esta función")
+                builder.setPositiveButton("ok"){dialog, id ->}
+                builder.show()
             }
 
         }
@@ -45,7 +49,12 @@ class Trazabilidad : AppCompatActivity() {
                 val pasar: Intent = Intent(applicationContext, Tips::class.java)
                 startActivity(pasar)
             }else{
-                Toast.makeText(this, "Debes iniciar sesión para poder usar esta función", Toast.LENGTH_LONG).show()
+                //Toast.makeText(this, "Debes iniciar sesión para poder usar esta función", Toast.LENGTH_LONG).show()
+                val builder = android.app.AlertDialog.Builder(this)
+                builder.setTitle("Acceso denegado").setIcon(R.drawable.logo)
+                builder.setMessage("Debes iniciar sesión para poder usar esta función")
+                builder.setPositiveButton("ok"){dialog, id ->}
+                builder.show()
             }
 
         }
@@ -55,7 +64,12 @@ class Trazabilidad : AppCompatActivity() {
                 val pasar: Intent = Intent(applicationContext, CalculoNutricional::class.java)
                 startActivity(pasar)
             }else{
-                Toast.makeText(this, "Debes iniciar sesión para poder usar esta función", Toast.LENGTH_LONG).show()
+                //Toast.makeText(this, "Debes iniciar sesión para poder usar esta función", Toast.LENGTH_LONG).show()
+                val builder = android.app.AlertDialog.Builder(this)
+                builder.setTitle("Acceso denegado").setIcon(R.drawable.logo)
+                builder.setMessage("Debes iniciar sesión para poder usar esta función")
+                builder.setPositiveButton("ok"){dialog, id ->}
+                builder.show()
             }
 
         }
@@ -83,8 +97,6 @@ class Trazabilidad : AppCompatActivity() {
                     Intent(baseContext, SplashScreen::class.java)
                         .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 )
-
-
             }
 
             builder.show()
@@ -95,7 +107,12 @@ class Trazabilidad : AppCompatActivity() {
                 val pasar: Intent = Intent(applicationContext, Informacion::class.java)
                 startActivity(pasar)
             }else{
-                Toast.makeText(this, "Debes iniciar sesión para poder usar esta función", Toast.LENGTH_LONG).show()
+                //Toast.makeText(this, "Debes iniciar sesión para poder usar esta función", Toast.LENGTH_LONG).show()
+                val builder = android.app.AlertDialog.Builder(this)
+                builder.setTitle("Acceso denegado").setIcon(R.drawable.logo)
+                builder.setMessage("Debes iniciar sesión para poder usar esta función")
+                builder.setPositiveButton("ok"){dialog, id ->}
+                builder.show()
             }
         }
     }

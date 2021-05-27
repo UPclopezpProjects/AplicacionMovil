@@ -4,9 +4,12 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
 import com.example.desarrolloresidencia.R
+import com.example.desarrolloresidencia.UI.AlertDialog.Guacamole
+import com.example.desarrolloresidencia.UI.AlertDialog.mapaInformacion
 import com.example.desarrolloresidencia.utils.FragmentarString
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -20,7 +23,6 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
     private lateinit var mMap: GoogleMap
     var letra= ArrayList<String>()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.datos_trazabilidad)
@@ -33,7 +35,12 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
         back.setOnClickListener {
             finish()
         }
+        //Toast.makeText(this, "Scrollea la lista de ubicaciones y da click sobre el elemento que quieras ver en el mapa", Toast.LENGTH_LONG).show()
 
+        var infor = findViewById<Button>(R.id.BTInformacion)
+        infor.setOnClickListener {
+            mapaInformacion().show(supportFragmentManager, "mapaInformacion")
+        }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -65,12 +72,13 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
                 .width(15F)
                 .pattern(arrayListOf<PatternItem>(Dash(50F), Gap(25F)))
         )
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(FragmentarString().separaLL(consulta.consulta!!.get(consulta.consulta!!.size-1).ubication)))
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(FragmentarString().separaLL(consulta.consulta!!.get(consulta.consulta!!.size-1).ubication)))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(FragmentarString().separaLL(consulta.consulta!!.get(consulta.consulta!!.size-1).ubication), 5.0F))
     }
 
     override fun obtenerPosicion(latlong: String) {
         super.obtenerPosicion(latlong)
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(FragmentarString().separaLL(latlong)))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(FragmentarString().separaLL(latlong), 15.0F))
     }
 
     private fun abecedario(){

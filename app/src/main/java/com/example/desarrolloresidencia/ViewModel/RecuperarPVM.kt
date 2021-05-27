@@ -1,28 +1,29 @@
 package com.example.desarrolloresidencia.ViewModel
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.desarrolloresidencia.Repository.AmazonRepository
-import com.example.desarrolloresidencia.Repository.UserRepository
-import com.example.desarrolloresidencia.utils.Auth.AuthListener
 import com.example.desarrolloresidencia.utils.Auth.AuthRecuperar
-import com.example.desarrolloresidencia.utils.Corutinas.Coroutines
-import com.example.desarrolloresidencia.utils.Corutinas.CoroutinesRecCont
-import com.example.desarrolloresidencia.utils.responseUser
+import kotlinx.coroutines.launch
 
 class RecuperarPVM() : ViewModel(){
     var email: String ?= null
     var authListener: AuthRecuperar?= null
 
     fun recuperar(){
-        authListener?.onStarted()
+        viewModelScope.launch {
+            authListener?.onStarted()
+            try {
+                //CoroutinesRecCont.main {
+                val response = AmazonRepository().recuperarPassword("$email", )
 
-        CoroutinesRecCont.main {
-            val response = AmazonRepository().recuperarPassword("$email", )
-
-            if (response.isSuccessful){
-                authListener?.onSuccess(response.body()!!.message)
-            } else{
-                authListener?.onFailure("${response.errorBody()?.string()}")
+                if (response.isSuccessful) {
+                    authListener?.onSuccess(response.body()!!.message)
+                } else {
+                    authListener?.onFailure("${response.errorBody()?.string()}")
+                }
+            }catch (e : java.net.SocketTimeoutException){
+                authListener?.onFailure("No se pudo conectar con el servidor")
             }
         }
     }

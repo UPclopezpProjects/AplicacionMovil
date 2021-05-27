@@ -4,11 +4,8 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
-import com.example.desarrolloresidencia.Network.model.Trazabilidad.QR
 import com.example.desarrolloresidencia.Repository.AmazonRepository
 import com.example.desarrolloresidencia.utils.Auth.AuthQr
-import com.example.desarrolloresidencia.utils.Corutinas.Coroutines
-import com.example.desarrolloresidencia.utils.Corutinas.CoroutinesTraz
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
 
@@ -17,12 +14,10 @@ class ScannerQRViewModel : ViewModel(){
     var authListener: AuthQr ?= null
 
     fun consulta(qr:String, id:String){
-
         //CoroutinesTraz.main {
             viewModelScope.launch {
                 authListener?.onStarted()
                 try {
-
                     Log.d("QR", "$QR")
 
                     val response = AmazonRepository().trazabilidadConsulta("$qr", "$id")

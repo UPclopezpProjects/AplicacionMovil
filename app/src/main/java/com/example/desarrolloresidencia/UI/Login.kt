@@ -1,6 +1,7 @@
 package com.example.desarrolloresidencia.UI
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,12 +12,14 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import com.example.desarrolloresidencia.Network.model.Login.User
+import com.example.desarrolloresidencia.Network.model.MessageError.Error
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.ViewModel.LoginViewModel
 import com.example.desarrolloresidencia.databinding.ActivityLoginBinding
 import com.example.desarrolloresidencia.utils.Auth.AuthListener
 import com.example.desarrolloresidencia.utils.Corutinas.Coroutines
 import com.example.desarrolloresidencia.utils.ValidarR
+import com.google.gson.Gson
 import org.w3c.dom.Text
 import java.lang.Exception
 
@@ -35,13 +38,18 @@ class Login : AppCompatActivity(), AuthListener {
         loginViewModel= ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
         loginViewModel.authListener = this
-        Coroutines.authListener= this
+        //Coroutines.authListener= this
 
         binding.BTLogin.setOnClickListener {
             if (ValidarR.hayRed(this)){
                 ValidationE()
             } else {
-                Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Error Login").setIcon(R.drawable.logo)
+                builder.setMessage("No hay red")
+                builder.setPositiveButton("ok"){dialog, id ->}
+                builder.show()
             }
         }
 
@@ -97,8 +105,7 @@ class Login : AppCompatActivity(), AuthListener {
         binding.BTLogin.isEnabled= false
         binding.ETEmail.isEnabled= false
         binding.password.isEnabled= false
-        binding.BTRecuperar.isEnabled = false
-
+        //binding.BTRecuperar.isEnabled = false
     }
 
     override fun onSuccess(message: Boolean, token: String, user: User) {
@@ -109,7 +116,7 @@ class Login : AppCompatActivity(), AuthListener {
         binding.ETEmail.isEnabled= true
         binding.password.isEnabled= true
         binding.BTLogin.isEnabled= true
-        binding.BTRecuperar.isEnabled = true
+        //binding.BTRecuperar.isEnabled = true
         binding.ETEmail.setText("")
         binding.password.setText("")
         validarStatus(user.status)
@@ -122,19 +129,34 @@ class Login : AppCompatActivity(), AuthListener {
         binding.ETEmail.isEnabled= true
         binding.password.isEnabled= true
         binding.BTLogin.isEnabled= true
-        binding.BTRecuperar.isEnabled = true
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        //binding.BTRecuperar.isEnabled = true
+        //Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        mensajeE(message)
     }
 
     fun validarStatus (status : String){
         
         if (status=="false"){
-            Toast.makeText(applicationContext, "Verifica tu correo electrónico", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(applicationContext, "Verifica tu correo electrónico", Toast.LENGTH_SHORT).show()
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Error Login").setIcon(R.drawable.logo)
+            builder.setMessage("Verifica tu correo electrónico")
+            builder.setPositiveButton("ok"){dialog, id ->}
+            builder.show()
         }else{
-            Toast.makeText(applicationContext, "Tu correo electrónico está verificado", Toast.LENGTH_SHORT).show()
-
+            //Toast.makeText(applicationContext, "Tu correo electrónico está verificado", Toast.LENGTH_SHORT).show()
             var pasar:Intent = Intent(applicationContext, ScannerQR::class.java)
             startActivity(pasar)
         }
+    }
+
+    fun mensajeE(mensaje : String){
+        var testModel = Gson().fromJson(mensaje, Error::class.java)
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Error Login").setIcon(R.drawable.logo)
+        builder.setMessage("${testModel.message}")
+        builder.setPositiveButton("ok"){dialog, id ->}
+        builder.show()
     }
 }

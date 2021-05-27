@@ -1,19 +1,23 @@
 package com.example.desarrolloresidencia.UI
 
+import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import com.example.desarrolloresidencia.Network.model.CreationC.User
+import com.example.desarrolloresidencia.Network.model.MessageError.Error
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.ViewModel.RegistroViewModel
 import com.example.desarrolloresidencia.databinding.ActivityRegistroUsuarioBinding
 import com.example.desarrolloresidencia.utils.Auth.AuthRegistro
-import com.example.desarrolloresidencia.utils.Corutinas.CoroutinesRU
 import com.example.desarrolloresidencia.utils.ValidarR
+import com.google.gson.Gson
+import java.util.regex.Pattern
 
 class RegistroUsuario : AppCompatActivity(), AuthRegistro {
 
@@ -30,17 +34,30 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
         registroViewModel.authListener = this
         registroViewModel.contexto = this
 
-        CoroutinesRU.authListener= this
+        //CoroutinesRU.authListener= this
 
         binding.BTRegistrar.setOnClickListener {
             if (ValidarR.hayRed(this)){
                 ValidationE()
             } else {
-                Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Error").setIcon(R.drawable.logo)
+                builder.setMessage("No hay red")
+                builder.setPositiveButton("ok"){dialog, id ->}
+                builder.show()
             }
         }
 
+        binding.BTVolver.setOnClickListener{
+            finish()
+        }
 
+    }
+
+    private fun validarEmail(email: String): Boolean {
+        val pattern: Pattern = Patterns.EMAIL_ADDRESS
+        return pattern.matcher(email).matches()
     }
 
     fun ValidationE(){
@@ -68,8 +85,8 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
             return
         }
 
-        if (username.text.toString() ==""){
-            username.error = "Ingresa el Email"
+        if (!validarEmail("${username.text.toString()}")){
+            username.error ="Email no válido"
             username.requestFocus()
             return
         }
@@ -109,8 +126,14 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
         binding.ETContrasena.isEnabled = true
         binding.BTRegistrar.isEnabled = true
         Log.d("respuesta correcta", "$message, $token, $user")
-        Toast.makeText(applicationContext, "Usuario Registrado", Toast.LENGTH_SHORT).show()
-        Toast.makeText(applicationContext, registroViewModel.validarStatus(user.status), Toast.LENGTH_SHORT).show()
+        //Toast.makeText(applicationContext, "Usuario Registrado", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(applicationContext, registroViewModel.validarStatus(user.status), Toast.LENGTH_SHORT).show()
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Registro satisfactorio").setIcon(R.drawable.logo)
+        builder.setMessage("Verifica tu correo electrónico")
+        builder.setPositiveButton("ok"){dialog, id ->}
+        builder.show()
     }
 
 
@@ -123,8 +146,19 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
         binding.ETContrasena.isEnabled = true
         binding.BTRegistrar.isEnabled = true
         Log.e("Error en registro", message)
-        Toast.makeText(this, "$message", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "$message", Toast.LENGTH_SHORT).show()
+
+        mensajeE(message)
     }
 
+    fun mensajeE(mensaje : String){
+        var testModel = Gson().fromJson(mensaje, Error::class.java)
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Error").setIcon(R.drawable.logo)
+        builder.setMessage("${testModel.message}")
+        builder.setPositiveButton("ok"){dialog, id ->}
+        builder.show()
+    }
 
 }

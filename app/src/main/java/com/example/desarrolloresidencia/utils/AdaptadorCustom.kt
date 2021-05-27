@@ -103,5 +103,4 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
         }
     }
 
-
 }

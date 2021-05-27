@@ -3,7 +3,6 @@ package com.example.desarrolloresidencia.Network.Apis
 import com.example.desarrolloresidencia.Network.model.CreationC.CreacionConsumidor
 import com.example.desarrolloresidencia.Network.model.Login.LoginUsers
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.Trazabilidad
-import com.example.desarrolloresidencia.utils.responseUser
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -11,8 +10,8 @@ import retrofit2.http.*
 
 interface APIAmazon {
 
-    val correo: String?
-    get() = responseUser.user?.email
+    //val correo: String?
+    //get() = responseUser.user?.email
 
     //el "Logearse" sirve como nombre del método
     //el "FormUrlEncoded" indica que la petición tendrá un tipo MIME
@@ -75,7 +74,7 @@ interface APIAmazon {
     companion object{
         operator fun invoke() : APIAmazon {
             return Retrofit.Builder()
-                    .baseUrl("http://52.202.214.13:80")
+                    .baseUrl("http://52.202.214.13:80/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                     .create(APIAmazon::class.java)

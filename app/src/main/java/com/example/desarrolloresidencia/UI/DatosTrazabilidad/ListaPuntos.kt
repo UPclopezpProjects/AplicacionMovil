@@ -41,6 +41,7 @@ class ListaPuntos : Fragment() {
         var contexto = requireContext().applicationContext
         //val puntos = ArrayList<Ubicacion>()
         for (i in 0..(consulta.consulta!!.size - 1)) {
+                    Log.d("antigua foto", consulta.consulta!!.get(i).image)
                     var nuevaI = consulta.consulta!!.get(i).image.replace("http://0.0.0.0", "http://52.202.214.13")
                     Log.e("nueva imagen", nuevaI)
                     if (consulta.consulta!!.get(i).code != null){
@@ -76,12 +77,9 @@ class ListaPuntos : Fragment() {
                                 )
                         )
                     }
-
-
         }
         //Log.d("nueva matriz", "${puntos.get(1).image}")
         lista = activity?.findViewById(R.id.lista)
-
         lista?.setHasFixedSize(true)
         //lista?.layoutManager = LinearLayoutManager(ListaPuntos().context, LinearLayoutManager.HORIZONTAL, false)
 

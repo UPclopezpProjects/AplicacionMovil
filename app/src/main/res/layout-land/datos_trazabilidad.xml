@@ -20,6 +20,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <Button
+                android:id="@+id/BTInformacion"
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:layout_weight="1"
+                android:background="@drawable/informacion"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:layout_constraintEnd_toStartOf="@+id/BTVolver"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="70sp"

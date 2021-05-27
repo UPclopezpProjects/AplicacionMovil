@@ -142,10 +142,5 @@ class CalculoNutricional : AppCompatActivity() {
         binding.BTVolver.setOnClickListener{
             finish()
         }
-
-
-
-
-
     }
 }

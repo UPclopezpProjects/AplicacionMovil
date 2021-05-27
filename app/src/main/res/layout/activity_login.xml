@@ -163,6 +163,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="40dp"
                 android:backgroundTint="@android:color/holo_green_light"
+                android:enabled="false"
                 android:foreground="?attr/selectableItemBackground"
                 android:rotationX="0"
                 android:text="@string/olvid_mi_contrase_a"
