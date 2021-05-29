@@ -61,7 +61,7 @@ class Login : AppCompatActivity(), AuthListener {
 
 
         binding.BTSaltar.setOnClickListener {
-            val intent: Intent = Intent(applicationContext, ScannerQR::class.java)
+            val intent: Intent = Intent(applicationContext, Trazabilidad::class.java)
             startActivity(intent)
         }
 
@@ -145,7 +145,7 @@ class Login : AppCompatActivity(), AuthListener {
             builder.show()
         }else{
             //Toast.makeText(applicationContext, "Tu correo electrónico está verificado", Toast.LENGTH_SHORT).show()
-            var pasar:Intent = Intent(applicationContext, ScannerQR::class.java)
+            var pasar:Intent = Intent(applicationContext, Trazabilidad::class.java)
             startActivity(pasar)
         }
     }

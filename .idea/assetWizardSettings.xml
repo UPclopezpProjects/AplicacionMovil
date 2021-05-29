@@ -322,7 +322,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialiconstwotone/error/twotone_error_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialiconstwotone/arrow_back/twotone_arrow_back_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -332,8 +332,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="ff0000" />
-                            <entry key="outputName" value="ic_twotone_error_24" />
+                            <entry key="color" value="008f67" />
+                            <entry key="outputName" value="escenario" />
                             <entry key="sourceFile" value="E:\miscosas\itvo\residenciaprofesional\aguacatitob.psd" />
                           </map>
                         </option>

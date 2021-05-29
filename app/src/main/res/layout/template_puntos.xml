@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -9,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5sp"
-        android:layout_marginTop="10sp"
+        android:layout_marginTop="5sp"
         android:layout_marginEnd="5sp"
-        android:layout_marginBottom="10sp"
+        android:layout_marginBottom="5sp"
         android:foreground="?attr/selectableItemBackground">
 
         <LinearLayout
@@ -63,48 +64,104 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="10sp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Escenario Previo:" />
-
-                <ImageView
-                    android:id="@+id/imageView17"
-                    android:layout_width="40sp"
-                    android:layout_height="40sp"
-                    android:layout_marginStart="10sp"
-                    app:srcCompat="@drawable/informacion" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView19"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="10sp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Escenario:" />
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/imageView18"
-                    android:layout_width="40sp"
-                    android:layout_height="40sp"
-                    android:layout_marginStart="10sp"
-                    app:srcCompat="@drawable/informacion" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <ImageView
+                                android:id="@+id/imageView19"
+                                android:layout_width="40sp"
+                                android:layout_height="40sp"
+                                app:srcCompat="@drawable/escenario_previo" />
+
+                            <ImageView
+                                android:id="@+id/imageView17"
+                                android:layout_width="40sp"
+                                android:layout_height="40sp"
+                                app:srcCompat="@drawable/ic_twotone_error_24" />
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <Button
+                            android:id="@+id/button"
+                            android:layout_width="40sp"
+                            android:layout_height="40sp"
+                            android:background="@drawable/masinformation"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:ignore="MissingConstraints" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <ImageView
+                                    android:id="@+id/imageView20"
+                                    android:layout_width="40sp"
+                                    android:layout_height="40sp"
+                                    app:srcCompat="@drawable/escenario" />
+
+                                <ImageView
+                                    android:id="@+id/imageView18"
+                                    android:layout_width="40sp"
+                                    android:layout_height="40sp"
+                                    app:srcCompat="@drawable/ic_twotone_error_24" />
+                            </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
 
