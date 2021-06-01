@@ -16,15 +16,15 @@
             android:layout_width="216dp"
             android:layout_height="161dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/todo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.089"
-            app:srcCompat="@drawable/logo"
-            android:contentDescription="@string/todo" />
+            app:srcCompat="@drawable/logo" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -163,7 +163,6 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="40dp"
                 android:backgroundTint="@android:color/holo_green_light"
-                android:enabled="false"
                 android:foreground="?attr/selectableItemBackground"
                 android:rotationX="0"
                 android:text="@string/olvid_mi_contrase_a"
@@ -207,27 +206,22 @@
             android:textStyle="bold" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/button7"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginEnd="80dp"
-                android:background="@drawable/googlei"
-                android:foreground="?android:attr/selectableItemBackground" />
 
-            <Button
-                android:id="@+id/button8"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:background="@drawable/facebooki"
-                android:foreground="?android:attr/selectableItemBackground" />
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="30dp" />
         </LinearLayout>
 
     </LinearLayout>

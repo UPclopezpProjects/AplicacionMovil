@@ -34,10 +34,7 @@ class ScannerQR : AppCompatActivity(), AuthQr {
 
         viewModel = ViewModelProviders.of(this).get(ScannerQRViewModel::class.java)
         viewModel.authListener = this
-        //CoroutinesTraz.authListener = this
 
-        //val escanear = findViewById<Button>(R.id.BTEscanear)
-        //escanear.setOnClickListener {
         binding.BTEscanear.setOnClickListener {
             if (ValidarR.hayRed(this)){
                 //Toast.makeText(this, "Hay red", Toast.LENGTH_SHORT).show()
@@ -52,16 +49,9 @@ class ScannerQR : AppCompatActivity(), AuthQr {
             }
         }
 
-        //}
 
-        //val volver = findViewById<Button>(R.id.BTVolver)
         binding.BTVolver.setOnClickListener {
-            consulta.consulta = null
-            responseUser.message  = null
-            responseUser.user = null
-            responseUser.token = null
             finish()
-
         }
     }
 
@@ -75,14 +65,10 @@ class ScannerQR : AppCompatActivity(), AuthQr {
             //viewModel.sobrescribir(datos, baseContext)
             viewModel.mapeoJS()
         }
-        /*if (consulta.consulta != null){
-            TrazabilidadScreen()
-        }*/
     }
 
     fun TrazabilidadScreen(){
-        var intent1 : Intent = Intent(applicationContext, Trazabilidad::class.java)
-        startActivity(intent1)
+        finish()
         var intent2 : Intent = Intent(applicationContext, DatosTrazabilidad::class.java)
         startActivity(intent2)
     }

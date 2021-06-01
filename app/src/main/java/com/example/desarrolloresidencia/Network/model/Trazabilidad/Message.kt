@@ -10,5 +10,6 @@ data class Message(
     val image: String,
     val name: String,
     val previousStage: String,
+    val description: String,
     val ubication: String
 )

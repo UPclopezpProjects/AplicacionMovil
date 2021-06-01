@@ -90,7 +90,7 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
         var ubicacion: String ?= null
         var nombre: TextView ?= null
         var escenarioP: ImageView ?= null
-        var escenarioPE: TextView ?= null
+        var escenarioPE: ImageView ?= null
         var escenario: ImageView ?= null
         var imagen : ImageView ?= null
         //var __V: TextView ?= null
@@ -107,7 +107,7 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
             ubicacion= ""
             nombre= vista.findViewById(R.id.TVNombreTP)
             escenarioP= vista.findViewById(R.id.imageView17)
-            escenarioPE = vista.findViewById(R.id.textView18)
+            escenarioPE = vista.findViewById(R.id.imageView19)
             escenario= vista.findViewById(R.id.imageView18)
             imagen= vista.findViewById(R.id.imageView10)
             //__V= vista.findViewById(R.id.TV__V)

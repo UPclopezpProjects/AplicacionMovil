@@ -91,6 +91,7 @@ class RecuperacionContrasena : AppCompatActivity(), AuthRecuperar {
         binding.BTEnviar.isEnabled = true
         binding.ETCorreo.isEnabled = true
         //Toast.makeText(applicationContext, "$message", Toast.LENGTH_SHORT).show()
+        Log.e("RECUPERACION", "$message")
         mensajeS(message)
     }
 
@@ -103,22 +104,20 @@ class RecuperacionContrasena : AppCompatActivity(), AuthRecuperar {
     }
 
     fun mensajeS(mensaje : String){
-        var testModel = Gson().fromJson(mensaje, Error::class.java)
-
+        Log.d("RecuperaciónContrasena", "después del testModel")
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Registro Exitoso").setIcon(R.drawable.logo)
-        builder.setMessage("${testModel.message}")
+        builder.setTitle("Solicitud exitosa").setIcon(R.drawable.logo)
+        builder.setMessage("$mensaje")
         builder.setPositiveButton("ok"){dialog, id ->}
         builder.show()
     }
 
     fun mensajeE(mensaje : String){
         var testModel = Gson().fromJson(mensaje, Error::class.java)
-
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Error").setIcon(R.drawable.logo)
+        builder.setTitle("Error Login").setIcon(R.drawable.ic_twotone_error_24)
         builder.setMessage("${testModel.message}")
-        builder.setPositiveButton("ok"){dialog, id ->}
+        builder.setPositiveButton("ok"){ dialog, id ->}
         builder.show()
     }
 }

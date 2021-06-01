@@ -36,4 +36,6 @@
     <string name="propiedades">Propiedades</string>
     <string name="textview">TextView</string>
     <string name="colesterol">Colesterol</string>
+    <string name="facebook_app_id">1444555492576584</string>
+    <string name="fb_login_protocol_scheme">fb1444555492576584</string>
 </resources>

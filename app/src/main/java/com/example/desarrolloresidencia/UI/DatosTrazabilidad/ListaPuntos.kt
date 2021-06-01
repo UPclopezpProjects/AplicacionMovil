@@ -55,6 +55,7 @@ class ListaPuntos : Fragment() {
                                     consulta.consulta!!.get(i)._id,
                                     consulta.consulta!!.get(i).code,
                                     consulta.consulta!!.get(i).currentStage,
+                                    consulta.consulta!!.get(i).description,
                                     consulta.consulta!!.get(i).fid,
                                     consulta.consulta!!.get(i).id,
                                     //consulta.consulta!!.get(i).image,
@@ -71,6 +72,7 @@ class ListaPuntos : Fragment() {
                                     consulta.consulta!!.get(i)._id,
                                     "",
                                     consulta.consulta!!.get(i).currentStage,
+                                    consulta.consulta!!.get(i).description,
                                     consulta.consulta!!.get(i).fid,
                                     consulta.consulta!!.get(i).id,
                                     //consulta.consulta!!.get(i).image,
@@ -101,37 +103,39 @@ class ListaPuntos : Fragment() {
 
         }else{
             Toast.makeText(context, "Para conocer todas las ubicaciones del aguacate debes de iniciar sesión", Toast.LENGTH_LONG).show()
-            var nuevaI = consulta.consulta!!.get(1).image.replace("http://0.0.0.0", "http://52.202.214.13")
-            if (consulta.consulta!!.get(1).code != null){
+            var nuevaI = consulta.consulta!!.get(0).image.replace("http://0.0.0.0", "http://52.202.214.13")
+            if (consulta.consulta!!.get(0).code != null){
                 puntos.add(
                         Ubicacion(
-                                consulta.consulta!!.get(1).__v,
-                                consulta.consulta!!.get(1)._id,
-                                consulta.consulta!!.get(1).code,
-                                consulta.consulta!!.get(1).currentStage,
-                                consulta.consulta!!.get(1).fid,
-                                consulta.consulta!!.get(1).id,
+                                consulta.consulta!!.get(0).__v,
+                                consulta.consulta!!.get(0)._id,
+                                consulta.consulta!!.get(0).code,
+                                consulta.consulta!!.get(0).currentStage,
+                                consulta.consulta!!.get(0).description,
+                                consulta.consulta!!.get(0).fid,
+                                consulta.consulta!!.get(0).id,
                                 //consulta.consulta!!.get(i).image,
                                 nuevaI,
-                                consulta.consulta!!.get(1).name,
-                                consulta.consulta!!.get(1).previousStage,
-                                consulta.consulta!!.get(1).ubication
+                                consulta.consulta!!.get(0).name,
+                                consulta.consulta!!.get(0).previousStage,
+                                consulta.consulta!!.get(0).ubication
                         )
                 )
             }else{
                 puntos.add(
                         Ubicacion(
-                                consulta.consulta!!.get(1).__v,
-                                consulta.consulta!!.get(1)._id,
+                                consulta.consulta!!.get(0).__v,
+                                consulta.consulta!!.get(0)._id,
                                 "",
-                                consulta.consulta!!.get(1).currentStage,
-                                consulta.consulta!!.get(1).fid,
-                                consulta.consulta!!.get(1).id,
+                                consulta.consulta!!.get(0).currentStage,
+                                consulta.consulta!!.get(0).description,
+                                consulta.consulta!!.get(0).fid,
+                                consulta.consulta!!.get(0).id,
                                 //consulta.consulta!!.get(i).image,
                                 nuevaI,
-                                consulta.consulta!!.get(1).name,
-                                consulta.consulta!!.get(1).previousStage,
-                                consulta.consulta!!.get(1).ubication
+                                consulta.consulta!!.get(0).name,
+                                consulta.consulta!!.get(0).previousStage,
+                                consulta.consulta!!.get(0).ubication
                         )
                 )
             }

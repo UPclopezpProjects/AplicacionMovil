@@ -1,25 +1,36 @@
 package com.example.desarrolloresidencia.UI.DatosTrazabilidad
 
+import android.app.Activity
+import android.app.AlertDialog
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
+import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.UI.AlertDialog.Guacamole
 import com.example.desarrolloresidencia.UI.AlertDialog.mapaInformacion
+import com.example.desarrolloresidencia.UI.Trazabilidad
+import com.example.desarrolloresidencia.ViewModel.ScannerQRViewModel
+import com.example.desarrolloresidencia.utils.Auth.AuthQr
 import com.example.desarrolloresidencia.utils.FragmentarString
+import com.example.desarrolloresidencia.utils.ValidarR
 import com.example.desarrolloresidencia.utils.responseUser
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.google.zxing.integration.android.IntentIntegrator
 
 
-class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.MoverCamara {
+class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.MoverCamara, AuthQr {
+    lateinit var viewModel: ScannerQRViewModel
 
     private lateinit var mMap: GoogleMap
     var letra= ArrayList<String>()
@@ -27,6 +38,9 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.datos_trazabilidad)
+
+        viewModel = ViewModelProviders.of(this).get(ScannerQRViewModel::class.java)
+        viewModel.authListener = this
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
@@ -36,12 +50,42 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
         back.setOnClickListener {
             finish()
         }
-        //Toast.makeText(this, "Scrollea la lista de ubicaciones y da click sobre el elemento que quieras ver en el mapa", Toast.LENGTH_LONG).show()
+
+        var escanear = findViewById<Button>(R.id.BTEscanear)
+        escanear.setOnClickListener {
+            if (ValidarR.hayRed(this)){
+                //Toast.makeText(this, "Hay red", Toast.LENGTH_SHORT).show()
+                IntentIntegrator(this).initiateScan()
+            } else {
+                //Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Error").setIcon(R.drawable.ic_twotone_error_24)
+                builder.setMessage("No hay red")
+                builder.setPositiveButton("ok"){dialog, id ->}
+                builder.show()
+            }
+        }
 
         var infor = findViewById<Button>(R.id.BTInformacion)
         infor.setOnClickListener {
             mapaInformacion().show(supportFragmentManager, "mapaInformacion")
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        val datos = result.contents
+        Log.d("datos", "$datos")
+        if (datos != null){
+            viewModel.QR=datos
+            //viewModel.sobrescribir(datos, baseContext)
+            viewModel.mapeoJS()
+        }
+    }
+
+    override fun onRestart() {
+        super.onRestart()
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -55,9 +99,6 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
             mMap.uiSettings.isRotateGesturesEnabled=false
             mMap.uiSettings.isScrollGesturesEnabled=false
         }
-
-
-
 
         var polilinea = PolylineOptions()
         Log.d("tamaño", consulta.consulta!!.size.toString())
@@ -83,7 +124,6 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
                 .width(15F)
                 .pattern(arrayListOf<PatternItem>(Dash(50F), Gap(25F)))
         )
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(FragmentarString().separaLL(consulta.consulta!!.get(consulta.consulta!!.size-1).ubication)))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(FragmentarString().separaLL(consulta.consulta!!.get(consulta.consulta!!.size-1).ubication), 5.0F))
     }
 
@@ -120,5 +160,28 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
         letra!!.add("X")
         letra!!.add("Y")
         letra!!.add("Z")
+    }
+
+    override fun onStarted() {
+        Toast.makeText(applicationContext, "Cargando...", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onSuccess(message: List<Message>) {
+        finish()
+        var intent1 : Intent = Intent(applicationContext, DatosTrazabilidad::class.java)
+        startActivity(intent1)
+    }
+
+    override fun onFailure(message: String) {
+        mensajeE(message)
+    }
+
+    fun mensajeE(mensaje : String){
+        Log.d("ScannerQR", "El mensaje: $mensaje")
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Error").setIcon(R.drawable.ic_twotone_error_24)
+        builder.setMessage("$mensaje")
+        builder.setPositiveButton("ok"){dialog, id ->}
+        builder.show()
     }
 }
