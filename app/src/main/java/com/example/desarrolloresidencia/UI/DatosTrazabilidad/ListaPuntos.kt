@@ -13,13 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
 import com.example.desarrolloresidencia.R
-import com.example.desarrolloresidencia.utils.AdaptadorCustom
-import com.example.desarrolloresidencia.utils.ClickListener
-import com.example.desarrolloresidencia.utils.Ubicacion
-import com.example.desarrolloresidencia.utils.responseUser
+import com.example.desarrolloresidencia.ViewModel.LoginViewModel
+import com.example.desarrolloresidencia.utils.*
 import java.lang.ClassCastException
 
-class ListaPuntos : Fragment() {
+class ListaPuntos : Fragment(), RecyclerV {
 
     var lista:RecyclerView ?= null
     var puntos = ArrayList<Ubicacion>()
@@ -32,6 +30,7 @@ class ListaPuntos : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mapearpuntos()
+        adaptador?.navegacion = this
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
@@ -166,6 +165,8 @@ class ListaPuntos : Fragment() {
         }
     }
 
+
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
@@ -175,6 +176,22 @@ class ListaPuntos : Fragment() {
         }
     }
 
-
-
+    override fun anterior(posicion: Int) {
+        layoutManager?.scrollToPosition(posicion)
     }
+
+    override fun siguiente(posicion: Int) {
+        layoutManager?.scrollToPosition(posicion)
+    }
+
+    override fun descripcion(descripcion: String) {
+        val builder = AlertDialog.Builder(context)
+
+        builder.setTitle("Descripción").setIcon(R.drawable.logo)
+        builder.setMessage("$descripcion")
+        builder.setPositiveButton("ok"){ dialog, id ->}
+        builder.show()
+    }
+
+
+}

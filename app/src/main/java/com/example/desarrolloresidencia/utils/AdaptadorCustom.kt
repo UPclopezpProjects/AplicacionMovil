@@ -1,5 +1,6 @@
 package com.example.desarrolloresidencia.utils
 
+import android.app.AlertDialog
 import android.content.Context
 import android.media.Image
 import android.opengl.Visibility
@@ -7,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +19,8 @@ import org.w3c.dom.Text
 class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): RecyclerView.Adapter<AdaptadorCustom.ViewHolder>() {
 
     var items: ArrayList<Ubicacion> ?= null
+    var navegacion: RecyclerV ?= null
+
 
     init {
         this.items = items
@@ -67,10 +71,30 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
                 "null"->holder.escenarioP?.visibility = View.GONE
             }
         }else{
-            holder.escenarioPE?.visibility = View.GONE
+            holder.anterior?.visibility = View.GONE
             holder.escenarioP?.visibility = View.GONE
         }
 
+        if (position==0){
+            holder.siguiente?.visibility = View.GONE
+            holder.escenario?.visibility = View.GONE
+        }
+
+        holder.anterior?.setOnClickListener {
+            //holder.lista?.scrollToPosition(position-1)
+            Log.e("Adaptador custom, anterior", "${position+1}")
+            navegacion?.anterior(position+1)
+        }
+
+        holder.siguiente?.setOnClickListener {
+            //holder.lista?.scrollToPosition(position+1)
+            Log.e("Adaptador custom, siguiente", "${position-1}")
+            navegacion?.siguiente(position-1)
+        }
+
+        holder.descripcion?.setOnClickListener {
+            navegacion?.descripcion(item!!.description)
+        }
 
     }
 
@@ -78,6 +102,9 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
         return items?.count()!!
         //Log.d("getItemCount","pasó")
     }
+
+
+
 
     class ViewHolder(vista: View, listener: ClickListener): RecyclerView.ViewHolder(vista), View.OnClickListener{
         var vista = vista
@@ -90,11 +117,14 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
         var ubicacion: String ?= null
         var nombre: TextView ?= null
         var escenarioP: ImageView ?= null
-        var escenarioPE: ImageView ?= null
         var escenario: ImageView ?= null
         var imagen : ImageView ?= null
         //var __V: TextView ?= null
         var listener: ClickListener ?= null
+        var siguiente:Button ?= null
+        var anterior:Button ?= null
+        var lista:RecyclerView ?= null
+        var descripcion: Button ?= null
 
 
         init {
@@ -107,17 +137,22 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
             ubicacion= ""
             nombre= vista.findViewById(R.id.TVNombreTP)
             escenarioP= vista.findViewById(R.id.imageView17)
-            escenarioPE = vista.findViewById(R.id.imageView19)
             escenario= vista.findViewById(R.id.imageView18)
             imagen= vista.findViewById(R.id.imageView10)
             //__V= vista.findViewById(R.id.TV__V)
             this.listener = listener
             vista.setOnClickListener(this)
+            siguiente= vista.findViewById(R.id.BTNSiguienteE)
+            anterior = vista.findViewById(R.id.BTNEscenarioP)
+            lista= vista.findViewById(R.id.lista)
+            descripcion= vista.findViewById(R.id.BTNDescripcion)
         }
 
         override fun onClick(v: View?) {
             this.listener?.onClick(v!!, adapterPosition)
         }
+
+
     }
 
 }

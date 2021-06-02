@@ -84,17 +84,20 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent">
 
-                            <ImageView
-                                android:id="@+id/imageView19"
-                                android:layout_width="40sp"
-                                android:layout_height="40sp"
-                                app:srcCompat="@drawable/escenario_previo" />
+                            <Button
+                                android:id="@+id/BTNSiguienteE"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/escenario"
+                                android:foreground="?android:attr/selectableItemBackground" />
 
                             <ImageView
-                                android:id="@+id/imageView17"
+                                android:id="@+id/imageView18"
                                 android:layout_width="40sp"
                                 android:layout_height="40sp"
                                 app:srcCompat="@drawable/ic_twotone_error_24" />
+
                         </LinearLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -111,7 +114,7 @@
                         android:layout_height="match_parent">
 
                         <Button
-                            android:id="@+id/button"
+                            android:id="@+id/BTNDescripcion"
                             android:layout_width="40sp"
                             android:layout_height="40sp"
                             android:background="@drawable/masinformation"
@@ -146,16 +149,19 @@
                                 app:layout_constraintStart_toStartOf="parent">
 
                                 <ImageView
-                                    android:id="@+id/imageView20"
-                                    android:layout_width="40sp"
-                                    android:layout_height="40sp"
-                                    app:srcCompat="@drawable/escenario" />
-
-                                <ImageView
-                                    android:id="@+id/imageView18"
+                                    android:id="@+id/imageView17"
                                     android:layout_width="40sp"
                                     android:layout_height="40sp"
                                     app:srcCompat="@drawable/ic_twotone_error_24" />
+
+                                <Button
+                                    android:id="@+id/BTNEscenarioP"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/escenario_previo"
+                                    android:foreground="?android:attr/selectableItemBackground" />
+
                             </LinearLayout>
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
