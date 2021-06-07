@@ -184,8 +184,11 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< Updated upstream
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+=======
+>>>>>>> Stashed changes
             android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
@@ -197,12 +200,22 @@
                 android:background="@drawable/googlei"
                 android:foreground="?android:attr/selectableItemBackground" />
 
+<<<<<<< Updated upstream
             <Button
                 android:id="@+id/button8"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@drawable/facebooki"
                 android:foreground="?android:attr/selectableItemBackground" />
+=======
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/loginbuttonF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="30dp" />
+>>>>>>> Stashed changes
         </LinearLayout>
 
     </LinearLayout>

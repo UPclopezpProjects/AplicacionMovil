@@ -19,4 +19,30 @@
     <string name="c_lculo_nutricional">Cálculo Nutricional</string>
     <string name="title_activity_datos_trazabilidad">Map</string>
     <string name="todo">TODO</string>
+<<<<<<< Updated upstream
+=======
+    <string name="por_favor_escanea_el_c_digo_qr_de_tu_aguacate_para_poder_continuar">Por favor escanea el código QR de tu aguacate para poder continuar</string>
+    <string name="trazabilidad">Trazabilidad</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="salir">Salir</string>
+    <string name="informaci_n">Información</string>
+    <string name="c_digo">Código:</string>
+    <string name="v">__V:</string>
+    <string name="ubicaci_n">Ubicación:</string>
+    <string name="fid">FId:</string>
+    <string name="id">Id:</string>
+    <string name="escenario">Escenario:</string>
+    <string name="escenario_previo">Escenario previo:</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name">Name</string>
+    <string name="propiedades">Propiedades</string>
+    <string name="textview">TextView</string>
+    <string name="colesterol">Colesterol</string>
+    <string name="facebook_app_id">300516468363046</string>
+    <string name="fb_login_protocol_scheme">fb300516468363046</string>
+
+
+
+
+>>>>>>> Stashed changes
 </resources>

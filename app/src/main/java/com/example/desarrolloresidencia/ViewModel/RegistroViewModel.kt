@@ -32,9 +32,16 @@ class RegistroViewModel(): ViewModel() {
 
     }
 
+<<<<<<< Updated upstream
     fun validacionErr (error : String){
         if (error == "404"){
             authListener?.onFailure("El email $email ya está en uso")
+=======
+
+    fun validarStatus (status : String):String{
+        if (status=="false"){
+            return "Verifica tu correo electrónico"
+>>>>>>> Stashed changes
         }else{
             authListener?.onFailure("Código de error $error")
         }
