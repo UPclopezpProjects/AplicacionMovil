@@ -16,7 +16,7 @@ class LoginViewModel() : ViewModel()  {
     var authListener: AuthListener?= null
 
     fun onLoginButtonClick(){
-        try {
+        try { 
 
 
         authListener?.onStarted()
