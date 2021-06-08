@@ -66,6 +66,7 @@
                     android:fontFamily="sans-serif-light"
                     android:text="Información sobre el aguacate"
                     android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="20sp"
                     android:typeface="serif" />
 
@@ -80,6 +81,7 @@
                     android:fontFamily="sans-serif-light"
                     android:text='Su origen se sitúa en Centroamérica, en las zonas de México, Guatemala y las Antillas. El nombre deriva del azteca ahuacatl, que significa "testículo".'
                     android:textAlignment="textStart"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     android:typeface="normal" />
 
@@ -92,8 +94,9 @@
                     android:layout_marginEnd="10sp"
                     android:layout_marginBottom="8sp"
                     android:fontFamily="sans-serif-light"
-                    android:text="Aunque es una fruta fresca su principal componente no son los hidratos de carbono, sino las grasas, que constituyen el 24% de supeso."
+                    android:text="Aunque es una fruta fresca su principal componente no son los hidratos de carbono, sino las grasas, que constituyen el 24% de su peso."
                     android:textAlignment="textStart"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
 
                 <TextView
@@ -107,6 +110,7 @@
                     android:fontFamily="sans-serif-light"
                     android:text="Como otros alimentos grasos, destaca sobre todo por su vitamina E, que protege la membrana de las células y su núcleo, que puede prevenir el desarrollo de enfermedades degenerativas como el cáncer. Unos 100 g de aguacate procuran el 25% de la que se precisa al día."
                     android:textAlignment="textStart"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
 
                 <ImageView

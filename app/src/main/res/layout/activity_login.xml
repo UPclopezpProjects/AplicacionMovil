@@ -105,26 +105,35 @@
 
             <ImageView
                 android:layout_width="55sp"
-                android:layout_height="match_parent"
+                android:layout_height="55sp"
                 android:contentDescription="@string/todo"
                 app:srcCompat="@drawable/ic_baseline_lock_24" />
 
-            <EditText
-                android:id="@+id/password"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="@string/contrase_a"
-                android:inputType="textPassword"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/ETEmail"
-                app:layout_constraintTop_toBottomOf="@+id/ETEmail"
-                app:layout_constraintVertical_bias="0.077" />
+                app:passwordToggleEnabled="true">
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:ems="10"
+                    android:hint="@string/contrase_a"
+                    android:inputType="textPassword"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/ETEmail"
+                    app:layout_constraintTop_toBottomOf="@+id/ETEmail"
+                    app:layout_constraintVertical_bias="0.077"
+                    app:passwordToggleEnabled="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
         </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -208,19 +217,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
 
             <com.facebook.login.widget.LoginButton
-                android:id="@+id/login_button"
+                android:id="@+id/loginbuttonF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="40dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
                 android:layout_marginBottom="30dp" />
         </LinearLayout>
 

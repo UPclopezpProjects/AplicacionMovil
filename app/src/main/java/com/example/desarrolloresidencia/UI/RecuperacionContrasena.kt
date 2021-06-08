@@ -115,7 +115,7 @@ class RecuperacionContrasena : AppCompatActivity(), AuthRecuperar {
     fun mensajeE(mensaje : String){
         var testModel = Gson().fromJson(mensaje, Error::class.java)
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Error Login").setIcon(R.drawable.ic_twotone_error_24)
+        builder.setTitle("Error Login").setIcon(R.drawable.logo)
         builder.setMessage("${testModel.message}")
         builder.setPositiveButton("ok"){ dialog, id ->}
         builder.show()

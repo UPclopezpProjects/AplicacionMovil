@@ -25,7 +25,7 @@ class AmazonRepository {
         Log.d("repositorio id", "$id")
         Log.d("repositorio token", "$token")
         //return MyApi().actualizarUsurio("$email", "$contrasena", "$nombre", "true", "$apellidoP", "$apellidoM", "update", "updateMe", "48d6adacee72fea2034b636a029d3ea9", "$id", "$token")
-        return APIAmazon().actualizarUsurio("$contrasena", "$nombre", "true", "$apellidoP", "$apellidoM", "update", "updateMe", "48d6adacee72fea2034b636a029d3ea9", "$id", "$token")
+        return APIAmazon().actualizarUsurio("$contrasena", "$nombre", "true", "$apellidoP", "$apellidoM", "update", "updateMe", "48d6adacee72fea2034b636a029d3ea9", "$id", "$token", "$id")
     }
 
     suspend fun recuperarPassword(email: String):Response<com.example.desarrolloresidencia.Network.model.RecuperarPass.Response>{
@@ -34,6 +34,7 @@ class AmazonRepository {
     }
 
     suspend fun userRegistro(nombre:String, apellidoP:String, apellidoM:String, email:String, contrasena:String, dp:String): Response<CreacionConsumidor> {
+
         var jsonOsman = """{ "email":"${email.toLowerCase()}","password":"$contrasena","surnameA":"$apellidoP","surnameB":"$apellidoM","nameOfUser":"$nombre","typeOfUser":"Consumer","status":"false","creationDate":"xx-xx-xxxx","dp":$dp,"addressU":"0xf26F59ac3801F419Abe44CA7d56FfC8fB8142BbB","typeOfOperation":"create","nameOfOperation":"createConsumer" }"""
 
         Log.d("el string", "$jsonOsman")

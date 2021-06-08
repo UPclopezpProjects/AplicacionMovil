@@ -2,6 +2,7 @@ package com.example.desarrolloresidencia.UI
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,8 @@ class Trazabilidad : AppCompatActivity() {
         //setContentView(R.layout.activity_trazabilidad)
         binding = ActivityTrazabilidadBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        ocultarajustes()
 
         binding.BTVolver.setOnClickListener {
             if(responseUser.user != null){
@@ -132,4 +135,51 @@ class Trazabilidad : AppCompatActivity() {
             }
         }
     }
+
+    fun ocultarajustes(){
+        if(responseUser.message == null){
+            binding.BTAjustes.visibility = View.INVISIBLE
+            binding.textView14.visibility = View.INVISIBLE
+        }else{
+            binding.BTAjustes.visibility = View.VISIBLE
+            binding.textView14.visibility = View.VISIBLE
+        }
+    }
+
+    override fun onBackPressed() {
+
+        if(responseUser.user != null){
+
+            val builder = AlertDialog.Builder(this)
+
+            builder.setView(R.layout.fragment_logout)
+
+            //set positive button
+            builder.setNegativeButton(
+                    "No"
+            ) { dialog, id ->
+                // User cancelled the dialog
+            }
+
+            builder.setPositiveButton("Si") { dialog, id ->
+                // User clicked Update Now button
+                consulta.consulta = null
+                responseUser.message  = null
+                responseUser.user = null
+                responseUser.token = null
+                super.onBackPressed()
+                finish()
+                startActivity(
+                        Intent(baseContext, SplashScreen::class.java)
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                )
+            }
+
+            builder.show()
+        }else{
+            consulta.consulta = null
+            finish()
+        }
+    }
+
 }

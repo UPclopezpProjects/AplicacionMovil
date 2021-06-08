@@ -2,26 +2,32 @@ package com.example.desarrolloresidencia.UI
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.EditText
-import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.example.desarrolloresidencia.Network.model.Login.User
 import com.example.desarrolloresidencia.Network.model.MessageError.Error
+import com.example.desarrolloresidencia.Network.model.MessageError.ErrorFacebook
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.ViewModel.LoginViewModel
 import com.example.desarrolloresidencia.databinding.ActivityLoginBinding
 import com.example.desarrolloresidencia.utils.Auth.AuthListener
+import com.example.desarrolloresidencia.utils.JsonFacebook
 import com.example.desarrolloresidencia.utils.ValidarR
 import com.facebook.*
 import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
 import com.google.gson.Gson
-import com.squareup.picasso.Picasso
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 
 class Login : AppCompatActivity(), AuthListener {
@@ -29,21 +35,22 @@ class Login : AppCompatActivity(), AuthListener {
     private lateinit var binding: ActivityLoginBinding
 
     //esto es de facebook
+    //gestor de callbacks
     private var callbackManager:CallbackManager ?= null
     private var profileTracker:ProfileTracker ?= null
     private var accessToken:AccessToken ?= null
-    //private var foto:ImageView ?= null
-
+    private var loginF: Boolean ?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        hash()
         loginViewModel= ViewModelProviders.of(this).get(LoginViewModel::class.java)
-
         loginViewModel.authListener = this
-        //Coroutines.authListener= this
+        loginViewModel.contexto = this
+
 
         callbackManager = CallbackManager.Factory.create();
 
@@ -68,6 +75,8 @@ class Login : AppCompatActivity(), AuthListener {
 
 
         binding.BTSaltar.setOnClickListener {
+            binding.ETEmail.setText("")
+            binding.password.setText("")
             val intent: Intent = Intent(applicationContext, Trazabilidad::class.java)
             startActivity(intent)
         }
@@ -77,63 +86,103 @@ class Login : AppCompatActivity(), AuthListener {
             startActivity(intent)
         }
 
-        //aquí comienza lo de facebook
-        val loginButton = findViewById<LoginButton>(R.id.login_button)
-        loginButton.setReadPermissions("email")
+        callbackManager = CallbackManager.Factory.create()
 
-        //inicializo la imagen de perfil
-        //foto = binding.fotoPerfil
+        val loginButton = findViewById<LoginButton>(R.id.loginbuttonF)
+        loginButton.setReadPermissions("email")
 
         //verifica si ya había iniciado sesión
         if (AccessToken.getCurrentAccessToken() != null && Profile.getCurrentProfile() != null){
-            Log.d("LOGIN INICIAL", "${Profile.getCurrentProfile().firstName}")
+            Log.e("Verifica si ya hay una sesión iniciada", "${Profile.getCurrentProfile().firstName}")
             accessToken = AccessToken.getCurrentAccessToken()
             cargarData()
         }
 
         // Callback registration
+
+        // Callback registration
+
         loginButton.registerCallback(callbackManager, object : FacebookCallback<LoginResult?> {
+
             override fun onSuccess(loginResult: LoginResult?) {
+                accessToken = AccessToken.getCurrentAccessToken()
+                Log.e("Le diste click al login con facebook", "onSuccess")
+                loginF= true
+                // App code
                 //este es el accessToken
                 val accessToken = AccessToken.getCurrentAccessToken()
                 //esto me marca si estoy logeado o no
                 val isLoggedIn = accessToken != null && !accessToken.isExpired
-                Log.d("LOGIN, ACCESS-TOKEN,user", "${accessToken.userId}")
+                Log.e("Login AccessToken", "${loginResult?.accessToken}")
+                //verifica si ya se logeo previamente
                 if (Profile.getCurrentProfile() == null) {
+
+                    Log.e("Le diste click al login con facebook", "verifica el logeo previo")
+
                     profileTracker = object : ProfileTracker() {
-                        override fun onCurrentProfileChanged(
-                            oldProfile: Profile?,
-                            currentProfile: Profile?
-                        ) {
-                            Log.d(
-                                "NOMBRE",
-                                currentProfile?.firstName.toString() + currentProfile?.lastName
-                            )
+                        //permite rastrear cuando un perfil cambia
+                        override fun onCurrentProfileChanged(oldProfile: Profile?, currentProfile: Profile?) {
+
+                            Log.e("Le diste click al login con facebook", "rastrea el cambio de inicio de sesión")
+
+                            Log.e("Le diste click al login con facebook", "onSuccess")
+                            Log.d("FIRST NAME", currentProfile?.firstName.toString())
+                            Log.d("LAST NAME", currentProfile?.lastName.toString())
+                            Log.d("MIDDLE NAME", currentProfile?.middleName.toString())
+                            Log.d("NAME", currentProfile?.name.toString())
+                            //deja de hacer el rastreo del perfil
                             profileTracker?.stopTracking()
+                            loginViewModel.firstname = currentProfile?.firstName.toString()
+                            loginViewModel.lastname = currentProfile?.lastName.toString()
+                            loginViewModel.firstname = currentProfile?.firstName.toString()
+                            loginViewModel.middlename = currentProfile?.middleName.toString()
+                            //Toast.makeText(applicationContext, "dentro del if", Toast.LENGTH_LONG).show()
+                            cargarData()
                         }
                     }
                 } else {
                     val profile = Profile.getCurrentProfile()
-                    Log.d("Login, Nombre", profile.firstName)
-
+                    Log.e("Le diste click al login con facebook", "lo que pasa cuando das login por primera vez")
+                    loginViewModel.firstname = profile?.firstName.toString()
+                    loginViewModel.lastname = profile?.lastName.toString()
+                    loginViewModel.firstname = profile?.firstName.toString()
+                    loginViewModel.middlename = profile?.middleName.toString()
+                    //Toast.makeText(applicationContext, "lo que pasa cuando das login por primera vez", Toast.LENGTH_LONG).show()
+                    cargarData()
                 }
             }
 
             override fun onCancel() {
-                Log.e("LOGIN FACEBOOK", "SE CANCELÓ EL LOGIN")
+                Log.e("Login Cancelar", "Canceló")
             }
 
             override fun onError(exception: FacebookException) {
-
+                // App code
+                Log.e("Login Error", exception.toString())
             }
         })
+
     }
 
     fun cargarData(){
+        Log.e("Login cargarData", "carga los datos ")
         val request = GraphRequest.newMeRequest(this.accessToken) {objeto, response ->
-            Log.d("GRAPH", response.toString())
+            Log.d("GRAPH1", response.toString())
+            Log.d("el json", response.rawResponse.toString())
+            //val url = response.jsonObject.getJSONObject("picture").getJSONObject("data").getString("url")
             val url = response.jsonObject.getJSONObject("picture").getJSONObject("data").getString("url")
             Log.d("GRAPH", url)
+            var formato = Gson().fromJson(response.rawResponse, JsonFacebook::class.java)
+            Log.e("EMAIL", formato.email)
+
+            if (loginF ==true){
+                Log.e("login if cargardata", "si se va entra al if")
+                loginViewModel.email = formato.email
+                loginViewModel.password = formato.id
+                loginViewModel.LoginFacebook()
+
+            }
+
             //Picasso.get().load(url).into(foto)
         }
 
@@ -143,11 +192,27 @@ class Login : AppCompatActivity(), AuthListener {
         request.executeAsync()
     }
 
-//esto igual es de facebook
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         callbackManager?.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
-        Log.d("LOGIN, DATA", "$data")
+    }
+
+    fun hash(){
+        try {
+            val info: PackageInfo? = packageManager.getPackageInfo(
+                    "com.example.desarrolloresidencia",  //Insert your own package name.
+                    PackageManager.GET_SIGNATURES
+            )
+            if (info != null) {
+                for (signature in info.signatures) {
+                    val md = MessageDigest.getInstance("SHA")
+                    md.update(signature.toByteArray())
+                    Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT))
+                }
+            }
+        } catch (e: PackageManager.NameNotFoundException) {
+        } catch (e: NoSuchAlgorithmException) {
+        }
     }
 
     private fun ValidationE(){
@@ -200,6 +265,7 @@ class Login : AppCompatActivity(), AuthListener {
     }
 
     override fun onFailure(message: String) {
+        Log.e("login onFailure", "$message")
         binding.PB.visibility = GONE
         binding.BTRegistro.isEnabled= true
         binding.BTSaltar.isEnabled= true
@@ -228,12 +294,52 @@ class Login : AppCompatActivity(), AuthListener {
     }
 
     fun mensajeE(mensaje: String){
-        var testModel = Gson().fromJson(mensaje, Error::class.java)
+        try {
+            var testModel = Gson().fromJson(mensaje, ErrorFacebook::class.java)
 
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Error Login").setIcon(R.drawable.logo)
-        builder.setMessage("${testModel.message}")
-        builder.setPositiveButton("ok"){ dialog, id ->}
-        builder.show()
+            if (loginF==true){
+                Log.d("prueba del if", "Ya existe un usuario con el email: ${loginViewModel.email}")
+                Log.d("el mensaje", mensaje)
+                var posibleerror = "Ya existe un usuario con el email: ${loginViewModel.email}"
+                Log.e("posibleerror", posibleerror)
+                when (testModel.message) {
+                        posibleerror -> {
+                            loginViewModel.onLoginButtonClick()
+                            /*val builder = AlertDialog.Builder(this)
+                            builder.setTitle("Registro Exitoso").setIcon(R.drawable.logo)
+                            builder.setMessage("Verifica tu correo electrónico")
+                            builder.setPositiveButton("ok"){ dialog, id ->}
+                            builder.show()*/
+                     }
+                        else -> {
+                            Log.d("login mensajeE", "$mensaje")
+                            var testModel = Gson().fromJson(mensaje, ErrorFacebook::class.java)
+                            Log.d("login testModel", "${testModel.message}")
+
+                            val builder = AlertDialog.Builder(this)
+                            builder.setTitle("Error Login").setIcon(R.drawable.logo)
+                            builder.setMessage("${testModel.message}")
+                            builder.setPositiveButton("ok"){ dialog, id ->}
+                            builder.show()
+                        }
+                }
+
+            }else{
+                Log.d("else", "que no le diste click el botón de facebook")
+                Log.d("login mensajeE", "$mensaje")
+
+                Log.d("login testModel", "${testModel.message}")
+
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Error Login").setIcon(R.drawable.logo)
+                builder.setMessage("${testModel.message}")
+                builder.setPositiveButton("ok"){ dialog, id ->}
+                builder.show()
+            }
+
+        }catch (e: java.lang.Exception){
+            Log.e("ERROR MENSAJEE", e.toString())
+        }
+
     }
 }

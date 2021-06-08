@@ -20,6 +20,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="sans-serif-light"
             android:text="Ayuda"
+            android:textColor="@color/colorPrimary"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,10 +50,10 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="12dp"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="15dp"
                 android:fontFamily="sans-serif-light"
                 android:text="Scrolea los elementos(izquierda o derecha) del carrusel y da clic sobre alguno para encontrarlo en el mapa."
-                android:textAlignment="textStart" />
+                android:textColor="@color/colorPrimary" />
         </LinearLayout>
 
         <TextView
@@ -60,10 +61,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="sans-serif-light"
             android:text=" Iconografía"
+            android:textColor="@color/colorPrimary"
             android:textSize="25sp"
             app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
@@ -87,7 +88,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="Comerciante" />
+                android:text="Comerciante"
+                android:textColor="@color/colorPrimary" />
 
             <ImageView
                 android:id="@+id/imageView14"
@@ -102,7 +104,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="Productor" />
+                android:text="Productor"
+                android:textColor="@color/colorPrimary" />
         </LinearLayout>
 
         <LinearLayout
@@ -126,7 +129,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="Transportista" />
+                android:text="Transportista"
+                android:textColor="@color/colorPrimary" />
 
             <ImageView
                 android:id="@+id/imageView16"
@@ -141,7 +145,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="Acopio" />
+                android:text="Acopio"
+                android:textColor="@color/colorPrimary" />
         </LinearLayout>
 
         <LinearLayout
@@ -158,12 +163,13 @@
                 android:src="@drawable/escenario" />
 
             <TextView
-                android:id="@+id/textView19"
+                android:id="@+id/textView18"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="Siguiente Escenario" />
+                android:text="Escenario Previo"
+                android:textColor="@color/colorPrimary" />
 
             <ImageView
                 android:id="@+id/imageView21"
@@ -173,12 +179,14 @@
                 android:src="@drawable/escenario_previo" />
 
             <TextView
-                android:id="@+id/textView18"
+                android:id="@+id/textView19"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="Escenario Previo" />
+                android:text="Siguiente Escenario"
+                android:textColor="@color/colorPrimary" />
+
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

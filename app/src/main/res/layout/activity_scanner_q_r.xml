@@ -57,6 +57,7 @@
                 android:text="Por favor escanea el código QR de tu aguacate para poder continuar "
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/colorPrimary"
                 android:textSize="24sp" />
 
         </LinearLayout>

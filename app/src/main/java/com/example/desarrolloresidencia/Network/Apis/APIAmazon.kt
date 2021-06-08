@@ -9,12 +9,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
 interface APIAmazon {
-
-    //val correo: String?
-    //get() = responseUser.user?.email
-
-    //el "Logearse" sirve como nombre del método
-    //el "FormUrlEncoded" indica que la petición tendrá un tipo MIME
     @FormUrlEncoded
     @POST("login")
     suspend  fun Logearse(
@@ -36,7 +30,8 @@ interface APIAmazon {
             @Field("nameOfOperation") nameOfOperation: String?,
             @Field("hashX") hashX: String?,
             @Path("id") id:String,
-            @Header("Authorization") Authorization:String
+            @Header("Authorization") Authorization:String,
+            @Field("email") email: String?
     ): Response<LoginUsers>
 
     @FormUrlEncoded

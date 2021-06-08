@@ -28,16 +28,22 @@ class RegistroViewModel(): ViewModel() {
                 //CoroutinesRU.main {
                 val response = AmazonRepository().userRegistro(nombre!!, apellidoP!!, apellidoM!!, email!!, password!!, dp.toString()!!)
                 if (response.isSuccessful) {
+                    Log.d("RegistroViewModel response",response.body().toString())
+
                     authListener?.onSuccess(response.body()!!.message, response.body()!!.token, response.body()!!.user)
                     Log.d("si jaló", "${response.body()!!.message}")
                 } else {
                     authListener?.onFailure(response.errorBody()!!.string())
                 }
             } catch (e: java.net.SocketTimeoutException) {
-                authListener?.onFailure("No se pudo conectar con el servidor")
+                authListener?.onFailure("""{"message":"No se pudo conectar con el servidor"}""")
+            }
+            catch (e: java.lang.NullPointerException){
+                authListener?.onFailure("""{"message":"Registro satisfactorio, confirma tu correo electrónico"}""")
             }
         }
     }
+
 
     fun validarStatus (status : String):String{
         if (status=="false"){
