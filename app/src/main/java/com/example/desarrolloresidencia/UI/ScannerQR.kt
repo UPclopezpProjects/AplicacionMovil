@@ -42,7 +42,7 @@ class ScannerQR : AppCompatActivity(), AuthQr {
             } else {
                 //Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("Error").setIcon(R.drawable.logo)
+                builder.setTitle("Error login").setIcon(R.drawable.logo)
                 builder.setMessage("No hay red")
                 builder.setPositiveButton("ok"){dialog, id ->}
                 builder.show()
@@ -95,7 +95,7 @@ class ScannerQR : AppCompatActivity(), AuthQr {
     fun mensajeE(mensaje : String){
             Log.d("ScannerQR", "El mensaje: $mensaje")
             val builder = AlertDialog.Builder(this)
-            builder.setTitle("Error").setIcon(R.drawable.ic_twotone_error_24)
+            builder.setTitle("Mensaje del servidor").setIcon(R.drawable.ic_twotone_error_24)
             builder.setMessage("$mensaje")
             builder.setPositiveButton("ok"){dialog, id ->}
             builder.show()

@@ -195,6 +195,10 @@ class Login : AppCompatActivity(), AuthListener {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         callbackManager?.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
+
+        Log.e("requestCode", requestCode.toString())
+        Log.e("resultCode", resultCode.toString())
+        Log.e("data", data.toString())
     }
 
     fun hash(){
@@ -282,7 +286,7 @@ class Login : AppCompatActivity(), AuthListener {
         if (status=="false"){
             //Toast.makeText(applicationContext, "Verifica tu correo electrónico", Toast.LENGTH_SHORT).show()
             val builder = AlertDialog.Builder(this)
-            builder.setTitle("Error Login").setIcon(R.drawable.logo)
+            builder.setTitle("Mensaje del servidor").setIcon(R.drawable.logo)
             builder.setMessage("Verifica tu correo electrónico")
             builder.setPositiveButton("ok"){ dialog, id ->}
             builder.show()
@@ -317,7 +321,7 @@ class Login : AppCompatActivity(), AuthListener {
                             Log.d("login testModel", "${testModel.message}")
 
                             val builder = AlertDialog.Builder(this)
-                            builder.setTitle("Error Login").setIcon(R.drawable.logo)
+                            builder.setTitle("Mensaje del servidor").setIcon(R.drawable.logo)
                             builder.setMessage("${testModel.message}")
                             builder.setPositiveButton("ok"){ dialog, id ->}
                             builder.show()
@@ -331,7 +335,7 @@ class Login : AppCompatActivity(), AuthListener {
                 Log.d("login testModel", "${testModel.message}")
 
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("Error Login").setIcon(R.drawable.logo)
+                builder.setTitle("Mensaje del servidor").setIcon(R.drawable.logo)
                 builder.setMessage("${testModel.message}")
                 builder.setPositiveButton("ok"){ dialog, id ->}
                 builder.show()

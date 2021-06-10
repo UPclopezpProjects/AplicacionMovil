@@ -57,6 +57,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:text="Tips"
                 android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
                 android:textSize="30sp" />
         </LinearLayout>
 

@@ -30,7 +30,7 @@ class RegistroViewModel(): ViewModel() {
                 if (response.isSuccessful) {
                     Log.d("RegistroViewModel response",response.body().toString())
 
-                    authListener?.onSuccess(response.body()!!.message, response.body()!!.token, response.body()!!.user)
+                    authListener?.onSuccess(response.body()!!.message)
                     Log.d("si jaló", "${response.body()!!.message}")
                 } else {
                     authListener?.onFailure(response.errorBody()!!.string())

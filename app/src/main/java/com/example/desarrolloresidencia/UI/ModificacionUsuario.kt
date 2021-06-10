@@ -40,7 +40,7 @@ class ModificacionUsuario : AppCompatActivity(), AuthListener {
             } else {
                 //Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("Error").setIcon(R.drawable.logo)
+                builder.setTitle("Error Login").setIcon(R.drawable.logo)
                 builder.setMessage("No hay red")
                 builder.setPositiveButton("ok"){dialog, id ->}
                 builder.show()
@@ -124,7 +124,7 @@ class ModificacionUsuario : AppCompatActivity(), AuthListener {
         if (status=="false"){
             //Toast.makeText(applicationContext, "Verifica tu correo electrónico", Toast.LENGTH_SHORT).show()
             val builder = AlertDialog.Builder(this)
-            builder.setTitle("Advertencia").setIcon(R.drawable.logo)
+            builder.setTitle("Mensaje del servidor").setIcon(R.drawable.logo)
             builder.setMessage("Verifica tu correo electrónico")
             builder.setPositiveButton("ok"){dialog, id ->}
             builder.show()
@@ -141,7 +141,7 @@ class ModificacionUsuario : AppCompatActivity(), AuthListener {
         var testModel = Gson().fromJson(mensaje, Error::class.java)
 
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Error").setIcon(R.drawable.logo)
+        builder.setTitle("Mensaje del servidor").setIcon(R.drawable.logo)
         builder.setMessage("${testModel.message}")
         builder.setPositiveButton("ok"){dialog, id ->}
         builder.show()

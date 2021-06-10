@@ -42,7 +42,7 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
             } else {
                 //Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("Error").setIcon(R.drawable.logo)
+                builder.setTitle("Error login").setIcon(R.drawable.logo)
                 builder.setMessage("No hay red")
                 builder.setPositiveButton("ok"){dialog, id ->}
                 builder.show()
@@ -117,7 +117,7 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
         binding.BTRegistrar.isEnabled = false
     }
 
-    override fun onSuccess(message: Boolean, token: String, user: User) {
+    override fun onSuccess(message: Boolean) {
         binding.PB.visibility = View.INVISIBLE
         binding.ETNombre.isEnabled = true
         binding.ETApellidoP.isEnabled = true
@@ -125,7 +125,7 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
         binding.ETEmail.isEnabled = true
         binding.ETContrasena.isEnabled = true
         binding.BTRegistrar.isEnabled = true
-        Log.d("respuesta correcta", "$message, $token, $user")
+        Log.d("respuesta correcta", "$message")
         //Toast.makeText(applicationContext, "Usuario Registrado", Toast.LENGTH_SHORT).show()
         //Toast.makeText(applicationContext, registroViewModel.validarStatus(user.status), Toast.LENGTH_SHORT).show()
 
@@ -134,6 +134,12 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
         builder.setMessage("Verifica tu correo electrónico")
         builder.setPositiveButton("ok"){dialog, id ->}
         builder.show()
+
+        binding.ETNombre.setText("")
+        binding.ETApellidoP.setText("")
+        binding.ETApellidoM.setText("")
+        binding.ETEmail.setText("")
+        binding.ETContrasena.setText("")
     }
 
 
@@ -155,7 +161,7 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
         var testModel = Gson().fromJson(mensaje, Error::class.java)
 
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Error").setIcon(R.drawable.logo)
+        builder.setTitle("Mensaje del servidor").setIcon(R.drawable.logo)
         builder.setMessage("${testModel.message}")
         builder.setPositiveButton("ok"){dialog, id ->}
         builder.show()

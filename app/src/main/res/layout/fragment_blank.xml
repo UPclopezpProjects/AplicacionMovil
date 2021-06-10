@@ -25,115 +25,163 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="6dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageView19"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:layout_marginStart="12dp"
                 android:src="@drawable/ic_baseline_qr_code_2_24" />
 
             <TextView
                 android:id="@+id/textView54"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:fontFamily="sans-serif-light"
+                android:text="El escaner QR es lo primero que debes usar antes de mapear la trazabilidad del aguacate, con este puedes consultar la trazabilidad"
+                android:textColor="@color/colorPrimary" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageView20"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:layout_marginStart="12dp"
                 android:src="@drawable/trazabilidad" />
 
             <TextView
                 android:id="@+id/textView56"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:fontFamily="sans-serif-light"
+                android:text="La trazabilidad mapea todos los puntos relevantes por donde pasó el aguacate"
+                android:textColor="@color/colorPrimary" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageView23"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:layout_marginStart="12dp"
                 android:src="@drawable/informacion" />
 
             <TextView
                 android:id="@+id/textView58"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:fontFamily="sans-serif-light"
+                android:text="Información te proporciona datos interesantes sobre el aguacate"
+                android:textColor="@color/colorPrimary" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageView24"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:layout_marginStart="12dp"
                 android:src="@drawable/tips" />
 
             <TextView
                 android:id="@+id/textView60"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:fontFamily="sans-serif-light"
+                android:text="Tips te da consejos sobre posibles usos que le puedes dar al aguacate"
+                android:textColor="@color/colorPrimary" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageView25"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:layout_marginStart="12dp"
                 android:src="@drawable/calculonutricional" />
 
             <TextView
                 android:id="@+id/textView62"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:fontFamily="sans-serif-light"
+                android:text="El calculo nutricional te da un aproximado de los nutrientes que obtienes de los gramos de aguacate que compraste"
+                android:textColor="@color/colorPrimary" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="12dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageView26"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:layout_marginStart="12dp"
                 android:src="@drawable/ic_twotone_manage_accounts_24" />
 
             <TextView
                 android:id="@+id/textView64"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:fontFamily="sans-serif-light"
+                android:text="En ajustes puedes modificar tus propios datos que registraste en la cuenta"
+                android:textColor="@color/colorPrimary" />
         </LinearLayout>
 
     </LinearLayout>

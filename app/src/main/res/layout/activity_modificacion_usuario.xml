@@ -52,6 +52,8 @@
             android:layout_marginBottom="20sp"
             android:fontFamily="sans-serif-light"
             android:text="Configuración de cuenta"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
             android:textSize="24sp" />
 
         <TextView
@@ -63,6 +65,8 @@
             android:fontFamily="sans-serif-light"
             android:text="Nombre:"
             android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
             android:textSize="18sp" />
 
         <EditText
@@ -75,7 +79,9 @@
             android:autofillHints=""
             android:hint="Ingresa el nombre"
             android:inputType="textPersonName"
-            android:textAlignment="viewStart" />
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/textView48"
@@ -87,6 +93,8 @@
             android:fontFamily="sans-serif-light"
             android:text="Apellido paterno:"
             android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
             android:textSize="18sp" />
 
         <EditText
@@ -99,7 +107,9 @@
             android:autofillHints=""
             android:hint="Ingresa el apellido paterno"
             android:inputType="textPersonName"
-            android:textAlignment="viewStart" />
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/textView50"
@@ -109,8 +119,10 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
             android:fontFamily="sans-serif-light"
-            android:text="Apellido Materno:"
+            android:text="Apellido materno:"
             android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
             android:textSize="18sp" />
 
         <EditText
@@ -123,7 +135,9 @@
             android:autofillHints=""
             android:hint="Ingresa el apellido materno"
             android:inputType="textPersonName"
-            android:textAlignment="viewStart" />
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/textView52"
@@ -135,6 +149,8 @@
             android:fontFamily="sans-serif-light"
             android:text="Contraseña:"
             android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
             android:textSize="18sp" />
 
 
@@ -150,9 +166,12 @@
                 android:layout_marginStart="40sp"
                 android:layout_marginEnd="40sp"
                 android:autofillHints=""
-                android:hint="Ingresar la contraseña"
+                android:hint="****************"
                 android:inputType="textPassword"
-                android:textAlignment="viewStart" />
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textColorHighlight="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <ProgressBar

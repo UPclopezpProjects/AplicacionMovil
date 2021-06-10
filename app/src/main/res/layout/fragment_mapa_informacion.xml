@@ -32,13 +32,23 @@
             android:layout_gravity="center_horizontal"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/textView66"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="sans-serif-light"
+                android:text="En el botón del QR puede escanear un nuevo código"
+                android:textColor="@color/colorPrimary" />
+
             <ImageView
                 android:id="@+id/imageView12"
                 android:layout_width="248dp"
                 android:layout_height="380dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="12dp"
-                android:src="@drawable/imagenm"
+                android:src="@drawable/imagenmapa"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -52,7 +62,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginBottom="15dp"
                 android:fontFamily="sans-serif-light"
-                android:text="Scrolea los elementos(izquierda o derecha) del carrusel y da clic sobre alguno para encontrarlo en el mapa."
+                android:text="Scrolea los elementos (a la izquierda o la derecha) del carrusel y da clic sobre alguna tarjeta para encontrarlo en el mapa."
                 android:textColor="@color/colorPrimary" />
         </LinearLayout>
 
@@ -88,6 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+                android:fontFamily="sans-serif-light"
                 android:text="Comerciante"
                 android:textColor="@color/colorPrimary" />
 
@@ -104,6 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+                android:fontFamily="sans-serif-light"
                 android:text="Productor"
                 android:textColor="@color/colorPrimary" />
         </LinearLayout>
@@ -129,6 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+                android:fontFamily="sans-serif-light"
                 android:text="Transportista"
                 android:textColor="@color/colorPrimary" />
 
@@ -145,6 +158,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+                android:fontFamily="sans-serif-light"
                 android:text="Acopio"
                 android:textColor="@color/colorPrimary" />
         </LinearLayout>
@@ -168,7 +182,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="Escenario Previo"
+                android:fontFamily="sans-serif-light"
+                android:text="Escenario previo"
                 android:textColor="@color/colorPrimary" />
 
             <ImageView
@@ -184,7 +199,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="Siguiente Escenario"
+                android:fontFamily="sans-serif-light"
+                android:text="Siguiente escenario"
                 android:textColor="@color/colorPrimary" />
 
         </LinearLayout>

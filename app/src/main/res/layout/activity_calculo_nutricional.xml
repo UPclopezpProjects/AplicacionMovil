@@ -53,8 +53,9 @@
             android:layout_marginEnd="16sp"
             android:layout_marginBottom="8sp"
             android:fontFamily="sans-serif-light"
-            android:text="Calculo Nutricional"
+            android:text="Calculo nutricional"
             android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
 
         <LinearLayout
@@ -72,10 +73,13 @@
                 android:layout_marginBottom="8sp"
                 android:layout_weight="5"
                 android:ems="10"
+                android:fontFamily="sans-serif-light"
                 android:hint="Gramos de aguacate"
                 android:inputType="numberDecimal"
                 android:textAlignment="center"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary" />
 
             <Button
                 android:id="@+id/BTCalcular"
@@ -97,8 +101,10 @@
             android:layout_marginTop="8sp"
             android:layout_marginEnd="16sp"
             android:layout_marginBottom="8sp"
+            android:fontFamily="sans-serif-light"
             android:text="Propiedades"
             android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
             android:textSize="18sp" />
 
         <ScrollView
@@ -128,8 +134,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
-                            android:text="Grasas Totales:"
-                            android:textAlignment="textEnd" />
+                            android:fontFamily="sans-serif-light"
+                            android:text="Grasas totales:"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVGrasasT"
@@ -137,8 +145,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0g"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                     <TableRow
@@ -151,8 +161,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="Colesterol:"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVColesterol"
@@ -160,8 +172,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0mg"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                     <TableRow
@@ -174,8 +188,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="Sodio:"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVSodio"
@@ -183,8 +199,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0mg"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                     <TableRow
@@ -197,8 +215,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="Potasio:"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVPotasio"
@@ -206,8 +226,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0mg"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                     <TableRow
@@ -220,8 +242,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
-                            android:text="Hidratos de Carbono:"
-                            android:textAlignment="textEnd" />
+                            android:fontFamily="sans-serif-light"
+                            android:text="Hidratos de carbono:"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVHidratosC"
@@ -229,8 +253,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0g"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                     <TableRow
@@ -243,8 +269,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="Azúcares:"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVAzucares"
@@ -252,8 +280,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0g"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                     <TableRow
@@ -266,8 +296,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="Proteína:"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVProteina"
@@ -275,8 +307,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0g"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                     <TableRow
@@ -289,8 +323,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="Agua:"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVAgua"
@@ -298,8 +334,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0g"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                     <TableRow
@@ -312,8 +350,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="Vitamina A:"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVVitA"
@@ -321,8 +361,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0IU"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                     <TableRow
@@ -335,8 +377,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="Vitamina C:"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVVitC"
@@ -344,8 +388,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0mg"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                     <TableRow
@@ -358,8 +404,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="Vitamina E:"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVVitE"
@@ -367,8 +415,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0mg"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                     <TableRow
@@ -381,8 +431,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="Vitamina K:"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVVitK"
@@ -390,8 +442,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0mcg"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                     <TableRow
@@ -404,8 +458,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="Calcio:"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVCalcio"
@@ -413,8 +469,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0mg"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                     <TableRow
@@ -427,8 +485,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="Hierro:"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVHierro"
@@ -436,8 +496,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0mg"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                     <TableRow
@@ -450,8 +512,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="Magnesio:"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVMagnesio"
@@ -459,8 +523,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0mg"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                     <TableRow
@@ -473,8 +539,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="Manganeso:"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVManganeso"
@@ -482,8 +550,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0g"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                     <TableRow
@@ -496,8 +566,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="Fosforo:"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVFosforo"
@@ -505,8 +577,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0mg"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                     <TableRow
@@ -519,8 +593,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="Zinc:"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/TVZinc"
@@ -528,8 +604,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8sp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-light"
                             android:text="0mg"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
 
                 </TableLayout>
@@ -542,7 +620,9 @@
                     android:layout_marginTop="16sp"
                     android:layout_marginEnd="16sp"
                     android:layout_marginBottom="16sp"
+                    android:fontFamily="sans-serif-light"
                     android:text="*La información que se muestra al realizar el cálculo nutricional puede variar según las características del producto*"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="10sp" />
 
             </LinearLayout>

@@ -45,7 +45,7 @@ class RecuperacionContrasena : AppCompatActivity(), AuthRecuperar {
             } else {
                 //Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("Error").setIcon(R.drawable.logo)
+                builder.setTitle("Error Login").setIcon(R.drawable.logo)
                 builder.setMessage("No hay red")
                 builder.setPositiveButton("ok"){dialog, id ->}
                 builder.show()
@@ -115,7 +115,7 @@ class RecuperacionContrasena : AppCompatActivity(), AuthRecuperar {
     fun mensajeE(mensaje : String){
         var testModel = Gson().fromJson(mensaje, Error::class.java)
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Error Login").setIcon(R.drawable.logo)
+        builder.setTitle("Mensaje del servidor").setIcon(R.drawable.logo)
         builder.setMessage("${testModel.message}")
         builder.setPositiveButton("ok"){ dialog, id ->}
         builder.show()

@@ -54,11 +54,11 @@
                     android:layout_gravity="center_vertical"
                     android:fontFamily="sans-serif-light"
                     android:text="@string/iniciar_sesi_n"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintVertical_bias="0.069" />
+                    app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
@@ -85,8 +85,11 @@
                 android:layout_marginStart="10dp"
                 android:autofillHints=""
                 android:ems="10"
+                android:fontFamily="sans-serif-light"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -112,6 +115,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimary"
                 app:passwordToggleEnabled="true">
 
                 <EditText
@@ -120,8 +124,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:ems="10"
+                    android:fontFamily="sans-serif-light"
                     android:hint="@string/contrase_a"
                     android:inputType="textPassword"
+                    android:textColor="@color/colorPrimary"
+                    android:textColorHighlight="@color/colorPrimary"
+                    android:textColorHint="@color/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -149,8 +157,9 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
                 android:backgroundTint="@android:color/holo_green_light"
+                android:fontFamily="sans-serif-light"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="@string/iniciar_sesion"
+                android:text="INICIAR SESIÓN"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"
@@ -172,6 +181,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="40dp"
                 android:backgroundTint="@android:color/holo_green_light"
+                android:fontFamily="sans-serif-light"
                 android:foreground="?attr/selectableItemBackground"
                 android:rotationX="0"
                 android:text="@string/olvid_mi_contrase_a"
@@ -188,6 +198,7 @@
                 android:layout_marginEnd="40dp"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/holo_green_light"
+                android:fontFamily="sans-serif-light"
                 android:foreground="?attr/selectableItemBackground"
                 android:text="@string/registrarme" />
         </LinearLayout>
@@ -199,6 +210,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
+            android:fontFamily="sans-serif-light"
             android:foreground="?attr/selectableItemBackground"
             android:text="@string/saltar_login" />
 
@@ -211,6 +223,7 @@
             android:fontFamily="sans-serif-light"
             android:text="@string/loguear_con_redes_sociales"
             android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
             android:textSize="20sp"
             android:textStyle="bold" />
 

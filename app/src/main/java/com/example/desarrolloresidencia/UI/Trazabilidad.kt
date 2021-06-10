@@ -6,8 +6,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.desarrolloresidencia.BlankFragment
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
 import com.example.desarrolloresidencia.R
+import com.example.desarrolloresidencia.UI.AlertDialog.mapaInformacion
 import com.example.desarrolloresidencia.UI.DatosTrazabilidad.DatosTrazabilidad
 import com.example.desarrolloresidencia.databinding.ActivityTrazabilidadBinding
 import com.example.desarrolloresidencia.utils.responseUser
@@ -133,6 +135,10 @@ class Trazabilidad : AppCompatActivity() {
                 builder.setPositiveButton("ok"){dialog, id ->}
                 builder.show()
             }
+        }
+
+        binding.BTNInformacion.setOnClickListener {
+            BlankFragment().show(supportFragmentManager, "BlankFragment")
         }
     }
 

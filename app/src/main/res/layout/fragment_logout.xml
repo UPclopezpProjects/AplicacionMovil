@@ -26,6 +26,7 @@
         android:layout_marginBottom="16sp"
         android:fontFamily="sans-serif-light"
         android:text="¿Seguro que quieres cerrar sesión?"
+        android:textColor="@color/colorPrimary"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

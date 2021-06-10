@@ -79,7 +79,7 @@
                     android:layout_marginEnd="10sp"
                     android:layout_marginBottom="8sp"
                     android:fontFamily="sans-serif-light"
-                    android:text='Su origen se sitúa en Centroamérica, en las zonas de México, Guatemala y las Antillas. El nombre deriva del azteca ahuacatl, que significa "testículo".'
+                    android:text='Su origen se sitúa en centroamérica, en las zonas de México, Guatemala y las Antillas. El nombre deriva del azteca ahuacatl, que significa "testículo".'
                     android:textAlignment="textStart"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
