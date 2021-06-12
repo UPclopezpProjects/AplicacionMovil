@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
+import android.util.Patterns
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.EditText
@@ -28,6 +29,7 @@ import com.facebook.login.widget.LoginButton
 import com.google.gson.Gson
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
+import java.util.regex.Pattern
 
 
 class Login : AppCompatActivity(), AuthListener {
@@ -71,6 +73,8 @@ class Login : AppCompatActivity(), AuthListener {
         binding.BTRegistro.setOnClickListener {
             val intent: Intent = Intent(applicationContext, RegistroUsuario::class.java)
             startActivity(intent)
+            binding.ETEmail.setText("")
+            binding.password.setText("")
         }
 
 
@@ -84,6 +88,8 @@ class Login : AppCompatActivity(), AuthListener {
         binding.BTRecuperar.setOnClickListener {
             val intent: Intent = Intent(applicationContext, RecuperacionContrasena::class.java)
             startActivity(intent)
+            binding.ETEmail.setText("")
+            binding.password.setText("")
         }
 
         callbackManager = CallbackManager.Factory.create()
@@ -224,8 +230,8 @@ class Login : AppCompatActivity(), AuthListener {
             var email = findViewById<EditText>(R.id.ETEmail)
             var contraseña = findViewById<EditText>(R.id.password)
 
-            if (email.text.toString() == "") {
-                email.error = "Ingresa el correo"
+            if (!validarEmail("${email.text.toString()}")){
+                email.error ="Email no válido"
                 email.requestFocus()
                 return
             }
@@ -242,6 +248,11 @@ class Login : AppCompatActivity(), AuthListener {
         } catch (e: Exception){
             Log.e("Error UI", "$e")
         }
+    }
+
+    private fun validarEmail(email: String): Boolean {
+        val pattern: Pattern = Patterns.EMAIL_ADDRESS
+        return pattern.matcher(email).matches()
     }
 
     override fun onStarted() {

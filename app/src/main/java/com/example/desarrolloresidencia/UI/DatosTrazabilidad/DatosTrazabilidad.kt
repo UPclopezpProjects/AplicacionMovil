@@ -59,7 +59,7 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
             } else {
                 //Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("Error").setIcon(R.drawable.ic_twotone_error_24)
+                builder.setTitle("Error").setIcon(R.drawable.logo)
                 builder.setMessage("No hay red")
                 builder.setPositiveButton("ok"){dialog, id ->}
                 builder.show()
@@ -179,7 +179,7 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
     fun mensajeE(mensaje : String){
         Log.d("ScannerQR", "El mensaje: $mensaje")
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Error").setIcon(R.drawable.ic_twotone_error_24)
+        builder.setTitle("Error").setIcon(R.drawable.logo)
         builder.setMessage("$mensaje")
         builder.setPositiveButton("ok"){dialog, id ->}
         builder.show()

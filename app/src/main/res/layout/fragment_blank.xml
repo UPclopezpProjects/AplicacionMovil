@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".BlankFragment">
+    tools:context=".UI.AlertDialog.BlankFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-light"
-                android:text="El escaner QR es lo primero que debes usar antes de mapear la trazabilidad del aguacate, con este puedes consultar la trazabilidad"
+                android:text="El escáner QR es lo primero que debes usar antes de mapear la trazabilidad del aguacate, con este puedes consultar la trazabilidad"
                 android:textColor="@color/colorPrimary" />
         </LinearLayout>
 
@@ -153,7 +153,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-light"
-                android:text="El calculo nutricional te da un aproximado de los nutrientes que obtienes de los gramos de aguacate que compraste"
+                android:text="El cálculo nutricional te da un aproximado de los nutrientes que obtienes de los gramos de aguacate que compraste"
                 android:textColor="@color/colorPrimary" />
         </LinearLayout>
 
