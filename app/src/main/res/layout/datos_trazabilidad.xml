@@ -44,7 +44,7 @@
                 android:id="@+id/BTInformacion"
                 android:layout_width="50sp"
                 android:layout_height="50sp"
-                android:background="@drawable/informacion"
+                android:background="@drawable/ayuda"
                 android:foreground="?android:attr/selectableItemBackground"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/BTVolver"

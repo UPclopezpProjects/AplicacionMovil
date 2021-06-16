@@ -56,7 +56,6 @@
                     android:text="@string/iniciar_sesi_n"
                     android:textColor="@color/colorPrimary"
                     android:textSize="24sp"
-                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -176,18 +175,14 @@
 
             <Button
                 android:id="@+id/BTRecuperar"
-                android:layout_width="180dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
                 android:layout_marginStart="40dp"
+                android:layout_weight="1"
                 android:backgroundTint="@android:color/holo_green_light"
                 android:fontFamily="sans-serif-light"
                 android:foreground="?attr/selectableItemBackground"
-                android:rotationX="0"
                 android:text="@string/olvid_mi_contrase_a"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
                 tools:layout_editor_absoluteX="0dp" />
 
             <Button
@@ -200,7 +195,7 @@
                 android:backgroundTint="@android:color/holo_green_light"
                 android:fontFamily="sans-serif-light"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="@string/registrarme" />
+                android:text="Registrar" />
         </LinearLayout>
 
         <Button

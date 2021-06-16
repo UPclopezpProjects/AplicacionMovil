@@ -98,6 +98,8 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
             mMap.uiSettings.isZoomGesturesEnabled=false
             mMap.uiSettings.isRotateGesturesEnabled=false
             mMap.uiSettings.isScrollGesturesEnabled=false
+
+            advertenciaLogin()
         }
 
         var polilinea = PolylineOptions()
@@ -182,6 +184,14 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
         builder.setTitle("Error").setIcon(R.drawable.logo)
         builder.setMessage("$mensaje")
         builder.setPositiveButton("ok"){dialog, id ->}
+        builder.show()
+    }
+
+    fun advertenciaLogin(){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Atención").setIcon(R.drawable.logo)
+        builder.setMessage("Para conocer todas las ubicaciones del aguacate debes de iniciar sesión")
+        builder.setPositiveButton("ok"){ dialog, id ->}
         builder.show()
     }
 }

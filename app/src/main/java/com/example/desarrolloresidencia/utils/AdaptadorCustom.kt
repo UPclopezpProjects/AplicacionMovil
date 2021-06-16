@@ -20,6 +20,7 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
 
     var items: ArrayList<Ubicacion> ?= null
     var navegacion: RecyclerV ?= null
+    var context:Context ?= null
 
 
     init {
@@ -95,6 +96,8 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
         holder.descripcion?.setOnClickListener {
             navegacion?.descripcion(item!!.description)
         }
+
+
 
     }
 

@@ -2,13 +2,17 @@ package com.example.desarrolloresidencia.UI.AlertDialog
 
 import android.app.Dialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.desarrolloresidencia.R
-import com.example.desarrolloresidencia.databinding.FragmentAceiteBinding
+import com.example.desarrolloresidencia.UI.ayudas.ayudaCarru
+import com.example.desarrolloresidencia.UI.ayudas.ayudaIcono
+import com.example.desarrolloresidencia.UI.ayudas.ayudaQR
 import com.example.desarrolloresidencia.databinding.FragmentMapaInformacionBinding
 
 
@@ -29,11 +33,20 @@ class mapaInformacion : DialogFragment() {
         return  view
     }
 
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return super.onCreateDialog(savedInstanceState)
+        //val mPager = view!!.findViewById(R.id.pager) as ViewPager
+        val mPagerAdapter: FragmentStatePagerAdapter = TestAdapter(childFragmentManager)
+        //mPager.adapter = mPagerAdapter
+
+        binding.pager.adapter =mPagerAdapter
+    }
+
     override fun onStart() {
         super.onStart()
         val width = (resources.displayMetrics.widthPixels * 0.90).toInt()
-        val height = (resources.displayMetrics.heightPixels * 0.40).toInt()
-        dialog!!.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
+        val height = (resources.displayMetrics.heightPixels * 0.60).toInt()
+        dialog!!.window?.setLayout(width, /*ViewGroup.LayoutParams.WRAP_CONTENT*/height)
     }
 
     override fun onDestroy() {
@@ -41,4 +54,10 @@ class mapaInformacion : DialogFragment() {
         _binding = null
     }
 
+    private class TestAdapter(fm: FragmentManager?) : FragmentStatePagerAdapter(fm!!) {
+        override fun getItem(position: Int): Fragment =ayudaQR()
+
+
+        override fun getCount(): Int = 1
+    }
 }

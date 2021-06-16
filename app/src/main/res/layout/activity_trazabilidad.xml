@@ -36,7 +36,8 @@
                     android:id="@+id/BTNInformacion"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/informacion"
+                    android:background="@drawable/ayuda"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/BTVolver"
                     app:layout_constraintStart_toEndOf="@+id/imageView2"
@@ -126,6 +127,7 @@
                     android:layout_width="100sp"
                     android:layout_height="100sp"
                     android:background="@drawable/ic_baseline_qr_code_2_24"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/BTTrazabilidad"
@@ -215,8 +217,8 @@
                     android:background="@drawable/calculonutricional"
                     android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/BTAjustes"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
@@ -239,8 +241,8 @@
                     android:background="@drawable/ic_twotone_manage_accounts_24"
                     android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/BTCalculo"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/BTCalculo"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView

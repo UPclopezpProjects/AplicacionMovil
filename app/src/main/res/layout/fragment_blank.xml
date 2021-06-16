@@ -72,7 +72,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-light"
-                android:text="La trazabilidad mapea todos los puntos relevantes por donde pasó el aguacate"
+                android:text="La trazabilidad mapea todos los puntos relevantes de la cadena de valor del aguacate"
                 android:textColor="@color/colorPrimary" />
         </LinearLayout>
 
@@ -88,7 +88,7 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginStart="12dp"
-                android:src="@drawable/informacion" />
+                android:src="@drawable/masinformation" />
 
             <TextView
                 android:id="@+id/textView58"
@@ -99,7 +99,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-light"
-                android:text="Información te proporciona datos interesantes sobre el aguacate"
+                android:text="Información te proporciona ayuda para usar el sistema"
                 android:textColor="@color/colorPrimary" />
         </LinearLayout>
 

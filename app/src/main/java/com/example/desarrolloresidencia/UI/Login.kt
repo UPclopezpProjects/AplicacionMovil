@@ -11,11 +11,10 @@ import android.util.Patterns
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
+import androidx.viewpager.widget.PagerAdapter
 import com.example.desarrolloresidencia.Network.model.Login.User
-import com.example.desarrolloresidencia.Network.model.MessageError.Error
 import com.example.desarrolloresidencia.Network.model.MessageError.ErrorFacebook
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.ViewModel.LoginViewModel
@@ -52,7 +51,6 @@ class Login : AppCompatActivity(), AuthListener {
         loginViewModel= ViewModelProviders.of(this).get(LoginViewModel::class.java)
         loginViewModel.authListener = this
         loginViewModel.contexto = this
-
 
         callbackManager = CallbackManager.Factory.create();
 
@@ -99,7 +97,10 @@ class Login : AppCompatActivity(), AuthListener {
 
         //verifica si ya había iniciado sesión
         if (AccessToken.getCurrentAccessToken() != null && Profile.getCurrentProfile() != null){
-            Log.e("Verifica si ya hay una sesión iniciada", "${Profile.getCurrentProfile().firstName}")
+            Log.e(
+                "Verifica si ya hay una sesión iniciada",
+                "${Profile.getCurrentProfile().firstName}"
+            )
             accessToken = AccessToken.getCurrentAccessToken()
             cargarData()
         }
@@ -113,7 +114,7 @@ class Login : AppCompatActivity(), AuthListener {
             override fun onSuccess(loginResult: LoginResult?) {
                 accessToken = AccessToken.getCurrentAccessToken()
                 Log.e("Le diste click al login con facebook", "onSuccess")
-                loginF= true
+                loginF = true
                 // App code
                 //este es el accessToken
                 val accessToken = AccessToken.getCurrentAccessToken()
@@ -127,9 +128,15 @@ class Login : AppCompatActivity(), AuthListener {
 
                     profileTracker = object : ProfileTracker() {
                         //permite rastrear cuando un perfil cambia
-                        override fun onCurrentProfileChanged(oldProfile: Profile?, currentProfile: Profile?) {
+                        override fun onCurrentProfileChanged(
+                            oldProfile: Profile?,
+                            currentProfile: Profile?
+                        ) {
 
-                            Log.e("Le diste click al login con facebook", "rastrea el cambio de inicio de sesión")
+                            Log.e(
+                                "Le diste click al login con facebook",
+                                "rastrea el cambio de inicio de sesión"
+                            )
 
                             Log.e("Le diste click al login con facebook", "onSuccess")
                             Log.d("FIRST NAME", currentProfile?.firstName.toString())
@@ -148,7 +155,10 @@ class Login : AppCompatActivity(), AuthListener {
                     }
                 } else {
                     val profile = Profile.getCurrentProfile()
-                    Log.e("Le diste click al login con facebook", "lo que pasa cuando das login por primera vez")
+                    Log.e(
+                        "Le diste click al login con facebook",
+                        "lo que pasa cuando das login por primera vez"
+                    )
                     loginViewModel.firstname = profile?.firstName.toString()
                     loginViewModel.lastname = profile?.lastName.toString()
                     loginViewModel.firstname = profile?.firstName.toString()
@@ -172,7 +182,7 @@ class Login : AppCompatActivity(), AuthListener {
 
     fun cargarData(){
         Log.e("Login cargarData", "carga los datos ")
-        val request = GraphRequest.newMeRequest(this.accessToken) {objeto, response ->
+        val request = GraphRequest.newMeRequest(this.accessToken) { objeto, response ->
             Log.d("GRAPH1", response.toString())
             Log.d("el json", response.rawResponse.toString())
             //val url = response.jsonObject.getJSONObject("picture").getJSONObject("data").getString("url")
@@ -210,8 +220,8 @@ class Login : AppCompatActivity(), AuthListener {
     fun hash(){
         try {
             val info: PackageInfo? = packageManager.getPackageInfo(
-                    "com.example.desarrolloresidencia",  //Insert your own package name.
-                    PackageManager.GET_SIGNATURES
+                "com.example.desarrolloresidencia",  //Insert your own package name.
+                PackageManager.GET_SIGNATURES
             )
             if (info != null) {
                 for (signature in info.signatures) {
@@ -318,14 +328,14 @@ class Login : AppCompatActivity(), AuthListener {
                 var posibleerror = "Ya existe un usuario con el email: ${loginViewModel.email}"
                 Log.e("posibleerror", posibleerror)
                 when (testModel.message) {
-                        posibleerror -> {
-                            loginViewModel.onLoginButtonClick()
-                            /*val builder = AlertDialog.Builder(this)
+                    posibleerror -> {
+                        loginViewModel.onLoginButtonClick()
+                        /*val builder = AlertDialog.Builder(this)
                             builder.setTitle("Registro Exitoso").setIcon(R.drawable.logo)
                             builder.setMessage("Verifica tu correo electrónico")
                             builder.setPositiveButton("ok"){ dialog, id ->}
                             builder.show()*/
-                     }
+                    }
                         else -> {
                             Log.d("login mensajeE", "$mensaje")
                             var testModel = Gson().fromJson(mensaje, ErrorFacebook::class.java)

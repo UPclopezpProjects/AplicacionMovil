@@ -31,6 +31,7 @@ class ListaPuntos : Fragment(), RecyclerV {
         super.onActivityCreated(savedInstanceState)
         mapearpuntos()
         adaptador?.navegacion = this
+        adaptador?.context = context
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
@@ -102,7 +103,6 @@ class ListaPuntos : Fragment(), RecyclerV {
                 lista?.adapter = adaptador
 
             } else {
-                Toast.makeText(context, "Para conocer todas las ubicaciones del aguacate debes de iniciar sesión", Toast.LENGTH_LONG).show()
                 var nuevaI = consulta.consulta!!.get(0).image.replace("http://0.0.0.0", "http://52.202.214.13")
                 if (consulta.consulta!!.get(0).code != null) {
                     puntos.add(
@@ -186,10 +186,12 @@ class ListaPuntos : Fragment(), RecyclerV {
 
     override fun anterior(posicion: Int) {
         layoutManager?.scrollToPosition(posicion)
+        advertenciaLogin()
     }
 
     override fun siguiente(posicion: Int) {
         layoutManager?.scrollToPosition(posicion)
+        advertenciaLogin()
     }
 
     override fun descripcion(descripcion: String) {
@@ -201,5 +203,15 @@ class ListaPuntos : Fragment(), RecyclerV {
         builder.show()
     }
 
+    fun advertenciaLogin(){
+        if (responseUser.message == null){
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Atención").setIcon(R.drawable.logo)
+            builder.setMessage("Para conocer todas las ubicaciones del aguacate debes de iniciar sesión")
+            builder.setPositiveButton("ok"){ dialog, id ->}
+            builder.show()
+        }
+
+    }
 
 }
