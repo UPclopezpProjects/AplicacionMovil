@@ -6,11 +6,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.fragment.app.*
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.UI.ayudas.ayudaCarru
 import com.example.desarrolloresidencia.UI.ayudas.ayudaIcono
@@ -24,7 +23,7 @@ class mapaInformacion : DialogFragment() {
      * The pager widget, which handles animation and allows swiping horizontally to access previous
      * and next wizard steps.
      */
-    private lateinit var mPager: ViewPager
+    private lateinit var mPager: ViewPager2
 
     private var _binding: FragmentMapaInformacionBinding?= null
     private val binding get() = _binding!!
@@ -38,28 +37,48 @@ class mapaInformacion : DialogFragment() {
         _binding = FragmentMapaInformacionBinding.inflate(inflater, container, false)
 
         val view = binding.root
+
+        mPager = view!!.findViewById(R.id.pager)
+        val pagerAdapter = ScreenSlidePagerAdapter( this.activity)
+        mPager.adapter = pagerAdapter
         return  view
     }
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return super.onCreateDialog(savedInstanceState)
-        mPager = dialog!!.findViewById(R.id.pager)
-        val pagerAdapter = ScreenSlidePagerAdapter(childFragmentManager)
-        mPager.adapter = pagerAdapter
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
     }
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog= super.onCreateDialog(savedInstanceState)
+        return dialog
+    }
+
     override fun onStart() {
         super.onStart()
         val width = (resources.displayMetrics.widthPixels * 0.90).toInt()
         val height = (resources.displayMetrics.heightPixels * 0.60).toInt()
-        dialog!!.window?.setLayout(width, /*ViewGroup.LayoutParams.WRAP_CONTENT*/height)
+        dialog!!.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT/*height*/)
+
     }
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
 
-    private inner class ScreenSlidePagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
-        override fun getCount(): Int = NUM_PAGES
 
-        override fun getItem(position: Int): Fragment = ayudaQR()
+    private inner class ScreenSlidePagerAdapter(fa: FragmentActivity?) : FragmentStateAdapter(fa!!) {
+        override fun getItemCount(): Int = NUM_PAGES
+
+        override fun createFragment(position: Int): Fragment{
+            when(position){
+                0 -> return ayudaQR()
+                1 -> return ayudaCarru()
+                2 -> return ayudaIcono()
+                else -> return ayudaQR()
+            }
+        } //=ayudaQR()
     }
+
 }
+

@@ -9,6 +9,7 @@ import com.example.desarrolloresidencia.R
 
 class ayudaQR:Fragment() {
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         // Inflate the layout for this fragment
         val vista = inflater.inflate(R.layout.ayudaqr, container, false)
