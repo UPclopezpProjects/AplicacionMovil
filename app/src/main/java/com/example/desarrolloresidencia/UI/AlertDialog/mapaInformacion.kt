@@ -28,19 +28,47 @@ class mapaInformacion : DialogFragment() {
     private var _binding: FragmentMapaInformacionBinding?= null
     private val binding get() = _binding!!
 
+    private var onBoardingPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
+        override fun onPageSelected(position: Int) {
+            updateCircleMarker(binding, position)
+        }
+    }
+
+    private fun updateCircleMarker(binding: FragmentMapaInformacionBinding, position: Int) {
+        when (position) {
+            0 -> {
+                binding.circulo1.setImageResource(R.drawable.circuloverde)
+                binding.circulo2.setImageResource(R.drawable.circulogris)
+                binding.circulo3.setImageResource(R.drawable.circulogris)
+            }
+            1 -> {
+                binding.circulo1.setImageResource(R.drawable.circulogris)
+                binding.circulo2.setImageResource(R.drawable.circuloverde)
+                binding.circulo3.setImageResource(R.drawable.circulogris)
+            }
+            2 -> {
+                binding.circulo1.setImageResource(R.drawable.circulogris)
+                binding.circulo2.setImageResource(R.drawable.circulogris)
+                binding.circulo3.setImageResource(R.drawable.circuloverde)
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //return super.onCreateView(inflater, container, savedInstanceState)
         dialog?.window?.setBackgroundDrawableResource(R.drawable.round_corner)
         _binding = FragmentMapaInformacionBinding.inflate(inflater, container, false)
 
         val view = binding.root
-
         mPager = view!!.findViewById(R.id.pager)
         val pagerAdapter = ScreenSlidePagerAdapter( this.activity)
         mPager.adapter = pagerAdapter
+        mPager.registerOnPageChangeCallback(onBoardingPageChangeCallback)
+
         return  view
     }
 
@@ -68,8 +96,10 @@ class mapaInformacion : DialogFragment() {
 
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity?) : FragmentStateAdapter(fa!!) {
+        //esto establece el número de componentes del viewpager
         override fun getItemCount(): Int = NUM_PAGES
 
+        //esto va presentando los fragmentos dentro del viewpager
         override fun createFragment(position: Int): Fragment{
             when(position){
                 0 -> return ayudaQR()

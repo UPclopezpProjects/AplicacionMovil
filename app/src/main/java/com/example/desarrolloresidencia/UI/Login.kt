@@ -92,8 +92,8 @@ class Login : AppCompatActivity(), AuthListener {
 
         callbackManager = CallbackManager.Factory.create()
 
-        val loginButton = findViewById<LoginButton>(R.id.loginbuttonF)
-        loginButton.setReadPermissions("email")
+        //val loginButton = findViewById<LoginButton>(R.id.loginbuttonF)
+        binding.loginbutton.setReadPermissions("email")
 
         //verifica si ya había iniciado sesión
         if (AccessToken.getCurrentAccessToken() != null && Profile.getCurrentProfile() != null){
@@ -109,7 +109,7 @@ class Login : AppCompatActivity(), AuthListener {
 
         // Callback registration
 
-        loginButton.registerCallback(callbackManager, object : FacebookCallback<LoginResult?> {
+        binding.loginbutton.registerCallback(callbackManager, object : FacebookCallback<LoginResult?> {
 
             override fun onSuccess(loginResult: LoginResult?) {
                 accessToken = AccessToken.getCurrentAccessToken()

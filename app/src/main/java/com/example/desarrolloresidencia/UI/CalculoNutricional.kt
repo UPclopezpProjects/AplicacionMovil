@@ -2,6 +2,7 @@ package com.example.desarrolloresidencia.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
@@ -16,6 +17,7 @@ class CalculoNutricional : AppCompatActivity() {
 
     lateinit var modificacionVM: CalculoViewModel
     private lateinit var binding: ActivityCalculoNutricionalBinding
+    var gramos: Double ?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,7 +100,14 @@ class CalculoNutricional : AppCompatActivity() {
         }
 
         binding.BTCalcular.setOnClickListener{
-            modificacionVM.peso =binding.ETGramos.text.toString().toDouble()
+            Log.e("calculoNutricional gramos", binding.ETGramos.text.toString())
+            if (binding.ETGramos.text.toString().isEmpty()){
+                gramos = 0.0
+            }else{
+                gramos = binding.ETGramos.text.toString().toDouble()
+            }
+
+            modificacionVM.peso = gramos
             modificacionVM.grasasTotales()
             modificacionVM.colesterol()
             modificacionVM.sodio()
