@@ -165,8 +165,5 @@ class ModificacionUsuario : AppCompatActivity(), AuthListener {
         }else{
             binding.ETApellidoM.setText("")
         }
-
-
-
     }
 }

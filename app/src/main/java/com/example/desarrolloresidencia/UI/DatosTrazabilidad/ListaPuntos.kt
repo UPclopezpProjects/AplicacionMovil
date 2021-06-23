@@ -173,8 +173,6 @@ class ListaPuntos : Fragment(), RecyclerV {
         }
     }
 
-
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {

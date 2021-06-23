@@ -22,7 +22,6 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
     var navegacion: RecyclerV ?= null
     var context:Context ?= null
 
-
     init {
         this.items = items
     }

@@ -20,12 +20,10 @@ class Belleza : DialogFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
         dialog?.window?.setBackgroundDrawableResource(R.drawable.round_corner)
         _binding = FragmentBellezaBinding.inflate(inflater, container, false)
         val view = binding.root
         return  view
-
     //return inflater.inflate(R.layout.fragment_belleza, container, false)
     }
 
