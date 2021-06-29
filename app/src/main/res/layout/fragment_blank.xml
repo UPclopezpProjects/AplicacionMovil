@@ -99,7 +99,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-light"
-                android:text="Información te proporciona ayuda para usar el sistema"
+                android:text="Información te proporciona más datos relacionados al aguacate sobre su origen e historia."
                 android:textColor="@color/colorPrimary" />
         </LinearLayout>
 
