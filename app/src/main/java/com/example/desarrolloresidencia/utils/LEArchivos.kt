@@ -28,7 +28,7 @@ class LEArchivos {
                 //ficheroFisico.appendText("$texto\n")
                 //esto sobreescribe texto al archivo
                 ficheroFisico.writeText("$texto")
-                Toast.makeText(baseContext, "Creado correctamente $ficheroFisico", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(baseContext, "Creado correctamente $ficheroFisico", Toast.LENGTH_SHORT).show()
             } catch (e: Exception){
                 Log.e("ERROR", "$e")
             }
@@ -44,7 +44,7 @@ class LEArchivos {
                 val ficheroFisico = File(miCarpeta, "datos.txt")
                 //esta agrega texto al archivo
                 ficheroFisico.appendText("$texto\n")
-                Toast.makeText(baseContext, "Creado correctamente $ficheroFisico", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(baseContext, "Creado correctamente $ficheroFisico", Toast.LENGTH_SHORT).show()
             } catch (e: Exception){
                 Log.e("ERROR", "$e")
             }
@@ -55,6 +55,17 @@ class LEArchivos {
                     .getExternalFilesDir(null)?.absolutePath
             val miCarpeta = File(rutaSD, "datos")
             val ficheroFisico = File(miCarpeta, "datos.txt")
+
+            if (!miCarpeta.exists()) {
+                Log.d("LEArchivos", "no existía la carpeta")
+                miCarpeta.mkdir()
+            }
+            if (!ficheroFisico.exists()) {
+                Log.d("LEArchivos", "no existe el archivo")
+                ficheroFisico.createNewFile()
+                sobrescribir("""{"createAdministrator":false,"createTUser":false,"updateMe":true,"updateAdministrator":false,"updateTUser":false,"deleteMe":true,"deleteAdministrator":false,"deleteTUser":false,"readMe":true,"readAdministrator":false,"readTUser":false,"loginUser":true}""", baseContext)
+            }
+
             val fichero = BufferedReader(InputStreamReader(
                     FileInputStream(ficheroFisico)))
             val texto = fichero.use(BufferedReader::readText)

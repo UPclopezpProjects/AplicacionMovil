@@ -31,12 +31,7 @@ class ModificacionUsuario : AppCompatActivity(), AuthListener {
         modificacionViewModel= ViewModelProviders.of(this).get(ActualizarViewModel::class.java)
         modificacionViewModel.authListener = this
 
-        //Coroutines.authListener= this
-
-        //Toast.makeText(this, responseUser.user?.email, Toast.LENGTH_SHORT).show()
-        binding.ETNombre.setText(responseUser.user?.nameOfUser.toString())
-        binding.ETApellidoP.setText(responseUser.user?.surnameA.toString())
-        binding.ETApellidoM.setText(responseUser.user?.surnameB.toString())
+        rellenarCampos()
 
         binding.BTRegistrar.setOnClickListener {
 
@@ -45,7 +40,7 @@ class ModificacionUsuario : AppCompatActivity(), AuthListener {
             } else {
                 //Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("Error").setIcon(R.drawable.logo)
+                builder.setTitle("Error Login").setIcon(R.drawable.logo)
                 builder.setMessage("No hay red")
                 builder.setPositiveButton("ok"){dialog, id ->}
                 builder.show()
@@ -129,7 +124,7 @@ class ModificacionUsuario : AppCompatActivity(), AuthListener {
         if (status=="false"){
             //Toast.makeText(applicationContext, "Verifica tu correo electrónico", Toast.LENGTH_SHORT).show()
             val builder = AlertDialog.Builder(this)
-            builder.setTitle("Advertencia").setIcon(R.drawable.logo)
+            builder.setTitle("Mensaje del servidor").setIcon(R.drawable.logo)
             builder.setMessage("Verifica tu correo electrónico")
             builder.setPositiveButton("ok"){dialog, id ->}
             builder.show()
@@ -146,9 +141,29 @@ class ModificacionUsuario : AppCompatActivity(), AuthListener {
         var testModel = Gson().fromJson(mensaje, Error::class.java)
 
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Error").setIcon(R.drawable.logo)
+        builder.setTitle("Mensaje del servidor").setIcon(R.drawable.logo)
         builder.setMessage("${testModel.message}")
         builder.setPositiveButton("ok"){dialog, id ->}
         builder.show()
+    }
+
+    fun rellenarCampos(){
+        if (responseUser.user?.nameOfUser.toString() != null){
+            binding.ETNombre.setText(responseUser.user?.nameOfUser.toString())
+        }else{
+            binding.ETNombre.setText("")
+        }
+
+        if (responseUser.user?.surnameA.toString() != null && responseUser.user?.surnameA.toString() != " "){
+            binding.ETApellidoP.setText(responseUser.user?.surnameA.toString())
+        }else{
+            binding.ETApellidoP.setText("")
+        }
+
+        if (responseUser.user?.surnameB.toString() != null && responseUser.user?.surnameB.toString() != " "){
+            binding.ETApellidoM.setText(responseUser.user?.surnameB.toString())
+        }else{
+            binding.ETApellidoM.setText("")
+        }
     }
 }

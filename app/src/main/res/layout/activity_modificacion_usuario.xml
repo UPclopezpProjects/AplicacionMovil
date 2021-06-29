@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.ModificacionUsuario">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/logo" />
+
+                <Button
+                    android:id="@+id/BTVolver"
+                    android:layout_width="70sp"
+                    android:layout_height="70sp"
+                    android:background="@drawable/ic_baseline_arrow_back_24"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="20sp"
+            android:fontFamily="sans-serif-light"
+            android:text="Configuración de cuenta"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView44"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="sans-serif-light"
+            android:text="Nombre:"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/ETNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40sp"
+            android:layout_marginEnd="40sp"
+            android:layout_marginBottom="10sp"
+            android:autofillHints=""
+            android:hint="Ingresa el nombre"
+            android:inputType="textPersonName"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/textView48"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="sans-serif-light"
+            android:text="Apellido paterno:"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/ETApellidoP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40sp"
+            android:layout_marginEnd="40sp"
+            android:layout_marginBottom="10sp"
+            android:autofillHints=""
+            android:hint="Ingresa el apellido paterno"
+            android:inputType="textPersonName"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/textView50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="sans-serif-light"
+            android:text="Apellido materno:"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/ETApellidoM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40sp"
+            android:layout_marginEnd="40sp"
+            android:layout_marginBottom="10sp"
+            android:autofillHints=""
+            android:hint="Ingresa el apellido materno"
+            android:inputType="textPersonName"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/textView52"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="sans-serif-light"
+            android:text="Contraseña:"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="18sp" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/ETContrasena"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40sp"
+                android:layout_marginEnd="40sp"
+                android:autofillHints=""
+                android:inputType="textPassword"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textColorHighlight="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ProgressBar
+            android:id="@+id/PB"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="20sp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/BTRegistrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="40sp"
+            android:layout_marginEnd="40sp"
+            android:layout_marginBottom="10sp"
+            android:background="@android:color/holo_green_light"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="Guardar"
+            android:textAlignment="center" />
+
+
+    </LinearLayout>
+
+</ScrollView>

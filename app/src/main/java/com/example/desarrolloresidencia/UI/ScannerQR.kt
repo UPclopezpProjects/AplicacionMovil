@@ -1,56 +1,56 @@
 package com.example.desarrolloresidencia.UI
 
-import android.Manifest
+import android.app.AlertDialog
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
+import com.example.desarrolloresidencia.Network.model.MessageError.Error
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
-<<<<<<< Updated upstream
-import com.example.desarrolloresidencia.R
-=======
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
->>>>>>> Stashed changes
+import com.example.desarrolloresidencia.R
+import com.example.desarrolloresidencia.UI.DatosTrazabilidad.DatosTrazabilidad
 import com.example.desarrolloresidencia.ViewModel.ScannerQRViewModel
+import com.example.desarrolloresidencia.databinding.ActivityScannerQRBinding
+import com.example.desarrolloresidencia.databinding.DatosTrazabilidadBinding
 import com.example.desarrolloresidencia.utils.Auth.AuthQr
+import com.example.desarrolloresidencia.utils.ValidarR
+import com.example.desarrolloresidencia.utils.responseUser
+import com.google.gson.Gson
 import com.google.zxing.integration.android.IntentIntegrator
-import java.io.BufferedReader
-import java.io.File
-import java.io.FileInputStream
-import java.io.InputStreamReader
-import java.lang.Exception
 
 
 class ScannerQR : AppCompatActivity(), AuthQr {
 
-    var Nota: TextView? = null
     lateinit var viewModel: ScannerQRViewModel
+    private lateinit var binding:ActivityScannerQRBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scanner_q_r)
+        binding = ActivityScannerQRBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         viewModel = ViewModelProviders.of(this).get(ScannerQRViewModel::class.java)
         viewModel.authListener = this
 
-
-
-        //permisos()
-        viewModel.solicitudP(this, this)
-        val escanear = findViewById<Button>(R.id.BTEscanear)
-        escanear.setOnClickListener {
-            IntentIntegrator(this).initiateScan()
+        binding.BTEscanear.setOnClickListener {
+            if (ValidarR.hayRed(this)){
+                //Toast.makeText(this, "Hay red", Toast.LENGTH_SHORT).show()
+                IntentIntegrator(this).initiateScan()
+            } else {
+                //Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Error login").setIcon(R.drawable.logo)
+                builder.setMessage("No hay red")
+                builder.setPositiveButton("ok"){dialog, id ->}
+                builder.show()
+            }
         }
 
-        val volver = findViewById<Button>(R.id.BTVolver)
-        volver.setOnClickListener {
+
+        binding.BTVolver.setOnClickListener {
             finish()
         }
     }
@@ -59,45 +59,45 @@ class ScannerQR : AppCompatActivity(), AuthQr {
         super.onActivityResult(requestCode, resultCode, data)
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         val datos = result.contents
-<<<<<<< Updated upstream
-        viewModel.QR=datos
-        //viewModel.sobrescribir(datos, baseContext)
-        viewModel.consulta()
-        TrazabilidadScreen()
-=======
         Log.d("datos", "$datos")
         if (datos != null){
             viewModel.QR=datos
             //viewModel.sobrescribir(datos, baseContext)
             viewModel.mapeoJS()
         }
-        /*if (consulta.consulta != null){
-            TrazabilidadScreen()
-        }*/
-
->>>>>>> Stashed changes
     }
 
     fun TrazabilidadScreen(){
-        var intent : Intent = Intent(applicationContext, Trazabilidad::class.java)
-        startActivity(intent)
+        finish()
+        var intent2 : Intent = Intent(applicationContext, DatosTrazabilidad::class.java)
+        startActivity(intent2)
     }
 
     override fun onStarted() {
-
+        Log.d("ScannerQR", "Comenzó la consulta")
+        binding.Titulo.isEnabled =false
     }
 
-    override fun onSuccess(message: Message) {
+    override fun onSuccess(message: List<Message>) {
         //Log.d("success", "terminé")
-        Toast.makeText(this, "Se hizo la consulta", Toast.LENGTH_SHORT).show()
-<<<<<<< Updated upstream
-=======
+        binding.Titulo.isEnabled = true
+        //Toast.makeText(this, "Se hizo la consulta", Toast.LENGTH_SHORT).show()
         Log.d("la matriz", "${message.get(1)}")
         TrazabilidadScreen()
->>>>>>> Stashed changes
     }
 
     override fun onFailure(message: String) {
-        Toast.makeText(this, "$message", Toast.LENGTH_SHORT).show()
+        binding.Titulo.isEnabled = true
+        //Toast.makeText(this, "$message", Toast.LENGTH_SHORT).show()
+        mensajeE(message)
+    }
+
+    fun mensajeE(mensaje : String){
+            Log.d("ScannerQR", "El mensaje: $mensaje")
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Mensaje del servidor").setIcon(R.drawable.ic_twotone_error_24)
+            builder.setMessage("$mensaje")
+            builder.setPositiveButton("ok"){dialog, id ->}
+            builder.show()
     }
 }

@@ -1,49 +1,55 @@
 package com.example.desarrolloresidencia.ViewModel
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.desarrolloresidencia.Repository.UserRepository
-import com.example.desarrolloresidencia.utils.Auth.AuthListener
+import androidx.lifecycle.viewModelScope
+import com.example.desarrolloresidencia.Repository.AmazonRepository
 import com.example.desarrolloresidencia.utils.Auth.AuthRegistro
-import com.example.desarrolloresidencia.utils.Coroutines
+import com.example.desarrolloresidencia.utils.LEArchivos
+import kotlinx.coroutines.launch
 
 class RegistroViewModel(): ViewModel() {
-    var nombre: String ?= null
-    var apellidoP: String ?= null
-    var apellidoM: String ?= null
-    var email: String ?= null
-    var password: String ?= null
+    var contexto: Context? = null
 
-    var authListener: AuthRegistro ?= null
+    var nombre: String? = null
+    var apellidoP: String? = null
+    var apellidoM: String? = null
+    var email: String? = null
+    var password: String? = null
+    var dp: String? = null
+    var authListener: AuthRegistro? = null
 
-    fun onLoginButtonClick(){
-        authListener?.onStarted()
+    fun onLoginButtonClick() {
+        viewModelScope.launch {
+            authListener?.onStarted()
+            try {
+                dp = contexto?.let { LEArchivos.Cargar(it) }
+                //CoroutinesRU.main {
+                val response = AmazonRepository().userRegistro(nombre!!, apellidoP!!, apellidoM!!, email!!, password!!, dp.toString()!!)
+                if (response.isSuccessful) {
+                    Log.d("RegistroViewModel response",response.body().toString())
 
-        Coroutines.main {
-            val response = UserRepository().userRegistro(nombre!!, apellidoP!!, apellidoM!!, email!!, password!!)
-            if (response.isSuccessful){
-                authListener?.onSuccess(response.body()!!.message, response.body()!!.token, response.body()!!.user)
-                Log.d("si jaló", "${response.body()!!.message}")
-            } else{
-                //authListener?.onFailure("${response.code()}")
-                validacionErr(response.code().toString())
+                    authListener?.onSuccess(response.body()!!.message)
+                    Log.d("si jaló", "${response.body()!!.message}")
+                } else {
+                    authListener?.onFailure(response.errorBody()!!.string())
+                }
+            } catch (e: java.net.SocketTimeoutException) {
+                authListener?.onFailure("""{"message":"No se pudo conectar con el servidor"}""")
+            }
+            catch (e: java.lang.NullPointerException){
+                authListener?.onFailure("""{"message":"Registro satisfactorio, confirma tu correo electrónico"}""")
             }
         }
-
     }
 
-<<<<<<< Updated upstream
-    fun validacionErr (error : String){
-        if (error == "404"){
-            authListener?.onFailure("El email $email ya está en uso")
-=======
 
     fun validarStatus (status : String):String{
         if (status=="false"){
             return "Verifica tu correo electrónico"
->>>>>>> Stashed changes
         }else{
-            authListener?.onFailure("Código de error $error")
+            return "Tu correo electrónico está verificado"
         }
     }
 }

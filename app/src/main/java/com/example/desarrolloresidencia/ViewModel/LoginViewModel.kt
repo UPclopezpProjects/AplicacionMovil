@@ -3,16 +3,13 @@ package com.example.desarrolloresidencia.ViewModel
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.desarrolloresidencia.Network.model.Login.User
-import com.example.desarrolloresidencia.Repository.UserRepository
+import com.example.desarrolloresidencia.Repository.AmazonRepository
 import com.example.desarrolloresidencia.utils.Auth.AuthListener
-<<<<<<< Updated upstream
-import com.example.desarrolloresidencia.utils.Coroutines
-=======
 import com.example.desarrolloresidencia.utils.LEArchivos
 import com.example.desarrolloresidencia.utils.responseUser
 import kotlinx.coroutines.launch
->>>>>>> Stashed changes
 import java.lang.Exception
 
 class LoginViewModel() : ViewModel()  {
@@ -27,21 +24,6 @@ class LoginViewModel() : ViewModel()  {
     var dp: String? = null
     var authListener: AuthListener?= null
 
-<<<<<<< Updated upstream
-    fun onLoginButtonClick(){
-        try { 
-
-
-        authListener?.onStarted()
-
-        Coroutines.main {
-            val response = UserRepository().userLogin(email!!, password!!)
-            if (response.isSuccessful){
-                validarU(response.body()!!.message, response.body()!!.token, response.body()!!.user)
-                //authListener?.onSuccess(response.body()!!.message, response.body()!!.token, response.body()!!.user)
-            } else{
-                authListener?.onFailure("Error Code: ${response.code()}")
-=======
     fun onLoginButtonClick() {
         viewModelScope.launch {
             try {
@@ -97,19 +79,17 @@ class LoginViewModel() : ViewModel()  {
             }
             catch (e : java.net.SocketTimeoutException){
                 authListener?.onFailure("""{"message":"No se pudo conectar con el servidor"}""")
->>>>>>> Stashed changes
             }
-        }
-        } catch (e: Exception){
-            Log.e("Error ViewModel", "$e")
         }
     }
 
+
     fun validarU(message: Boolean, token: String, user: User){
-        if(user.typeOfUser=="consumer"){
+        if(user.typeOfUser=="Consumer"){
             authListener?.onSuccess(message, token, user)
         }else{
             authListener?.onFailure("""{"message":"Solo pueden ingresar los usuarios de tipo consumidor"}""")
         }
     }
+
 }

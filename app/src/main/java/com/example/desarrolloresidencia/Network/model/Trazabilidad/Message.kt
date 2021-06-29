@@ -1,8 +1,15 @@
 package com.example.desarrolloresidencia.Network.model.Trazabilidad
 
 data class Message(
-    val A: Puntos,
-    val B: Puntos,
-    val C: Puntos,
-    val D: Puntos
+    val __v: Int,
+    val _id: String,
+    val code: String,
+    val currentStage: String,
+    val fid: String,
+    val id: String,
+    val image: String,
+    val name: String,
+    val previousStage: String,
+    val description: String,
+    val ubication: String
 )

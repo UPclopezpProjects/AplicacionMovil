@@ -1,49 +1,42 @@
 package com.example.desarrolloresidencia.ViewModel
 
-import android.app.Activity
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
-import com.example.desarrolloresidencia.Repository.TrazabilidadRepository
-import com.example.desarrolloresidencia.Repository.UserRepository
-import com.example.desarrolloresidencia.utils.Auth.AuthListener
+import com.example.desarrolloresidencia.Repository.AmazonRepository
 import com.example.desarrolloresidencia.utils.Auth.AuthQr
-import com.example.desarrolloresidencia.utils.Coroutines
-import com.example.desarrolloresidencia.utils.LEArchivos
+import com.google.gson.Gson
+import kotlinx.coroutines.launch
 
 class ScannerQRViewModel : ViewModel(){
     var QR:String ?= null
     var authListener: AuthQr ?= null
 
-    fun sobrescribir(texto: String, baseContext: Context){
-            LEArchivos.sobrescribir(texto, baseContext)
-    }
+    fun consulta(qr:String, id:String){
+        //CoroutinesTraz.main {
+            viewModelScope.launch {
+                authListener?.onStarted()
+                try {
+                    Log.d("QR", "$QR")
 
-    fun solicitudP(contexto:Context, actividad:Activity){
+                    val response = AmazonRepository().trazabilidadConsulta("$qr", "$id")
+                    Log.d("consulta", response.body()!!.message.toString())
 
-    }
-
-    fun consulta(){
-        authListener?.onStarted()
-
-        Coroutines.main {
-            Log.d("QR", "$QR")
-            val response = TrazabilidadRepository().trazabilidadConsulta(QR!!)
-            Log.d("consulta", response.body()!!.message.toString())
-            com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta.consulta =response.body()!!.message
-            Log.d("el objeto", com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta.consulta.toString())
-            if (response.isSuccessful){
-                val message : Message = response.body()!!.message
-                authListener?.onSuccess(message)
-                Log.d("success", "si lo mandó")
-            } else{
-                authListener?.onFailure("Error Code: ${response.code()}")
+                    com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta.consulta = response.body()!!.message
+                    Log.d("el id", com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta.consulta!!.get(0).id)
+                    if (response.isSuccessful) {
+                        val message: List<Message> = response.body()!!.message
+                        authListener?.onSuccess(message)
+                        Log.d("success", "si lo mandó")
+                    } else {
+                        authListener?.onFailure("${response.errorBody()?.string()}")
+                    }
+                }catch (e : java.net.SocketTimeoutException){
+                    authListener?.onFailure("No se pudo conectar con el servidor")
+                }
             }
-        }
     }
-<<<<<<< Updated upstream
-=======
 
     fun mapeoJS(){
         var testModel = Gson().fromJson(QR, com.example.desarrolloresidencia.Network.model.Trazabilidad.QR::class.java)
@@ -51,5 +44,4 @@ class ScannerQRViewModel : ViewModel(){
         Log.d("EL ID","${testModel.ID}")
         consulta(testModel.QR, testModel.ID)
     }
->>>>>>> Stashed changes
 }

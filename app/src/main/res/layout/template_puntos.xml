@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10sp"
-        android:layout_marginTop="10sp"
-        android:layout_marginEnd="10sp"
-        android:layout_marginBottom="10sp"
-        android:layout_weight="1"
+        android:layout_marginStart="5sp"
+        android:layout_marginTop="5sp"
+        android:layout_marginEnd="5sp"
+        android:layout_marginBottom="5sp"
         android:foreground="?attr/selectableItemBackground">
 
         <LinearLayout
@@ -19,45 +20,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-<<<<<<< Updated upstream
-            <TextView
-                android:id="@+id/TVId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10sp"
-                android:layout_marginTop="10sp"
-                android:layout_marginBottom="10sp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Id: " />
-
-            <TextView
-                android:id="@+id/TVFecha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10sp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Fecha: " />
-
-            <TextView
-                android:id="@+id/TVEscenario"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10sp"
-                android:layout_marginTop="10sp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Escenario: " />
-
-            <TextView
-                android:id="@+id/TVDescripcion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10sp"
-                android:layout_marginTop="10sp"
-                android:layout_marginEnd="10sp"
-                android:layout_marginBottom="10sp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Descripción: " />
-=======
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -75,7 +37,8 @@
                         android:layout_marginStart="10sp"
                         android:layout_marginTop="10sp"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Nombre:" />
+                        android:text="Etapa:"
+                        android:textColor="@color/colorPrimary" />
 
                     <TextView
                         android:id="@+id/TVNombreTP"
@@ -85,7 +48,8 @@
                         android:layout_marginTop="10sp"
                         android:layout_marginEnd="10sp"
                         android:fontFamily="sans-serif-light"
-                        android:text="Nombre" />
+                        android:text="Nombre"
+                        android:textColor="@color/colorPrimary" />
                 </LinearLayout>
 
                 <ImageView
@@ -108,7 +72,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:orientation="horizontal">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -124,16 +88,17 @@
 
                             <Button
                                 android:id="@+id/BTNSiguienteE"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/escenario"
                                 android:foreground="?android:attr/selectableItemBackground" />
 
                             <ImageView
                                 android:id="@+id/imageView18"
-                                android:layout_width="40sp"
-                                android:layout_height="40sp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center_vertical"
                                 app:srcCompat="@drawable/ic_twotone_error_24" />
 
                         </LinearLayout>
@@ -143,7 +108,7 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
@@ -153,13 +118,17 @@
 
                         <Button
                             android:id="@+id/BTNDescripcion"
-                            android:layout_width="40sp"
-                            android:layout_height="40sp"
-                            android:background="@drawable/descripcion_trazabilidad"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/masinformation"
                             android:foreground="?android:attr/selectableItemBackground"
+                            android:gravity="center_horizontal|center_vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
                             tools:ignore="MissingConstraints" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
@@ -167,7 +136,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -188,14 +157,15 @@
 
                                 <ImageView
                                     android:id="@+id/imageView17"
-                                    android:layout_width="40sp"
-                                    android:layout_height="40sp"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_gravity="center_vertical"
                                     app:srcCompat="@drawable/ic_twotone_error_24" />
 
                                 <Button
                                     android:id="@+id/BTNEscenarioP"
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/escenario_previo"
                                     android:foreground="?android:attr/selectableItemBackground" />
@@ -208,7 +178,6 @@
                 </LinearLayout>
 
             </LinearLayout>
->>>>>>> Stashed changes
 
         </LinearLayout>
 

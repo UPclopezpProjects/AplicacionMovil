@@ -4,6 +4,6 @@ import com.example.desarrolloresidencia.Network.model.CreationC.User
 
 interface AuthRegistro {
     fun onStarted()
-    fun onSuccess(message: Boolean, token: String, user: User)
+    fun onSuccess(message: Boolean)
     fun onFailure(message: String)
 }

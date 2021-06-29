@@ -1,5 +1,6 @@
 package com.example.desarrolloresidencia.utils
 
+import java.math.BigInteger
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -7,24 +8,12 @@ class MD5 {
 
     fun md5(s: String): String? {
         try {
-            // Create MD5 Hash
-            val digest = MessageDigest.getInstance("MD5")
-            digest.update(s.toByteArray())
-            val messageDigest = digest.digest()
-
-            // Create Hex String
-            val hexString = StringBuffer()
-            for (i in messageDigest.indices) hexString.append(
-                Integer.toHexString(
-                    0xFF and messageDigest[i]
-                        .toInt()
-                )
-            )
-            return hexString.toString()
-        } catch (e: NoSuchAlgorithmException) {
-            e.printStackTrace()
+            val md = MessageDigest.getInstance("MD5")
+            return BigInteger(1, md.digest(s.toByteArray())).toString(16).padStart(32, '0')
+        } catch (e: NoSuchAlgorithmException){
+            return e.toString()
         }
-        return ""
+
     }
 
 }

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@android:color/holo_green_light</color>
+    <color name="colorPrimary">#009F6F</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="ColorBase">#1CBA24</color>
     <color name="ColorBotón">#008f0e</color>
     <color name="ColorCaja">#76440e</color>
+    <color name="base">#008F67</color>
     <color name="ColorSuperior">#003d0e</color>
     <color name="ColorVerde">#1eb800</color>
     <color name="ColorRojo">#ff0000</color>
@@ -16,4 +17,5 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#9b9b9b</color>
 </resources>
