@@ -35,7 +35,7 @@ import com.facebook.*
 import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
 import com.google.gson.Gson
-import java.security.MessageDigest
+import java.security.MessageDigest 
 import java.security.NoSuchAlgorithmException
 >>>>>>> Stashed changes
 
