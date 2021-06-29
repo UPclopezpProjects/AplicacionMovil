@@ -31,6 +31,14 @@ android {
         jvmTarget = '1.8'
     }
 
+<<<<<<< Updated upstream
+=======
+    //esto habilita el uso de viewBindin
+    buildFeatures {
+        viewBinding = true
+    }
+
+>>>>>>> Stashed changes
 
 }
 
