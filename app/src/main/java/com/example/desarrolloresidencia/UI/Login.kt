@@ -191,13 +191,14 @@ class Login : AppCompatActivity(), AuthListener {
             var formato = Gson().fromJson(response.rawResponse, JsonFacebook::class.java)
             Log.e("EMAIL", formato.email)
 
-            if (loginF ==true){
+            //if (loginF ==true){
                 Log.e("login if cargardata", "si se va entra al if")
                 loginViewModel.email = formato.email
                 loginViewModel.password = formato.id
                 loginViewModel.LoginFacebook()
+                Log.e("Login cargar data", "se hizo el login del viewmodel")
 
-            }
+            //}
 
             //Picasso.get().load(url).into(foto)
         }

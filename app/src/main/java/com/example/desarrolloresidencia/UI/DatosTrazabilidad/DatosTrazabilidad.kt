@@ -1,6 +1,5 @@
 package com.example.desarrolloresidencia.UI.DatosTrazabilidad
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
@@ -10,14 +9,11 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
 import com.example.desarrolloresidencia.R
-import com.example.desarrolloresidencia.UI.AlertDialog.Guacamole
 import com.example.desarrolloresidencia.UI.AlertDialog.mapaInformacion
-import com.example.desarrolloresidencia.UI.Trazabilidad
 import com.example.desarrolloresidencia.ViewModel.ScannerQRViewModel
 import com.example.desarrolloresidencia.utils.Auth.AuthQr
 import com.example.desarrolloresidencia.utils.FragmentarString
@@ -176,7 +172,7 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
         Toast.makeText(applicationContext, "Cargando...", Toast.LENGTH_LONG).show()
     }
 
-    override fun onSuccess(message: List<Message>) {
+    override fun onSuccess() {
         finish()
         var intent1 : Intent = Intent(applicationContext, DatosTrazabilidad::class.java)
         startActivity(intent1)

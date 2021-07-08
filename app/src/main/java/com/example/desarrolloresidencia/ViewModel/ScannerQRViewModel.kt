@@ -24,16 +24,21 @@ class ScannerQRViewModel : ViewModel(){
                     Log.d("consulta", response.body()!!.message.toString())
 
                     com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta.consulta = response.body()!!.message
-                    Log.d("el id", com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta.consulta!!.get(0).id)
+
                     if (response.isSuccessful) {
-                        val message: List<Message> = response.body()!!.message
-                        authListener?.onSuccess(message)
+                        Log.d("ScannerQRViewModel", "Está dentro del if")
+                        //var message: List<Message> = response.body()!!.message
+                        authListener?.onSuccess(/*message*/)
                         Log.d("success", "si lo mandó")
                     } else {
+                        Log.d("ScannerQRViewModel", "Está dentro del else")
                         authListener?.onFailure("${response.errorBody()?.string()}")
                     }
                 }catch (e : java.net.SocketTimeoutException){
                     authListener?.onFailure("No se pudo conectar con el servidor")
+                }
+                catch (e: Exception){
+                    Log.e("ScannerQRViewModel Exception", "El error es: ${e}")
                 }
             }
     }

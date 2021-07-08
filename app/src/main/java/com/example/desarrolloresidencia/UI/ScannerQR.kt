@@ -3,22 +3,16 @@ package com.example.desarrolloresidencia.UI
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Message
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
-import com.example.desarrolloresidencia.Network.model.MessageError.Error
-import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
-import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.UI.DatosTrazabilidad.DatosTrazabilidad
 import com.example.desarrolloresidencia.ViewModel.ScannerQRViewModel
 import com.example.desarrolloresidencia.databinding.ActivityScannerQRBinding
-import com.example.desarrolloresidencia.databinding.DatosTrazabilidadBinding
 import com.example.desarrolloresidencia.utils.Auth.AuthQr
 import com.example.desarrolloresidencia.utils.ValidarR
-import com.example.desarrolloresidencia.utils.responseUser
-import com.google.gson.Gson
 import com.google.zxing.integration.android.IntentIntegrator
 
 
@@ -78,11 +72,11 @@ class ScannerQR : AppCompatActivity(), AuthQr {
         binding.Titulo.isEnabled =false
     }
 
-    override fun onSuccess(message: List<Message>) {
+    override fun onSuccess() {
         //Log.d("success", "terminé")
         binding.Titulo.isEnabled = true
         //Toast.makeText(this, "Se hizo la consulta", Toast.LENGTH_SHORT).show()
-        Log.d("la matriz", "${message.get(1)}")
+        //Log.d("la matriz", "${message.get(0)}")
         TrazabilidadScreen()
     }
 

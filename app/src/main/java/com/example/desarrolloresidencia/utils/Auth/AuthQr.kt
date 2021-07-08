@@ -4,6 +4,6 @@ import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
 
 interface AuthQr {
     fun onStarted()
-    fun onSuccess(message: List<Message>)
+    fun onSuccess()
     fun onFailure(message: String)
 }

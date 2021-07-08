@@ -8,8 +8,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
-import com.example.desarrolloresidencia.UI.AlertDialog.BlankFragment
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
+import com.example.desarrolloresidencia.UI.AlertDialog.BlankFragment
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.UI.DatosTrazabilidad.DatosTrazabilidad
 import com.example.desarrolloresidencia.ViewModel.ScannerQRViewModel
@@ -215,10 +215,10 @@ class Trazabilidad : AppCompatActivity(), AuthQr {
 
     }
 
-    override fun onSuccess(message: List<Message>) {
+    override fun onSuccess() {
         //Log.d("success", "terminé")
         //Toast.makeText(this, "Se hizo la consulta", Toast.LENGTH_SHORT).show()
-        Log.d("la matriz", "${message.get(1)}")
+        //Log.d("la matriz", "${message.get(1)}")
         TrazabilidadScreen()
     }
 
