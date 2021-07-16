@@ -1,9 +1,6 @@
 package com.example.desarrolloresidencia.utils
 
-import android.app.AlertDialog
 import android.content.Context
-import android.media.Image
-import android.opengl.Visibility
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,14 +10,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desarrolloresidencia.R
+import com.example.desarrolloresidencia.UI.DatosTrazabilidad.ListaPuntos
 import com.squareup.picasso.Picasso
-import org.w3c.dom.Text
 
 class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): RecyclerView.Adapter<AdaptadorCustom.ViewHolder>() {
 
     var items: ArrayList<Ubicacion> ?= null
     var navegacion: RecyclerV ?= null
     var context:Context ?= null
+    var camara: ListaPuntos.MoverCamara?= null
 
     init {
         this.items = items
@@ -45,13 +43,19 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
         holder.nombre?.text = item?.name
 
         //holder.escenario?.text = item?.currentStage
-        when (item?.currentStage) {
-            "Productor" -> holder.escenario?.setImageResource(R.drawable.productor_round)
-            "Acopio" -> holder.escenario?.setImageResource(R.drawable.acopio_round)
-            "Carrier"-> holder.escenario?.setImageResource(R.drawable.transportista_round)
-            "Merchant"->holder.escenario?.setImageResource(R.drawable.comerciante_round)
-            "null"->holder.escenario?.visibility = View.GONE
+        if (position != 0){
+            when (items?.get(position-1)!!.currentStage) {
+                "Productor" -> holder.escenario?.setImageResource(R.drawable.productor_round)
+                "Acopio" -> holder.escenario?.setImageResource(R.drawable.acopio_round)
+                "Carrier"-> holder.escenario?.setImageResource(R.drawable.transportista_round)
+                "Merchant"->holder.escenario?.setImageResource(R.drawable.comerciante_round)
+                "null"->holder.escenario?.visibility = View.GONE
+            }
+        } else{
+            holder.siguiente?.visibility = View.GONE
+            holder.escenario?.visibility = View.GONE
         }
+
 
 
         Picasso.get()
@@ -75,25 +79,28 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
             holder.escenarioP?.visibility = View.GONE
         }
 
-        if (position==0){
+        /*if (position==0){
             holder.siguiente?.visibility = View.GONE
             holder.escenario?.visibility = View.GONE
-        }
+        }*/
 
         holder.anterior?.setOnClickListener {
             //holder.lista?.scrollToPosition(position-1)
             Log.e("Adaptador custom, anterior", "${position+1}")
-            navegacion?.anterior(position+1)
+            navegacion?.anterior(position+1, items?.get(position+1)!!.ubication)
+            //camara?.obtenerPosicion("$position+1")
         }
 
         holder.siguiente?.setOnClickListener {
             //holder.lista?.scrollToPosition(position+1)
             Log.e("Adaptador custom, siguiente", "${position-1}")
-            navegacion?.siguiente(position-1)
+            navegacion?.siguiente(position-1, items?.get(position-1)!!.ubication)
+            //camara?.obtenerPosicion(items?.get(position+1)!!.ubication)
         }
 
         holder.descripcion?.setOnClickListener {
             navegacion?.descripcion(item!!.description)
+            //camara?.obtenerPosicion(items?.get(position-1)!!.ubication)
         }
 
 

@@ -180,14 +180,16 @@ class ListaPuntos : Fragment(), RecyclerV {
         }
     }
 
-    override fun anterior(posicion: Int) {
+    override fun anterior(posicion: Int, ubication: String) {
         layoutManager?.scrollToPosition(posicion)
         advertenciaLogin()
+        listener?.obtenerPosicion(ubication)
     }
 
-    override fun siguiente(posicion: Int) {
+    override fun siguiente(posicion: Int, ubication: String) {
         layoutManager?.scrollToPosition(posicion)
         advertenciaLogin()
+        listener?.obtenerPosicion(ubication)
     }
 
     override fun descripcion(descripcion: String) {
