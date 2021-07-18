@@ -36,9 +36,12 @@ class ScannerQRViewModel : ViewModel(){
                     }
                 }catch (e : java.net.SocketTimeoutException){
                     authListener?.onFailure("No se pudo conectar con el servidor")
+                } catch (e: com.google.gson.JsonSyntaxException){
+                    authListener?.onFailure("Error al hacer la consulta")
                 }
                 catch (e: Exception){
                     Log.e("ScannerQRViewModel Exception", "El error es: ${e}")
+                    authListener?.onFailure("$e")
                 }
             }
     }
