@@ -201,6 +201,14 @@ class ListaPuntos : Fragment(), RecyclerV {
         builder.show()
     }
 
+    override fun mensaje(mensaje: String) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Atención").setIcon(R.drawable.logo)
+        builder.setMessage("Para conocer todas las ubicaciones del aguacate debes de iniciar sesión")
+        builder.setPositiveButton("ok"){ dialog, id ->}
+        builder.show()
+    }
+
     fun advertenciaLogin(){
         if (responseUser.message == null){
             val builder = AlertDialog.Builder(context)
