@@ -100,6 +100,17 @@ class Login : AppCompatActivity(), AuthListener {
         callbackManager = CallbackManager.Factory.create();
         binding.loginButton.setReadPermissions("email");
 
+        //verifica si ya había iniciado sesión
+        if (AccessToken.getCurrentAccessToken() != null && Profile.getCurrentProfile() != null){
+            Log.e(
+                "Verifica si ya hay una sesión iniciada",
+                "${Profile.getCurrentProfile().firstName}"
+            )
+            accessToken = AccessToken.getCurrentAccessToken()
+            cargarData()
+        }
+
+
         binding.loginButton.registerCallback(callbackManager, object : FacebookCallback<LoginResult?> {
 
             override fun onSuccess(loginResult: LoginResult?) {

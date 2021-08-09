@@ -86,14 +86,9 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
 
         holder.anterior?.setOnClickListener {
             //holder.lista?.scrollToPosition(position-1)
-            if (responseUser.message != null) {
-                Log.e("Adaptador custom, anterior", "${position+1}")
-                navegacion?.anterior(position+1, items?.get(position+1)!!.ubication)
-                //camara?.obtenerPosicion("$position+1")
-            }else{
-                navegacion?.mensaje("inicia sesión")
-            }
-
+            Log.e("Adaptador custom, anterior", "${position+1}")
+            navegacion?.anterior(position+1, items?.get(position+1)!!.ubication)
+            //camara?.obtenerPosicion("$position+1")
         }
 
         holder.siguiente?.setOnClickListener {
