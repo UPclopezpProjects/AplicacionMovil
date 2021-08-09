@@ -11,6 +11,7 @@ import android.util.Patterns
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.PagerAdapter
@@ -29,6 +30,12 @@ import com.google.gson.Gson
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 import java.util.regex.Pattern
+import com.facebook.FacebookException
+import com.facebook.FacebookCallback
+import com.facebook.AccessToken
+import android.R.attr.data
+import com.facebook.login.LoginManager
+import java.util.*
 
 
 class Login : AppCompatActivity(), AuthListener {
@@ -47,22 +54,22 @@ class Login : AppCompatActivity(), AuthListener {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        hash()
-        loginViewModel= ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        //hash()
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
         loginViewModel.authListener = this
         loginViewModel.contexto = this
 
         callbackManager = CallbackManager.Factory.create();
 
         binding.BTLogin.setOnClickListener {
-            if (ValidarR.hayRed(this)){
-                ValidationE()
+            if (ValidarR.hayRed(this)) {
+                validarE()
             } else {
                 //Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Error Login").setIcon(R.drawable.logo)
                 builder.setMessage("No hay red")
-                builder.setPositiveButton("ok"){ dialog, id ->}
+                builder.setPositiveButton("ok") { dialog, id -> }
                 builder.show()
             }
         }
@@ -89,27 +96,11 @@ class Login : AppCompatActivity(), AuthListener {
             binding.ETEmail.setText("")
             binding.password.setText("")
         }
+        //inicia el login con facebook
+        callbackManager = CallbackManager.Factory.create();
+        binding.loginButton.setReadPermissions("email");
 
-        callbackManager = CallbackManager.Factory.create()
-
-        //val loginButton = findViewById<LoginButton>(R.id.loginbuttonF)
-        binding.loginbutton.setReadPermissions("email")
-
-        //verifica si ya había iniciado sesión
-        if (AccessToken.getCurrentAccessToken() != null && Profile.getCurrentProfile() != null){
-            Log.e(
-                "Verifica si ya hay una sesión iniciada",
-                "${Profile.getCurrentProfile().firstName}"
-            )
-            accessToken = AccessToken.getCurrentAccessToken()
-            cargarData()
-        }
-
-        // Callback registration
-
-        // Callback registration
-
-        binding.loginbutton.registerCallback(callbackManager, object : FacebookCallback<LoginResult?> {
+        binding.loginButton.registerCallback(callbackManager, object : FacebookCallback<LoginResult?> {
 
             override fun onSuccess(loginResult: LoginResult?) {
                 accessToken = AccessToken.getCurrentAccessToken()
@@ -192,11 +183,11 @@ class Login : AppCompatActivity(), AuthListener {
             Log.e("EMAIL", formato.email)
 
             //if (loginF ==true){
-                Log.e("login if cargardata", "si se va entra al if")
-                loginViewModel.email = formato.email
-                loginViewModel.password = formato.id
-                loginViewModel.LoginFacebook()
-                Log.e("Login cargar data", "se hizo el login del viewmodel")
+            Log.e("login if cargardata", "si se va entra al if")
+            loginViewModel.email = formato.email
+            loginViewModel.password = formato.id
+            loginViewModel.LoginFacebook()
+            Log.e("Login cargar data", "se hizo el login del viewmodel")
 
             //}
 
@@ -209,6 +200,7 @@ class Login : AppCompatActivity(), AuthListener {
         request.executeAsync()
     }
 
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         callbackManager?.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
@@ -218,7 +210,14 @@ class Login : AppCompatActivity(), AuthListener {
         Log.e("data", data.toString())
     }
 
-    fun hash(){
+
+
+
+
+    //termina el login con facebook
+
+
+    /*fun hash(){
         try {
             val info: PackageInfo? = packageManager.getPackageInfo(
                 "com.example.desarrolloresidencia",  //Insert your own package name.
@@ -234,9 +233,9 @@ class Login : AppCompatActivity(), AuthListener {
         } catch (e: PackageManager.NameNotFoundException) {
         } catch (e: NoSuchAlgorithmException) {
         }
-    }
+    }*/
 
-    private fun ValidationE(){
+     fun validarE(){
         try {
             var email = findViewById<EditText>(R.id.ETEmail)
             var contraseña = findViewById<EditText>(R.id.password)
@@ -261,7 +260,7 @@ class Login : AppCompatActivity(), AuthListener {
         }
     }
 
-    private fun validarEmail(email: String): Boolean {
+    fun validarEmail(email: String): Boolean {
         val pattern: Pattern = Patterns.EMAIL_ADDRESS
         return pattern.matcher(email).matches()
     }
