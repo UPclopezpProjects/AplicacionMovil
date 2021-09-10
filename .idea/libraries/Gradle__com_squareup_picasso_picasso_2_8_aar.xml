@@ -1,7 +1,6 @@
 <component name="libraryTable">
   <library name="Gradle: com.squareup.picasso:picasso:2.8@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f3548a398ee689a2c95de710e4eeaf9d/jetified-picasso-2.8/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/cc3b434b991cbdec350b7a73d9d05c76/transformed/jetified-picasso-2.8/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cc3b434b991cbdec350b7a73d9d05c76/transformed/jetified-picasso-2.8/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cc3b434b991cbdec350b7a73d9d05c76/transformed/jetified-picasso-2.8/AndroidManifest.xml" />

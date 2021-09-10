@@ -7,7 +7,6 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
-import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
 import com.example.desarrolloresidencia.UI.AlertDialog.BlankFragment
 import com.example.desarrolloresidencia.R

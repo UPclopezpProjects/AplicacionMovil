@@ -35,7 +35,8 @@ class AmazonRepository {
 
     suspend fun userRegistro(nombre:String, apellidoP:String, apellidoM:String, email:String, contrasena:String, dp:String): Response<CreacionConsumidor> {
 
-        var jsonOsman = """{ "email":"${email.toLowerCase()}","password":"$contrasena","surnameA":"$apellidoP","surnameB":"$apellidoM","nameOfUser":"$nombre","typeOfUser":"Consumer","status":"false","creationDate":"xx-xx-xxxx","dp":$dp,"addressU":"0xf26F59ac3801F419Abe44CA7d56FfC8fB8142BbB","typeOfOperation":"create","nameOfOperation":"createConsumer" }"""
+        //var jsonOsman = """{ "email":"${email.toLowerCase()}","password":"$contrasena","surnameA":"$apellidoP","surnameB":"$apellidoM","nameOfUser":"$nombre","typeOfUser":"Consumer","status":"false","creationDate":"xx-xx-xxxx","dp":$dp,"addressU":"0x9d81a60153d369fc99192f88c04E19f5475a4cA2","typeOfOperation":"create","nameOfOperation":"createConsumer","gas":"900000"}"""
+        var jsonOsman = """{ "email":"${email.toLowerCase()}","password":"$contrasena","surnameA":"$apellidoP","surnameB":"$apellidoM","nameOfUser":"$nombre","typeOfUser":"Consumer","status":"false","creationDate":"xx-xx-xxxx","addressU":"0xe5488d0a914c780381f150d13289170423e1510f","gas":"900000","typeOfOperation":"create","nameOfOperation":"createConsumer" }"""
 
         Log.d("el string", "$jsonOsman")
         var objeto = JSONObject(jsonOsman)
@@ -44,6 +45,6 @@ class AmazonRepository {
         Log.d("el hash", "$hash")
 
         //return MyApi().Registrarse("$email", "$contrasena", "$apellidoP", "$apellidoM", "$nombre", "Consumer","false", "xx-xx-xxxx", "$dp", "0xf26F59ac3801F419Abe44CA7d56FfC8fB8142BbB", "create", "createConsumer", "$hash")
-        return APIAmazon().Registrarse("$email", "$contrasena", "$apellidoP", "$apellidoM", "$nombre", "Consumer","false", "xx-xx-xxxx", "$dp", "0xf26F59ac3801F419Abe44CA7d56FfC8fB8142BbB", "create", "createConsumer", "$hash")
+        return APIAmazon().Registrarse("$email", "$contrasena", "$apellidoP", "$apellidoM", "$nombre", "Consumer","false", "xx-xx-xxxx", "$dp", "0xe5488d0a914c780381f150d13289170423e1510f", "create", "createConsumer", "$hash", "900000")
     }
 }

@@ -1,7 +1,6 @@
 <component name="libraryTable">
   <library name="Gradle: com.xwray:groupie-databinding:2.3.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d85cf35bd5454712f2a1ed51afeb0f0a/jetified-groupie-databinding-2.3.0/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/213ed79b0370fde4dc94247cc6de9038/transformed/jetified-groupie-databinding-2.3.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/213ed79b0370fde4dc94247cc6de9038/transformed/jetified-groupie-databinding-2.3.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/213ed79b0370fde4dc94247cc6de9038/transformed/jetified-groupie-databinding-2.3.0/AndroidManifest.xml" />

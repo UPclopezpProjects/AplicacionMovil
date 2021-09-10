@@ -39,7 +39,7 @@ class ListaPuntos : Fragment(), RecyclerV {
     }
 
     private fun mapearpuntos() {
-        try {
+        //try {
             var contexto = requireContext().applicationContext
             //val puntos = ArrayList<Ubicacion>()
             if (responseUser.message != null) {
@@ -48,6 +48,7 @@ class ListaPuntos : Fragment(), RecyclerV {
                     var nuevaI = consulta.consulta!!.get(i).image.replace("http://0.0.0.0", "http://52.202.214.13")
                     Log.e("nueva imagen", nuevaI)
                     if (consulta.consulta!!.get(i).code != null) {
+                        Log.d("DATOS DE LA MATRIZ CONSULTA", "${consulta.consulta!!.get(i)}")
                         puntos.add(
                                 Ubicacion(
                                         consulta.consulta!!.get(i).__v,
@@ -61,7 +62,9 @@ class ListaPuntos : Fragment(), RecyclerV {
                                         nuevaI,
                                         consulta.consulta!!.get(i).name,
                                         consulta.consulta!!.get(i).previousStage,
-                                        consulta.consulta!!.get(i).ubication
+                                        consulta.consulta!!.get(i).ubication,
+                                        consulta.consulta!!.get(i).origin,
+                                        consulta.consulta!!.get(i).destination
                                 )
                         )
                     } else {
@@ -78,7 +81,9 @@ class ListaPuntos : Fragment(), RecyclerV {
                                         nuevaI,
                                         consulta.consulta!!.get(i).name,
                                         consulta.consulta!!.get(i).previousStage,
-                                        consulta.consulta!!.get(i).ubication
+                                        consulta.consulta!!.get(i).ubication,
+                                        consulta.consulta!!.get(i).origin,
+                                        consulta.consulta!!.get(i).destination
                                 )
                         )
                     }
@@ -116,7 +121,9 @@ class ListaPuntos : Fragment(), RecyclerV {
                                     nuevaI,
                                     consulta.consulta!!.get(0).name,
                                     consulta.consulta!!.get(0).previousStage,
-                                    consulta.consulta!!.get(0).ubication
+                                    consulta.consulta!!.get(0).ubication,
+                                    consulta.consulta!!.get(0).origin,
+                                    consulta.consulta!!.get(0).destination
                             )
                     )
                 } else {
@@ -133,7 +140,9 @@ class ListaPuntos : Fragment(), RecyclerV {
                                     nuevaI,
                                     consulta.consulta!!.get(0).name,
                                     consulta.consulta!!.get(0).previousStage,
-                                    consulta.consulta!!.get(0).ubication
+                                    consulta.consulta!!.get(0).ubication,
+                                    consulta.consulta!!.get(0).origin,
+                                    consulta.consulta!!.get(0).destination
                             )
                     )
                 }
@@ -155,14 +164,13 @@ class ListaPuntos : Fragment(), RecyclerV {
                 })
                 lista?.adapter = adaptador
             }
-        }catch (e : java.lang.NullPointerException){
+        /*}catch (e : java.lang.NullPointerException){
             val builder = AlertDialog.Builder(context)
             builder.setTitle("Mensaje del Servidor").setIcon(R.drawable.logo)
             builder.setMessage("Error en la consulta, registro demasiado antiguo ")
             builder.setPositiveButton("ok"){dialog, id ->}
             builder.show()
-
-        }
+        }*/
 
     }
     interface MoverCamara {

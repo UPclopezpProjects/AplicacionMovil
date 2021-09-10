@@ -42,7 +42,7 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
         holder.ubicacion = item?.ubication
         holder.nombre?.text = item?.name
 
-        //holder.escenario?.text = item?.currentStage
+        //ícono del escenario izquierdo
         if (position != 0){
             when (items?.get(position-1)!!.currentStage) {
                 "Productor" -> holder.escenario?.setImageResource(R.drawable.productor_round)
@@ -65,6 +65,7 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
             .into(holder.imagen);
         //holder.__V?.text = item?.__v.toString()
 
+        //ícono escenario derecho
         if(item?.previousStage != "null"){
             //holder.escenarioP?.text = item?.previousStage
             when (item?.previousStage) {
@@ -106,6 +107,37 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
 
 
     }
+
+    /*fun getImageR(position: Int, ){
+        if(item?.previousStage != "null"){
+            //holder.escenarioP?.text = item?.previousStage
+            when (item?.previousStage) {
+                "Productor" -> holder.escenarioP?.setImageResource(R.drawable.productor_round)
+                "Acopio" -> holder.escenarioP?.setImageResource(R.drawable.acopio_round)
+                "Carrier"-> holder.escenarioP?.setImageResource(R.drawable.transportista_round)
+                "Merchant"->holder.escenarioP?.setImageResource(R.drawable.comerciante_round)
+                "null"->holder.escenarioP?.visibility = View.GONE
+            }
+        }else{
+            holder.anterior?.visibility = View.GONE
+            holder.escenarioP?.visibility = View.GONE
+        }
+    }
+
+    fun getImageL(position: Int){
+        if (position != 0){
+            when (items?.get(position-1)!!.currentStage) {
+                "Productor" -> holder.escenario?.setImageResource(R.drawable.productor_round)
+                "Acopio" -> holder.escenario?.setImageResource(R.drawable.acopio_round)
+                "Carrier"-> holder.escenario?.setImageResource(R.drawable.transportista_round)
+                "Merchant"->holder.escenario?.setImageResource(R.drawable.comerciante_round)
+                "null"->holder.escenario?.visibility = View.GONE
+            }
+        } else{
+            holder.siguiente?.visibility = View.GONE
+            holder.escenario?.visibility = View.GONE
+        }
+    }*/
 
     override fun getItemCount(): Int {
         return items?.count()!!

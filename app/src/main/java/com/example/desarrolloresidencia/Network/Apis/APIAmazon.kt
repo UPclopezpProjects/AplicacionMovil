@@ -55,13 +55,14 @@ interface APIAmazon {
             @Field("addressU") addressU: String?,
             @Field("typeOfOperation") typeOfOperation: String?,
             @Field("nameOfOperation") nameOfOperation: String?,
-            @Field("hashX") hashX: String?
+            @Field("hashX") hashX: String?,
+            @Field("gas") gas: String?
     ): Response<CreacionConsumidor>
 
     @FormUrlEncoded
     @POST("traceability")
     suspend  fun Trazabilidad(
-            @Field("QR") QR: String?,
+            @Field("Code") Code: String?,
             @Field("ID") ID: String?
     ): Response<Trazabilidad>
 

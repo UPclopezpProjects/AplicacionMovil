@@ -3,7 +3,6 @@ package com.example.desarrolloresidencia.ViewModel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
 import com.example.desarrolloresidencia.Repository.AmazonRepository
 import com.example.desarrolloresidencia.utils.Auth.AuthQr
 import com.google.gson.Gson
@@ -23,6 +22,7 @@ class ScannerQRViewModel : ViewModel(){
                     val response = AmazonRepository().trazabilidadConsulta("$qr", "$id")
                     Log.d("consulta", response.body()!!.message.toString())
 
+                    //el archivo de consulta
                     com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta.consulta = response.body()!!.message
 
                     if (response.isSuccessful) {
@@ -48,8 +48,8 @@ class ScannerQRViewModel : ViewModel(){
 
     fun mapeoJS(){
         var testModel = Gson().fromJson(QR, com.example.desarrolloresidencia.Network.model.Trazabilidad.QR::class.java)
-        Log.d("EL QR","${testModel.QR}")
+        Log.d("EL QR","${testModel.Code}")
         Log.d("EL ID","${testModel.ID}")
-        consulta(testModel.QR, testModel.ID)
+        consulta(testModel.Code, testModel.ID)
     }
 }

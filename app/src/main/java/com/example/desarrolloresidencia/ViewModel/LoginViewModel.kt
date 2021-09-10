@@ -67,6 +67,7 @@ class LoginViewModel() : ViewModel()  {
 
                 val response = AmazonRepository().userRegistro("""$firstname $middlename""", "$lastname", " ", "$email", "$password", "$dp")
 
+
                 if (response.isSuccessful) {
                     Log.d("login token", "${responseUser.token}")
 
