@@ -109,15 +109,16 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
         Log.d("tamaño", consulta.consulta!!.size.toString())
         var i = consulta.consulta!!.size-1
         while (i >=0){
-            Log.d("ELEMENTO DE LA MATRIZ/TRAZABILIDAD: ",i.toString())
 
             if(consulta.consulta!!.get(i).currentStage == "Carrier"){
+
                 polilinea.add(FragmentarString().separaLL(consulta.consulta!!.get(i).origin))
                 mMap.addMarker(MarkerOptions().position(FragmentarString().separaLL(consulta.consulta!!.get(i).origin)).icon(BitmapDescriptorFactory.fromResource(R.drawable.transportista_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+"Origen del transportista"))
 
                 polilinea.add(FragmentarString().separaLL(consulta.consulta!!.get(i).destination))
                 mMap.addMarker(MarkerOptions().position(FragmentarString().separaLL(consulta.consulta!!.get(i).destination)).icon(BitmapDescriptorFactory.fromResource(R.drawable.transportista_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+"Destino del transportista"))
             } else {
+
                 polilinea.add(FragmentarString().separaLL(consulta.consulta!!.get(i).ubication))
 
                 when (consulta.consulta!!.get(i).currentStage) {

@@ -1,6 +1,8 @@
 package com.example.desarrolloresidencia.utils
 
+import android.app.AlertDialog
 import android.content.Context
+import android.opengl.Visibility
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -34,110 +36,89 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
 
     override fun onBindViewHolder(holder: AdaptadorCustom.ViewHolder, position: Int) {
         val item = items?.get(position)
-        //holder._id?.text = item?._id
-        //holder.id?.text = item?.id
-        //holder.fid?.text = item?.fid
-        //holder.codigo?.text = item?.code
-        //Log.e("codigoQR", "${item?.code.toString()}")
-        holder.ubicacion = item?.ubication
-        holder.nombre?.text = item?.name
-
-        //ícono del escenario izquierdo
-        if (position != 0){
-            when (items?.get(position-1)!!.currentStage) {
-                "Productor" -> holder.escenario?.setImageResource(R.drawable.productor_round)
-                "Acopio" -> holder.escenario?.setImageResource(R.drawable.acopio_round)
-                "Carrier"-> holder.escenario?.setImageResource(R.drawable.transportista_round)
-                "Merchant"->holder.escenario?.setImageResource(R.drawable.comerciante_round)
-                "null"->holder.escenario?.visibility = View.GONE
-            }
-        } else{
-            holder.siguiente?.visibility = View.GONE
-            holder.escenario?.visibility = View.GONE
-        }
+        //var tamano = items?.size
+        var ultimo = items?.size?.minus(1)
 
 
 
-        Picasso.get()
-            .load(item?.image)
-            .placeholder(R.drawable.logo)
-            .error(R.drawable.ic_twotone_error_24)
-            .into(holder.imagen);
-        //holder.__V?.text = item?.__v.toString()
 
-        //ícono escenario derecho
-        if(item?.previousStage != "null"){
-            //holder.escenarioP?.text = item?.previousStage
-            when (item?.previousStage) {
+        if (position == ultimo){
+            holder.anterior?.visibility = View.INVISIBLE
+            holder.escenarioP?.visibility = View.INVISIBLE
+        } else {
+            holder.anterior?.visibility = View.VISIBLE
+            holder.escenarioP?.visibility = View.VISIBLE
+
+            when(items?.get(position+1)!!.currentStage){
                 "Productor" -> holder.escenarioP?.setImageResource(R.drawable.productor_round)
                 "Acopio" -> holder.escenarioP?.setImageResource(R.drawable.acopio_round)
-                "Carrier"-> holder.escenarioP?.setImageResource(R.drawable.transportista_round)
-                "Merchant"->holder.escenarioP?.setImageResource(R.drawable.comerciante_round)
-                "null"->holder.escenarioP?.visibility = View.GONE
+                "Carrier" -> holder.escenarioP?.setImageResource(R.drawable.transportista_round)
+                "Merchant" -> holder.escenarioP?.setImageResource(R.drawable.comerciante_round)
             }
-        }else{
-            holder.anterior?.visibility = View.GONE
-            holder.escenarioP?.visibility = View.GONE
+
+            holder.anterior!!.setOnClickListener{
+                if (items!!.get(position+1).currentStage != "Carrier") {
+                    navegacion!!.anterior(position+1, items!!.get(position+1).ubication)
+                } else {
+                    navegacion!!.anterior(position+1, items!!.get(position+1).origin)
+                }
+            }
+
         }
 
-        /*if (position==0){
-            holder.siguiente?.visibility = View.GONE
-            holder.escenario?.visibility = View.GONE
-        }*/
 
-        holder.anterior?.setOnClickListener {
-            //holder.lista?.scrollToPosition(position-1)
-            Log.e("Adaptador custom, anterior", "${position+1}")
-            navegacion?.anterior(position+1, items?.get(position+1)!!.ubication)
-            //camara?.obtenerPosicion("$position+1")
+
+
+        if (position == 0){
+            holder.siguiente?.visibility = View.INVISIBLE
+            holder.escenario?.visibility = View.INVISIBLE
+        } else {
+            holder.siguiente?.visibility = View.VISIBLE
+            holder.escenario?.visibility = View.VISIBLE
+
+            when(items?.get(position-1)!!.currentStage){
+                "Productor" -> holder.escenario?.setImageResource(R.drawable.productor_round)
+                "Acopio" -> holder.escenario?.setImageResource(R.drawable.acopio_round)
+                "Carrier" -> holder.escenario?.setImageResource(R.drawable.transportista_round)
+                "Merchant" -> holder.escenario?.setImageResource(R.drawable.comerciante_round)
+            }
+
+            holder.siguiente!!.setOnClickListener {
+                if (items!!.get(position-1).currentStage != "Carrier") {
+                    navegacion!!.anterior(position-1, items!!.get(position-1).ubication)
+                } else {
+                    navegacion!!.anterior(position-1, items!!.get(position-1).origin)
+                }
+            }
         }
 
-        holder.siguiente?.setOnClickListener {
-            //holder.lista?.scrollToPosition(position+1)
-            Log.e("Adaptador custom, siguiente", "${position-1}")
-            navegacion?.siguiente(position-1, items?.get(position-1)!!.ubication)
-            //camara?.obtenerPosicion(items?.get(position+1)!!.ubication)
-        }
 
-        holder.descripcion?.setOnClickListener {
-            navegacion?.descripcion(item!!.description)
-            //camara?.obtenerPosicion(items?.get(position-1)!!.ubication)
-        }
+
+
+
+
+        //el_chupelamigo@hotmail.com
+
+        //holder.ubicacion = item?.ubication
+        holder.nombre?.text = item?.name+"-"+position
+
+
+            Picasso.get()
+                .load(item?.image)
+                .placeholder(R.drawable.logo)
+                .error(R.drawable.ic_twotone_error_24)
+                .into(holder.imagen)
+
+            holder.descripcion?.setOnClickListener {
+                navegacion?.descripcion(item!!.description)
+                //camara?.obtenerPosicion(items?.get(position-1)!!.ubication)
+            }
+
 
 
 
     }
 
-    /*fun getImageR(position: Int, ){
-        if(item?.previousStage != "null"){
-            //holder.escenarioP?.text = item?.previousStage
-            when (item?.previousStage) {
-                "Productor" -> holder.escenarioP?.setImageResource(R.drawable.productor_round)
-                "Acopio" -> holder.escenarioP?.setImageResource(R.drawable.acopio_round)
-                "Carrier"-> holder.escenarioP?.setImageResource(R.drawable.transportista_round)
-                "Merchant"->holder.escenarioP?.setImageResource(R.drawable.comerciante_round)
-                "null"->holder.escenarioP?.visibility = View.GONE
-            }
-        }else{
-            holder.anterior?.visibility = View.GONE
-            holder.escenarioP?.visibility = View.GONE
-        }
-    }
-
-    fun getImageL(position: Int){
-        if (position != 0){
-            when (items?.get(position-1)!!.currentStage) {
-                "Productor" -> holder.escenario?.setImageResource(R.drawable.productor_round)
-                "Acopio" -> holder.escenario?.setImageResource(R.drawable.acopio_round)
-                "Carrier"-> holder.escenario?.setImageResource(R.drawable.transportista_round)
-                "Merchant"->holder.escenario?.setImageResource(R.drawable.comerciante_round)
-                "null"->holder.escenario?.visibility = View.GONE
-            }
-        } else{
-            holder.siguiente?.visibility = View.GONE
-            holder.escenario?.visibility = View.GONE
-        }
-    }*/
 
     override fun getItemCount(): Int {
         return items?.count()!!
@@ -155,7 +136,7 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
         var fidE: TextView ?= null
         //var codigo: TextView ?= null
         //var codigoE:TextView ?= null
-        var ubicacion: String ?= null
+        //var ubicacion: String ?= null
         var nombre: TextView ?= null
         var escenarioP: ImageView ?= null
         var escenario: ImageView ?= null
@@ -175,7 +156,7 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
             //fidE= vista.findViewById(R.id.textView10)
             //codigo= vista.findViewById(R.id.TVCodigo)
             //codigoE= vista.findViewById(R.id.textView15)
-            ubicacion= ""
+            //ubicacion= ""
             nombre= vista.findViewById(R.id.TVNombreTP)
             escenarioP= vista.findViewById(R.id.imageView17)
             escenario= vista.findViewById(R.id.imageView18)

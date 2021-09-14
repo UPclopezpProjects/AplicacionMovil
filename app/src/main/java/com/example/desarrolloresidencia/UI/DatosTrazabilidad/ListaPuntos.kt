@@ -44,49 +44,37 @@ class ListaPuntos : Fragment(), RecyclerV {
             //val puntos = ArrayList<Ubicacion>()
             if (responseUser.message != null) {
                 for (i in 0..(consulta.consulta!!.size - 1)) {
-                    Log.d("antigua foto", consulta.consulta!!.get(i).image)
-                    var nuevaI = consulta.consulta!!.get(i).image.replace("http://0.0.0.0", "http://52.202.214.13")
-                    Log.e("nueva imagen", nuevaI)
-                    if (consulta.consulta!!.get(i).code != null) {
-                        Log.d("DATOS DE LA MATRIZ CONSULTA", "${consulta.consulta!!.get(i)}")
-                        puntos.add(
-                                Ubicacion(
-                                        consulta.consulta!!.get(i).__v,
-                                        consulta.consulta!!.get(i)._id,
-                                        consulta.consulta!!.get(i).code,
-                                        consulta.consulta!!.get(i).currentStage,
-                                        consulta.consulta!!.get(i).description,
-                                        consulta.consulta!!.get(i).fid,
-                                        consulta.consulta!!.get(i).id,
-                                        //consulta.consulta!!.get(i).image,
-                                        nuevaI,
-                                        consulta.consulta!!.get(i).name,
-                                        consulta.consulta!!.get(i).previousStage,
-                                        consulta.consulta!!.get(i).ubication,
-                                        consulta.consulta!!.get(i).origin,
-                                        consulta.consulta!!.get(i).destination
-                                )
-                        )
-                    } else {
-                        puntos.add(
-                                Ubicacion(
-                                        consulta.consulta!!.get(i).__v,
-                                        consulta.consulta!!.get(i)._id,
-                                        "",
-                                        consulta.consulta!!.get(i).currentStage,
-                                        consulta.consulta!!.get(i).description,
-                                        consulta.consulta!!.get(i).fid,
-                                        consulta.consulta!!.get(i).id,
-                                        //consulta.consulta!!.get(i).image,
-                                        nuevaI,
-                                        consulta.consulta!!.get(i).name,
-                                        consulta.consulta!!.get(i).previousStage,
-                                        consulta.consulta!!.get(i).ubication,
-                                        consulta.consulta!!.get(i).origin,
-                                        consulta.consulta!!.get(i).destination
-                                )
-                        )
-                    }
+                    var _v =""
+                    var _id =""
+                    var code =""
+                    var currentStage =""
+                    var description =""
+                    var fid =""
+                    var id =""
+                    var image = ""
+                    var name =""
+                    var previousStage =""
+                    var ubication =""
+                    var origin =""
+                    var destination =""
+
+                    if(consulta.consulta!!.get(i).__v != null) _v = consulta.consulta!!.get(i).__v.toString() else _v ="null"
+                    if(consulta.consulta!!.get(i)._id != null) _id = consulta.consulta!!.get(i)._id else _id ="null"
+                    if(consulta.consulta!!.get(i).code != null) code = consulta.consulta!!.get(i).code else code ="null"
+                    if(consulta.consulta!!.get(i).currentStage != null) currentStage = consulta.consulta!!.get(i).currentStage else currentStage ="null"
+                    if(consulta.consulta!!.get(i).description != null) description = consulta.consulta!!.get(i).description else description ="null"
+                    if(consulta.consulta!!.get(i).fid != null) fid = consulta.consulta!!.get(i).fid else fid ="null"
+                    if(consulta.consulta!!.get(i).id != null) id = consulta.consulta!!.get(i).id else id ="null"
+                    if(consulta.consulta!!.get(i).image != null) image = consulta.consulta!!.get(i).image else image ="null"
+                    if(consulta.consulta!!.get(i).name != null) name = consulta.consulta!!.get(i).name else name ="null"
+                    if(consulta.consulta!!.get(i).previousStage != null) previousStage = consulta.consulta!!.get(i).previousStage else previousStage ="null"
+                    if(consulta.consulta!!.get(i).ubication != null) ubication = consulta.consulta!!.get(i).ubication else ubication ="null"
+                    if(consulta.consulta!!.get(i).origin != null) origin = consulta.consulta!!.get(i).origin else origin ="null"
+                    if(consulta.consulta!!.get(i).destination != null) destination = consulta.consulta!!.get(i).destination else destination ="null"
+
+                    puntos.add(Ubicacion(_v.toInt(), _id,code,currentStage,description,fid,id,image,name,previousStage,ubication,origin, destination))
+                    Log.e("ListaPuntos/puntos", "${puntos.get(i)}")
+
                 }
                 //Log.d("nueva matriz", "${puntos.get(1).image}")
                 lista = activity?.findViewById(R.id.lista)
@@ -99,53 +87,50 @@ class ListaPuntos : Fragment(), RecyclerV {
                 //adaptador = AdaptadorCustom(contexto, puntos)
                 adaptador = AdaptadorCustom(puntos, object : ClickListener {
                     override fun onClick(vista: View, index: Int) {
-                        Log.e("EL CLICK", puntos.get(index).ubication)
-                        listener?.obtenerPosicion("${puntos.get(index).ubication}")
+                        if(puntos.get(index).currentStage != "Carrier"){
+                            Log.e("ListaPuntos/position", index.toString())
+                            listener?.obtenerPosicion("${puntos.get(index).ubication}")
+                        } else {
+                            Log.e("ListaPuntos/position", index.toString())
+                            listener?.obtenerPosicion("${puntos.get(index).origin}")
+                        }
+
                     }
                 })
                 lista?.adapter = adaptador
 
             } else {
-                var nuevaI = consulta.consulta!!.get(0).image.replace("http://0.0.0.0", "http://52.202.214.13")
-                if (consulta.consulta!!.get(0).code != null) {
-                    puntos.add(
-                            Ubicacion(
-                                    consulta.consulta!!.get(0).__v,
-                                    consulta.consulta!!.get(0)._id,
-                                    consulta.consulta!!.get(0).code,
-                                    consulta.consulta!!.get(0).currentStage,
-                                    consulta.consulta!!.get(0).description,
-                                    consulta.consulta!!.get(0).fid,
-                                    consulta.consulta!!.get(0).id,
-                                    //consulta.consulta!!.get(i).image,
-                                    nuevaI,
-                                    consulta.consulta!!.get(0).name,
-                                    consulta.consulta!!.get(0).previousStage,
-                                    consulta.consulta!!.get(0).ubication,
-                                    consulta.consulta!!.get(0).origin,
-                                    consulta.consulta!!.get(0).destination
-                            )
-                    )
-                } else {
-                    puntos.add(
-                            Ubicacion(
-                                    consulta.consulta!!.get(0).__v,
-                                    consulta.consulta!!.get(0)._id,
-                                    "",
-                                    consulta.consulta!!.get(0).currentStage,
-                                    consulta.consulta!!.get(0).description,
-                                    consulta.consulta!!.get(0).fid,
-                                    consulta.consulta!!.get(0).id,
-                                    //consulta.consulta!!.get(i).image,
-                                    nuevaI,
-                                    consulta.consulta!!.get(0).name,
-                                    consulta.consulta!!.get(0).previousStage,
-                                    consulta.consulta!!.get(0).ubication,
-                                    consulta.consulta!!.get(0).origin,
-                                    consulta.consulta!!.get(0).destination
-                            )
-                    )
-                }
+
+                var _v =""
+                var _id =""
+                var code =""
+                var currentStage =""
+                var description =""
+                var fid =""
+                var id =""
+                var image = ""
+                var name =""
+                var previousStage =""
+                var ubication =""
+                var origin =""
+                var destination =""
+
+                if(consulta.consulta!!.get(0).__v != null) _v = consulta.consulta!!.get(0).__v.toString() else _v ="null"
+                if(consulta.consulta!!.get(0)._id != null) _id = consulta.consulta!!.get(0)._id else _id ="null"
+                if(consulta.consulta!!.get(0).code != null) code = consulta.consulta!!.get(0).code else code ="null"
+                if(consulta.consulta!!.get(0).currentStage != null) currentStage = consulta.consulta!!.get(0).currentStage else currentStage ="null"
+                if(consulta.consulta!!.get(0).description != null) description = consulta.consulta!!.get(0).description else description ="null"
+                if(consulta.consulta!!.get(0).fid != null) fid = consulta.consulta!!.get(0).fid else fid ="null"
+                if(consulta.consulta!!.get(0).id != null) id = consulta.consulta!!.get(0).id else id ="null"
+                if(consulta.consulta!!.get(0).image != null) image = consulta.consulta!!.get(0).image else image ="null"
+                if(consulta.consulta!!.get(0).name != null) name = consulta.consulta!!.get(0).name else name ="null"
+                if(consulta.consulta!!.get(0).previousStage != null) previousStage = consulta.consulta!!.get(0).previousStage else previousStage ="null"
+                if(consulta.consulta!!.get(0).ubication != null) ubication = consulta.consulta!!.get(0).ubication else ubication ="null"
+                if(consulta.consulta!!.get(0).origin != null) origin = consulta.consulta!!.get(0).origin else origin ="null"
+                if(consulta.consulta!!.get(0).destination != null) destination = consulta.consulta!!.get(0).destination else destination ="null"
+
+                puntos.add(Ubicacion(_v.toInt(), _id,code,currentStage,description,fid,id,image,name,previousStage,ubication,origin, destination))
+                Log.e("ListaPuntos/puntos2", "${puntos}")
 
                 //Log.d("nueva matriz", "${puntos.get(1).image}")
                 lista = activity?.findViewById(R.id.lista)
@@ -158,7 +143,6 @@ class ListaPuntos : Fragment(), RecyclerV {
                 //adaptador = AdaptadorCustom(contexto, puntos)
                 adaptador = AdaptadorCustom(puntos, object : ClickListener {
                     override fun onClick(vista: View, index: Int) {
-                        Log.e("EL CLICK", puntos.get(index).ubication)
                         listener?.obtenerPosicion("${puntos.get(index).ubication}")
                     }
                 })

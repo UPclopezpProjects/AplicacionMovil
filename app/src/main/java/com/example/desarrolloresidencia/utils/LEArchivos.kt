@@ -51,8 +51,7 @@ class LEArchivos {
         }
 
         fun Cargar(baseContext: Context):String{
-            val rutaSD = baseContext
-                    .getExternalFilesDir(null)?.absolutePath
+            val rutaSD = baseContext.getExternalFilesDir(null)?.absolutePath
             val miCarpeta = File(rutaSD, "datos")
             val ficheroFisico = File(miCarpeta, "datos.txt")
 
