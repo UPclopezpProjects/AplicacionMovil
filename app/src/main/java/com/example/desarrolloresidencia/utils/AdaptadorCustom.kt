@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.UI.DatosTrazabilidad.ListaPuntos
+import com.google.android.gms.maps.model.LatLng
 import com.squareup.picasso.Picasso
 
 class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): RecyclerView.Adapter<AdaptadorCustom.ViewHolder>() {
@@ -60,7 +61,8 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
                 if (items!!.get(position+1).currentStage != "Carrier") {
                     navegacion!!.anterior(position+1, items!!.get(position+1).ubication)
                 } else {
-                    navegacion!!.anterior(position+1, items!!.get(position+1).origin)
+                    //navegacion!!.anterior(position+1, items!!.get(position+1).origin)
+                    navegacion!!.anterior(position+1, puntoIntermedio(items!!.get(position+1).origin, items!!.get(position+1).destination))
                 }
             }
 
@@ -87,20 +89,16 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
                 if (items!!.get(position-1).currentStage != "Carrier") {
                     navegacion!!.anterior(position-1, items!!.get(position-1).ubication)
                 } else {
-                    navegacion!!.anterior(position-1, items!!.get(position-1).origin)
+                    //navegacion!!.anterior(position-1, items!!.get(position-1).origin)
+                    navegacion!!.anterior(position-1, puntoIntermedio(items!!.get(position-1).origin, items!!.get(position-1).destination))
                 }
             }
         }
 
-
-
-
-
-
         //el_chupelamigo@hotmail.com
 
         //holder.ubicacion = item?.ubication
-        holder.nombre?.text = item?.name+"-"+position
+        holder.nombre?.text = item?.name
 
 
             Picasso.get()
@@ -113,18 +111,22 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
                 navegacion?.descripcion(item!!.description)
                 //camara?.obtenerPosicion(items?.get(position-1)!!.ubication)
             }
-
-
-
-
     }
 
+    fun puntoIntermedio(origin:String, destination:String): String {
+        Log.e("AdaptadorCustom/puntoIntermedio", "origin: $origin" + ", destination: $destination")
+        var p1= FragmentarString().separaLL(origin)
+        var p2 = FragmentarString().separaLL(destination)
+        var latI =(p1.latitude+p2.latitude)/2
+        var lonI = (p1.longitude+p2.longitude)/2
+        Log.e("AdaptadorCustom/puntoIntermedio", "Resultado: $latI, $lonI")
+        return "$latI, $lonI"
+    }
 
     override fun getItemCount(): Int {
         return items?.count()!!
         //Log.d("getItemCount","pasó")
     }
-
 
 
 

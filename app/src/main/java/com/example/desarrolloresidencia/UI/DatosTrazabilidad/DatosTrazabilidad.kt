@@ -112,11 +112,14 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
 
             if(consulta.consulta!!.get(i).currentStage == "Carrier"){
 
-                polilinea.add(FragmentarString().separaLL(consulta.consulta!!.get(i).origin))
+                /*polilinea.add(FragmentarString().separaLL(consulta.consulta!!.get(i).origin))
                 mMap.addMarker(MarkerOptions().position(FragmentarString().separaLL(consulta.consulta!!.get(i).origin)).icon(BitmapDescriptorFactory.fromResource(R.drawable.transportista_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+"Origen del transportista"))
 
                 polilinea.add(FragmentarString().separaLL(consulta.consulta!!.get(i).destination))
-                mMap.addMarker(MarkerOptions().position(FragmentarString().separaLL(consulta.consulta!!.get(i).destination)).icon(BitmapDescriptorFactory.fromResource(R.drawable.transportista_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+"Destino del transportista"))
+                mMap.addMarker(MarkerOptions().position(FragmentarString().separaLL(consulta.consulta!!.get(i).destination)).icon(BitmapDescriptorFactory.fromResource(R.drawable.transportista_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+"Destino del transportista"))*/
+
+                polilinea.add(puntoIntermedio(consulta.consulta!!.get(i).origin, consulta.consulta!!.get(i).destination))
+                mMap.addMarker(MarkerOptions().position(puntoIntermedio(consulta.consulta!!.get(i).origin, consulta.consulta!!.get(i).destination)).icon(BitmapDescriptorFactory.fromResource(R.drawable.transportista_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+"Transito del transportista"))
             } else {
 
                 polilinea.add(FragmentarString().separaLL(consulta.consulta!!.get(i).ubication))
@@ -177,6 +180,15 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
         letra!!.add("X")
         letra!!.add("Y")
         letra!!.add("Z")
+    }
+
+    fun puntoIntermedio(origin:String, destination:String):LatLng{
+        Log.e("DatosTrazabilidad/puntoIntermedio", "origin: $origin" + ", destination: $destination")
+        var p1= FragmentarString().separaLL(origin)
+        var p2 = FragmentarString().separaLL(destination)
+        var latI =(p1.latitude+p2.latitude)/2
+        var lonI = (p1.longitude+p2.longitude)/2
+        return LatLng(latI,lonI)
     }
 
     override fun onStarted() {
