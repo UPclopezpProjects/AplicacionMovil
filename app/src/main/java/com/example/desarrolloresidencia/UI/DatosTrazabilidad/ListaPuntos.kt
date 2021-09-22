@@ -39,7 +39,7 @@ class ListaPuntos : Fragment(), RecyclerV {
     }
 
     private fun mapearpuntos() {
-        //try {
+        try {
             var contexto = requireContext().applicationContext
             //val puntos = ArrayList<Ubicacion>()
             if (responseUser.message != null) {
@@ -148,13 +148,13 @@ class ListaPuntos : Fragment(), RecyclerV {
                 })
                 lista?.adapter = adaptador
             }
-        /*}catch (e : java.lang.NullPointerException){
+        }catch (e : java.lang.NullPointerException){
             val builder = AlertDialog.Builder(context)
             builder.setTitle("Mensaje del Servidor").setIcon(R.drawable.logo)
             builder.setMessage("Error en la consulta, registro demasiado antiguo ")
             builder.setPositiveButton("ok"){dialog, id ->}
             builder.show()
-        }*/
+        }
 
     }
     interface MoverCamara {
