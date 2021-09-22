@@ -10,9 +10,9 @@ import org.json.JSONObject
 import retrofit2.Response
 
 class AmazonRepository {
-    suspend fun trazabilidadConsulta(QR: String, ID: String): Response<Trazabilidad> {
+    suspend fun trazabilidadConsulta(QR: String/*, ID: String*/): Response<Trazabilidad> {
         //return ApiTrazabilidad().Trazabilidad("$QR", "$ID")
-        return APIAmazon().Trazabilidad("$QR", "$ID")
+        return APIAmazon().Trazabilidad("$QR"/*, "$ID"*/)
     }
 
     suspend fun userLogin(email: String, password: String): Response<LoginUsers> {

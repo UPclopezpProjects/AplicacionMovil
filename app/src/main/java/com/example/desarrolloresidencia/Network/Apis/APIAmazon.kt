@@ -62,7 +62,7 @@ interface APIAmazon {
     @FormUrlEncoded
     @POST("traceability")
     suspend  fun Trazabilidad(
-            @Field("Code") Code: String?,
+            //@Field("Code") Code: String?,
             @Field("ID") ID: String?
     ): Response<Trazabilidad>
 
