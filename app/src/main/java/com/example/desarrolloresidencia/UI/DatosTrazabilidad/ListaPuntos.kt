@@ -39,7 +39,7 @@ class ListaPuntos : Fragment(), RecyclerV {
     }
 
     private fun mapearpuntos() {
-        //try {
+        try {
             var contexto = requireContext().applicationContext
             //val puntos = ArrayList<Ubicacion>()
             if (responseUser.message != null) {
@@ -57,6 +57,8 @@ class ListaPuntos : Fragment(), RecyclerV {
                     var ubication =""
                     var origin =""
                     var destination =""
+                    var addressT = ""
+                    var addressC = ""
 
                     if(consulta.consulta!!.get(i).__v != null) _v = consulta.consulta!!.get(i).__v.toString() else _v ="null"
                     if(consulta.consulta!!.get(i)._id != null) _id = consulta.consulta!!.get(i)._id else _id ="null"
@@ -71,8 +73,10 @@ class ListaPuntos : Fragment(), RecyclerV {
                     if(consulta.consulta!!.get(i).ubication != null) ubication = consulta.consulta!!.get(i).ubication else ubication ="null"
                     if(consulta.consulta!!.get(i).origin != null) origin = consulta.consulta!!.get(i).origin else origin ="null"
                     if(consulta.consulta!!.get(i).destination != null) destination = consulta.consulta!!.get(i).destination else destination ="null"
+                    if(consulta.consulta!!.get(i).addressTransaction != null) addressT = consulta.consulta!!.get(i).addressTransaction else addressT = "null"
+                    if(consulta.consulta!!.get(i).addressContract != null) addressC = consulta.consulta!!.get(i).addressContract else addressC = "null"
 
-                    puntos.add(Ubicacion(_v.toInt(), _id,code,currentStage,description,fid,id,image,name,previousStage,ubication,origin, destination))
+                    puntos.add(Ubicacion(_v.toInt(), _id,code,currentStage,description,fid,id,image,name,previousStage,ubication,destination, origin, addressT, addressC))
                     Log.e("ListaPuntos/puntos", "${puntos.get(i)}")
 
                 }
@@ -114,6 +118,8 @@ class ListaPuntos : Fragment(), RecyclerV {
                 var ubication =""
                 var origin =""
                 var destination =""
+                var addressT =""
+                var addressC = ""
 
                 if(consulta.consulta!!.get(0).__v != null) _v = consulta.consulta!!.get(0).__v.toString() else _v ="null"
                 if(consulta.consulta!!.get(0)._id != null) _id = consulta.consulta!!.get(0)._id else _id ="null"
@@ -128,8 +134,10 @@ class ListaPuntos : Fragment(), RecyclerV {
                 if(consulta.consulta!!.get(0).ubication != null) ubication = consulta.consulta!!.get(0).ubication else ubication ="null"
                 if(consulta.consulta!!.get(0).origin != null) origin = consulta.consulta!!.get(0).origin else origin ="null"
                 if(consulta.consulta!!.get(0).destination != null) destination = consulta.consulta!!.get(0).destination else destination ="null"
+                if(consulta.consulta!!.get(0).addressTransaction != null) addressT = consulta.consulta!!.get(0).addressTransaction else addressT = "null"
+                if(consulta.consulta!!.get(0).addressContract != null) addressC = consulta.consulta!!.get(0).addressContract else addressC = "null"
 
-                puntos.add(Ubicacion(_v.toInt(), _id,code,currentStage,description,fid,id,image,name,previousStage,ubication,origin, destination))
+                puntos.add(Ubicacion(_v.toInt(), _id,code,currentStage,description,fid,id,image,name,previousStage,ubication,origin, destination, addressT, addressC))
                 Log.e("ListaPuntos/puntos2", "${puntos}")
 
                 //Log.d("nueva matriz", "${puntos.get(1).image}")
@@ -148,13 +156,13 @@ class ListaPuntos : Fragment(), RecyclerV {
                 })
                 lista?.adapter = adaptador
             }
-        /*}catch (e : java.lang.NullPointerException){
+        }catch (e : java.lang.NullPointerException){
             val builder = AlertDialog.Builder(context)
             builder.setTitle("Mensaje del Servidor").setIcon(R.drawable.logo)
             builder.setMessage("Error en la consulta, registro demasiado antiguo ")
             builder.setPositiveButton("ok"){dialog, id ->}
             builder.show()
-        }*/
+        }
 
     }
     interface MoverCamara {
@@ -189,6 +197,24 @@ class ListaPuntos : Fragment(), RecyclerV {
 
         builder.setTitle("Descripción").setIcon(R.drawable.logo)
         builder.setMessage("$descripcion")
+        builder.setPositiveButton("ok"){ dialog, id ->}
+        builder.show()
+    }
+
+    override fun transaccion(transaccion: String) {
+        val builder = AlertDialog.Builder(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+
+        builder.setTitle("Address Transaction").setIcon(R.drawable.logo)
+        builder.setMessage("$transaccion")
+        builder.setPositiveButton("ok"){ dialog, id ->}
+        builder.show()
+    }
+
+    override fun contract(contract: String) {
+        val builder = AlertDialog.Builder(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+
+        builder.setTitle("Address Contract").setIcon(R.drawable.logo)
+        builder.setMessage("$contract")
         builder.setPositiveButton("ok"){ dialog, id ->}
         builder.show()
     }

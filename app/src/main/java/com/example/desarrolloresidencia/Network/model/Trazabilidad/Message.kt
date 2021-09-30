@@ -13,5 +13,7 @@ data class Message(
     val name: String,
     val origin: String,
     val previousStage: String,
-    val ubication: String
+    val ubication: String,
+    val addressTransaction: String,
+    val addressContract: String
 )

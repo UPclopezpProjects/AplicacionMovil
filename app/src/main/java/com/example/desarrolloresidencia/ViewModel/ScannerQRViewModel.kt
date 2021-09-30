@@ -20,7 +20,7 @@ class ScannerQRViewModel : ViewModel(){
                     Log.d("QR", "$QR")
 
                     val response = AmazonRepository().trazabilidadConsulta("$qr"/*, "$id"*/)
-                    //Log.d("consulta", response.body()!!.message.toString())
+                    Log.d("consulta", response.body()!!.message.toString())
 
                     //el archivo de consulta
                     com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta.consulta = response.body()!!.message

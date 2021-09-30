@@ -19,10 +19,7 @@ import com.example.desarrolloresidencia.databinding.FragmentMapaInformacionBindi
 private const val NUM_PAGES = 3
 
 class mapaInformacion : DialogFragment() {
-    /**
-     * The pager widget, which handles animation and allows swiping horizontally to access previous
-     * and next wizard steps.
-     */
+
     private lateinit var mPager: ViewPager2
 
     private var _binding: FragmentMapaInformacionBinding?= null

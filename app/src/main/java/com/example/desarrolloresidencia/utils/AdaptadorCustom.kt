@@ -111,6 +111,14 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
                 navegacion?.descripcion(item!!.description)
                 //camara?.obtenerPosicion(items?.get(position-1)!!.ubication)
             }
+
+        holder.addressT?.setOnClickListener {
+            navegacion?.transaccion(item!!.addressTransaction)
+        }
+
+        holder.addressC?.setOnClickListener {
+            navegacion?.contract(item!!.addressContract)
+        }
     }
 
     fun puntoIntermedio(origin:String, destination:String): String {
@@ -149,6 +157,8 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
         var anterior:Button ?= null
         var lista:RecyclerView ?= null
         var descripcion: Button ?= null
+        var addressT: Button ?= null
+        var addressC: Button ?= null
 
 
         init {
@@ -170,6 +180,8 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
             anterior = vista.findViewById(R.id.BTNEscenarioP)
             lista= vista.findViewById(R.id.lista)
             descripcion= vista.findViewById(R.id.BTNDescripcion)
+            addressT = vista.findViewById(R.id.BTNAdressT)
+            addressC = vista.findViewById(R.id.BTNAdressC)
         }
 
         override fun onClick(v: View?) {
