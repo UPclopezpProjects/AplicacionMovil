@@ -1,21 +1,22 @@
 package com.example.desarrolloresidencia.utils
 
-class Ubicacion(__v: Int, _id : String, code : String, currentStage : String, description : String, fid : String, id : String, image : String, name : String, previousStage : String, ubication : String, origin : String, destination : String, addressT : String, addressC : String) {
-    var __v= 0
-    var _id = ""
-    var code =""
-    var currentStage = ""
-    var description =""
-    var fid = ""
-    var id = ""
-    var image = ""
-    var name = ""
-    var previousStage = ""
-    var ubication = ""
+class Ubicacion(__v: Int, _id : String, code : String, currentStage : String, description : String, fid : String, id : String, image : String, name : String, previousStage : String, ubication : String, origin : String, destination : String, addressT : String, addressC : String, hash : String) {
+    var __v= 0//
+    var _id = ""//
+    var code =""//
+    var currentStage = ""//
+    var description =""//
+    var fid = ""//
+    var id = ""//
+    var image = ""//
+    var name = ""//
+    var previousStage = ""//
+    var ubication = ""//
     var origin = ""
     var destination = ""
-    var addressTransaction = ""
-    var addressContract = ""
+    var addressTransaction = ""//
+    var addressContract = ""//
+    var hash = ""
 
     init {
         this.__v = __v
@@ -33,5 +34,6 @@ class Ubicacion(__v: Int, _id : String, code : String, currentStage : String, de
         this.destination = destination
         this.addressTransaction = addressT
         this.addressContract = addressC
+        this.hash = hash
     }
 }

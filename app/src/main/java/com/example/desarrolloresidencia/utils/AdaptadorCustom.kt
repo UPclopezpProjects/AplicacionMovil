@@ -108,7 +108,7 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
                 .into(holder.imagen)
 
             holder.descripcion?.setOnClickListener {
-                navegacion?.descripcion(item!!.description)
+                navegacion?.descripcion(item!!.description, item!!.hash)
                 //camara?.obtenerPosicion(items?.get(position-1)!!.ubication)
             }
 

@@ -59,6 +59,7 @@ class ListaPuntos : Fragment(), RecyclerV {
                     var destination =""
                     var addressT = ""
                     var addressC = ""
+                    var hash = ""
 
                     if(consulta.consulta!!.get(i).__v != null) _v = consulta.consulta!!.get(i).__v.toString() else _v ="null"
                     if(consulta.consulta!!.get(i)._id != null) _id = consulta.consulta!!.get(i)._id else _id ="null"
@@ -75,8 +76,9 @@ class ListaPuntos : Fragment(), RecyclerV {
                     if(consulta.consulta!!.get(i).destination != null) destination = consulta.consulta!!.get(i).destination else destination ="null"
                     if(consulta.consulta!!.get(i).addressTransaction != null) addressT = consulta.consulta!!.get(i).addressTransaction else addressT = "null"
                     if(consulta.consulta!!.get(i).addressContract != null) addressC = consulta.consulta!!.get(i).addressContract else addressC = "null"
+                    if(consulta.consulta!!.get(i).hash != null) hash = consulta.consulta!!.get(i).hash else hash = "null"
 
-                    puntos.add(Ubicacion(_v.toInt(), _id,code,currentStage,description,fid,id,image,name,previousStage,ubication,destination, origin, addressT, addressC))
+                    puntos.add(Ubicacion(_v.toInt(), _id,code,currentStage,description,fid,id,image,name,previousStage,ubication,destination, origin, addressT, addressC, hash))
                     Log.e("ListaPuntos/puntos", "${puntos.get(i)}")
 
                 }
@@ -120,6 +122,7 @@ class ListaPuntos : Fragment(), RecyclerV {
                 var destination =""
                 var addressT =""
                 var addressC = ""
+                var hash = ""
 
                 if(consulta.consulta!!.get(0).__v != null) _v = consulta.consulta!!.get(0).__v.toString() else _v ="null"
                 if(consulta.consulta!!.get(0)._id != null) _id = consulta.consulta!!.get(0)._id else _id ="null"
@@ -136,8 +139,9 @@ class ListaPuntos : Fragment(), RecyclerV {
                 if(consulta.consulta!!.get(0).destination != null) destination = consulta.consulta!!.get(0).destination else destination ="null"
                 if(consulta.consulta!!.get(0).addressTransaction != null) addressT = consulta.consulta!!.get(0).addressTransaction else addressT = "null"
                 if(consulta.consulta!!.get(0).addressContract != null) addressC = consulta.consulta!!.get(0).addressContract else addressC = "null"
+                if(consulta.consulta!!.get(0).hash != null) hash = consulta.consulta!!.get(0).hash else hash = "null"
 
-                puntos.add(Ubicacion(_v.toInt(), _id,code,currentStage,description,fid,id,image,name,previousStage,ubication,origin, destination, addressT, addressC))
+                puntos.add(Ubicacion(_v.toInt(), _id,code,currentStage,description,fid,id,image,name,previousStage,ubication,origin, destination, addressT, addressC, hash))
                 Log.e("ListaPuntos/puntos2", "${puntos}")
 
                 //Log.d("nueva matriz", "${puntos.get(1).image}")
@@ -192,11 +196,11 @@ class ListaPuntos : Fragment(), RecyclerV {
         listener?.obtenerPosicion(ubication)
     }
 
-    override fun descripcion(descripcion: String) {
+    override fun descripcion(descripcion: String, hash: String) {
         val builder = AlertDialog.Builder(context)
 
-        builder.setTitle("Descripción").setIcon(R.drawable.logo)
-        builder.setMessage("$descripcion")
+        builder.setTitle("Detalles").setIcon(R.drawable.logo)
+        builder.setMessage("Descripción: $descripcion \n Hash: $hash")
         builder.setPositiveButton("ok"){ dialog, id ->}
         builder.show()
     }
