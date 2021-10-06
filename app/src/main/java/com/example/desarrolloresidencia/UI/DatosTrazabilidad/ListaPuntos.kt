@@ -238,6 +238,9 @@ class ListaPuntos : Fragment(), RecyclerV {
         builder.show()*/
 
         val intent = Intent(getActivity(), com.example.desarrolloresidencia.UI.GetLog::class.java)
+        intent.putExtra("transaction", "$transaccion")
+        intent.putExtra("contract", "$contract")
+        intent.putExtra("token", "${responseUser.token}")
         startActivity(intent)
 
     }

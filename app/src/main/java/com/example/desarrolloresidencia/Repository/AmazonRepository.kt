@@ -30,8 +30,8 @@ class AmazonRepository {
     }
 
     suspend fun getLog(transaction:String, contract:String, token: String): Response<getLog>{
-        Log.d("AmazonRepository/getLog", "$transaction, $contract, $token")
-        return APIAmazon().getLog(transaction, contract, token, transaction, contract, token)
+        //Log.d("AmazonRepository/getLog", "$transaction, $contract, $token")
+        return APIAmazon().getLog("0xb1a71097fce79eb0a6502c69013acd0ed2d72ffabb3dda8ca60d816d8ed73913", "0x6C75A7e5F81871C37531453Dc630f5b78C543E4C", "12345")
     }
 
     suspend fun recuperarPassword(email: String):Response<com.example.desarrolloresidencia.Network.model.RecuperarPass.Response>{

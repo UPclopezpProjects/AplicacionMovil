@@ -1,5 +1,6 @@
 package com.example.desarrolloresidencia.ViewModel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.desarrolloresidencia.Repository.AmazonRepository
@@ -18,6 +19,7 @@ class getLogViewModel(): ViewModel() {
             authListener?.onStarted()
             try{
                 val response = AmazonRepository().getLog("$addressTransaction", "$addressContract", "$token")
+                Log.e("getLogViewModel/getLog",response.body().toString())
 
                 if(response.isSuccessful){
                     authListener!!.onSuccess(response.body()!!.message)

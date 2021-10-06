@@ -35,15 +35,12 @@ interface APIAmazon {
             @Field("email") email: String?
     ): Response<LoginUsers>
 
-    @FormUrlEncoded
-    @GET("getLog?Atr={atr}&Asc={asc}&token={Token}")
+    //@GET("getLog?Atr={atr}&Asc={asc}&token={Token}")
+    @GET("getLog")
     suspend fun getLog(
-        @Field("Atr") Atr:String?,
-        @Field("Asc") Asc:String?,
-        @Field("token") token:String?,
-        @Path("atr") atr:String?,
-        @Path("asc") asc:String?,
-        @Path("Token") Token:String
+        @Query("Atr") atr:String?,
+        @Query("Asc") asc:String?,
+        @Query("token") Token:String
     ):Response<getLog>
 
     @FormUrlEncoded
