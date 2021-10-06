@@ -1,8 +1,7 @@
 package com.example.desarrolloresidencia.utils
 
-import android.app.AlertDialog
 import android.content.Context
-import android.opengl.Visibility
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.UI.DatosTrazabilidad.ListaPuntos
-import com.google.android.gms.maps.model.LatLng
 import com.squareup.picasso.Picasso
 
 class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): RecyclerView.Adapter<AdaptadorCustom.ViewHolder>() {
@@ -108,16 +106,17 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
                 .into(holder.imagen)
 
             holder.descripcion?.setOnClickListener {
-                navegacion?.descripcion(item!!.description, item!!.hash)
+                navegacion?.descripcion(item!!.description)
                 //camara?.obtenerPosicion(items?.get(position-1)!!.ubication)
             }
 
         holder.addressT?.setOnClickListener {
-            navegacion?.transaccion(item!!.addressTransaction)
+            navegacion?.transaccion(item!!.addressTransaction, item!!.addressContract, item!!.hash)
         }
 
-        holder.addressC?.setOnClickListener {
-            navegacion?.contract(item!!.addressContract)
+        holder.GetLog?.setOnClickListener {
+            navegacion?.GetLog(item!!.addressTransaction, item!!.addressContract)
+
         }
     }
 
@@ -158,7 +157,7 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
         var lista:RecyclerView ?= null
         var descripcion: Button ?= null
         var addressT: Button ?= null
-        var addressC: Button ?= null
+        var GetLog: Button ?= null
 
 
         init {
@@ -181,7 +180,7 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
             lista= vista.findViewById(R.id.lista)
             descripcion= vista.findViewById(R.id.BTNDescripcion)
             addressT = vista.findViewById(R.id.BTNAdressT)
-            addressC = vista.findViewById(R.id.BTNAdressC)
+            GetLog = vista.findViewById(R.id.BTNGetLog)
         }
 
         override fun onClick(v: View?) {

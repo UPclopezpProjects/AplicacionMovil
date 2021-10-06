@@ -1,6 +1,7 @@
 package com.example.desarrolloresidencia.Network.Apis
 
 import com.example.desarrolloresidencia.Network.model.CreationC.CreacionConsumidor
+import com.example.desarrolloresidencia.Network.model.GetLog.getLog
 import com.example.desarrolloresidencia.Network.model.Login.LoginUsers
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.Trazabilidad
 import retrofit2.Response
@@ -33,6 +34,17 @@ interface APIAmazon {
             @Header("Authorization") Authorization:String,
             @Field("email") email: String?
     ): Response<LoginUsers>
+
+    @FormUrlEncoded
+    @GET("getLog?Atr={atr}&Asc={asc}&token={Token}")
+    suspend fun getLog(
+        @Field("Atr") Atr:String?,
+        @Field("Asc") Asc:String?,
+        @Field("token") token:String?,
+        @Path("atr") atr:String?,
+        @Path("asc") asc:String?,
+        @Path("Token") Token:String
+    ):Response<getLog>
 
     @FormUrlEncoded
     @POST("emailToReset")

@@ -2,16 +2,20 @@ package com.example.desarrolloresidencia.UI.DatosTrazabilidad
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
 import com.example.desarrolloresidencia.R
+import com.example.desarrolloresidencia.UI.AlertDialog.detallesAddress
 import com.example.desarrolloresidencia.utils.*
 import java.lang.ClassCastException
 
@@ -196,31 +200,46 @@ class ListaPuntos : Fragment(), RecyclerV {
         listener?.obtenerPosicion(ubication)
     }
 
-    override fun descripcion(descripcion: String, hash: String) {
+    override fun descripcion(descripcion: String) {
         val builder = AlertDialog.Builder(context)
 
         builder.setTitle("Detalles").setIcon(R.drawable.logo)
-        builder.setMessage("Descripción: $descripcion \n Hash: $hash")
+        builder.setMessage("Descripción: $descripcion")
         builder.setPositiveButton("ok"){ dialog, id ->}
         builder.show()
     }
 
-    override fun transaccion(transaccion: String) {
-        val builder = AlertDialog.Builder(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+    override fun transaccion(transaccion: String, contract: String, hash: String) {
+        /*val builder = AlertDialog.Builder(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK)
 
         builder.setTitle("Address Transaction").setIcon(R.drawable.logo)
         builder.setMessage("$transaccion")
         builder.setPositiveButton("ok"){ dialog, id ->}
-        builder.show()
+        builder.show()*/
+
+        //detallesAddress().show(childFragmentManager, "detallesAddress")
+        val ventanaFlotante = detallesAddress()
+
+        var args =  Bundle()
+        args.putString("transaction", transaccion)
+        args.putString("contract", contract)
+        args.putString("hash", hash)
+        ventanaFlotante.setArguments(args)
+        ventanaFlotante.show(childFragmentManager, "detallesAddress")
+
     }
 
-    override fun contract(contract: String) {
-        val builder = AlertDialog.Builder(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+    override fun GetLog(transaccion: String, contract: String) {
+        /*val builder = AlertDialog.Builder(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK)
 
         builder.setTitle("Address Contract").setIcon(R.drawable.logo)
-        builder.setMessage("$contract")
+        builder.setMessage("$transaccion, $contract")
         builder.setPositiveButton("ok"){ dialog, id ->}
-        builder.show()
+        builder.show()*/
+
+        val intent = Intent(getActivity(), com.example.desarrolloresidencia.UI.GetLog::class.java)
+        startActivity(intent)
+
     }
 
     fun advertenciaLogin(){

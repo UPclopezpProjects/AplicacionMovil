@@ -3,6 +3,7 @@ package com.example.desarrolloresidencia.Repository
 import android.util.Log
 import com.example.desarrolloresidencia.Network.Apis.APIAmazon
 import com.example.desarrolloresidencia.Network.model.CreationC.CreacionConsumidor
+import com.example.desarrolloresidencia.Network.model.GetLog.getLog
 import com.example.desarrolloresidencia.Network.model.Login.LoginUsers
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.Trazabilidad
 import com.example.desarrolloresidencia.utils.MD5
@@ -26,6 +27,11 @@ class AmazonRepository {
         Log.d("repositorio token", "$token")
         //return MyApi().actualizarUsurio("$email", "$contrasena", "$nombre", "true", "$apellidoP", "$apellidoM", "update", "updateMe", "48d6adacee72fea2034b636a029d3ea9", "$id", "$token")
         return APIAmazon().actualizarUsurio("$contrasena", "$nombre", "true", "$apellidoP", "$apellidoM", "update", "updateMe", "48d6adacee72fea2034b636a029d3ea9", "$id", "$token", "$id")
+    }
+
+    suspend fun getLog(transaction:String, contract:String, token: String): Response<getLog>{
+        Log.d("AmazonRepository/getLog", "$transaction, $contract, $token")
+        return APIAmazon().getLog(transaction, contract, token, transaction, contract, token)
     }
 
     suspend fun recuperarPassword(email: String):Response<com.example.desarrolloresidencia.Network.model.RecuperarPass.Response>{

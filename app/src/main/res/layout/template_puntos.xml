@@ -118,10 +118,10 @@
                         android:layout_height="match_parent">
 
                         <Button
-                            android:id="@+id/BTNAdressC"
+                            android:id="@+id/BTNGetLog"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:background="@drawable/addresscontract2"
+                            android:background="@drawable/logcat"
                             android:foreground="?attr/selectableItemBackground"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/BTNDescripcion"

@@ -21,7 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UI.ScreenSlidePagerActivity"></activity>
+        <activity
+            android:name=".UI.GetLog"
+            android:exported="true" />
+        <activity android:name=".UI.ScreenSlidePagerActivity" />
         <activity android:name=".UI.Informacion" />
         <activity android:name=".UI.CalculoNutricional" />
         <activity android:name=".UI.Tips" />
