@@ -72,17 +72,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="Token:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat" />
 
-                <TextView
-                    android:id="@+id/TVToken"
+                <HorizontalScrollView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVToken"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <TextView
@@ -101,17 +118,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="logIndex:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat" />
 
-                <TextView
-                    android:id="@+id/TVLogIndex"
+                <HorizontalScrollView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVLogIndex"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -122,18 +156,36 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="transaction Index:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat" />
 
-                <TextView
-                    android:id="@+id/TVTransactionIndex"
+                <HorizontalScrollView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAlignment="textStart"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVTransactionIndex"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAlignment="textStart"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true"
+                            tools:ignore="RtlCompat" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -144,17 +196,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="transaction Hash:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TVTransactionHash"
+                <HorizontalScrollView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVTransactionHash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -166,17 +235,34 @@
                     android:id="@+id/textView7"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="block hash:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TVBlockHash"
+                <HorizontalScrollView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVBlockHash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -187,17 +273,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="block Number:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TVBlockNumber"
+                <HorizontalScrollView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVBlockNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -208,17 +311,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="address:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TVAddress"
+                <HorizontalScrollView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVAddress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -229,17 +349,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="type:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TVType"
+                <HorizontalScrollView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -250,17 +387,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="removed:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TVRemoved"
+                <HorizontalScrollView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVRemoved"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -271,17 +425,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="id:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TVId"
+                <HorizontalScrollView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <TextView
@@ -300,17 +471,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="0:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TV0"
+                <HorizontalScrollView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TV0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -321,17 +509,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="1:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TV1"
+                <HorizontalScrollView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TV1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -342,17 +547,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="2:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TV2"
+                <HorizontalScrollView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TV2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -363,17 +585,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="3:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TV3"
+                <HorizontalScrollView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TV3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -384,17 +623,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="4:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TV4"
+                <HorizontalScrollView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TV4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -405,17 +661,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="5:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TV5"
+                <HorizontalScrollView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TV5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -426,17 +699,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="6:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TV6"
+                <HorizontalScrollView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TV6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -447,17 +737,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="id Events:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TVIdEvents"
+                <HorizontalScrollView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVIdEvents"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -468,17 +775,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="when:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TVWhen"
+                <HorizontalScrollView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVWhen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -489,17 +813,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="type Event:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TVTypeEvent"
+                <HorizontalScrollView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVTypeEvent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -510,17 +851,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="where:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TVWhere"
+                <HorizontalScrollView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVWhere"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -531,17 +889,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="token:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TVToken2"
+                <HorizontalScrollView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVToken2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -552,17 +927,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="Description:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TVDescription"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVDescription"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -573,17 +965,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="event:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TVEvent"
+                <HorizontalScrollView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVEvent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout
@@ -595,17 +1004,34 @@
                     android:id="@+id/textView40"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
                     android:text="signature:"
                     android:textAlignment="textEnd"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:ignore="RtlCompat"/>
 
-                <TextView
-                    android:id="@+id/TVSignature"
+                <HorizontalScrollView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/TVSignature"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
         </LinearLayout>
 
