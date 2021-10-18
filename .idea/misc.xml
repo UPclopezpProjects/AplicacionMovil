@@ -5,14 +5,19 @@
       <map>
         <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/drawable/comerciante_foreground.xml" value="0.3828125" />
         <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/drawable/round_corner.xml" value="0.3828125" />
+        <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/layout-land/datos_trazabilidad.xml" value="0.3390625" />
+        <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/layout/activity_address_transaction.xml" value="0.25" />
         <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/layout/activity_get_log.xml" value="0.36666666666666664" />
         <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/layout/activity_informacion.xml" value="0.36666666666666664" />
         <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/layout/activity_main.xml" value="0.23157894736842105" />
         <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/layout/activity_modificacion_usuario.xml" value="0.33" />
         <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/layout/activity_registro_usuario.xml" value="0.33" />
         <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/layout/activity_scanner_q_r.xml" value="0.26145833333333335" />
+        <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/layout/activity_splash_screen.xml" value="0.23157894736842105" />
         <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/layout/activity_trazabilidad.xml" value="0.26145833333333335" />
         <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/layout/datos_trazabilidad.xml" value="0.36666666666666664" />
+        <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/layout/fragment_blank.xml" value="0.3527777777777778" />
         <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/layout/fragment_detalles_address.xml" value="0.36666666666666664" />
         <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/layout/fragment_detalles_trazabilidad.xml" value="0.36666666666666664" />
         <entry key="..\:/miscosas/itvo/residenciaprofesional/borrador/conMVVM/app/src/main/res/layout/fragment_lista_puntos.xml" value="0.36666666666666664" />

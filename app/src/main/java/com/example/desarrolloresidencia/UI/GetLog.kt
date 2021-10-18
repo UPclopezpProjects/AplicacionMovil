@@ -1,5 +1,6 @@
 package com.example.desarrolloresidencia.UI
 
+import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -25,16 +26,16 @@ class GetLog : AppCompatActivity(), AuthGetLog {
         setContentView(binding.root)
 
         val extras = intent.extras
-        val transaction = extras?.getString("transaction")?:""
-        val contract = extras?.getString("contract")?:""
-        val token = extras?.getString("token")?:""
+        val transaction = extras?.getString("transaction") ?: ""
+        val contract = extras?.getString("contract") ?: ""
+        val token = extras?.getString("token") ?: ""
 
         getLogVM = ViewModelProviders.of(this).get(getLogViewModel::class.java)
         getLogVM.authListener = this
 
-        getLogVM.addressTransaction=transaction
-        getLogVM.addressContract=contract
-        getLogVM.token=token
+        getLogVM.addressTransaction = transaction
+        getLogVM.addressContract = contract
+        getLogVM.token = token
 
         getLogVM.getLog()
 
@@ -62,13 +63,6 @@ class GetLog : AppCompatActivity(), AuthGetLog {
         binding.TVType.setText(message.log.type)
         binding.TVRemoved.setText(message.log.removed.toString())
         binding.TVId.setText(message.log.id)
-        binding.TV0.setText(message.log.returnValues.`0`)
-        binding.TV1.setText(message.log.returnValues.`1`)
-        binding.TV2.setText(message.log.returnValues.`2`)
-        binding.TV3.setText(message.log.returnValues.`3`)
-        binding.TV4.setText(message.log.returnValues.`4`)
-        binding.TV5.setText(message.log.returnValues.`5`)
-        binding.TV6.setText(message.log.returnValues.`6`)
         binding.TVIdEvents.setText(message.log.returnValues.idEvents)
         binding.TVWhen.setText(message.log.returnValues.`when`)
         binding.TVTypeEvent.setText(message.log.returnValues.typeEvent)
@@ -80,6 +74,32 @@ class GetLog : AppCompatActivity(), AuthGetLog {
     }
 
     override fun onFailure(message: String) {
+        binding.PBCargando.visibility = View.GONE
         Log.d("GetLog activity/onFailure", "$message")
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Mensaje del servidor").setIcon(R.drawable.logo)
+        builder.setMessage("$message")
+        builder.setPositiveButton("ok"){ dialog, id ->}
+        builder.show()
+
+        binding.TVToken.setText("null")
+        binding.TVLogIndex.setText("null")
+        binding.TVTransactionIndex.setText("null")
+        binding.TVTransactionHash.setText("null")
+        binding.TVBlockHash.setText("null")
+        binding.TVBlockNumber.setText("null")
+        binding.TVAddress.setText("null")
+        binding.TVType.setText("null")
+        binding.TVRemoved.setText("null")
+        binding.TVId.setText("null")
+        binding.TVIdEvents.setText("null")
+        binding.TVWhen.setText("null")
+        binding.TVTypeEvent.setText("null")
+        binding.TVWhere.setText("null")
+        binding.TVToken2.setText("null")
+        binding.TVDescription.setText("null")
+        binding.TVEvent.setText("null")
+        binding.TVSignature.setText("null")
     }
 }
