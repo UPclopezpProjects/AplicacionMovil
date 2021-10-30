@@ -55,6 +55,9 @@ class LoginViewModel() : ViewModel()  {
             catch (e : java.lang.NullPointerException){
                 authListener?.onFailure("""{"message":"Verifica tu correo electrónico, aún no te puedes logear"}""")
             }
+            catch (e:com.google.gson.stream.MalformedJsonException){
+                """{"message":"Error en la respuesta del servidor"}"""
+            }
         }
     }
 

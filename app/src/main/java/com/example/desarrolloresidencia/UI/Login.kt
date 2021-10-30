@@ -34,6 +34,8 @@ import com.facebook.FacebookException
 import com.facebook.FacebookCallback
 import com.facebook.AccessToken
 import android.R.attr.data
+import android.widget.Button
+import com.example.desarrolloresidencia.utils.LEArchivos
 import com.facebook.login.LoginManager
 import java.util.*
 
@@ -256,22 +258,29 @@ class Login : AppCompatActivity(), AuthListener {
         try {
             var email = findViewById<EditText>(R.id.ETEmail)
             var contraseña = findViewById<EditText>(R.id.password)
+            var ip = LEArchivos.CargarIP(this)
 
             if (!validarEmail("${email.text.toString()}")){
                 email.error ="Email no válido"
                 email.requestFocus()
                 return
-            }
+            } else {
+                if (contraseña.text.toString() == "") {
+                    contraseña.error = "Ingresa la contraseña"
+                    contraseña.requestFocus()
+                    return
+                } else {
+                    if(/*ip=="" || ip==null ||*/ip.equals("") || ip.equals(null)){
+                        Log.e("Login.kt", "cambio de ip")
+                        Toast.makeText(this, "Ingresa la ip del servidor presionando el botón de configuración de la IP", Toast.LENGTH_LONG).show()
+                    } else {
+                        loginViewModel.email = email.text.toString()
+                        loginViewModel.password = contraseña.text.toString()
 
-            if (contraseña.text.toString() == "") {
-                contraseña.error = "Ingresa la contraseña"
-                contraseña.requestFocus()
-                return
+                        loginViewModel.onLoginButtonClick()
+                    }
+                }
             }
-            loginViewModel.email = email.text.toString()
-            loginViewModel.password = contraseña.text.toString()
-
-            loginViewModel.onLoginButtonClick()
         } catch (e: Exception){
             Log.e("Error UI", "$e")
         }
@@ -290,6 +299,7 @@ class Login : AppCompatActivity(), AuthListener {
         binding.ETEmail.isEnabled= false
         binding.password.isEnabled= false
         binding.BTRecuperar.isEnabled = false
+        binding.BTConfiguration.isEnabled=false
     }
 
     override fun onSuccess(message: Boolean, token: String, user: User) {
@@ -301,6 +311,8 @@ class Login : AppCompatActivity(), AuthListener {
         binding.password.isEnabled= true
         binding.BTLogin.isEnabled= true
         binding.BTRecuperar.isEnabled = true
+        binding.BTConfiguration.isEnabled=true
+
         binding.ETEmail.setText("")
         binding.password.setText("")
         validarStatus(user.status)
@@ -315,6 +327,8 @@ class Login : AppCompatActivity(), AuthListener {
         binding.password.isEnabled= true
         binding.BTLogin.isEnabled= true
         binding.BTRecuperar.isEnabled = true
+        binding.BTConfiguration.isEnabled=true
+
         //Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         mensajeE(message)
     }

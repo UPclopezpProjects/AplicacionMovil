@@ -61,7 +61,7 @@ class LEArchivos {
         //los siguientes métodos son para almacenar la información de la IP
         fun sobrescribirIP(texto: String, baseContext: Context){
             //Toast.makeText(baseContext, "LEArchivos/sobreescribirIP/texto: $texto", Toast.LENGTH_LONG).show()
-            //try {
+            try {
                 val rutaSD = baseContext.getExternalFilesDir(null)?.absolutePath
                 val miCarpeta = File(rutaSD, "datos")
                 if (!miCarpeta.exists()) {
@@ -73,9 +73,9 @@ class LEArchivos {
                 //esto sobreescribe texto al archivo
                 ficheroFisico.writeText("$texto")
                 //Toast.makeText(baseContext, "Creado correctamente $ficheroFisico", Toast.LENGTH_SHORT).show()
-            /*} catch (e: Exception){
+            } catch (e: Exception){
                 Log.d("ERROR", "$e")
-            }*/
+            }
         }
 
         fun CargarIP(baseContext: Context):String{
@@ -90,7 +90,7 @@ class LEArchivos {
             if (!ficheroFisico.exists()) {
                 Log.d("LEArchivos", "no existe el archivo")
                 ficheroFisico.createNewFile()
-                sobrescribir("", baseContext)
+                sobrescribir("52.202.214.13", baseContext)
             }
 
             val fichero = BufferedReader(InputStreamReader(
