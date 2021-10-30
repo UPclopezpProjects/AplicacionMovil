@@ -180,6 +180,12 @@ class Login : AppCompatActivity(), AuthListener {
             }
         })
 
+        binding.BTConfiguration.setOnClickListener {
+            val intent: Intent = Intent(applicationContext, configurationIP::class.java)
+            startActivity(intent)
+
+        }
+
     }
 
     fun cargarData(){

@@ -1,15 +1,19 @@
 package com.example.desarrolloresidencia.Network.Apis
 
+import android.content.Context
 import com.example.desarrolloresidencia.Network.model.CreationC.CreacionConsumidor
 import com.example.desarrolloresidencia.Network.model.GetLog.getLog
 import com.example.desarrolloresidencia.Network.model.Login.LoginUsers
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.Trazabilidad
+import com.example.desarrolloresidencia.utils.LEArchivos
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
 interface APIAmazon {
+
+
     @FormUrlEncoded
     @POST("login")
     suspend fun Logearse(
@@ -76,9 +80,10 @@ interface APIAmazon {
     ): Response<Trazabilidad>
 
     companion object {
+        var context: Context ?= null
         operator fun invoke(): APIAmazon {
             return Retrofit.Builder()
-                .baseUrl("http://52.202.214.13:80/")
+                .baseUrl("http://${LEArchivos.CargarIP(context!!)}/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(APIAmazon::class.java)

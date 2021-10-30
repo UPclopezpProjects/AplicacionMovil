@@ -16,6 +16,9 @@ import java.lang.Exception
 
 class LEArchivos {
     companion object{
+
+        var nombreIP = "archivo.txt"
+
         fun sobrescribir(texto: String, baseContext: Context){
             try {
                 val rutaSD = baseContext.getExternalFilesDir(null)?.absolutePath
@@ -28,22 +31,6 @@ class LEArchivos {
                 //ficheroFisico.appendText("$texto\n")
                 //esto sobreescribe texto al archivo
                 ficheroFisico.writeText("$texto")
-                //Toast.makeText(baseContext, "Creado correctamente $ficheroFisico", Toast.LENGTH_SHORT).show()
-            } catch (e: Exception){
-                Log.e("ERROR", "$e")
-            }
-        }
-
-        fun guardar(texto: String, baseContext: Context){
-            try {
-                val rutaSD = baseContext.getExternalFilesDir(null)?.absolutePath
-                val miCarpeta = File(rutaSD, "datos")
-                if (!miCarpeta.exists()) {
-                    miCarpeta.mkdir()
-                }
-                val ficheroFisico = File(miCarpeta, "datos.txt")
-                //esta agrega texto al archivo
-                ficheroFisico.appendText("$texto\n")
                 //Toast.makeText(baseContext, "Creado correctamente $ficheroFisico", Toast.LENGTH_SHORT).show()
             } catch (e: Exception){
                 Log.e("ERROR", "$e")
@@ -71,10 +58,46 @@ class LEArchivos {
             return texto
         }
 
-        fun permisos(contexto: Context, actividad:Activity){
-            if ((ContextCompat.checkSelfPermission(contexto, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) || (ContextCompat.checkSelfPermission(contexto, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)){
-                ActivityCompat.requestPermissions(actividad, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE), 123)
+        //los siguientes métodos son para almacenar la información de la IP
+        fun sobrescribirIP(texto: String, baseContext: Context){
+            //Toast.makeText(baseContext, "LEArchivos/sobreescribirIP/texto: $texto", Toast.LENGTH_LONG).show()
+            //try {
+                val rutaSD = baseContext.getExternalFilesDir(null)?.absolutePath
+                val miCarpeta = File(rutaSD, "datos")
+                if (!miCarpeta.exists()) {
+                    miCarpeta.mkdir()
+                }
+                val ficheroFisico = File(miCarpeta, nombreIP)
+                //esta agrega texto al archivo
+                //ficheroFisico.appendText("$texto\n")
+                //esto sobreescribe texto al archivo
+                ficheroFisico.writeText("$texto")
+                //Toast.makeText(baseContext, "Creado correctamente $ficheroFisico", Toast.LENGTH_SHORT).show()
+            /*} catch (e: Exception){
+                Log.d("ERROR", "$e")
+            }*/
+        }
+
+        fun CargarIP(baseContext: Context):String{
+            val rutaSD = baseContext.getExternalFilesDir(null)?.absolutePath
+            val miCarpeta = File(rutaSD, "datos")
+            val ficheroFisico = File(miCarpeta, nombreIP)
+
+            if (!miCarpeta.exists()) {
+                Log.d("LEArchivos/", "no existía la carpeta")
+                miCarpeta.mkdir()
             }
+            if (!ficheroFisico.exists()) {
+                Log.d("LEArchivos", "no existe el archivo")
+                ficheroFisico.createNewFile()
+                sobrescribir("", baseContext)
+            }
+
+            val fichero = BufferedReader(InputStreamReader(
+                FileInputStream(ficheroFisico)))
+            val texto = fichero.use(BufferedReader::readText)
+            //Toast.makeText(baseContext, "LEArchivos/CargarIP/texto: $texto", Toast.LENGTH_LONG).show()
+            return texto
         }
     }
 }

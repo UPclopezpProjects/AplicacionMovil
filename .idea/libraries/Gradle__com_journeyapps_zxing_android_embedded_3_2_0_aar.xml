@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.journeyapps:zxing-android-embedded:3.2.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d31d727d38ba12c70e7ec01ed4b65415/transformed/jetified-zxing-android-embedded-3.2.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d31d727d38ba12c70e7ec01ed4b65415/transformed/jetified-zxing-android-embedded-3.2.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d31d727d38ba12c70e7ec01ed4b65415/transformed/jetified-zxing-android-embedded-3.2.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/383ae7e5075bdd0f85b1fcae52e8f01b/transformed/jetified-zxing-android-embedded-3.2.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/383ae7e5075bdd0f85b1fcae52e8f01b/transformed/jetified-zxing-android-embedded-3.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/383ae7e5075bdd0f85b1fcae52e8f01b/transformed/jetified-zxing-android-embedded-3.2.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

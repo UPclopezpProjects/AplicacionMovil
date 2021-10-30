@@ -40,7 +40,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
-        android:text="Versión 18-10-2021.1"
+        android:text="Versión 29-10-2021.1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

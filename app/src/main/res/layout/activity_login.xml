@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="50dp"
-    android:layout_marginEnd="50dp"
     tools:context=".UI.Login">
 
     <LinearLayout
@@ -198,6 +196,33 @@
                 android:text="@string/registrar" />
         </LinearLayout>
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/BTConfiguration"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:fontFamily="sans-serif-light"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="CONFIGURACIÓN DE LA IP"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.872" />
+        </LinearLayout>
+
         <Button
             android:id="@+id/BTSaltar"
             android:layout_width="match_parent"
@@ -208,7 +233,6 @@
             android:fontFamily="sans-serif-light"
             android:foreground="?attr/selectableItemBackground"
             android:text="@string/saltar_login" />
-
 
         <TextView
             android:id="@+id/textView2"
