@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.desarrolloresidencia.Network.model.Login.LoginUsers
 import com.example.desarrolloresidencia.Network.model.Login.User
 import com.example.desarrolloresidencia.Repository.AmazonRepository
 import com.example.desarrolloresidencia.utils.Auth.AuthListener
@@ -11,6 +12,7 @@ import com.example.desarrolloresidencia.utils.LEArchivos
 import com.example.desarrolloresidencia.utils.responseUser
 import kotlinx.coroutines.launch
 import org.json.JSONObject
+import retrofit2.Response
 import java.lang.Exception
 
 class LoginViewModel() : ViewModel()  {
@@ -24,6 +26,7 @@ class LoginViewModel() : ViewModel()  {
     var lastname: String ?= null
     var dp: String? = null
     var authListener: AuthListener?= null
+    var response: Response<LoginUsers>?= null
 
     fun onLoginButtonClick() {
         viewModelScope.launch {
@@ -32,38 +35,38 @@ class LoginViewModel() : ViewModel()  {
                 //Coroutines.main {
                 //val response = UserRepository().userLogin(email!!, password!!)
 
-                val response = AmazonRepository().userLogin(email!!, password!!)
-            Log.d("respuesta del server", response.body().toString())
+                response = AmazonRepository().userLogin(email!!, password!!)
+            Log.d("respuesta del server", response!!.body().toString())
 
 
-                if (response.isSuccessful) {
-                    if(response.body()!!.message.toString() == "false"){
-                        authListener?.onFailure("""{"message":"Error durante el login, ¿verificaste tu correo electrónico?"}""")
+                if (response!!.isSuccessful) {
+                    if(response!!.body()!!.message.toString() == "false"){
+                        authListener?.onFailure("""{"message":"${response!!.body()!!.message}"}""")
 
                     } else {
-                        responseUser.message = response.body()!!.message
-                        responseUser.token = response.body()!!.token
-                        responseUser.user = response.body()!!.user
+                        responseUser.message = response!!.body()!!.message
+                        responseUser.token = response!!.body()!!.token
+                        responseUser.user = response!!.body()!!.user
 
                         Log.d("login token", "${responseUser.token}")
 
-                        validarU(response.body()!!.message, response.body()!!.token, response.body()!!.user)
+                        validarU(response!!.body()!!.message, response!!.body()!!.token, response!!.body()!!.user)
                         //authListener?.onSuccess(response.body()!!.message, response.body()!!.token, response.body()!!.user)
                     }
                 } else {
-                    Log.e("LoginViewModel/onLoginButtonClick/mensaje de error", "${response.errorBody()?.string()}")
-                    authListener?.onFailure("${response.errorBody()?.string()}")
+                    Log.e("LoginViewModel/onLoginButtonClick/mensaje de error", "${response!!.errorBody()?.string()}")
+                    authListener?.onFailure("${response!!.errorBody()?.string()}")
                 }
             }
             catch (e : java.net.SocketTimeoutException){
-                authListener?.onFailure("""{"message":"No se pudo conectar con el servidor"}""")
+                authListener?.onFailure("""{"message":"${response?.body()?.message}"}""")
             }
             catch (e : java.lang.NullPointerException){
-                authListener?.onFailure("""{"message":"No se ha encontrado el correo electrónico, verifica tu correo o registrate"}""")
+                authListener?.onFailure("""{"message":"${response?.body()?.message}"}""")
 
             }
             catch (e:com.google.gson.stream.MalformedJsonException){
-                """{"message":"Error en la respuesta del servidor"}"""
+                """{"message":"${response?.body()?.message}"}"""
             }
         }
     }
@@ -95,7 +98,7 @@ class LoginViewModel() : ViewModel()  {
     }
 
 
-    fun validarU(message: Boolean, token: String, user: User){
+    fun validarU(message: String, token: String, user: User){
         if(user.typeOfUser=="Consumer"){
             authListener?.onSuccess(message, token, user)
         }else{

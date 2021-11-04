@@ -342,7 +342,7 @@ class Login : AppCompatActivity(), AuthListener {
         binding.BTConfiguration.isEnabled=false
     }
 
-    override fun onSuccess(message: Boolean, token: String, user: User) {
+    override fun onSuccess(message: String, token: String, user: User) {
         //Toast.makeText(this, "$message $token $user", Toast.LENGTH_SHORT).show()
         binding.PB.visibility = GONE
         binding.BTRegistro.isEnabled= true
