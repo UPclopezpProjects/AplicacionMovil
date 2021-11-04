@@ -39,8 +39,6 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
         var ultimo = items?.size?.minus(1)
 
 
-
-
         if (position == ultimo){
             holder.anterior?.visibility = View.INVISIBLE
             holder.escenarioP?.visibility = View.INVISIBLE
@@ -139,18 +137,11 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
 
     class ViewHolder(vista: View, listener: ClickListener): RecyclerView.ViewHolder(vista), View.OnClickListener{
         var vista = vista
-        //var _id: TextView ?= null
-        //var id: TextView ?= null
-        //var fid: TextView ?= null
         var fidE: TextView ?= null
-        //var codigo: TextView ?= null
-        //var codigoE:TextView ?= null
-        //var ubicacion: String ?= null
         var nombre: TextView ?= null
         var escenarioP: ImageView ?= null
         var escenario: ImageView ?= null
         var imagen : ImageView ?= null
-        //var __V: TextView ?= null
         var listener: ClickListener ?= null
         var siguiente:Button ?= null
         var anterior:Button ?= null
@@ -186,8 +177,5 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
         override fun onClick(v: View?) {
             this.listener?.onClick(v!!, adapterPosition)
         }
-
-
     }
-
 }

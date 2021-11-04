@@ -289,15 +289,6 @@ class ListaPuntos : Fragment(), RecyclerV {
     }
 
     override fun transaccion(transaccion: String, contract: String, hash: String) {
-        /*val ventanaFlotante = detallesAddress()
-
-        var args =  Bundle()
-        args.putString("transaction", transaccion)
-        args.putString("contract", contract)
-        args.putString("hash", hash)
-        ventanaFlotante.setArguments(args)
-        ventanaFlotante.show(childFragmentManager, "detallesAddress")*/
-
         val intent = Intent(activity, addressTransaction::class.java)
         intent.putExtra("transaccion", transaccion)
         intent.putExtra("contrato", contract)
@@ -307,13 +298,6 @@ class ListaPuntos : Fragment(), RecyclerV {
     }
 
     override fun GetLog(transaccion: String, contract: String) {
-        /*val builder = AlertDialog.Builder(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK)
-
-        builder.setTitle("Address Contract").setIcon(R.drawable.logo)
-        builder.setMessage("$transaccion, $contract")
-        builder.setPositiveButton("ok"){ dialog, id ->}
-        builder.show()*/
-
         val intent = Intent(getActivity(), com.example.desarrolloresidencia.UI.GetLog::class.java)
         intent.putExtra("transaction", "$transaccion")
         intent.putExtra("contract", "$contract")
