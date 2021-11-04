@@ -10,6 +10,7 @@ import com.example.desarrolloresidencia.utils.Auth.AuthListener
 import com.example.desarrolloresidencia.utils.LEArchivos
 import com.example.desarrolloresidencia.utils.responseUser
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 import java.lang.Exception
 
 class LoginViewModel() : ViewModel()  {
@@ -32,20 +33,25 @@ class LoginViewModel() : ViewModel()  {
                 //val response = UserRepository().userLogin(email!!, password!!)
 
                 val response = AmazonRepository().userLogin(email!!, password!!)
+            Log.d("respuesta del server", response.body().toString())
 
 
                 if (response.isSuccessful) {
-                    Log.d("la respuesta del login", response.body().toString())
+                    if(response.body()!!.message.toString() == "false"){
+                        authListener?.onFailure("""{"message":"Error durante el login, ¿verificaste tu correo electrónico?"}""")
 
-                    responseUser.message = response.body()!!.message
-                    responseUser.token = response.body()!!.token
-                    responseUser.user = response.body()!!.user
+                    } else {
+                        responseUser.message = response.body()!!.message
+                        responseUser.token = response.body()!!.token
+                        responseUser.user = response.body()!!.user
 
-                    Log.d("login token", "${responseUser.token}")
+                        Log.d("login token", "${responseUser.token}")
 
-                    validarU(response.body()!!.message, response.body()!!.token, response.body()!!.user)
-                    //authListener?.onSuccess(response.body()!!.message, response.body()!!.token, response.body()!!.user)
+                        validarU(response.body()!!.message, response.body()!!.token, response.body()!!.user)
+                        //authListener?.onSuccess(response.body()!!.message, response.body()!!.token, response.body()!!.user)
+                    }
                 } else {
+                    Log.e("LoginViewModel/onLoginButtonClick/mensaje de error", "${response.errorBody()?.string()}")
                     authListener?.onFailure("${response.errorBody()?.string()}")
                 }
             }
@@ -54,6 +60,7 @@ class LoginViewModel() : ViewModel()  {
             }
             catch (e : java.lang.NullPointerException){
                 authListener?.onFailure("""{"message":"No se ha encontrado el correo electrónico, verifica tu correo o registrate"}""")
+
             }
             catch (e:com.google.gson.stream.MalformedJsonException){
                 """{"message":"Error en la respuesta del servidor"}"""

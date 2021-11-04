@@ -81,12 +81,13 @@ interface APIAmazon {
 
     companion object {
         var context: Context ?= null
-        operator fun invoke(): APIAmazon {
-            return Retrofit.Builder()
-                .baseUrl("http://${LEArchivos.CargarIP(context!!)}/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(APIAmazon::class.java)
+
+            operator fun invoke(): APIAmazon {
+                return Retrofit.Builder()
+                    .baseUrl("http://${LEArchivos.CargarIP(context!!)}/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+                    .create(APIAmazon::class.java)
         }
     }
 }

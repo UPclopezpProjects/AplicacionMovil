@@ -56,7 +56,7 @@ class Login : AppCompatActivity(), AuthListener {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //hash()
+        hash()
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
         loginViewModel.authListener = this
         loginViewModel.contexto = this
@@ -200,6 +200,7 @@ class Login : AppCompatActivity(), AuthListener {
             Log.d("GRAPH", url)
             var formato = Gson().fromJson(response.rawResponse, JsonFacebook::class.java)
             Log.e("EMAIL", formato.email)
+            Log.e("PASSWORD", formato.id)
 
             //if (loginF ==true){
             Log.e("login if cargardata", "si se va entra al if")
@@ -236,7 +237,7 @@ class Login : AppCompatActivity(), AuthListener {
     //termina el login con facebook
 
 
-    /*fun hash(){
+    fun hash(){
         try {
             val info: PackageInfo? = packageManager.getPackageInfo(
                 "com.example.desarrolloresidencia",  //Insert your own package name.
@@ -252,7 +253,7 @@ class Login : AppCompatActivity(), AuthListener {
         } catch (e: PackageManager.NameNotFoundException) {
         } catch (e: NoSuchAlgorithmException) {
         }
-    }*/
+    }
 
      fun validarE(){
         try {
