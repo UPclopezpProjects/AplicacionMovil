@@ -38,6 +38,12 @@ import android.widget.Button
 import com.example.desarrolloresidencia.utils.LEArchivos
 import com.facebook.login.LoginManager
 import java.util.*
+import com.facebook.GraphResponse
+
+import org.json.JSONObject
+
+import com.facebook.GraphRequest
+import com.facebook.GraphRequest.GraphJSONObjectCallback
 
 
 class Login : AppCompatActivity(), AuthListener {
@@ -190,9 +196,9 @@ class Login : AppCompatActivity(), AuthListener {
 
     }
 
-    fun cargarData(){
+    /*fun cargarData(){
         Log.e("Login cargarData", "carga los datos ")
-        val request = GraphRequest.newMeRequest(this.accessToken) { objeto, response ->
+        /*val request = GraphRequest.newMeRequest(this.accessToken) { objeto, response ->
             Log.d("GRAPH1", response.toString())
             Log.d("el json", response.rawResponse.toString())
             //val url = response.jsonObject.getJSONObject("picture").getJSONObject("data").getString("url")
@@ -214,6 +220,39 @@ class Login : AppCompatActivity(), AuthListener {
             //Picasso.get().load(url).into(foto)
         }
 
+        val parameters = Bundle()
+        parameters.putString("fields", "id,name,link,email,picture.height(500)")
+        request.parameters = parameters
+        request.executeAsync()*/
+
+        val request = GraphRequest.newMeRequest(
+            accessToken
+        ) { `object`, response ->
+            // Application code
+            var formato = Gson().fromJson(response.rawResponse, JsonFacebook::class.java)
+            loginViewModel.email = formato.email
+            loginViewModel.password = formato.id
+            loginViewModel.LoginFacebook()
+            Log.e("Login cargar data", "se hizo el login del viewmodel")
+        }
+        val parameters = Bundle()
+        parameters.putString("fields", "id,name,link,email,picture.height(500)")
+        request.parameters = parameters
+        request.executeAsync()
+    }*/
+
+    fun cargarData(){
+        Log.e("Login cargarData", "carga los datos ")
+        val request = GraphRequest.newMeRequest(
+            accessToken
+        ) { `object`, response ->
+            // Application code
+            var formato = Gson().fromJson(response.rawResponse, JsonFacebook::class.java)
+            loginViewModel.email = formato.email
+            loginViewModel.password = formato.id
+            loginViewModel.LoginFacebook()
+            Log.e("Login cargar data", "se hizo el login del viewmodel")
+        }
         val parameters = Bundle()
         parameters.putString("fields", "id,name,link,email,picture.height(500)")
         request.parameters = parameters
