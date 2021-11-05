@@ -49,7 +49,7 @@ class LEArchivos {
             if (!ficheroFisico.exists()) {
                 Log.d("LEArchivos", "no existe el archivo")
                 ficheroFisico.createNewFile()
-                sobrescribir("""{"createAdministrator":false,"createTUser":false,"updateMe":true,"updateAdministrator":false,"updateTUser":false,"deleteMe":true,"deleteAdministrator":false,"deleteTUser":false,"readMe":true,"readAdministrator":false,"readTUser":false,"loginUser":true}""", baseContext)
+                sobrescribir("""{"createAdministrator": false, "createTUser": false, "createData": false, "updateMe": true, "updateAdministrator": false, "updateTUser": false, "updateData": false, "deleteMe": true, "deleteAdministrator": false, "deleteTUser": false, "deleteData": false, "readMe": true, "readAdministrator": false, "readTUser": false, "readData": false, "loginUser": true}""", baseContext)
             }
 
             val fichero = BufferedReader(InputStreamReader(

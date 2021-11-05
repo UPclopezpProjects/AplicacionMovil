@@ -63,13 +63,27 @@ interface APIAmazon {
         @Field("nameOfUser") nameOfUser: String?,
         @Field("typeOfUser") typeOfUser: String?,
         @Field("status") status: String?,
-        @Field("creationDate") creationDate: String?,
         @Field("dp") dp: String?,
-        @Field("addressU") addressU: String?,
         @Field("typeOfOperation") typeOfOperation: String?,
         @Field("nameOfOperation") nameOfOperation: String?,
         @Field("hashX") hashX: String?,
-        @Field("gas") gas: String?
+    ): Response<CreacionConsumidor>
+
+    @FormUrlEncoded
+    @POST("userCreation")
+    suspend fun RegistrarseFacebook(
+        @Field("email") email: String?,
+        @Field("password") password: String?,
+        @Field("surnameA") surnameA: String?,
+        @Field("surnameB") surnameB: String?,
+        @Field("nameOfUser") nameOfUser: String?,
+        @Field("typeOfUser") typeOfUser: String?,
+        @Field("status") status: String?,
+        @Field("dp") dp: String?,
+        @Field("typeOfOperation") typeOfOperation: String?,
+        @Field("nameOfOperation") nameOfOperation: String?,
+        @Field("hashX") hashX: String?,
+        @Field("facebook") facebook: Boolean
     ): Response<CreacionConsumidor>
 
     @FormUrlEncoded

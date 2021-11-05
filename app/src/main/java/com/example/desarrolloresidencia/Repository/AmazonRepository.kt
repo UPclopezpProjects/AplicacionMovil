@@ -57,11 +57,11 @@ class AmazonRepository {
             "0x6C75A7e5F81871C37531453Dc630f5b78C543E4C",
             "12345"
         )*/
-            try {
-                return APIAmazon().getLog(transaction, contract, token)
-            } catch (e:com.google.gson.JsonSyntaxException){
-                return null
-            }
+        try {
+            return APIAmazon().getLog(transaction, contract, token)
+        } catch (e: com.google.gson.JsonSyntaxException) {
+            return null
+        }
     }
 
     suspend fun recuperarPassword(email: String): Response<com.example.desarrolloresidencia.Network.model.RecuperarPass.Response> {
@@ -97,13 +97,45 @@ class AmazonRepository {
             "$nombre",
             "Consumer",
             "false",
-            "xx-xx-xxxx",
             "$dp",
-            "0xe5488d0a914c780381f150d13289170423e1510f",
             "create",
             "createConsumer",
             "$hash",
-            "900000"
+        )
+    }
+
+    suspend fun userRegistroFacebook(
+        nombre: String,
+        apellidoP: String,
+        apellidoM: String,
+        email: String,
+        contrasena: String,
+        dp: String
+    ): Response<CreacionConsumidor> {
+        Log.e("AmazonRepository", "userRegistroFacebook")
+
+        var jsonOsman ="""{"email":"${email.toLowerCase()}","password":"$contrasena","surnameA":"$apellidoP","surnameB":"$apellidoM","nameOfUser":"$nombre","typeOfUser":"Consumer","status":"false","typeOfOperation":"create","nameOfOperation":"createConsumer","dp":$dp}"""
+
+        Log.d("el string", "$jsonOsman")
+        var objeto = JSONObject(jsonOsman)
+        Log.d("objeto json", objeto.toString())
+        var hash = MD5().md5(objeto.toString())
+        Log.d("el hash", "$hash")
+
+        //return MyApi().Registrarse("$email", "$contrasena", "$apellidoP", "$apellidoM", "$nombre", "Consumer","false", "xx-xx-xxxx", "$dp", "0xf26F59ac3801F419Abe44CA7d56FfC8fB8142BbB", "create", "createConsumer", "$hash")
+        return APIAmazon().RegistrarseFacebook(
+            "$email",
+            "$contrasena",
+            "$apellidoP",
+            "$apellidoM",
+            "$nombre",
+            "Consumer",
+            "false",
+            "$dp",
+            "create",
+            "createConsumer",
+            "$hash",
+            true
         )
     }
 }

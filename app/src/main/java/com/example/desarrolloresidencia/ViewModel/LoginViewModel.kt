@@ -15,18 +15,18 @@ import org.json.JSONObject
 import retrofit2.Response
 import java.lang.Exception
 
-class LoginViewModel() : ViewModel()  {
+class LoginViewModel() : ViewModel() {
 
     var contexto: Context? = null
 
-    var email: String ?= null
-    var password: String ?= null
-    var firstname: String ?= null
-    var middlename: String ?= null
-    var lastname: String ?= null
+    var email: String? = null
+    var password: String? = null
+    var firstname: String? = null
+    var middlename: String? = null
+    var lastname: String? = null
     var dp: String? = null
-    var authListener: AuthListener?= null
-    var response: Response<LoginUsers>?= null
+    var authListener: AuthListener? = null
+    var response: Response<LoginUsers>? = null
 
     fun onLoginButtonClick() {
         viewModelScope.launch {
@@ -36,11 +36,11 @@ class LoginViewModel() : ViewModel()  {
                 //val response = UserRepository().userLogin(email!!, password!!)
 
                 response = AmazonRepository().userLogin(email!!, password!!)
-            Log.d("respuesta del server", response!!.body().toString())
+                Log.d("respuesta del server", response!!.body().toString())
 
 
                 if (response!!.isSuccessful) {
-                    if(response!!.body()!!.message.toString() == "false"){
+                    if (response!!.body()!!.message.toString() == "false") {
                         authListener?.onFailure("""{"message":"${response!!.body()!!.message}"}""")
 
                     } else {
@@ -50,58 +50,73 @@ class LoginViewModel() : ViewModel()  {
 
                         Log.d("login token", "${responseUser.token}")
 
-                        validarU(response!!.body()!!.message, response!!.body()!!.token, response!!.body()!!.user)
+                        validarU(
+                            response!!.body()!!.message,
+                            response!!.body()!!.token,
+                            response!!.body()!!.user
+                        )
                         //authListener?.onSuccess(response.body()!!.message, response.body()!!.token, response.body()!!.user)
                     }
                 } else {
-                    Log.e("LoginViewModel/onLoginButtonClick/mensaje de error", "${response!!.errorBody()?.string()}")
+                    Log.e(
+                        "LoginViewModel/onLoginButtonClick/mensaje de error",
+                        "${response!!.errorBody()?.string()}"
+                    )
                     authListener?.onFailure("${response!!.errorBody()?.string()}")
                 }
-            }
-            catch (e : java.net.SocketTimeoutException){
+            } catch (e: java.net.SocketTimeoutException) {
                 authListener?.onFailure("""{"message":"${response?.body()?.message}"}""")
-            }
-            catch (e : java.lang.NullPointerException){
+            } catch (e: java.lang.NullPointerException) {
                 authListener?.onFailure("""{"message":"${response?.body()?.message}"}""")
 
-            }
-            catch (e:com.google.gson.stream.MalformedJsonException){
+            } catch (e: com.google.gson.stream.MalformedJsonException) {
                 """{"message":"${response?.body()?.message}"}"""
             }
         }
     }
 
-    fun LoginFacebook(){
+    fun LoginFacebook() {
         Log.e("login ViewModel", "comenzó el login de facebook")
         viewModelScope.launch {
             try {
                 authListener?.onStarted()
                 dp = contexto?.let { LEArchivos.Cargar(it) }
+                Log.e("LoginViewModel/LoginFacebook/dp", "$dp")
 
-                val response = AmazonRepository().userRegistro("""$firstname $middlename""", "$lastname", " ", "$email", "$password", "$dp")
+                val response = AmazonRepository().userRegistroFacebook(
+                    """$firstname $middlename""",
+                    "$lastname",
+                    " ",
+                    "$email",
+                    "$password",
+                    "$dp"
+                )
 
 
                 if (response.isSuccessful) {
                     Log.d("login token", "${responseUser.token}")
 
                     onLoginButtonClick()
-                    Log.e("LoginViewmodel", "ya llegamos al loginbuttonclick")
+                    Log.e(
+                        "LoginViewmodel/LoginFacebook/Successful",
+                        "ya llegamos al loginbuttonclick"
+                    )
                 } else {
-                    Log.e("login viewmodel error", response.errorBody().toString())
-                    authListener?.onFailure(response.errorBody()!!.string())
+                    Log.e("LoginViewmodel/LoginFacebook/error", response.errorBody().toString())
+                    onLoginButtonClick()
+                    //authListener?.onFailure(response.errorBody()!!.string())
                 }
-            }
-            catch (e : java.net.SocketTimeoutException){
+            } catch (e: java.net.SocketTimeoutException) {
                 authListener?.onFailure("""{"message":"No se pudo conectar con el servidor"}""")
             }
         }
     }
 
 
-    fun validarU(message: String, token: String, user: User){
-        if(user.typeOfUser=="Consumer"){
+    fun validarU(message: String, token: String, user: User) {
+        if (user.typeOfUser == "Consumer") {
             authListener?.onSuccess(message, token, user)
-        }else{
+        } else {
             authListener?.onFailure("""{"message":"Solo pueden ingresar los usuarios de tipo consumidor"}""")
         }
     }

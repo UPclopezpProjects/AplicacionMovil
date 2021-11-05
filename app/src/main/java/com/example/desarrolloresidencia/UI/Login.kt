@@ -115,7 +115,7 @@ class Login : AppCompatActivity(), AuthListener {
                 "${Profile.getCurrentProfile().firstName}"
             )
             accessToken = AccessToken.getCurrentAccessToken()
-            cargarData()
+            //cargarData()
         }
 
 

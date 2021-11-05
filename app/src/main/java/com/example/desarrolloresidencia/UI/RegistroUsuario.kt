@@ -117,7 +117,7 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
         binding.BTRegistrar.isEnabled = false
     }
 
-    override fun onSuccess(message: Boolean) {
+    override fun onSuccess(message: String) {
         binding.PB.visibility = View.INVISIBLE
         binding.ETNombre.isEnabled = true
         binding.ETApellidoP.isEnabled = true
@@ -125,21 +125,31 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
         binding.ETEmail.isEnabled = true
         binding.ETContrasena.isEnabled = true
         binding.BTRegistrar.isEnabled = true
-        Log.d("respuesta correcta", "$message")
-        //Toast.makeText(applicationContext, "Usuario Registrado", Toast.LENGTH_SHORT).show()
-        //Toast.makeText(applicationContext, registroViewModel.validarStatus(user.status), Toast.LENGTH_SHORT).show()
+        if(message.equals("true")){
+            binding.ETNombre.setText("")
+            binding.ETApellidoP.setText("")
+            binding.ETApellidoM.setText("")
+            binding.ETEmail.setText("")
+            binding.ETContrasena.setText("")
 
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Registro satisfactorio").setIcon(R.drawable.logo)
-        builder.setMessage("Verifica tu correo electrónico")
-        builder.setPositiveButton("ok"){dialog, id ->}
-        builder.show()
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Respuesta del servidor").setIcon(R.drawable.logo)
+            builder.setMessage("Registro Satisfactorio")
+            builder.setPositiveButton("ok"){dialog, id ->}
+            builder.show()
+        } else {
+            Log.d("respuesta correcta", "$message")
 
-        binding.ETNombre.setText("")
-        binding.ETApellidoP.setText("")
-        binding.ETApellidoM.setText("")
-        binding.ETEmail.setText("")
-        binding.ETContrasena.setText("")
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Respuesta del servidor").setIcon(R.drawable.logo)
+            builder.setMessage("$message")
+            builder.setPositiveButton("ok"){dialog, id ->}
+            builder.show()
+        }
+
+
+
+
     }
 
 

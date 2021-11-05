@@ -4,10 +4,12 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.desarrolloresidencia.Network.model.CreationC.CreacionConsumidor
 import com.example.desarrolloresidencia.Repository.AmazonRepository
 import com.example.desarrolloresidencia.utils.Auth.AuthRegistro
 import com.example.desarrolloresidencia.utils.LEArchivos
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
 class RegistroViewModel(): ViewModel() {
     var contexto: Context? = null
@@ -19,6 +21,7 @@ class RegistroViewModel(): ViewModel() {
     var password: String? = null
     var dp: String? = null
     var authListener: AuthRegistro? = null
+    var response: Response<CreacionConsumidor>? =null
 
     fun onLoginButtonClick() {
         viewModelScope.launch {
@@ -26,30 +29,32 @@ class RegistroViewModel(): ViewModel() {
             try {
                 dp = contexto?.let { LEArchivos.Cargar(it) }
                 //CoroutinesRU.main {
-                val response = AmazonRepository().userRegistro(nombre!!, apellidoP!!, apellidoM!!, email!!, password!!, dp.toString()!!)
-                if (response.isSuccessful) {
-                    Log.d("RegistroViewModel response",response.body().toString())
+                response = AmazonRepository().userRegistro(nombre!!, apellidoP!!, apellidoM!!, email!!, password!!, dp.toString()!!)
+                Log.d("RegistroViewModel/onLoginButtonClick/response", "${response!!.body().toString()}")
+                if (response!!.isSuccessful) {
+                    Log.d("RegistroViewModel/response", response!!.body().toString())
 
-                    authListener?.onSuccess(response.body()!!.message)
-                    Log.d("si jaló", "${response.body()!!.message}")
+                    authListener?.onSuccess(response!!.body()!!.message)
+                    Log.d("si jaló", "${response!!.body()!!.message}")
                 } else {
-                    authListener?.onFailure(response.errorBody()!!.string())
+                    authListener?.onFailure(response!!.errorBody()!!.string())
                 }
             } catch (e: java.net.SocketTimeoutException) {
                 authListener?.onFailure("""{"message":"No se pudo conectar con el servidor"}""")
             }
             catch (e: java.lang.NullPointerException){
-                authListener?.onFailure("""{"message":"Registro satisfactorio, confirma tu correo electrónico"}""")
+                authListener?.onFailure(response!!.errorBody().toString())
+                Log.e("RegistroViewModel/onLoginButtonClick/catch2", response!!.errorBody().toString())
             }
         }
     }
 
 
-    fun validarStatus (status : String):String{
+    /*fun validarStatus (status : String):String{
         if (status=="false"){
             return "Verifica tu correo electrónico"
         }else{
             return "Tu correo electrónico está verificado"
         }
-    }
+    }*/
 }
