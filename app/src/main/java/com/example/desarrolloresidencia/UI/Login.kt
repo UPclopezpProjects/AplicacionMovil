@@ -52,10 +52,10 @@ class Login : AppCompatActivity(), AuthListener {
 
     //esto es de facebook
     //gestor de callbacks
-    private var callbackManager:CallbackManager ?= null
-    private var profileTracker:ProfileTracker ?= null
-    private var accessToken:AccessToken ?= null
-    private var loginF: Boolean ?= null
+    private var callbackManager: CallbackManager? = null
+    private var profileTracker: ProfileTracker? = null
+    private var accessToken: AccessToken? = null
+    private var loginF: Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,84 +109,85 @@ class Login : AppCompatActivity(), AuthListener {
         binding.loginButton.setReadPermissions("email");
 
         //verifica si ya había iniciado sesión
-        if (AccessToken.getCurrentAccessToken() != null && Profile.getCurrentProfile() != null){
+        if (AccessToken.getCurrentAccessToken() != null && Profile.getCurrentProfile() != null) {
             Log.e(
-                "Verifica si ya hay una sesión iniciada",
-                "${Profile.getCurrentProfile().firstName}"
+                "Verifica si ya hay una sesión iniciada", "${Profile.getCurrentProfile().firstName}"
             )
             accessToken = AccessToken.getCurrentAccessToken()
-            //cargarData()
+            cargarData()
         }
 
 
-        binding.loginButton.registerCallback(callbackManager, object : FacebookCallback<LoginResult?> {
+        binding.loginButton.registerCallback(
+            callbackManager,
+            object : FacebookCallback<LoginResult?> {
 
-            override fun onSuccess(loginResult: LoginResult?) {
-                accessToken = AccessToken.getCurrentAccessToken()
-                Log.e("Le diste click al login con facebook", "onSuccess")
-                loginF = true
-                // App code
-                //este es el accessToken
-                val accessToken = AccessToken.getCurrentAccessToken()
-                //esto me marca si estoy logeado o no
-                val isLoggedIn = accessToken != null && !accessToken.isExpired
-                Log.e("Login AccessToken", "${loginResult?.accessToken}")
-                //verifica si ya se logeo previamente
-                if (Profile.getCurrentProfile() == null) {
+                override fun onSuccess(loginResult: LoginResult?) {
+                    accessToken = AccessToken.getCurrentAccessToken()
+                    Log.e("Le diste click al login con facebook", "onSuccess")
+                    loginF = true
+                    // App code
+                    //este es el accessToken
+                    val accessToken = AccessToken.getCurrentAccessToken()
+                    //esto me marca si estoy logeado o no
+                    val isLoggedIn = accessToken != null && !accessToken.isExpired
+                    Log.e("Login AccessToken", "${loginResult?.accessToken}")
+                    //verifica si ya se logeo previamente
+                    if (Profile.getCurrentProfile() == null) {
 
-                    Log.e("Le diste click al login con facebook", "verifica el logeo previo")
+                        Log.e("Le diste click al login con facebook", "verifica el logeo previo")
 
-                    profileTracker = object : ProfileTracker() {
-                        //permite rastrear cuando un perfil cambia
-                        override fun onCurrentProfileChanged(
-                            oldProfile: Profile?,
-                            currentProfile: Profile?
-                        ) {
+                        profileTracker = object : ProfileTracker() {
+                            //permite rastrear cuando un perfil cambia
+                            override fun onCurrentProfileChanged(
+                                oldProfile: Profile?,
+                                currentProfile: Profile?
+                            ) {
 
-                            Log.e(
-                                "Le diste click al login con facebook",
-                                "rastrea el cambio de inicio de sesión"
-                            )
+                                Log.e(
+                                    "Le diste click al login con facebook",
+                                    "rastrea el cambio de inicio de sesión"
+                                )
 
-                            Log.e("Le diste click al login con facebook", "onSuccess")
-                            Log.d("FIRST NAME", currentProfile?.firstName.toString())
-                            Log.d("LAST NAME", currentProfile?.lastName.toString())
-                            Log.d("MIDDLE NAME", currentProfile?.middleName.toString())
-                            Log.d("NAME", currentProfile?.name.toString())
-                            //deja de hacer el rastreo del perfil
-                            profileTracker?.stopTracking()
-                            loginViewModel.firstname = currentProfile?.firstName.toString()
-                            loginViewModel.lastname = currentProfile?.lastName.toString()
-                            loginViewModel.firstname = currentProfile?.firstName.toString()
-                            loginViewModel.middlename = currentProfile?.middleName.toString()
-                            //Toast.makeText(applicationContext, "dentro del if", Toast.LENGTH_LONG).show()
-                            cargarData()
+                                Log.e("Le diste click al login con facebook", "onSuccess")
+                                Log.d("FIRST NAME", currentProfile?.firstName.toString())
+                                Log.d("LAST NAME", currentProfile?.lastName.toString())
+                                Log.d("MIDDLE NAME", currentProfile?.middleName.toString())
+                                Log.d("NAME", currentProfile?.name.toString())
+                                //deja de hacer el rastreo del perfil
+                                profileTracker?.stopTracking()
+                                loginViewModel.firstname = currentProfile?.firstName.toString()
+                                loginViewModel.lastname = currentProfile?.lastName.toString()
+                                loginViewModel.firstname = currentProfile?.firstName.toString()
+                                loginViewModel.middlename = currentProfile?.middleName.toString()
+                                //Toast.makeText(applicationContext, "dentro del if", Toast.LENGTH_LONG).show()
+                                cargarData()
+                            }
                         }
+                    } else {
+                        val profile = Profile.getCurrentProfile()
+                        Log.e(
+                            "Le diste click al login con facebook",
+                            "lo que pasa cuando das login por primera vez"
+                        )
+                        loginViewModel.firstname = profile?.firstName.toString()
+                        loginViewModel.lastname = profile?.lastName.toString()
+                        loginViewModel.firstname = profile?.firstName.toString()
+                        loginViewModel.middlename = profile?.middleName.toString()
+                        //Toast.makeText(applicationContext, "lo que pasa cuando das login por primera vez", Toast.LENGTH_LONG).show()
+                        cargarData()
                     }
-                } else {
-                    val profile = Profile.getCurrentProfile()
-                    Log.e(
-                        "Le diste click al login con facebook",
-                        "lo que pasa cuando das login por primera vez"
-                    )
-                    loginViewModel.firstname = profile?.firstName.toString()
-                    loginViewModel.lastname = profile?.lastName.toString()
-                    loginViewModel.firstname = profile?.firstName.toString()
-                    loginViewModel.middlename = profile?.middleName.toString()
-                    //Toast.makeText(applicationContext, "lo que pasa cuando das login por primera vez", Toast.LENGTH_LONG).show()
-                    cargarData()
                 }
-            }
 
-            override fun onCancel() {
-                Log.e("Login Cancelar", "Canceló")
-            }
+                override fun onCancel() {
+                    Log.e("Login Cancelar", "Canceló")
+                }
 
-            override fun onError(exception: FacebookException) {
-                // App code
-                Log.e("Login Error", exception.toString())
-            }
-        })
+                override fun onError(exception: FacebookException) {
+                    // App code
+                    Log.e("Login Error", exception.toString())
+                }
+            })
 
         binding.BTConfiguration.setOnClickListener {
             val intent: Intent = Intent(applicationContext, configurationIP::class.java)
@@ -196,52 +197,7 @@ class Login : AppCompatActivity(), AuthListener {
 
     }
 
-    /*fun cargarData(){
-        Log.e("Login cargarData", "carga los datos ")
-        /*val request = GraphRequest.newMeRequest(this.accessToken) { objeto, response ->
-            Log.d("GRAPH1", response.toString())
-            Log.d("el json", response.rawResponse.toString())
-            //val url = response.jsonObject.getJSONObject("picture").getJSONObject("data").getString("url")
-            val url = response.jsonObject.getJSONObject("picture").getJSONObject("data").getString("url")
-            Log.d("GRAPH", url)
-            var formato = Gson().fromJson(response.rawResponse, JsonFacebook::class.java)
-            Log.e("EMAIL", formato.email)
-            Log.e("PASSWORD", formato.id)
-
-            //if (loginF ==true){
-            Log.e("login if cargardata", "si se va entra al if")
-            loginViewModel.email = formato.email
-            loginViewModel.password = formato.id
-            loginViewModel.LoginFacebook()
-            Log.e("Login cargar data", "se hizo el login del viewmodel")
-
-            //}
-
-            //Picasso.get().load(url).into(foto)
-        }
-
-        val parameters = Bundle()
-        parameters.putString("fields", "id,name,link,email,picture.height(500)")
-        request.parameters = parameters
-        request.executeAsync()*/
-
-        val request = GraphRequest.newMeRequest(
-            accessToken
-        ) { `object`, response ->
-            // Application code
-            var formato = Gson().fromJson(response.rawResponse, JsonFacebook::class.java)
-            loginViewModel.email = formato.email
-            loginViewModel.password = formato.id
-            loginViewModel.LoginFacebook()
-            Log.e("Login cargar data", "se hizo el login del viewmodel")
-        }
-        val parameters = Bundle()
-        parameters.putString("fields", "id,name,link,email,picture.height(500)")
-        request.parameters = parameters
-        request.executeAsync()
-    }*/
-
-    fun cargarData(){
+    fun cargarData() {
         Log.e("Login cargarData", "carga los datos ")
         val request = GraphRequest.newMeRequest(
             accessToken
@@ -270,13 +226,10 @@ class Login : AppCompatActivity(), AuthListener {
     }
 
 
-
-
-
     //termina el login con facebook
 
 
-    fun hash(){
+    fun hash() {
         try {
             val info: PackageInfo? = packageManager.getPackageInfo(
                 "com.example.desarrolloresidencia",  //Insert your own package name.
@@ -294,14 +247,14 @@ class Login : AppCompatActivity(), AuthListener {
         }
     }
 
-     fun validarE(){
+    fun validarE() {
         try {
             var email = findViewById<EditText>(R.id.ETEmail)
             var contraseña = findViewById<EditText>(R.id.password)
             var ip = LEArchivos.CargarIP(this)
 
-            if (!validarEmail("${email.text.toString()}")){
-                email.error ="Email no válido"
+            if (!validarEmail("${email.text.toString()}")) {
+                email.error = "Email no válido"
                 email.requestFocus()
                 return
             } else {
@@ -310,9 +263,13 @@ class Login : AppCompatActivity(), AuthListener {
                     contraseña.requestFocus()
                     return
                 } else {
-                    if(/*ip=="" || ip==null ||*/ip.equals("") || ip.equals(null)){
+                    if (/*ip=="" || ip==null ||*/ip.equals("") || ip.equals(null)) {
                         Log.e("Login.kt", "cambio de ip")
-                        Toast.makeText(this, "Ingresa la ip del servidor presionando el botón de configuración de la IP", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this,
+                            "Ingresa la ip del servidor presionando el botón de configuración de la IP",
+                            Toast.LENGTH_LONG
+                        ).show()
                     } else {
                         loginViewModel.email = email.text.toString()
                         loginViewModel.password = contraseña.text.toString()
@@ -321,7 +278,7 @@ class Login : AppCompatActivity(), AuthListener {
                     }
                 }
             }
-        } catch (e: Exception){
+        } catch (e: Exception) {
             Log.e("Error UI", "$e")
         }
     }
@@ -333,25 +290,25 @@ class Login : AppCompatActivity(), AuthListener {
 
     override fun onStarted() {
         binding.PB.visibility = VISIBLE
-        binding.BTRegistro.isEnabled= false
-        binding.BTSaltar.isEnabled= false
-        binding.BTLogin.isEnabled= false
-        binding.ETEmail.isEnabled= false
-        binding.password.isEnabled= false
+        binding.BTRegistro.isEnabled = false
+        binding.BTSaltar.isEnabled = false
+        binding.BTLogin.isEnabled = false
+        binding.ETEmail.isEnabled = false
+        binding.password.isEnabled = false
         binding.BTRecuperar.isEnabled = false
-        binding.BTConfiguration.isEnabled=false
+        binding.BTConfiguration.isEnabled = false
     }
 
     override fun onSuccess(message: String, token: String, user: User) {
         //Toast.makeText(this, "$message $token $user", Toast.LENGTH_SHORT).show()
         binding.PB.visibility = GONE
-        binding.BTRegistro.isEnabled= true
-        binding.BTSaltar.isEnabled= true
-        binding.ETEmail.isEnabled= true
-        binding.password.isEnabled= true
-        binding.BTLogin.isEnabled= true
+        binding.BTRegistro.isEnabled = true
+        binding.BTSaltar.isEnabled = true
+        binding.ETEmail.isEnabled = true
+        binding.password.isEnabled = true
+        binding.BTLogin.isEnabled = true
         binding.BTRecuperar.isEnabled = true
-        binding.BTConfiguration.isEnabled=true
+        binding.BTConfiguration.isEnabled = true
 
         binding.ETEmail.setText("")
         binding.password.setText("")
@@ -361,39 +318,39 @@ class Login : AppCompatActivity(), AuthListener {
     override fun onFailure(message: String) {
         Log.e("login onFailure", "$message")
         binding.PB.visibility = GONE
-        binding.BTRegistro.isEnabled= true
-        binding.BTSaltar.isEnabled= true
-        binding.ETEmail.isEnabled= true
-        binding.password.isEnabled= true
-        binding.BTLogin.isEnabled= true
+        binding.BTRegistro.isEnabled = true
+        binding.BTSaltar.isEnabled = true
+        binding.ETEmail.isEnabled = true
+        binding.password.isEnabled = true
+        binding.BTLogin.isEnabled = true
         binding.BTRecuperar.isEnabled = true
-        binding.BTConfiguration.isEnabled=true
+        binding.BTConfiguration.isEnabled = true
 
         //Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         mensajeE(message)
     }
 
-    fun validarStatus(status: String){
-        
-        if (status=="false"){
+    fun validarStatus(status: String) {
+
+        if (status == "false") {
             //Toast.makeText(applicationContext, "Verifica tu correo electrónico", Toast.LENGTH_SHORT).show()
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Mensaje del servidor").setIcon(R.drawable.logo)
             builder.setMessage("Verifica tu correo electrónico")
-            builder.setPositiveButton("ok"){ dialog, id ->}
+            builder.setPositiveButton("ok") { dialog, id -> }
             builder.show()
-        }else{
+        } else {
             //Toast.makeText(applicationContext, "Tu correo electrónico está verificado", Toast.LENGTH_SHORT).show()
-            var pasar:Intent = Intent(applicationContext, Trazabilidad::class.java)
+            var pasar: Intent = Intent(applicationContext, Trazabilidad::class.java)
             startActivity(pasar)
         }
     }
 
-    fun mensajeE(mensaje: String){
+    fun mensajeE(mensaje: String) {
         try {
             var testModel = Gson().fromJson(mensaje, ErrorFacebook::class.java)
 
-            if (loginF==true){
+            if (loginF == true) {
                 Log.d("prueba del if", "Ya existe un usuario con el email: ${loginViewModel.email}")
                 Log.d("el mensaje", mensaje)
                 var posibleerror = "Ya existe un usuario con el email: ${loginViewModel.email}"
@@ -407,20 +364,20 @@ class Login : AppCompatActivity(), AuthListener {
                             builder.setPositiveButton("ok"){ dialog, id ->}
                             builder.show()*/
                     }
-                        else -> {
-                            Log.d("login mensajeE", "$mensaje")
-                            var testModel = Gson().fromJson(mensaje, ErrorFacebook::class.java)
-                            Log.d("login testModel", "${testModel.message}")
+                    else -> {
+                        Log.d("login mensajeE", "$mensaje")
+                        var testModel = Gson().fromJson(mensaje, ErrorFacebook::class.java)
+                        Log.d("login testModel", "${testModel.message}")
 
-                            val builder = AlertDialog.Builder(this)
-                            builder.setTitle("Mensaje del servidor").setIcon(R.drawable.logo)
-                            builder.setMessage("${testModel.message}")
-                            builder.setPositiveButton("ok"){ dialog, id ->}
-                            builder.show()
-                        }
+                        val builder = AlertDialog.Builder(this)
+                        builder.setTitle("Mensaje del servidor").setIcon(R.drawable.logo)
+                        builder.setMessage("${testModel.message}")
+                        builder.setPositiveButton("ok") { dialog, id -> }
+                        builder.show()
+                    }
                 }
 
-            }else{
+            } else {
                 Log.d("else", "que no le diste click el botón de facebook")
                 Log.d("login mensajeE", "$mensaje")
 
@@ -429,11 +386,11 @@ class Login : AppCompatActivity(), AuthListener {
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Mensaje del servidor").setIcon(R.drawable.logo)
                 builder.setMessage("${testModel.message}")
-                builder.setPositiveButton("ok"){ dialog, id ->}
+                builder.setPositiveButton("ok") { dialog, id -> }
                 builder.show()
             }
 
-        }catch (e: java.lang.Exception){
+        } catch (e: java.lang.Exception) {
             Log.e("ERROR MENSAJEE", e.toString())
         }
 
