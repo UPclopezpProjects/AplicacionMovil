@@ -146,10 +146,6 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
             builder.setPositiveButton("ok"){dialog, id ->}
             builder.show()
         }
-
-
-
-
     }
 
 
@@ -176,5 +172,4 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
         builder.setPositiveButton("ok"){dialog, id ->}
         builder.show()
     }
-
 }

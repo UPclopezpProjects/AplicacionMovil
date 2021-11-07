@@ -294,7 +294,6 @@ class ListaPuntos : Fragment(), RecyclerV {
         intent.putExtra("contrato", contract)
         intent.putExtra("hash", hash)
         startActivity(intent)
-
     }
 
     override fun GetLog(transaccion: String, contract: String) {

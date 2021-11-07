@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 class ValidarR {
-//ha revisión de la conexión a una red y el acceso a internet
+//hace revisión de la conexión a una red y el acceso a internet
     companion object{
         fun hayRed(activity: AppCompatActivity):Boolean{
             val connectivityManager = activity.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

@@ -34,7 +34,9 @@ import com.facebook.FacebookException
 import com.facebook.FacebookCallback
 import com.facebook.AccessToken
 import android.R.attr.data
+import android.content.Context
 import android.widget.Button
+import com.example.desarrolloresidencia.Network.Apis.APIAmazon
 import com.example.desarrolloresidencia.utils.LEArchivos
 import com.facebook.login.LoginManager
 import java.util.*
@@ -57,6 +59,7 @@ class Login : AppCompatActivity(), AuthListener {
     private var accessToken: AccessToken? = null
     private var loginF: Boolean? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -66,6 +69,7 @@ class Login : AppCompatActivity(), AuthListener {
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
         loginViewModel.authListener = this
         loginViewModel.contexto = this
+        var contexto: Context = this
 
         callbackManager = CallbackManager.Factory.create();
 
@@ -73,7 +77,6 @@ class Login : AppCompatActivity(), AuthListener {
             if (ValidarR.hayRed(this)) {
                 validarE()
             } else {
-                //Toast.makeText(this, "No hay red", Toast.LENGTH_SHORT).show()
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Error Login").setIcon(R.drawable.logo)
                 builder.setMessage("No hay red")
@@ -116,7 +119,6 @@ class Login : AppCompatActivity(), AuthListener {
             accessToken = AccessToken.getCurrentAccessToken()
             cargarData()
         }
-
 
         binding.loginButton.registerCallback(
             callbackManager,
@@ -186,13 +188,17 @@ class Login : AppCompatActivity(), AuthListener {
                 override fun onError(exception: FacebookException) {
                     // App code
                     Log.e("Login Error", exception.toString())
+                    val builder = AlertDialog.Builder(contexto)
+                    builder.setTitle("Error de Login").setIcon(R.drawable.logo)
+                    builder.setMessage("${exception.toString()}")
+                    builder.setPositiveButton("ok") { dialog, id -> }
+                    builder.show()
                 }
             })
 
         binding.BTConfiguration.setOnClickListener {
             val intent: Intent = Intent(applicationContext, configurationIP::class.java)
             startActivity(intent)
-
         }
 
     }
@@ -206,7 +212,18 @@ class Login : AppCompatActivity(), AuthListener {
             var formato = Gson().fromJson(response.rawResponse, JsonFacebook::class.java)
             loginViewModel.email = formato.email
             loginViewModel.password = formato.id
-            loginViewModel.LoginFacebook()
+            Log.d("Login/IP", LEArchivos.CargarIP(this))
+            if(!LEArchivos.CargarIP(this).equals(null) || !LEArchivos.CargarIP(this).equals("")){
+                loginViewModel.LoginFacebook()
+            } else {
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Error de login").setIcon(R.drawable.logo)
+                builder.setMessage("Ingresa la ip del servidor presionando el botón de configuración de la IP")
+                builder.setPositiveButton("ok") { dialog, id -> }
+                builder.show()
+
+            }
+
             Log.e("Login cargar data", "se hizo el login del viewmodel")
         }
         val parameters = Bundle()
@@ -263,7 +280,7 @@ class Login : AppCompatActivity(), AuthListener {
                     contraseña.requestFocus()
                     return
                 } else {
-                    if (/*ip=="" || ip==null ||*/ip.equals("") || ip.equals(null)) {
+                    if (ip.equals("") || ip.equals(null)) {
                         Log.e("Login.kt", "cambio de ip")
                         Toast.makeText(
                             this,
@@ -358,11 +375,6 @@ class Login : AppCompatActivity(), AuthListener {
                 when (testModel.message) {
                     posibleerror -> {
                         loginViewModel.onLoginButtonClick()
-                        /*val builder = AlertDialog.Builder(this)
-                            builder.setTitle("Registro Exitoso").setIcon(R.drawable.logo)
-                            builder.setMessage("Verifica tu correo electrónico")
-                            builder.setPositiveButton("ok"){ dialog, id ->}
-                            builder.show()*/
                     }
                     else -> {
                         Log.d("login mensajeE", "$mensaje")
@@ -376,13 +388,10 @@ class Login : AppCompatActivity(), AuthListener {
                         builder.show()
                     }
                 }
-
             } else {
                 Log.d("else", "que no le diste click el botón de facebook")
                 Log.d("login mensajeE", "$mensaje")
-
                 Log.d("login testModel", "${testModel.message}")
-
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Mensaje del servidor").setIcon(R.drawable.logo)
                 builder.setMessage("${testModel.message}")

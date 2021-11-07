@@ -56,7 +56,6 @@ class ScannerQR : AppCompatActivity(), AuthQr {
         Log.d("datos", "$datos")
         if (datos != null){
             viewModel.QR=datos
-            //viewModel.sobrescribir(datos, baseContext)
             viewModel.mapeoJS()
         }
     }
@@ -73,16 +72,12 @@ class ScannerQR : AppCompatActivity(), AuthQr {
     }
 
     override fun onSuccess() {
-        //Log.d("success", "terminé")
         binding.Titulo.isEnabled = true
-        //Toast.makeText(this, "Se hizo la consulta", Toast.LENGTH_SHORT).show()
-        //Log.d("la matriz", "${message.get(0)}")
         TrazabilidadScreen()
     }
 
     override fun onFailure(message: String) {
         binding.Titulo.isEnabled = true
-        //Toast.makeText(this, "$message", Toast.LENGTH_SHORT).show()
         mensajeE(message)
     }
 

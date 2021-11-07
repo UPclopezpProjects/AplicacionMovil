@@ -20,18 +20,10 @@ class AmazonRepository {
 
     suspend fun userLogin(email: String, password: String): Response<LoginUsers> {
         Log.d("Repository", "$email $password")
-        //return MyApi().Logearse(email, password, "authentication", "loginUser")
         return APIAmazon().Logearse(email, password, "authentication", "loginUser")
     }
 
-    suspend fun actualizarUsuario(
-        nombre: String,
-        apellidoP: String,
-        apellidoM: String,
-        contrasena: String,
-        id: String,
-        token: String
-    ): Response<LoginUsers> {
+    suspend fun actualizarUsuario(nombre: String, apellidoP: String, apellidoM: String, contrasena: String, id: String, token: String): Response<LoginUsers> {
         Log.d("repositorio id", "$id")
         Log.d("repositorio token", "$token")
         //return MyApi().actualizarUsurio("$email", "$contrasena", "$nombre", "true", "$apellidoP", "$apellidoM", "update", "updateMe", "48d6adacee72fea2034b636a029d3ea9", "$id", "$token")
@@ -51,12 +43,6 @@ class AmazonRepository {
     }
 
     suspend fun getLog(transaction: String, contract: String, token: String): Response<getLog>? {
-        //Log.d("AmazonRepository/getLog", "$transaction, $contract, $token")
-        /*return APIAmazon().getLog(
-            "0xb1a71097fce79eb0a6502c69013acd0ed2d72ffabb3dda8ca60d816d8ed73913",
-            "0x6C75A7e5F81871C37531453Dc630f5b78C543E4C",
-            "12345"
-        )*/
         try {
             return APIAmazon().getLog(transaction, contract, token)
         } catch (e: com.google.gson.JsonSyntaxException) {
@@ -69,14 +55,7 @@ class AmazonRepository {
         return APIAmazon().recuperarPassword("$email")
     }
 
-    suspend fun userRegistro(
-        nombre: String,
-        apellidoP: String,
-        apellidoM: String,
-        email: String,
-        contrasena: String,
-        dp: String
-    ): Response<CreacionConsumidor> {
+    suspend fun userRegistro(nombre: String, apellidoP: String, apellidoM: String, email: String, contrasena: String, dp: String ): Response<CreacionConsumidor> {
 
         //var jsonOsman = """{ "email":"${email.toLowerCase()}","password":"$contrasena","surnameA":"$apellidoP","surnameB":"$apellidoM","nameOfUser":"$nombre","typeOfUser":"Consumer","status":"false","creationDate":"xx-xx-xxxx","dp":$dp,"addressU":"0x9d81a60153d369fc99192f88c04E19f5475a4cA2","typeOfOperation":"create","nameOfOperation":"createConsumer","gas":"900000"}"""
         var jsonOsman =
@@ -104,17 +83,11 @@ class AmazonRepository {
         )
     }
 
-    suspend fun userRegistroFacebook(
-        nombre: String,
-        apellidoP: String,
-        apellidoM: String,
-        email: String,
-        contrasena: String,
-        dp: String
-    ): Response<CreacionConsumidor> {
+    suspend fun userRegistroFacebook(nombre: String, apellidoP: String, apellidoM: String, email: String, contrasena: String, dp: String ): Response<CreacionConsumidor> {
         Log.e("AmazonRepository", "userRegistroFacebook")
 
-        var jsonOsman ="""{"email":"${email.toLowerCase()}","password":"$contrasena","surnameA":"$apellidoP","surnameB":"$apellidoM","nameOfUser":"$nombre","typeOfUser":"Consumer","status":"false","typeOfOperation":"create","nameOfOperation":"createConsumer","dp":$dp}"""
+        var jsonOsman =
+            """{"email":"${email.toLowerCase()}","password":"$contrasena","surnameA":"$apellidoP","surnameB":"$apellidoM","nameOfUser":"$nombre","typeOfUser":"Consumer","status":"false","typeOfOperation":"create","nameOfOperation":"createConsumer","dp":$dp}"""
 
         Log.d("el string", "$jsonOsman")
         var objeto = JSONObject(jsonOsman)

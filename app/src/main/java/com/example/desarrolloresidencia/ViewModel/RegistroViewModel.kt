@@ -49,12 +49,4 @@ class RegistroViewModel(): ViewModel() {
         }
     }
 
-
-    /*fun validarStatus (status : String):String{
-        if (status=="false"){
-            return "Verifica tu correo electrónico"
-        }else{
-            return "Tu correo electrónico está verificado"
-        }
-    }*/
 }

@@ -90,7 +90,7 @@ class LEArchivos {
             if (!ficheroFisico.exists()) {
                 Log.d("LEArchivos", "no existe el archivo")
                 ficheroFisico.createNewFile()
-                sobrescribir("52.202.214.13", baseContext)
+                sobrescribirIP("52.202.214.13", baseContext)
             }
 
             val fichero = BufferedReader(InputStreamReader(

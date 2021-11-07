@@ -39,17 +39,10 @@ class ScannerQRViewModel : ViewModel(){
                 } catch (e: com.google.gson.JsonSyntaxException){
                     authListener?.onFailure("Error al hacer la consulta")
                 }
-                /*catch (e: Exception){
-                    Log.e("ScannerQRViewModel Exception", "El error es: ${e}")
-                    authListener?.onFailure("$e")
-                }*/
             }
     }
 
     fun mapeoJS(){
-        /*var testModel = Gson().fromJson(QR, com.example.desarrolloresidencia.Network.model.Trazabilidad.QR::class.java)
-        Log.d("EL QR","${testModel.Code}")
-        Log.d("EL ID","${testModel.ID}")*/
-        consulta(/*testModel.Code, testModel.ID*/QR.toString())
+        consulta(QR.toString())
     }
 }

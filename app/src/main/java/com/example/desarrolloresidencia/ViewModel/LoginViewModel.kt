@@ -32,12 +32,8 @@ class LoginViewModel() : ViewModel() {
         viewModelScope.launch {
             try {
                 authListener?.onStarted()
-                //Coroutines.main {
-                //val response = UserRepository().userLogin(email!!, password!!)
-
                 response = AmazonRepository().userLogin(email!!, password!!)
                 Log.d("respuesta del server", response!!.body().toString())
-
 
                 if (response!!.isSuccessful) {
                     if (response!!.body()!!.message.toString() == "false") {
@@ -55,7 +51,6 @@ class LoginViewModel() : ViewModel() {
                             response!!.body()!!.token,
                             response!!.body()!!.user
                         )
-                        //authListener?.onSuccess(response.body()!!.message, response.body()!!.token, response.body()!!.user)
                     }
                 } else {
                     Log.e(
