@@ -10,10 +10,11 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
+import okhttp3.OkHttpClient
+import java.util.concurrent.TimeUnit
+
 
 interface APIAmazon {
-
-
     @FormUrlEncoded
     @POST("login")
     suspend fun Logearse(
@@ -94,14 +95,21 @@ interface APIAmazon {
     ): Response<Trazabilidad>
 
     companion object {
-        var context: Context ?= null
+        var context: Context? = null
 
-            operator fun invoke(): APIAmazon {
-                return Retrofit.Builder()
-                    .baseUrl("http://${LEArchivos.CargarIP(context!!)}/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
-                    .create(APIAmazon::class.java)
+        operator fun invoke(): APIAmazon {
+            val okHttpClient = OkHttpClient.Builder()
+                .connectTimeout(15, TimeUnit.SECONDS)
+                .readTimeout(15, TimeUnit.SECONDS)
+                .writeTimeout(15, TimeUnit.SECONDS)
+                .build()
+
+            return Retrofit.Builder()
+                .baseUrl("http://${LEArchivos.CargarIP(context!!)}/")
+                .client(okHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(APIAmazon::class.java)
         }
     }
 }

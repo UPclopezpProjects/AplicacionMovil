@@ -27,11 +27,7 @@ class LEArchivos {
                     miCarpeta.mkdir()
                 }
                 val ficheroFisico = File(miCarpeta, "datos.txt")
-                //esta agrega texto al archivo
-                //ficheroFisico.appendText("$texto\n")
-                //esto sobreescribe texto al archivo
                 ficheroFisico.writeText("$texto")
-                //Toast.makeText(baseContext, "Creado correctamente $ficheroFisico", Toast.LENGTH_SHORT).show()
             } catch (e: Exception){
                 Log.e("ERROR", "$e")
             }
@@ -68,11 +64,7 @@ class LEArchivos {
                     miCarpeta.mkdir()
                 }
                 val ficheroFisico = File(miCarpeta, nombreIP)
-                //esta agrega texto al archivo
-                //ficheroFisico.appendText("$texto\n")
-                //esto sobreescribe texto al archivo
                 ficheroFisico.writeText("$texto")
-                //Toast.makeText(baseContext, "Creado correctamente $ficheroFisico", Toast.LENGTH_SHORT).show()
             } catch (e: Exception){
                 Log.d("ERROR", "$e")
             }

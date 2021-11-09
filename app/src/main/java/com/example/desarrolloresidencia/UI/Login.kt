@@ -59,7 +59,6 @@ class Login : AppCompatActivity(), AuthListener {
     private var accessToken: AccessToken? = null
     private var loginF: Boolean? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -232,7 +231,6 @@ class Login : AppCompatActivity(), AuthListener {
         request.executeAsync()
     }
 
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         callbackManager?.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
@@ -242,9 +240,7 @@ class Login : AppCompatActivity(), AuthListener {
         Log.e("data", data.toString())
     }
 
-
     //termina el login con facebook
-
 
     fun hash() {
         try {
@@ -314,6 +310,7 @@ class Login : AppCompatActivity(), AuthListener {
         binding.password.isEnabled = false
         binding.BTRecuperar.isEnabled = false
         binding.BTConfiguration.isEnabled = false
+        binding.loginButton.isEnabled = false
     }
 
     override fun onSuccess(message: String, token: String, user: User) {
@@ -326,6 +323,7 @@ class Login : AppCompatActivity(), AuthListener {
         binding.BTLogin.isEnabled = true
         binding.BTRecuperar.isEnabled = true
         binding.BTConfiguration.isEnabled = true
+        binding.loginButton.isEnabled = true
 
         binding.ETEmail.setText("")
         binding.password.setText("")
@@ -342,6 +340,7 @@ class Login : AppCompatActivity(), AuthListener {
         binding.BTLogin.isEnabled = true
         binding.BTRecuperar.isEnabled = true
         binding.BTConfiguration.isEnabled = true
+        binding.loginButton.isEnabled = true
 
         //Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         mensajeE(message)
@@ -393,7 +392,7 @@ class Login : AppCompatActivity(), AuthListener {
                 Log.d("login mensajeE", "$mensaje")
                 Log.d("login testModel", "${testModel.message}")
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("Mensaje del servidor").setIcon(R.drawable.logo)
+                builder.setTitle("Response").setIcon(R.drawable.logo)
                 builder.setMessage("${testModel.message}")
                 builder.setPositiveButton("ok") { dialog, id -> }
                 builder.show()

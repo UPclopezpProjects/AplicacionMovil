@@ -10,10 +10,19 @@ import com.example.desarrolloresidencia.Repository.AmazonRepository
 import com.example.desarrolloresidencia.utils.Auth.AuthListener
 import com.example.desarrolloresidencia.utils.LEArchivos
 import com.example.desarrolloresidencia.utils.responseUser
+import com.facebook.AccessToken
+import com.facebook.GraphRequest
+import com.facebook.HttpMethod
+import com.facebook.login.LoginManager
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 import org.json.JSONObject
 import retrofit2.Response
 import java.lang.Exception
+import java.util.concurrent.*
+import java.util.logging.Level
+import java.util.logging.Logger
+import kotlin.coroutines.suspendCoroutine
 
 class LoginViewModel() : ViewModel() {
 
@@ -26,14 +35,20 @@ class LoginViewModel() : ViewModel() {
     var lastname: String? = null
     var dp: String? = null
     var authListener: AuthListener? = null
-    var response: Response<LoginUsers>? = null
 
     fun onLoginButtonClick() {
         viewModelScope.launch {
             try {
                 authListener?.onStarted()
-                response = AmazonRepository().userLogin(email!!, password!!)
-                Log.d("respuesta del server", response!!.body().toString())
+                Log.d("antes del response", "1")
+
+                var response: Response<LoginUsers>
+                withTimeout(5000L) {
+                    response = AmazonRepository().userLogin(email!!, password!!)
+                }
+
+
+                Log.d("respuesta del server", "2")
 
                 if (response!!.isSuccessful) {
                     if (response!!.body()!!.message.toString() == "false") {
@@ -44,8 +59,6 @@ class LoginViewModel() : ViewModel() {
                         responseUser.token = response!!.body()!!.token
                         responseUser.user = response!!.body()!!.user
 
-                        Log.d("login token", "${responseUser.token}")
-
                         validarU(
                             response!!.body()!!.message,
                             response!!.body()!!.token,
@@ -53,19 +66,23 @@ class LoginViewModel() : ViewModel() {
                         )
                     }
                 } else {
+                    //Log.e("LoginViewModel/onLoginButtonClick/mensaje de error", "${response!!.errorBody()?.string()}")
                     Log.e(
                         "LoginViewModel/onLoginButtonClick/mensaje de error",
-                        "${response!!.errorBody()?.string()}"
+                        response!!.code().toString()
                     )
                     authListener?.onFailure("${response!!.errorBody()?.string()}")
+                    Log.e(
+                        "LoginViewModel/onLoginButtonClick/mensaje de error",
+                        "onLoginButtonClick"
+                    )
                 }
             } catch (e: java.net.SocketTimeoutException) {
-                authListener?.onFailure("""{"message":"${response?.body()?.message}"}""")
-            } catch (e: java.lang.NullPointerException) {
-                authListener?.onFailure("""{"message":"${response?.body()?.message}"}""")
-
-            } catch (e: com.google.gson.stream.MalformedJsonException) {
-                """{"message":"${response?.body()?.message}"}"""
+                authListener?.onFailure("""{"message":"No se pudo conectar con el servidor"}""")
+            } /*catch (e: java.lang.NullPointerException) {
+                authListener?.onFailure("""{"message":"$e"}""")
+            }*/ catch (e: com.google.gson.stream.MalformedJsonException) {
+                authListener?.onFailure("""{"message":"Error al realizar la consulta, verifica la dirección IP del servidor"}""")
             }
         }
     }
@@ -97,9 +114,15 @@ class LoginViewModel() : ViewModel() {
                         "ya llegamos al loginbuttonclick"
                     )
                 } else {
-                    Log.e("LoginViewmodel/LoginFacebook/error", response.errorBody().toString())
-                    onLoginButtonClick()
-                    //authListener?.onFailure(response.errorBody()!!.string())
+                    //Log.e("LoginViewmodel/LoginFacebook/error", response.errorBody().toString())
+                    Log.e("LoginViewmodel/LoginFacebook/error", response.code().toString())
+                    if (response.code() != 404) {
+                        onLoginButtonClick()
+                    } else {
+                        authListener?.onFailure("""{"message":"El servidor no responde, verifica la dirección IP"}""")
+                    }
+
+                    Log.e("LoginViewModel/LoginFacebook/error", "LoginFacebook")
                 }
             } catch (e: java.net.SocketTimeoutException) {
                 authListener?.onFailure("""{"message":"No se pudo conectar con el servidor"}""")
@@ -107,12 +130,15 @@ class LoginViewModel() : ViewModel() {
         }
     }
 
-
-    fun validarU(message: String, token: String, user: User) {
-        if (user.typeOfUser == "Consumer") {
-            authListener?.onSuccess(message, token, user)
+    fun validarU(message: String?, token: String?, user: User?) {
+        if (token==null && user==null) {
+            authListener?.onFailure("""{"message":"$message"}""")
         } else {
-            authListener?.onFailure("""{"message":"Solo pueden ingresar los usuarios de tipo consumidor"}""")
+            if (user!!.typeOfUser == "Consumer") {
+                authListener?.onSuccess(message!!, token!!, user!!)
+            } else {
+                authListener?.onFailure("""{"message":"Solo pueden ingresar los usuarios de tipo consumidor"}""")
+            }
         }
     }
 
