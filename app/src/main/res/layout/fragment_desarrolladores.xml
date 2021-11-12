@@ -60,7 +60,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="jclopezpimentel@gmail.com"
+            android:text="clopezp@up.edu.mx"
             android:textAlignment="center"
             android:textIsSelectable="true"
             android:textSize="23sp" />
