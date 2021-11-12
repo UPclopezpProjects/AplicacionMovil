@@ -108,6 +108,7 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
         var polilinea = PolylineOptions()
         Log.d("tamaño", consulta.consulta!!.size.toString())
         var i = consulta.consulta!!.size - 1
+        Log.d("DatosTrazabilidad/onMapReady", "Tamaño: ${consulta.consulta!!.size}")
         while (i >= 0) {
             if (consulta.consulta!!.get(i).currentStage == "Carrier") {
                 polilinea.add(
@@ -261,7 +262,6 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
                         .anchor(0.5f, 0.5f)
                         .title("Fase: " + letra?.get(position) + "," + " Productor Entrada")
                 )
-                //"Carrier" -> mMap.addMarker(MarkerOptions().position(FragmentarString().separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.transportista_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+" Transportista"))
                 "Acopio" -> mMap.addMarker(
                     MarkerOptions().position(
                         FragmentarString().separaLL(
@@ -413,7 +413,23 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
                         .anchor(0.5f, 0.5f)
                         .title("Fase: " + letra?.get(position) + "," + " Comerciante")
                 )
-                else -> { // Note the block
+
+                "Carrier" -> mMap.addMarker(
+                    MarkerOptions().position(
+                        puntoIntermedio(
+                            consulta.consulta!!.get(position).origin,
+                            consulta.consulta!!.get(position).destination
+                        )
+                    ).icon(BitmapDescriptorFactory.fromResource(R.drawable.transportista_round))
+                        .anchor(0.5F, 0.5F)
+                        .title("Fase: " + letra?.get(position) + "," + " Comerciante")
+                )
+                else -> {
+                    // Note the block
+                    Log.d(
+                        "DatosTrazabilidad/verificarEntrada/417",
+                        "position: $position, ubication: ${consulta.consulta!!.get(position).ubication}"
+                    )
                     mMap.addMarker(
                         MarkerOptions().position(
                             FragmentarString().separaLL(
