@@ -200,6 +200,11 @@ class Login : AppCompatActivity(), AuthListener {
             startActivity(intent)
         }
 
+        binding.BTAcerca.setOnClickListener {
+            val intent: Intent = Intent(applicationContext, About::class.java)
+            startActivity(intent)
+        }
+
     }
 
     fun cargarData() {

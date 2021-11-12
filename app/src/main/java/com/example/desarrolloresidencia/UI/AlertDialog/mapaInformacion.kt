@@ -21,7 +21,6 @@ private const val NUM_PAGES = 3
 class mapaInformacion : DialogFragment() {
 
     private lateinit var mPager: ViewPager2
-
     private var _binding: FragmentMapaInformacionBinding?= null
     private val binding get() = _binding!!
 
@@ -62,7 +61,7 @@ class mapaInformacion : DialogFragment() {
 
         val view = binding.root
         mPager = view!!.findViewById(R.id.pager)
-        val pagerAdapter = ScreenSlidePagerAdapter( this.activity)
+        val pagerAdapter = ScreenSlidePagerAdapter(this.activity)
         mPager.adapter = pagerAdapter
         mPager.registerOnPageChangeCallback(onBoardingPageChangeCallback)
 
@@ -104,8 +103,7 @@ class mapaInformacion : DialogFragment() {
                 2 -> return ayudaIcono()
                 else -> return ayudaQR()
             }
-        } //=ayudaQR()
+        }
     }
 
 }
-
