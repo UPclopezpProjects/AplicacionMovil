@@ -378,7 +378,13 @@ class Login : AppCompatActivity(), AuthListener {
                 Log.e("posibleerror", posibleerror)
                 when (testModel.message) {
                     posibleerror -> {
-                        loginViewModel.onLoginButtonClick()
+                        disconnectFromFacebook()
+
+                        val builder = AlertDialog.Builder(this)
+                        builder.setTitle("Mensaje del servidor").setIcon(R.drawable.logo)
+                        builder.setMessage("${testModel.message}")
+                        builder.setPositiveButton("ok") { dialog, id -> }
+                        builder.show()
                     }
                     else -> {
                         Log.d("login mensajeE", "$mensaje")
@@ -407,5 +413,14 @@ class Login : AppCompatActivity(), AuthListener {
             Log.e("ERROR MENSAJEE", e.toString())
         }
 
+    }
+
+    fun disconnectFromFacebook() {
+        if (AccessToken.getCurrentAccessToken() == null) {
+            return  // already logged out
+        }
+        GraphRequest(AccessToken.getCurrentAccessToken(), "/me/permissions/", null, HttpMethod.DELETE) {
+            LoginManager.getInstance().logOut()
+        }.executeAsync()
     }
 }

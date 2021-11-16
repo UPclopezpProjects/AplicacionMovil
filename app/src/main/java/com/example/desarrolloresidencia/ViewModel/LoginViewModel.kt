@@ -107,12 +107,16 @@ class LoginViewModel() : ViewModel() {
 
                 if (response.isSuccessful) {
                     Log.d("login token", "${responseUser.token}")
-
-                    onLoginButtonClick()
-                    Log.e(
-                        "LoginViewmodel/LoginFacebook/Successful",
-                        "ya llegamos al loginbuttonclick"
-                    )
+                    if (response.body()!!.message == "true") {
+                        Log.e(
+                            "LoginViewmodel/LoginFacebook/Successful",
+                            "ya llegamos al loginbuttonclick"
+                        )
+                        onLoginButtonClick()
+                    } else {
+                        Log.d("LoginViewModel/loginfacebook/linea 117", "${response.body()!!.message}")
+                        authListener?.onFailure("""{"message":"${response.body()!!.message}"}""")
+                    }
                 } else {
                     //Log.e("LoginViewmodel/LoginFacebook/error", response.errorBody().toString())
                     Log.e("LoginViewmodel/LoginFacebook/error", response.code().toString())
@@ -131,7 +135,7 @@ class LoginViewModel() : ViewModel() {
     }
 
     fun validarU(message: String?, token: String?, user: User?) {
-        if (token==null && user==null) {
+        if (token == null && user == null) {
             authListener?.onFailure("""{"message":"$message"}""")
         } else {
             if (user!!.typeOfUser == "Consumer") {
