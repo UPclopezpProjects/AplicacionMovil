@@ -17,13 +17,8 @@ class Guacamole : DialogFragment() {
     private var _binding: FragmentGuacamoleBinding ?= null
     private val binding get() = _binding!!
 
-    /*override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }*/
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        dialog?.window?.setBackgroundDrawableResource(R.drawable.round_corner)
+        //dialog?.window?.setBackgroundDrawableResource(R.drawable.round_corner)
         _binding = FragmentGuacamoleBinding.inflate(inflater, container, false)
         val view = binding.root
         return  view

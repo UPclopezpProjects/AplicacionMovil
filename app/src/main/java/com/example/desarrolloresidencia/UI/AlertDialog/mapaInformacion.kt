@@ -56,7 +56,7 @@ class mapaInformacion : DialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //return super.onCreateView(inflater, container, savedInstanceState)
-        dialog?.window?.setBackgroundDrawableResource(R.drawable.round_corner)
+        //dialog?.window?.setBackgroundDrawableResource(R.drawable.round_corner)
         _binding = FragmentMapaInformacionBinding.inflate(inflater, container, false)
 
         val view = binding.root

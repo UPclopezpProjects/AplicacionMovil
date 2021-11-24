@@ -39,7 +39,7 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="match_parent"
+        android:layout_width="500dp"
         android:layout_height="190dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

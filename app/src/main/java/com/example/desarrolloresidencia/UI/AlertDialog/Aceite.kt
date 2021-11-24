@@ -20,7 +20,7 @@ class Aceite : DialogFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        dialog?.window?.setBackgroundDrawableResource(R.drawable.round_corner)
+        //dialog?.window?.setBackgroundDrawableResource(R.drawable.round_corner)
         _binding = FragmentAceiteBinding.inflate(inflater, container, false)
         val view = binding.root
         return  view
