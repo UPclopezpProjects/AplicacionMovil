@@ -66,7 +66,6 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
 
 
 
-
         if (position == 0){
             holder.siguiente?.visibility = View.INVISIBLE
             holder.escenario?.visibility = View.INVISIBLE

@@ -135,7 +135,9 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Respuesta del servidor").setIcon(R.drawable.logo)
             builder.setMessage("Registro Satisfactorio")
-            builder.setPositiveButton("ok"){dialog, id ->}
+            builder.setPositiveButton("ok"){dialog, id ->
+                finish()
+            }
             builder.show()
         } else {
             Log.d("respuesta correcta", "$message")
@@ -143,9 +145,13 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Respuesta del servidor").setIcon(R.drawable.logo)
             builder.setMessage("$message")
-            builder.setPositiveButton("ok"){dialog, id ->}
+            builder.setPositiveButton("ok"){dialog, id ->
+                finish()
+            }
             builder.show()
         }
+
+
     }
 
 

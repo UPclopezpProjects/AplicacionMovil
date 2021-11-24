@@ -26,7 +26,6 @@ class ListaPuntos : Fragment(), RecyclerV {
     var layoutManager: RecyclerView.LayoutManager? = null
     var listener: MoverCamara? = null
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mapearpuntos()
