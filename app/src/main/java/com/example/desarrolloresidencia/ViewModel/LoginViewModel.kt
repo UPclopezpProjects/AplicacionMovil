@@ -107,7 +107,7 @@ class LoginViewModel() : ViewModel() {
 
                 if (response.isSuccessful) {
                     Log.d("login token", "${responseUser.token}")
-                    if (response.body()!!.message == "true") {
+                    /*if (response.body()!!.message == "true") {
                         Log.e(
                             "LoginViewmodel/LoginFacebook/Successful",
                             "ya llegamos al loginbuttonclick"
@@ -116,7 +116,8 @@ class LoginViewModel() : ViewModel() {
                     } else {
                         Log.d("LoginViewModel/loginfacebook/linea 117", "${response.body()!!.message}")
                         authListener?.onFailure("""{"message":"${response.body()!!.message}"}""")
-                    }
+                    }*/
+                    onLoginButtonClick()
                 } else {
                     //Log.e("LoginViewmodel/LoginFacebook/error", response.errorBody().toString())
                     Log.e("LoginViewmodel/LoginFacebook/error", response.code().toString())

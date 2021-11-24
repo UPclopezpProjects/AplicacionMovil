@@ -146,7 +146,7 @@ class RegistroUsuario : AppCompatActivity(), AuthRegistro {
             builder.setTitle("Respuesta del servidor").setIcon(R.drawable.logo)
             builder.setMessage("$message")
             builder.setPositiveButton("ok"){dialog, id ->
-                finish()
+                //finish()
             }
             builder.show()
         }
