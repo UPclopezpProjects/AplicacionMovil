@@ -260,7 +260,7 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
                         )
                     ).icon(BitmapDescriptorFactory.fromResource(R.drawable.productor_salida))
                         .anchor(0.5f, 0.5f)
-                        .title("Fase: " + letra?.get(position) + "," + " Productor Entrada")
+                        .title("Fase: " + letra?.get(position) + "," + " Productor Salida")
                 )
                 "Acopio" -> mMap.addMarker(
                     MarkerOptions().position(
@@ -269,7 +269,7 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
                         )
                     ).icon(BitmapDescriptorFactory.fromResource(R.drawable.productor_salida))
                         .anchor(0.5f, 0.5f)
-                        .title("Fase: " + letra?.get(position) + "," + " Acopio Entrada")
+                        .title("Fase: " + letra?.get(position) + "," + " Acopio Salida")
                 )
                 "Merchant" -> mMap.addMarker(
                     MarkerOptions().position(
@@ -278,7 +278,7 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
                         )
                     ).icon(BitmapDescriptorFactory.fromResource(R.drawable.comerciante_salida))
                         .anchor(0.5f, 0.5f)
-                        .title("Fase: " + letra?.get(position) + "," + " Comerciante Entrada")
+                        .title("Fase: " + letra?.get(position) + "," + " Comerciante Salida")
                 )
                 else -> { // Note the block
                     mMap.addMarker(
@@ -349,7 +349,7 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
                         )
                     ).icon(BitmapDescriptorFactory.fromResource(R.drawable.productor_entrada))
                         .anchor(0.5f, 0.5f)
-                        .title("Fase: " + letra?.get(position) + "," + " Productor Salida")
+                        .title("Fase: " + letra?.get(position) + "," + " Productor Entrada")
                 )
                 //"Carrier" -> mMap.addMarker(MarkerOptions().position(FragmentarString().separaLL(consulta.consulta!!.get(i).ubication)).icon(BitmapDescriptorFactory.fromResource(R.drawable.transportista_round)).anchor(0.5f, 0.5f).title("Fase: "+letra?.get(i)+","+" Transportista"))
                 "Acopio" -> mMap.addMarker(
@@ -359,7 +359,7 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
                         )
                     ).icon(BitmapDescriptorFactory.fromResource(R.drawable.productor_entrada))
                         .anchor(0.5f, 0.5f)
-                        .title("Fase: " + letra?.get(position) + "," + " Acopio Salida")
+                        .title("Fase: " + letra?.get(position) + "," + " Acopio Entrada")
                 )
                 "Merchant" -> mMap.addMarker(
                     MarkerOptions().position(
@@ -368,7 +368,7 @@ class DatosTrazabilidad : AppCompatActivity(), OnMapReadyCallback, ListaPuntos.M
                         )
                     ).icon(BitmapDescriptorFactory.fromResource(R.drawable.comerciante_entrada))
                         .anchor(0.5f, 0.5f)
-                        .title("Fase: " + letra?.get(position) + "," + " Comerciante Salida")
+                        .title("Fase: " + letra?.get(position) + "," + " Comerciante Entrada")
                 )
                 else -> { // Note the block
                     mMap.addMarker(

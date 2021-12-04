@@ -36,6 +36,42 @@
     <string name="colesterol">Colesterol</string>
     <string name="facebook_app_id">300516468363046</string>
     <string name="fb_login_protocol_scheme">fb300516468363046</string>
-
-
+    <!--                                                                                      -->
+    <string name="app_name_EN">Avocado path</string>
+    <string name="registrarme_EN">Register me</string>
+    <string name="iniciar_sesi_n_EN">Log in</string>
+    <string name="loguear_con_redes_sociales_EN">Log in with social networks</string>
+    <string name="saltar_login_EN">Skip Log in</string>
+    <string name="olvid_mi_contrase_a_EN">Forget my password</string>
+    <string name="email_EN">Email</string>
+    <string name="contrase_a_EN">Password</string>
+    <string name="registro_de_usuario_EN">Register user</string>
+    <string name="nombre_EN">Nombre</string>
+    <string name="apellido_paterno_EN">Father\'s last name</string>
+    <string name="apellido_materno_EN">Mother\'s last name</string>
+    <string name="username_email_EN">Username (email)</string>
+    <string name="registrar_EN">Register</string>
+    <string name="m_s_informaci_n_EN">More information</string>
+    <string name="tips_EN">Tips</string>
+    <string name="c_lculo_nutricional_EN">Nutritional calculate</string>
+    <string name="title_activity_datos_trazabilidad_EN">Map</string>
+    <string name="todo_EN">TODO</string>
+    <string name="trazabilidad_EN">Traceability</string>
+    <string name="ajustes_EN">Settings</string>
+    <string name="salir_EN">Exit</string>
+    <string name="informaci_n_EN">Information</string>
+    <string name="c_digo_EN">Code:</string>
+    <string name="v_EN">__V:</string>
+    <string name="ubicaci_n_EN">Ubication:</string>
+    <string name="fid_EN">FId:</string>
+    <string name="id_EN">Id:</string>
+    <string name="escenario_EN">Phase:</string>
+    <string name="escenario_previo_EN">Prev phase:</string>
+    <string name="hello_blank_fragment_EN">Hello blank fragment</string>
+    <string name="name_EN">Name</string>
+    <string name="propiedades_EN">Properties</string>
+    <string name="textview_EN">TextView</string>
+    <string name="colesterol_EN">Cholesterol</string>
+    <string name="facebook_app_id_EN">300516468363046</string>
+    <string name="fb_login_protocol_scheme_EN">fb300516468363046</string>
 </resources>
