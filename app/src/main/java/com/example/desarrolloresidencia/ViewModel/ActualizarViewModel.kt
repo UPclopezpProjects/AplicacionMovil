@@ -1,5 +1,6 @@
 package com.example.desarrolloresidencia.ViewModel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.desarrolloresidencia.Repository.AmazonRepository
@@ -24,6 +25,7 @@ class ActualizarViewModel(): ViewModel() {
                 val response = AmazonRepository().actualizarUsuario("$nombre", "$apellidoP", "$apellidoM", "$password", "${responseUser.user?.email}", "${responseUser.token}")
 
                 if (response.isSuccessful) {
+                    Log.d("ActualizarViewModel/el response: ", "${response}")
                     responseUser.message = response.body()!!.message
                     responseUser.token = response.body()!!.token
                     responseUser.user = response.body()!!.user

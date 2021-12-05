@@ -21,7 +21,7 @@ private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        dialog?.window?.setBackgroundDrawableResource(R.drawable.round_corner)
+        //dialog?.window?.setBackgroundDrawableResource(R.drawable.round_corner)
         _binding = FragmentRecetasBinding.inflate(inflater, container, false)
         val view = binding.root
         return  view

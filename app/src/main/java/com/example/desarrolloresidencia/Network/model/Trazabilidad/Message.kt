@@ -5,11 +5,16 @@ data class Message(
     val _id: String,
     val code: String,
     val currentStage: String,
+    val description: String,
+    val destination: String,
     val fid: String,
     val id: String,
     val image: String,
     val name: String,
+    val origin: String,
     val previousStage: String,
-    val description: String,
-    val ubication: String
+    val ubication: String,
+    val addressTransaction: String,
+    val addressContract: String,
+    val hash: String
 )

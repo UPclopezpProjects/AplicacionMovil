@@ -22,8 +22,7 @@ class BlankFragment : DialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //return inflater.inflate(R.layout.fragment_blank, container, false)
-
-        dialog?.window?.setBackgroundDrawableResource(R.drawable.round_corner)
+        //dialog?.window?.setBackgroundDrawableResource(R.drawable.round_corner)
         _binding = FragmentBlankBinding.inflate(inflater, container, false)
         val view = binding.root
         return  view

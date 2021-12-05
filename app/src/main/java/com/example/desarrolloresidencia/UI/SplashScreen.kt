@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.example.desarrolloresidencia.Network.Apis.APIAmazon
 import com.example.desarrolloresidencia.R
 
 class SplashScreen : AppCompatActivity() {
@@ -21,5 +22,6 @@ class SplashScreen : AppCompatActivity() {
             finish()
         },4000)
 
+        APIAmazon.context = this
     }
 }

@@ -7,16 +7,18 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
-import com.example.desarrolloresidencia.Network.model.Trazabilidad.Message
-import com.example.desarrolloresidencia.UI.AlertDialog.BlankFragment
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
+import com.example.desarrolloresidencia.UI.AlertDialog.BlankFragment
 import com.example.desarrolloresidencia.R
 import com.example.desarrolloresidencia.UI.DatosTrazabilidad.DatosTrazabilidad
 import com.example.desarrolloresidencia.ViewModel.ScannerQRViewModel
 import com.example.desarrolloresidencia.databinding.ActivityTrazabilidadBinding
 import com.example.desarrolloresidencia.utils.Auth.AuthQr
 import com.example.desarrolloresidencia.utils.responseUser
+import com.facebook.*
 import com.google.zxing.integration.android.IntentIntegrator
+import com.facebook.login.LoginManager
+
 
 class Trazabilidad : AppCompatActivity(), AuthQr {
 
@@ -35,7 +37,11 @@ class Trazabilidad : AppCompatActivity(), AuthQr {
         ocultarajustes()
 
         binding.BTVolver.setOnClickListener {
-            if(responseUser.user != null){
+            if (AccessToken.getCurrentAccessToken() != null && Profile.getCurrentProfile() != null) {
+                disconnectFromFacebook()
+            }
+
+            if (responseUser.user != null) {
 
                 val builder = AlertDialog.Builder(this)
 
@@ -51,10 +57,11 @@ class Trazabilidad : AppCompatActivity(), AuthQr {
                 builder.setPositiveButton("Si") { dialog, id ->
                     // User clicked Update Now button
                     consulta.consulta = null
-                    responseUser.message  = null
+                    responseUser.message = null
                     responseUser.user = null
                     responseUser.token = null
                     finish()
+
                     startActivity(
                         Intent(baseContext, SplashScreen::class.java)
                             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
@@ -62,17 +69,17 @@ class Trazabilidad : AppCompatActivity(), AuthQr {
                 }
 
                 builder.show()
-            }else{
+            } else {
                 consulta.consulta = null
                 finish()
             }
         }
 
         binding.BTTrazabilidad.setOnClickListener {
-            if (consulta.consulta != null){
+            if (consulta.consulta != null) {
                 val pasar: Intent = Intent(applicationContext, DatosTrazabilidad::class.java)
                 startActivity(pasar)
-            }else{
+            } else {
                 val pasar: Intent = Intent(applicationContext, ScannerQR::class.java)
                 startActivity(pasar)
             }
@@ -80,64 +87,64 @@ class Trazabilidad : AppCompatActivity(), AuthQr {
         }
 
         binding.BTAjustes.setOnClickListener {
-            if(responseUser.user != null){
+            if (responseUser.user != null) {
                 val pasar: Intent = Intent(applicationContext, ModificacionUsuario::class.java)
                 startActivity(pasar)
-            }else{
+            } else {
                 //Toast.makeText(this, "Debes iniciar sesión para poder usar esta función", Toast.LENGTH_LONG).show()
                 val builder = android.app.AlertDialog.Builder(this)
                 builder.setTitle("Acceso denegado").setIcon(R.drawable.logo)
                 builder.setMessage("Debes iniciar sesión para poder usar esta función")
-                builder.setPositiveButton("ok"){dialog, id ->}
+                builder.setPositiveButton("ok") { dialog, id -> }
                 builder.show()
             }
 
         }
 
-        binding.BTTips.setOnClickListener{
-            if(responseUser.user != null){
+        binding.BTTips.setOnClickListener {
+            if (responseUser.user != null) {
                 val pasar: Intent = Intent(applicationContext, Tips::class.java)
                 startActivity(pasar)
-            }else{
+            } else {
                 //Toast.makeText(this, "Debes iniciar sesión para poder usar esta función", Toast.LENGTH_LONG).show()
                 val builder = android.app.AlertDialog.Builder(this)
                 builder.setTitle("Acceso denegado").setIcon(R.drawable.logo)
                 builder.setMessage("Debes iniciar sesión para poder usar esta función")
-                builder.setPositiveButton("ok"){dialog, id ->}
+                builder.setPositiveButton("ok") { dialog, id -> }
                 builder.show()
             }
 
         }
 
         binding.BTCalculo.setOnClickListener {
-            if(responseUser.user != null){
+            if (responseUser.user != null) {
                 val pasar: Intent = Intent(applicationContext, CalculoNutricional::class.java)
                 startActivity(pasar)
-            }else{
+            } else {
                 //Toast.makeText(this, "Debes iniciar sesión para poder usar esta función", Toast.LENGTH_LONG).show()
                 val builder = android.app.AlertDialog.Builder(this)
                 builder.setTitle("Acceso denegado").setIcon(R.drawable.logo)
                 builder.setMessage("Debes iniciar sesión para poder usar esta función")
-                builder.setPositiveButton("ok"){dialog, id ->}
+                builder.setPositiveButton("ok") { dialog, id -> }
                 builder.show()
             }
 
         }
 
-        binding.BTEscanear.setOnClickListener{
+        binding.BTEscanear.setOnClickListener {
             IntentIntegrator(this).initiateScan()
         }
 
-        binding.BTInformacion.setOnClickListener{
-            if(responseUser.user != null){
+        binding.BTInformacion.setOnClickListener {
+            if (responseUser.user != null) {
                 val pasar: Intent = Intent(applicationContext, Informacion::class.java)
                 startActivity(pasar)
-            }else{
+            } else {
                 //Toast.makeText(this, "Debes iniciar sesión para poder usar esta función", Toast.LENGTH_LONG).show()
                 val builder = android.app.AlertDialog.Builder(this)
                 builder.setTitle("Acceso denegado").setIcon(R.drawable.logo)
                 builder.setMessage("Debes iniciar sesión para poder usar esta función")
-                builder.setPositiveButton("ok"){dialog, id ->}
+                builder.setPositiveButton("ok") { dialog, id -> }
                 builder.show()
             }
         }
@@ -147,19 +154,31 @@ class Trazabilidad : AppCompatActivity(), AuthQr {
         }
     }
 
-    fun ocultarajustes(){
-        if(responseUser.message == null){
+    fun ocultarajustes() {
+        if (responseUser.message == null) {
             binding.BTAjustes.visibility = View.INVISIBLE
             binding.textView14.visibility = View.INVISIBLE
-        }else{
+        } else {
             binding.BTAjustes.visibility = View.VISIBLE
             binding.textView14.visibility = View.VISIBLE
         }
     }
 
-    override fun onBackPressed() {
+    fun disconnectFromFacebook() {
+        if (AccessToken.getCurrentAccessToken() == null) {
+            return  // already logged out
+        }
+        GraphRequest(AccessToken.getCurrentAccessToken(), "/me/permissions/", null, HttpMethod.DELETE) {
+            LoginManager.getInstance().logOut()
+        }.executeAsync()
+    }
 
-        if(responseUser.user != null){
+    override fun onBackPressed() {
+        if (AccessToken.getCurrentAccessToken() != null && Profile.getCurrentProfile() != null) {
+            disconnectFromFacebook()
+        }
+
+        if (responseUser.user != null) {
 
             val builder = AlertDialog.Builder(this)
 
@@ -167,7 +186,7 @@ class Trazabilidad : AppCompatActivity(), AuthQr {
 
             //set positive button
             builder.setNegativeButton(
-                    "No"
+                "No"
             ) { dialog, id ->
                 // User cancelled the dialog
             }
@@ -175,19 +194,19 @@ class Trazabilidad : AppCompatActivity(), AuthQr {
             builder.setPositiveButton("Si") { dialog, id ->
                 // User clicked Update Now button
                 consulta.consulta = null
-                responseUser.message  = null
+                responseUser.message = null
                 responseUser.user = null
                 responseUser.token = null
                 super.onBackPressed()
                 finish()
                 startActivity(
-                        Intent(baseContext, SplashScreen::class.java)
-                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    Intent(baseContext, SplashScreen::class.java)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 )
             }
 
             builder.show()
-        }else{
+        } else {
             consulta.consulta = null
             finish()
         }
@@ -198,15 +217,15 @@ class Trazabilidad : AppCompatActivity(), AuthQr {
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         val datos = result.contents
         Log.d("datos", "$datos")
-        if (datos != null){
-            viewModel.QR=datos
+        if (datos != null) {
+            viewModel.QR = datos
             //viewModel.sobrescribir(datos, baseContext)
             viewModel.mapeoJS()
         }
     }
 
-    fun TrazabilidadScreen(){
-        var intent2 : Intent = Intent(applicationContext, DatosTrazabilidad::class.java)
+    fun TrazabilidadScreen() {
+        var intent2: Intent = Intent(applicationContext, DatosTrazabilidad::class.java)
         startActivity(intent2)
     }
 
@@ -215,10 +234,10 @@ class Trazabilidad : AppCompatActivity(), AuthQr {
 
     }
 
-    override fun onSuccess(message: List<Message>) {
+    override fun onSuccess() {
         //Log.d("success", "terminé")
         //Toast.makeText(this, "Se hizo la consulta", Toast.LENGTH_SHORT).show()
-        Log.d("la matriz", "${message.get(1)}")
+        //Log.d("la matriz", "${message.get(1)}")
         TrazabilidadScreen()
     }
 
@@ -228,12 +247,12 @@ class Trazabilidad : AppCompatActivity(), AuthQr {
         mensajeE(message)
     }
 
-    fun mensajeE(mensaje : String){
+    fun mensajeE(mensaje: String) {
         Log.d("ScannerQR", "El mensaje: $mensaje")
         val builder = android.app.AlertDialog.Builder(this)
         builder.setTitle("Mensaje del servidor").setIcon(R.drawable.ic_twotone_error_24)
         builder.setMessage("$mensaje")
-        builder.setPositiveButton("ok"){dialog, id ->}
+        builder.setPositiveButton("ok") { dialog, id -> }
         builder.show()
     }
 

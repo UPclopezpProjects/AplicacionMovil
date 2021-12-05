@@ -1,9 +1,7 @@
 package com.example.desarrolloresidencia.utils
 
-import android.app.AlertDialog
 import android.content.Context
-import android.media.Image
-import android.opengl.Visibility
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,14 +11,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desarrolloresidencia.R
+import com.example.desarrolloresidencia.UI.DatosTrazabilidad.ListaPuntos
 import com.squareup.picasso.Picasso
-import org.w3c.dom.Text
 
 class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): RecyclerView.Adapter<AdaptadorCustom.ViewHolder>() {
 
     var items: ArrayList<Ubicacion> ?= null
     var navegacion: RecyclerV ?= null
     var context:Context ?= null
+    var camara: ListaPuntos.MoverCamara?= null
 
     init {
         this.items = items
@@ -36,68 +35,96 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
 
     override fun onBindViewHolder(holder: AdaptadorCustom.ViewHolder, position: Int) {
         val item = items?.get(position)
-        //holder._id?.text = item?._id
-        //holder.id?.text = item?.id
-        //holder.fid?.text = item?.fid
-        //holder.codigo?.text = item?.code
-        //Log.e("codigoQR", "${item?.code.toString()}")
-        holder.ubicacion = item?.ubication
-        holder.nombre?.text = item?.name
-
-        //holder.escenario?.text = item?.currentStage
-        when (item?.currentStage) {
-            "Productor" -> holder.escenario?.setImageResource(R.drawable.productor_round)
-            "Acopio" -> holder.escenario?.setImageResource(R.drawable.acopio_round)
-            "Carrier"-> holder.escenario?.setImageResource(R.drawable.transportista_round)
-            "Merchant"->holder.escenario?.setImageResource(R.drawable.comerciante_round)
-            "null"->holder.escenario?.visibility = View.GONE
-        }
+        //var tamano = items?.size
+        var ultimo = items?.size?.minus(1)
 
 
-        Picasso.get()
-            .load(item?.image)
-            .placeholder(R.drawable.logo)
-            .error(R.drawable.ic_twotone_error_24)
-            .into(holder.imagen);
-        //holder.__V?.text = item?.__v.toString()
+        if (position == ultimo){
+            holder.anterior?.visibility = View.INVISIBLE
+            holder.escenarioP?.visibility = View.INVISIBLE
+        } else {
+            holder.anterior?.visibility = View.VISIBLE
+            holder.escenarioP?.visibility = View.VISIBLE
 
-        if(item?.previousStage != "null"){
-            //holder.escenarioP?.text = item?.previousStage
-            when (item?.previousStage) {
+            when(items?.get(position+1)!!.currentStage){
                 "Productor" -> holder.escenarioP?.setImageResource(R.drawable.productor_round)
                 "Acopio" -> holder.escenarioP?.setImageResource(R.drawable.acopio_round)
-                "Carrier"-> holder.escenarioP?.setImageResource(R.drawable.transportista_round)
-                "Merchant"->holder.escenarioP?.setImageResource(R.drawable.comerciante_round)
-                "null"->holder.escenarioP?.visibility = View.GONE
+                "Carrier" -> holder.escenarioP?.setImageResource(R.drawable.transportista_round)
+                "Merchant" -> holder.escenarioP?.setImageResource(R.drawable.comerciante_round)
             }
-        }else{
-            holder.anterior?.visibility = View.GONE
-            holder.escenarioP?.visibility = View.GONE
-        }
 
-        if (position==0){
-            holder.siguiente?.visibility = View.GONE
-            holder.escenario?.visibility = View.GONE
-        }
+            holder.anterior!!.setOnClickListener{
+                if (items!!.get(position+1).currentStage != "Carrier") {
+                    navegacion!!.anterior(position+1, items!!.get(position+1).ubication)
+                } else {
+                    //navegacion!!.anterior(position+1, items!!.get(position+1).origin)
+                    navegacion!!.anterior(position+1, puntoIntermedio(items!!.get(position+1).origin, items!!.get(position+1).destination))
+                }
+            }
 
-        holder.anterior?.setOnClickListener {
-            //holder.lista?.scrollToPosition(position-1)
-            Log.e("Adaptador custom, anterior", "${position+1}")
-            navegacion?.anterior(position+1)
-        }
-
-        holder.siguiente?.setOnClickListener {
-            //holder.lista?.scrollToPosition(position+1)
-            Log.e("Adaptador custom, siguiente", "${position-1}")
-            navegacion?.siguiente(position-1)
-        }
-
-        holder.descripcion?.setOnClickListener {
-            navegacion?.descripcion(item!!.description)
         }
 
 
 
+        if (position == 0){
+            holder.siguiente?.visibility = View.INVISIBLE
+            holder.escenario?.visibility = View.INVISIBLE
+        } else {
+            holder.siguiente?.visibility = View.VISIBLE
+            holder.escenario?.visibility = View.VISIBLE
+
+            when(items?.get(position-1)!!.currentStage){
+                "Productor" -> holder.escenario?.setImageResource(R.drawable.productor_round)
+                "Acopio" -> holder.escenario?.setImageResource(R.drawable.acopio_round)
+                "Carrier" -> holder.escenario?.setImageResource(R.drawable.transportista_round)
+                "Merchant" -> holder.escenario?.setImageResource(R.drawable.comerciante_round)
+            }
+
+            holder.siguiente!!.setOnClickListener {
+                if (items!!.get(position-1).currentStage != "Carrier") {
+                    navegacion!!.anterior(position-1, items!!.get(position-1).ubication)
+                } else {
+                    //navegacion!!.anterior(position-1, items!!.get(position-1).origin)
+                    navegacion!!.anterior(position-1, puntoIntermedio(items!!.get(position-1).origin, items!!.get(position-1).destination))
+                }
+            }
+        }
+
+        //el_chupelamigo@hotmail.com
+
+        //holder.ubicacion = item?.ubication
+        holder.nombre?.text = item?.name
+
+
+            Picasso.get()
+                .load(item?.image)
+                .placeholder(R.drawable.logo)
+                .error(R.drawable.ic_twotone_error_24)
+                .into(holder.imagen)
+
+            holder.descripcion?.setOnClickListener {
+                navegacion?.descripcion(item!!.description)
+                //camara?.obtenerPosicion(items?.get(position-1)!!.ubication)
+            }
+
+        holder.addressT?.setOnClickListener {
+            navegacion?.transaccion(item!!.addressTransaction, item!!.addressContract, item!!.hash)
+        }
+
+        holder.GetLog?.setOnClickListener {
+            navegacion?.GetLog(item!!.addressTransaction, item!!.addressContract)
+
+        }
+    }
+
+    fun puntoIntermedio(origin:String, destination:String): String {
+        Log.e("AdaptadorCustom/puntoIntermedio", "origin: $origin" + ", destination: $destination")
+        var p1= FragmentarString().separaLL(origin)
+        var p2 = FragmentarString().separaLL(destination)
+        var latI =(p1.latitude+p2.latitude)/2
+        var lonI = (p1.longitude+p2.longitude)/2
+        Log.e("AdaptadorCustom/puntoIntermedio", "Resultado: $latI, $lonI")
+        return "$latI, $lonI"
     }
 
     override fun getItemCount(): Int {
@@ -107,26 +134,20 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
 
 
 
-
     class ViewHolder(vista: View, listener: ClickListener): RecyclerView.ViewHolder(vista), View.OnClickListener{
         var vista = vista
-        //var _id: TextView ?= null
-        //var id: TextView ?= null
-        //var fid: TextView ?= null
         var fidE: TextView ?= null
-        //var codigo: TextView ?= null
-        //var codigoE:TextView ?= null
-        var ubicacion: String ?= null
         var nombre: TextView ?= null
         var escenarioP: ImageView ?= null
         var escenario: ImageView ?= null
         var imagen : ImageView ?= null
-        //var __V: TextView ?= null
         var listener: ClickListener ?= null
         var siguiente:Button ?= null
         var anterior:Button ?= null
         var lista:RecyclerView ?= null
         var descripcion: Button ?= null
+        var addressT: Button ?= null
+        var GetLog: Button ?= null
 
 
         init {
@@ -136,7 +157,7 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
             //fidE= vista.findViewById(R.id.textView10)
             //codigo= vista.findViewById(R.id.TVCodigo)
             //codigoE= vista.findViewById(R.id.textView15)
-            ubicacion= ""
+            //ubicacion= ""
             nombre= vista.findViewById(R.id.TVNombreTP)
             escenarioP= vista.findViewById(R.id.imageView17)
             escenario= vista.findViewById(R.id.imageView18)
@@ -148,13 +169,12 @@ class AdaptadorCustom(items:ArrayList<Ubicacion>, var listener: ClickListener): 
             anterior = vista.findViewById(R.id.BTNEscenarioP)
             lista= vista.findViewById(R.id.lista)
             descripcion= vista.findViewById(R.id.BTNDescripcion)
+            addressT = vista.findViewById(R.id.BTNAdressT)
+            GetLog = vista.findViewById(R.id.BTNGetLog)
         }
 
         override fun onClick(v: View?) {
             this.listener?.onClick(v!!, adapterPosition)
         }
-
-
     }
-
 }

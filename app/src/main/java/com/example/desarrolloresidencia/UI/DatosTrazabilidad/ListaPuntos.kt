@@ -2,30 +2,29 @@ package com.example.desarrolloresidencia.UI.DatosTrazabilidad
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desarrolloresidencia.Network.model.Trazabilidad.consulta
 import com.example.desarrolloresidencia.R
-import com.example.desarrolloresidencia.ViewModel.LoginViewModel
+import com.example.desarrolloresidencia.UI.addressTransaction
 import com.example.desarrolloresidencia.utils.*
 import java.lang.ClassCastException
 
 class ListaPuntos : Fragment(), RecyclerV {
 
-    var lista:RecyclerView ?= null
+    var lista: RecyclerView? = null
     var puntos = ArrayList<Ubicacion>()
-    var adaptador:AdaptadorCustom ?= null
+    var adaptador: AdaptadorCustom? = null
 
-    var layoutManager:RecyclerView.LayoutManager ?= null
-    var listener: MoverCamara ?= null
-
+    var layoutManager: RecyclerView.LayoutManager? = null
+    var listener: MoverCamara? = null
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -34,7 +33,11 @@ class ListaPuntos : Fragment(), RecyclerV {
         adaptador?.context = context
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         val vista = inflater.inflate(R.layout.fragment_lista_puntos, container, false)
         return vista
@@ -46,44 +49,78 @@ class ListaPuntos : Fragment(), RecyclerV {
             //val puntos = ArrayList<Ubicacion>()
             if (responseUser.message != null) {
                 for (i in 0..(consulta.consulta!!.size - 1)) {
-                    Log.d("antigua foto", consulta.consulta!!.get(i).image)
-                    var nuevaI = consulta.consulta!!.get(i).image.replace("http://0.0.0.0", "http://52.202.214.13")
-                    Log.e("nueva imagen", nuevaI)
-                    if (consulta.consulta!!.get(i).code != null) {
-                        puntos.add(
-                                Ubicacion(
-                                        consulta.consulta!!.get(i).__v,
-                                        consulta.consulta!!.get(i)._id,
-                                        consulta.consulta!!.get(i).code,
-                                        consulta.consulta!!.get(i).currentStage,
-                                        consulta.consulta!!.get(i).description,
-                                        consulta.consulta!!.get(i).fid,
-                                        consulta.consulta!!.get(i).id,
-                                        //consulta.consulta!!.get(i).image,
-                                        nuevaI,
-                                        consulta.consulta!!.get(i).name,
-                                        consulta.consulta!!.get(i).previousStage,
-                                        consulta.consulta!!.get(i).ubication
-                                )
+                    var _v = ""
+                    var _id = ""
+                    var code = ""
+                    var currentStage = ""
+                    var description = ""
+                    var fid = ""
+                    var id = ""
+                    var image = ""
+                    var name = ""
+                    var previousStage = ""
+                    var ubication = ""
+                    var origin = ""
+                    var destination = ""
+                    var addressT = ""
+                    var addressC = ""
+                    var hash = ""
+
+                    if (consulta.consulta!!.get(i).__v != null) _v =
+                        consulta.consulta!!.get(i).__v.toString() else _v = "null"
+                    if (consulta.consulta!!.get(i)._id != null) _id =
+                        consulta.consulta!!.get(i)._id else _id = "null"
+                    if (consulta.consulta!!.get(i).code != null) code =
+                        consulta.consulta!!.get(i).code else code = "null"
+                    if (consulta.consulta!!.get(i).currentStage != null) currentStage =
+                        consulta.consulta!!.get(i).currentStage else currentStage = "null"
+                    if (consulta.consulta!!.get(i).description != null) description =
+                        consulta.consulta!!.get(i).description else description = "null"
+                    if (consulta.consulta!!.get(i).fid != null) fid =
+                        consulta.consulta!!.get(i).fid else fid = "null"
+                    if (consulta.consulta!!.get(i).id != null) id =
+                        consulta.consulta!!.get(i).id else id = "null"
+                    if (consulta.consulta!!.get(i).image != null) image =
+                        consulta.consulta!!.get(i).image else image = "null"
+                    if (consulta.consulta!!.get(i).name != null) name =
+                        consulta.consulta!!.get(i).name else name = "null"
+                    if (consulta.consulta!!.get(i).previousStage != null) previousStage =
+                        consulta.consulta!!.get(i).previousStage else previousStage = "null"
+                    if (consulta.consulta!!.get(i).ubication != null) ubication =
+                        consulta.consulta!!.get(i).ubication else ubication = "null"
+                    if (consulta.consulta!!.get(i).origin != null) origin =
+                        consulta.consulta!!.get(i).origin else origin = "null"
+                    if (consulta.consulta!!.get(i).destination != null) destination =
+                        consulta.consulta!!.get(i).destination else destination = "null"
+                    if (consulta.consulta!!.get(i).addressTransaction != null) addressT =
+                        consulta.consulta!!.get(i).addressTransaction else addressT = "null"
+                    if (consulta.consulta!!.get(i).addressContract != null) addressC =
+                        consulta.consulta!!.get(i).addressContract else addressC = "null"
+                    if (consulta.consulta!!.get(i).hash != null) hash =
+                        consulta.consulta!!.get(i).hash else hash = "null"
+
+                    puntos.add(
+                        Ubicacion(
+                            _v.toInt(),
+                            _id,
+                            code,
+                            currentStage,
+                            description,
+                            fid,
+                            id,
+                            image,
+                            name,
+                            previousStage,
+                            ubication,
+                            destination,
+                            origin,
+                            addressT,
+                            addressC,
+                            hash
                         )
-                    } else {
-                        puntos.add(
-                                Ubicacion(
-                                        consulta.consulta!!.get(i).__v,
-                                        consulta.consulta!!.get(i)._id,
-                                        "",
-                                        consulta.consulta!!.get(i).currentStage,
-                                        consulta.consulta!!.get(i).description,
-                                        consulta.consulta!!.get(i).fid,
-                                        consulta.consulta!!.get(i).id,
-                                        //consulta.consulta!!.get(i).image,
-                                        nuevaI,
-                                        consulta.consulta!!.get(i).name,
-                                        consulta.consulta!!.get(i).previousStage,
-                                        consulta.consulta!!.get(i).ubication
-                                )
-                        )
-                    }
+                    )
+                    Log.e("ListaPuntos/puntos", "${puntos.get(i)}")
+
                 }
                 //Log.d("nueva matriz", "${puntos.get(1).image}")
                 lista = activity?.findViewById(R.id.lista)
@@ -96,49 +133,97 @@ class ListaPuntos : Fragment(), RecyclerV {
                 //adaptador = AdaptadorCustom(contexto, puntos)
                 adaptador = AdaptadorCustom(puntos, object : ClickListener {
                     override fun onClick(vista: View, index: Int) {
-                        Log.e("EL CLICK", puntos.get(index).ubication)
-                        listener?.obtenerPosicion("${puntos.get(index).ubication}")
+                        if (puntos.get(index).currentStage != "Carrier") {
+                            Log.e("ListaPuntos/position", index.toString())
+                            listener?.obtenerPosicion("${puntos.get(index).ubication}")
+                        } else {
+                            Log.e("ListaPuntos/position", index.toString())
+                            //listener?.obtenerPosicion("${puntos.get(index).origin}")
+                            listener?.obtenerPosicion(
+                                puntoIntermedio(
+                                    puntos.get(index).origin,
+                                    puntos.get(index).destination
+                                )
+                            )
+                        }
+
                     }
                 })
                 lista?.adapter = adaptador
 
             } else {
-                var nuevaI = consulta.consulta!!.get(0).image.replace("http://0.0.0.0", "http://52.202.214.13")
-                if (consulta.consulta!!.get(0).code != null) {
-                    puntos.add(
-                            Ubicacion(
-                                    consulta.consulta!!.get(0).__v,
-                                    consulta.consulta!!.get(0)._id,
-                                    consulta.consulta!!.get(0).code,
-                                    consulta.consulta!!.get(0).currentStage,
-                                    consulta.consulta!!.get(0).description,
-                                    consulta.consulta!!.get(0).fid,
-                                    consulta.consulta!!.get(0).id,
-                                    //consulta.consulta!!.get(i).image,
-                                    nuevaI,
-                                    consulta.consulta!!.get(0).name,
-                                    consulta.consulta!!.get(0).previousStage,
-                                    consulta.consulta!!.get(0).ubication
-                            )
+
+                var _v = ""
+                var _id = ""
+                var code = ""
+                var currentStage = ""
+                var description = ""
+                var fid = ""
+                var id = ""
+                var image = ""
+                var name = ""
+                var previousStage = ""
+                var ubication = ""
+                var origin = ""
+                var destination = ""
+                var addressT = ""
+                var addressC = ""
+                var hash = ""
+
+                if (consulta.consulta!!.get(0).__v != null) _v =
+                    consulta.consulta!!.get(0).__v.toString() else _v = "null"
+                if (consulta.consulta!!.get(0)._id != null) _id =
+                    consulta.consulta!!.get(0)._id else _id = "null"
+                if (consulta.consulta!!.get(0).code != null) code =
+                    consulta.consulta!!.get(0).code else code = "null"
+                if (consulta.consulta!!.get(0).currentStage != null) currentStage =
+                    consulta.consulta!!.get(0).currentStage else currentStage = "null"
+                if (consulta.consulta!!.get(0).description != null) description =
+                    consulta.consulta!!.get(0).description else description = "null"
+                if (consulta.consulta!!.get(0).fid != null) fid =
+                    consulta.consulta!!.get(0).fid else fid = "null"
+                if (consulta.consulta!!.get(0).id != null) id =
+                    consulta.consulta!!.get(0).id else id = "null"
+                if (consulta.consulta!!.get(0).image != null) image =
+                    consulta.consulta!!.get(0).image else image = "null"
+                if (consulta.consulta!!.get(0).name != null) name =
+                    consulta.consulta!!.get(0).name else name = "null"
+                if (consulta.consulta!!.get(0).previousStage != null) previousStage =
+                    consulta.consulta!!.get(0).previousStage else previousStage = "null"
+                if (consulta.consulta!!.get(0).ubication != null) ubication =
+                    consulta.consulta!!.get(0).ubication else ubication = "null"
+                if (consulta.consulta!!.get(0).origin != null) origin =
+                    consulta.consulta!!.get(0).origin else origin = "null"
+                if (consulta.consulta!!.get(0).destination != null) destination =
+                    consulta.consulta!!.get(0).destination else destination = "null"
+                if (consulta.consulta!!.get(0).addressTransaction != null) addressT =
+                    consulta.consulta!!.get(0).addressTransaction else addressT = "null"
+                if (consulta.consulta!!.get(0).addressContract != null) addressC =
+                    consulta.consulta!!.get(0).addressContract else addressC = "null"
+                if (consulta.consulta!!.get(0).hash != null) hash =
+                    consulta.consulta!!.get(0).hash else hash = "null"
+
+                puntos.add(
+                    Ubicacion(
+                        _v.toInt(),
+                        _id,
+                        code,
+                        currentStage,
+                        description,
+                        fid,
+                        id,
+                        image,
+                        name,
+                        previousStage,
+                        ubication,
+                        origin,
+                        destination,
+                        addressT,
+                        addressC,
+                        hash
                     )
-                } else {
-                    puntos.add(
-                            Ubicacion(
-                                    consulta.consulta!!.get(0).__v,
-                                    consulta.consulta!!.get(0)._id,
-                                    "",
-                                    consulta.consulta!!.get(0).currentStage,
-                                    consulta.consulta!!.get(0).description,
-                                    consulta.consulta!!.get(0).fid,
-                                    consulta.consulta!!.get(0).id,
-                                    //consulta.consulta!!.get(i).image,
-                                    nuevaI,
-                                    consulta.consulta!!.get(0).name,
-                                    consulta.consulta!!.get(0).previousStage,
-                                    consulta.consulta!!.get(0).ubication
-                            )
-                    )
-                }
+                )
+                Log.e("ListaPuntos/puntos2", "${puntos}")
 
                 //Log.d("nueva matriz", "${puntos.get(1).image}")
                 lista = activity?.findViewById(R.id.lista)
@@ -151,24 +236,23 @@ class ListaPuntos : Fragment(), RecyclerV {
                 //adaptador = AdaptadorCustom(contexto, puntos)
                 adaptador = AdaptadorCustom(puntos, object : ClickListener {
                     override fun onClick(vista: View, index: Int) {
-                        Log.e("EL CLICK", puntos.get(index).ubication)
                         listener?.obtenerPosicion("${puntos.get(index).ubication}")
                     }
                 })
                 lista?.adapter = adaptador
             }
-        }catch (e : java.lang.NullPointerException){
+        } catch (e: java.lang.NullPointerException) {
             val builder = AlertDialog.Builder(context)
             builder.setTitle("Mensaje del Servidor").setIcon(R.drawable.logo)
             builder.setMessage("Error en la consulta, registro demasiado antiguo ")
-            builder.setPositiveButton("ok"){dialog, id ->}
+            builder.setPositiveButton("ok") { dialog, id -> }
             builder.show()
-
         }
 
     }
+
     interface MoverCamara {
-        fun obtenerPosicion(latlong:String){
+        fun obtenerPosicion(latlong: String) {
 
         }
     }
@@ -177,39 +261,70 @@ class ListaPuntos : Fragment(), RecyclerV {
         super.onAttach(context)
         try {
             listener = context as MoverCamara
-        } catch (e: ClassCastException){
+        } catch (e: ClassCastException) {
             throw ClassCastException(context.toString() + "debes implementar la interfaz")
         }
     }
 
-    override fun anterior(posicion: Int) {
+    override fun anterior(posicion: Int, ubication: String) {
         layoutManager?.scrollToPosition(posicion)
         advertenciaLogin()
+        listener?.obtenerPosicion(ubication)
     }
 
-    override fun siguiente(posicion: Int) {
+    override fun siguiente(posicion: Int, ubication: String) {
         layoutManager?.scrollToPosition(posicion)
         advertenciaLogin()
+        listener?.obtenerPosicion(ubication)
     }
 
     override fun descripcion(descripcion: String) {
         val builder = AlertDialog.Builder(context)
 
-        builder.setTitle("Descripción").setIcon(R.drawable.logo)
-        builder.setMessage("$descripcion")
-        builder.setPositiveButton("ok"){ dialog, id ->}
+        builder.setTitle("Detalles").setIcon(R.drawable.logo)
+        builder.setMessage("Descripción: $descripcion")
+        builder.setPositiveButton("ok") { dialog, id -> }
         builder.show()
     }
 
-    fun advertenciaLogin(){
-        if (responseUser.message == null){
+    override fun transaccion(transaccion: String, contract: String, hash: String) {
+        val intent = Intent(activity, addressTransaction::class.java)
+        intent.putExtra("transaccion", transaccion)
+        intent.putExtra("contrato", contract)
+        intent.putExtra("hash", hash)
+        startActivity(intent)
+    }
+
+    override fun GetLog(transaccion: String, contract: String) {
+        val intent = Intent(getActivity(), com.example.desarrolloresidencia.UI.GetLog::class.java)
+        intent.putExtra("transaction", "$transaccion")
+        intent.putExtra("contract", "$contract")
+        intent.putExtra("token", "${responseUser.token}")
+        startActivity(intent)
+
+    }
+
+    fun advertenciaLogin() {
+        if (responseUser.message == null) {
             val builder = AlertDialog.Builder(context)
             builder.setTitle("Atención").setIcon(R.drawable.logo)
             builder.setMessage("Para conocer todas las ubicaciones del aguacate debes de iniciar sesión")
-            builder.setPositiveButton("ok"){ dialog, id ->}
+            builder.setPositiveButton("ok") { dialog, id -> }
             builder.show()
         }
 
+    }
+
+    fun puntoIntermedio(origin: String, destination: String): String {
+        Log.e(
+            "ListaPuntos/puntoIntermedio",
+            "origin: $origin" + ", destination: $destination"
+        )
+        var p1 = FragmentarString().separaLL(origin)
+        var p2 = FragmentarString().separaLL(destination)
+        var latI = (p1.latitude + p2.latitude) / 2
+        var lonI = (p1.longitude + p2.longitude) / 2
+        return "$latI, $lonI"
     }
 
 }

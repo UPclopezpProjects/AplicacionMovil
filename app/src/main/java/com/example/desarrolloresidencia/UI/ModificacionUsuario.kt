@@ -99,7 +99,7 @@ class ModificacionUsuario : AppCompatActivity(), AuthListener {
         //binding.ETEmail.isEnabled= false
     }
 
-    override fun onSuccess(message: Boolean, token: String, user: User) {
+    override fun onSuccess(message: String, token: String, user: User) {
         binding.PB.visibility = View.GONE
         binding.ETNombre.isEnabled= true
         binding.ETApellidoP.isEnabled= true

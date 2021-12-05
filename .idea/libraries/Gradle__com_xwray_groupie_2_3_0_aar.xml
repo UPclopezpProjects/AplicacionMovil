@@ -2,9 +2,10 @@
   <library name="Gradle: com.xwray:groupie:2.3.0@aar">
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5b9ab6956a685a8902b611e4013f0b32/jetified-groupie-2.3.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/24ce98192d68c5e2d2cedd5ae52cfd93/jetified-groupie-2.3.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/24ce98192d68c5e2d2cedd5ae52cfd93/jetified-groupie-2.3.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/24ce98192d68c5e2d2cedd5ae52cfd93/jetified-groupie-2.3.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8597810008aaf18222efdcc15e90a037/transformed/jetified-groupie-2.3.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/8597810008aaf18222efdcc15e90a037/transformed/jetified-groupie-2.3.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8597810008aaf18222efdcc15e90a037/transformed/jetified-groupie-2.3.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.xwray/groupie/2.3.0/6a807e85de1afc0225ef6aef8052ba65b4b90219/groupie-2.3.0-javadoc.jar!/" />
