@@ -53,7 +53,7 @@
             android:layout_marginEnd="16sp"
             android:layout_marginBottom="8sp"
             android:fontFamily="sans-serif-light"
-            android:text="Calculo nutricional"
+            android:text="@string/Calculo_nutricional_EN"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
@@ -74,7 +74,7 @@
                 android:layout_weight="5"
                 android:ems="10"
                 android:fontFamily="sans-serif-light"
-                android:hint="Gramos de aguacate"
+                android:hint="@string/Gramos_de_aguacate_EN"
                 android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textAllCaps="false"
@@ -90,7 +90,7 @@
                 android:layout_marginBottom="8sp"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/holo_green_light"
-                android:text="Calcular" />
+                android:text="@string/Calcular" />
         </LinearLayout>
 
         <TextView
@@ -102,7 +102,7 @@
             android:layout_marginEnd="16sp"
             android:layout_marginBottom="8sp"
             android:fontFamily="sans-serif-light"
-            android:text="Propiedades"
+            android:text="@string/propiedades_EN"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp" />
@@ -135,7 +135,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Grasas totales:"
+                            android:text="@string/Grasas_totales_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -162,7 +162,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Colesterol:"
+                            android:text="@string/colesterol_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -189,7 +189,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Sodio:"
+                            android:text="@string/Sodio_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -216,7 +216,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Potasio:"
+                            android:text="@string/Potasio_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -243,7 +243,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Hidratos de carbono:"
+                            android:text="@string/Hidratos_de_carbono_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -270,7 +270,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Azúcares:"
+                            android:text="@string/Azúcares_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -297,7 +297,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Proteína:"
+                            android:text="@string/Proteina_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -324,7 +324,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Agua:"
+                            android:text="@string/Agua_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -351,7 +351,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Vitamina A:"
+                            android:text="@string/Vitamina_a_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -378,7 +378,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Vitamina C:"
+                            android:text="@string/Vitamina_C_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -405,7 +405,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Vitamina E:"
+                            android:text="@string/VitaminaE_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -432,7 +432,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Vitamina K:"
+                            android:text="@string/Vitamina_k_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -459,7 +459,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Calcio:"
+                            android:text="@string/Calcio_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -486,7 +486,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Hierro:"
+                            android:text="@string/Hierro_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -513,7 +513,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Magnesio:"
+                            android:text="@string/Magnesio_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -540,7 +540,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Manganeso:"
+                            android:text="@string/Manganeso_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -567,7 +567,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Fosforo:"
+                            android:text="@string/Fosforo_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -594,7 +594,7 @@
                             android:layout_marginEnd="8sp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
-                            android:text="Zinc:"
+                            android:text="@string/Zinc_EN"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorPrimary" />
 
@@ -621,7 +621,7 @@
                     android:layout_marginEnd="16sp"
                     android:layout_marginBottom="16sp"
                     android:fontFamily="sans-serif-light"
-                    android:text="*La información que se muestra al realizar el cálculo nutricional puede variar según las características del producto*"
+                    android:text="@string/Letritas_CN_EN"
                     android:textColor="@color/colorPrimary"
                     android:textSize="10sp" />
 

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Desarrolladores:"
+        android:text="@string/Desarrolladores_EN"
         android:textAlignment="center"
         android:textSize="30sp" />
 

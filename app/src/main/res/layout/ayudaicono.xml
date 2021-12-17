@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:fontFamily="sans-serif-light"
-            android:text="Iconografía"
+            android:text="@string/Iconografia_EN"
             android:textColor="@color/colorPrimary"
             android:textSize="30sp" />
 
@@ -53,7 +53,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="2"
                     android:fontFamily="sans-serif-light"
-                    android:text="Transportista"
+                    android:text="@string/Transportista_EN"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15sp" />
 
@@ -72,7 +72,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="2"
                     android:fontFamily="sans-serif-light"
-                    android:text="Acopio"
+                    android:text="@string/Acopio_EN"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15sp" />
             </LinearLayout>
@@ -98,7 +98,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="2"
                     android:fontFamily="sans-serif-light"
-                    android:text="Comerciante"
+                    android:text="@string/Comerciante_EN"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15sp" />
 
@@ -117,7 +117,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="2"
                     android:fontFamily="sans-serif-light"
-                    android:text="Productor"
+                    android:text="@string/Productor_EN"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15sp" />
             </LinearLayout>
@@ -142,7 +142,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="2"
                     android:fontFamily="sans-serif-light"
-                    android:text="Escenario previo"
+                    android:text="@string/Escenario_P_EN"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15sp" />
 
@@ -161,7 +161,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="2"
                     android:fontFamily="sans-serif-light"
-                    android:text="Siguiente escenario"
+                    android:text="@string/Escenario_S_EN"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15sp" />
             </LinearLayout>
@@ -184,7 +184,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="2"
                     android:fontFamily="sans-serif-light"
-                    android:text="Comerciante entrada"
+                    android:text="@string/Comerciante_E_EN"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15sp" />
 
@@ -201,7 +201,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="2"
                     android:fontFamily="sans-serif-light"
-                    android:text="Comerciante salida"
+                    android:text="@string/Comerciante_S_EN"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15sp" />
             </LinearLayout>
@@ -224,7 +224,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="2"
                     android:fontFamily="sans-serif-light"
-                    android:text="Acopio entrada"
+                    android:text="@string/Acopio_E_EN"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15sp" />
 
@@ -241,7 +241,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="2"
                     android:fontFamily="sans-serif-light"
-                    android:text="Acopio salida"
+                    android:text="@string/Acopio_S_EN"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15sp" />
             </LinearLayout>
@@ -264,8 +264,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="2"
                     android:fontFamily="sans-serif-light"
-                    android:text="Productor entrada
-"
+                    android:text="@string/Productor_E_EN"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15sp" />
 
@@ -282,7 +281,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="2"
                     android:fontFamily="sans-serif-light"
-                    android:text="Productor salida"
+                    android:text="@string/Productor_S_EN"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15sp" />
             </LinearLayout>

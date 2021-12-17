@@ -24,7 +24,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:text="Esta es una aplicación que fue desarrollada bajo la investigación del proyecto 8217-2019 emitido en convenio entre la Universidad Panamericana y COECyTJAL en la convocatoria FODECIJAL del Fondo de Desarrollo Científico de Jalisco para atender problemas estatales 2019"
+                android:text="@string/Creditos_EN"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 

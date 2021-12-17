@@ -81,7 +81,7 @@
                     android:layout_marginBottom="30dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimary"
-                    android:text="Guacamole"
+                    android:text="@string/Guacamole_EN"
                     android:textColor="@color/white" />
 
                 <Button
@@ -94,7 +94,7 @@
                     android:layout_marginBottom="30dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimary"
-                    android:text="Recetas"
+                    android:text="@string/Recetas_EN"
                     android:textColor="@color/white" />
             </LinearLayout>
 
@@ -132,7 +132,7 @@
                         android:layout_marginEnd="20dp"
                         android:layout_marginBottom="30dp"
                         android:backgroundTint="@color/colorPrimary"
-                        android:text="Belleza"
+                        android:text="@string/Belleza_EN"
                         android:textColor="@color/white" />
 
                     <Button
@@ -144,7 +144,7 @@
                         android:layout_marginEnd="20dp"
                         android:layout_marginBottom="30dp"
                         android:backgroundTint="@color/colorPrimary"
-                        android:text="Aceite"
+                        android:text="@string/Aceite_EN"
                         android:textColor="@color/white" />
                 </LinearLayout>
             </LinearLayout>

@@ -54,7 +54,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif-light"
-                android:text="Por favor escanea el código QR de tu aguacate para poder continuar "
+                android:text="@string/Texto_QR_EN"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@color/colorPrimary"

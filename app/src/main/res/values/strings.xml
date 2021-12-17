@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Avocado path</string>
     <string name="registrarme">Registrarme</string>
     <string name="iniciar_sesi_n">Iniciar sesión</string>
@@ -6,11 +6,11 @@
     <string name="saltar_login">Saltar login</string>
     <string name="olvid_mi_contrase_a">Olvidé mi contraseña</string>
     <string name="email">Email</string>
-    <string name="contrase_a">Contraseña</string>
+    <string name="contrase_a">Contraseña:</string>
     <string name="registro_de_usuario">Registro de usuario</string>
-    <string name="nombre">Nombre</string>
-    <string name="apellido_paterno">Apellido paterno</string>
-    <string name="apellido_materno">Apellido materno</string>
+    <string name="nombre">Nombre:</string>
+    <string name="apellido_paterno">Apellido paterno:</string>
+    <string name="apellido_materno">Apellido materno:</string>
     <string name="username_email">Username (email)</string>
     <string name="registrar">Registrar</string>
     <string name="m_s_informaci_n">Más información</string>
@@ -36,6 +36,97 @@
     <string name="colesterol">Colesterol</string>
     <string name="facebook_app_id">300516468363046</string>
     <string name="fb_login_protocol_scheme">fb300516468363046</string>
+    <string name="Créditos">Créditos</string>
+    <string name="Desarrolladores">Desarrolladores</string>
+
+    <string name="Calculo_nutricional">Cálculo nutricional</string>
+    <string name="Gramos_de_aguacate">Gramos de aguacate</string>
+    <string name="Sodio">Sodio</string>
+    <string name="Potasio">Potasio</string>
+    <string name="Hidratos_de_carbono">Hidratos de carbono</string>
+    <string name="Azúcares">Azúcares</string>
+    <string name="Proteina">Proteína</string>
+    <string name="Agua">Agua</string>
+    <string name="Vitamina_a">Vitamina A</string>
+    <string name="Vitamina_C">Vitamina C</string>
+    <string name="VitaminaE">Vitamina E</string>
+    <string name="Vitamina_k">Vitamina K</string>
+    <string name="Calcio">Calcio</string>
+    <string name="Hierro">Hierro</string>
+    <string name="Magnesio">Magnesio</string>
+    <string name="Manganeso">Manganeso</string>
+    <string name="Fosforo">Fosforo</string>
+    <string name="Zinc">Zinc</string>
+    <string name="Letritas_CN">*La información que se muestra al realizar el cálculo nutricional puede variar según las características del producto*</string>
+    <string name="Calcular">CALCULAR</string>
+    <string name="Grasas_totales">Grasas totales</string>
+
+    <string name="Direccion_IP_Servidor">Dirección IP del servidor:</string>
+    <string name="NuevaDirección">Nueva dirección IP</string>
+    <string name="Modificar">Modificar</string>
+
+    <string name="Configuracion_IP">CONFIGURACIÓN IP</string>
+    <string name="AcercaDe">ACERCA DE ...</string>
+
+    <string name="Configuracion_Cuenta">Configuración de la cuenta</string>
+    <string name="Ingresar_el_nombre">Ingresa el nombre</string>
+    <string name="Ingresa_el_apellido_paterno">Ingresa el apellido paterno</string>
+    <string name="Ingresa_el_apellido_materno">Ingresa el apellido materno</string>
+
+    <string name="Recuperacion_de_contraseña">Recuperación de contraseña</string>
+    <string name="Ingresa_el_correo_electrónico">Ingresa el correo electrónico</string>
+    <string name="Enviar_correo">Enviar correo</string>
+
+    <string name="Name_field">Nombre</string>
+    <string name="FLName_field">Apellido paterno</string>
+    <string name="MLName_field">Apellido materno</string>
+    <string name="Email_field">Email</string>
+    <string name="Password_field">Contraseña</string>
+
+    <string name="Texto_QR">Por favor escanea el código QR de tu aguacate para poder continuar</string>
+
+    <string name="Guacamole">Guacamole</string>
+    <string name="Recetas">Recetas</string>
+    <string name="Belleza">Belleza</string>
+    <string name="Aceite">Aceite</string>
+
+    <string name="Menu_de_trazabilidad">Menú de trazabilidad</string>
+    <string name="Escanear_QR">Escanear QR</string>
+
+    <string name="Carrusel">Carrusel</string>
+    <string name="Descripcion_Carrusel">Desliza los elementos a la izquierda o derecha del carrusel y da clic sobre la tarjeta  para ubicarla en el mapa</string>
+
+    <string name="Transportista">Transportista</string>
+    <string name="Acopio">Acopio</string>
+    <string name="Comerciante">Comerciante</string>
+    <string name="Productor">Productor</string>
+    <string name="Escenario_P">Escenario previo</string>
+    <string name="Escenario_S">Siguiente escenario</string>
+    <string name="Comerciante_E">Comerciante entrada</string>
+    <string name="Comerciante_S">Comerciante salida</string>
+    <string name="Acopio_E">Acopio entrada</string>
+    <string name="Acopio_S">Acopio salida</string>
+    <string name="Productor_E">Productor entrada</string>
+    <string name="Productor_S">Productor salida</string>
+    <string name="Iconografia">Iconografía</string>
+    
+    <string name="Mapa">Mapa</string>
+    <string name="Descripcion_Mapa">Con el botón del QR puedes escanear el código del mapa</string>
+
+    <string name="Aceite_Descripcion">Aporta vitaminas tan importantes como la A (mejora y protege la visión), E (vitamina que se considera antienvejecimiento y destaca por su papel protector frente al colesterol) y otras vitaminas del complejo B</string>
+
+    <string name="Belleza_Descripcion">Las grasas saludables en el aguacate son excelentes para hidratar la piel</string>
+
+    <string name="Etapa">Etapa</string>
+
+    <string name="Recetas_Descripcion">El guacamole es una de las recetas más representativas de la gastronomía mexicana</string>
+
+    <string name="Pregunta_Cerrar_sesión">¿Seguro que quieres cerrar sesión?</string>
+
+    <string name="Creditos">Esta es una aplicación que fue desarrollada bajo la investigación del proyecto 8217-2019 emitido en convenio entre la Universidad Panamericana y COECyTJAL en la convocatoria FODECIJAL del Fondo de Desarrollo Científico de Jalisco para atender problemas estatales 2019</string>
+
+    <string name="Informacion_Aguacate">Información sobre el aguacate</string>
+    <string name="Informacion_Aguacate_P1"></string>
     <!--                                                                                      -->
     <string name="app_name_EN">Avocado path</string>
     <string name="registrarme_EN">Register me</string>
@@ -44,11 +135,11 @@
     <string name="saltar_login_EN">Skip Log in</string>
     <string name="olvid_mi_contrase_a_EN">Forget my password</string>
     <string name="email_EN">Email</string>
-    <string name="contrase_a_EN">Password</string>
+    <string name="contrase_a_EN">Password:</string>
     <string name="registro_de_usuario_EN">Register user</string>
-    <string name="nombre_EN">Nombre</string>
-    <string name="apellido_paterno_EN">Father\'s last name</string>
-    <string name="apellido_materno_EN">Mother\'s last name</string>
+    <string name="nombre_EN">Name:</string>
+    <string name="apellido_paterno_EN">Father\'s last name:</string>
+    <string name="apellido_materno_EN">Mother\'s last name:</string>
     <string name="username_email_EN">Username (email)</string>
     <string name="registrar_EN">Register</string>
     <string name="m_s_informaci_n_EN">More information</string>
@@ -74,4 +165,93 @@
     <string name="colesterol_EN">Cholesterol</string>
     <string name="facebook_app_id_EN">300516468363046</string>
     <string name="fb_login_protocol_scheme_EN">fb300516468363046</string>
+    <string name="Créditos_EN">Credits</string>
+    <string name="Desarrolladores_EN">Developers:</string>
+
+    <string name="Calculo_nutricional_EN">Nutritional calculate</string>
+    <string name="Gramos_de_aguacate_EN">Avocado gram</string>
+    <string name="Sodio_EN">Sodium</string>
+    <string name="Potasio_EN">Potassium</string>
+    <string name="Hidratos_de_carbono_EN">Carbohydrate</string>
+    <string name="Azúcares_EN">Sugars</string>
+    <string name="Proteina_EN">Protein</string>
+    <string name="Agua_EN">Water</string>
+    <string name="Vitamina_a_EN">Vitamin A</string>
+    <string name="Vitamina_C_EN">Vitamin C</string>
+    <string name="VitaminaE_EN">Vitamin E</string>
+    <string name="Vitamina_k_EN">Vitamin K</string>
+    <string name="Calcio_EN">Calcium</string>
+    <string name="Hierro_EN">Iron</string>
+    <string name="Magnesio_EN">Magnesium</string>
+    <string name="Manganeso_EN">Manganese</string>
+    <string name="Fosforo_EN">Phosphorus</string>
+    <string name="Zinc_EN">Zinc</string>
+    <string name="Letritas_CN_EN">*The information displayed when performing the nutritional calculation may vary depending on the characteristics of the product.*</string>
+    <string name="Calcular_EN">CALCULATE</string>
+    <string name="Grasas_totales_EN">Total fats</string>
+
+    <string name="Direccion_IP_Servidor_EN" tools:ignore="StringEscaping">Server's IP address:</string>
+    <string name="NuevaDirección_EN">New IP address</string>
+    <string name="Modificar_EN">Modify</string>
+
+    <string name="Configuracion_IP_EN">IP CONFIGURATION</string>
+    <string name="AcercaDe_EN">ABOUT ...</string>
+
+    <string name="Configuracion_Cuenta_EN">Account configuration</string>
+    <string name="Ingresar_el_nombre_EN">Set the name</string>
+    <string name="Ingresa_el_apellido_paterno_EN">Set the father\'s last name</string>
+    <string name="Ingresa_el_apellido_materno_EN">Set the mother\'s last name</string>
+
+    <string name="Recuperacion_de_contraseña_EN">Recover password</string>
+    <string name="Ingresa_el_correo_electrónico_EN">Set email</string>
+    <string name="Enviar_correo_EN">Send email</string>
+
+    <string name="Name_field_EN">Name</string>
+    <string name="FLName_field_EN">Father\'s last name</string>
+    <string name="MLName_field_EN">Mother\'s last name</string>
+    <string name="Email_field_EN">Email</string>
+    <string name="Password_field_EN">Password</string>
+
+    <string name="Texto_QR_EN">Please scan the QR code of your avocado for continue</string>
+
+    <string name="Guacamole_EN">Guacamole</string>
+    <string name="Recetas_EN">Prescription</string>
+    <string name="Belleza_EN">Beauty</string>
+    <string name="Aceite_EN">Oil</string>
+
+    <string name="Menu_de_trazabilidad_EN">Traceability menu</string>
+    <string name="Escanear_QR_EN">Scan QR</string>
+
+    <string name="Carrusel_EN">Carousel</string>
+    <string name="Descripcion_Carrusel_EN">Slide the elements to left o right of Carousel and push the card for locate in the map</string>
+
+    <string name="Transportista_EN">Carrier</string>
+    <string name="Acopio_EN">Ghatering</string>
+    <string name="Comerciante_EN">Merchant</string>
+    <string name="Productor_EN">Producer</string>
+    <string name="Escenario_P_EN">Previous stage</string>
+    <string name="Escenario_S_EN">Next stage</string>
+    <string name="Comerciante_E_EN">Merchant entry</string>
+    <string name="Comerciante_S_EN">Merchant exit</string>
+    <string name="Acopio_E_EN">Ghatering entry</string>
+    <string name="Acopio_S_EN">Ghatering exit</string>
+    <string name="Productor_E_EN">Producer entry</string>
+    <string name="Productor_S_EN">Producer exit</string>
+    <string name="Iconografia_EN">Iconography</string>
+
+    <string name="Mapa_EN">Map</string>
+    <string name="Descripcion_Mapa_EN">With the QR button you can scan the code of the map</string>
+
+    <string name="Aceite_Descripcion_EN">Contribute vitamins as important as the vitamin A, vitamin E and Vitamin B</string>
+
+    <string name="Belleza_Descripcion_EN">The healthy fats in the avocado are excelent for hydrate the skin</string>
+    <string name="Etapa_EN">Stage</string>
+
+    <string name="Recetas_Descripcion_EN">The guacamole is the prescription most representative of the mexican gastronomy</string>
+
+    <string name="Pregunta_Cerrar_sesión_EN">Are you sure to want loging out?</string>
+
+    <string name="Creditos_EN">This application was developed in the research project 8217-2019 announced in agreement between Panamerican University and COECyTJAL in the announcement FODECIJAL of Scientist Fund from Jalisco for attend to state problems</string>
+
+    <string name="Guacamole_Descripción_EN">The guacamole is mono insatured fats fill, means, they are beneficial for the heart and it's easy digestion</string>
 </resources>

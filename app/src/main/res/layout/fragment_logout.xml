@@ -25,7 +25,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="16sp"
         android:fontFamily="sans-serif-light"
-        android:text="¿Seguro que quieres cerrar sesión?"
+        android:text="@string/Pregunta_Cerrar_sesión_EN"
         android:textColor="@color/colorPrimary"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"

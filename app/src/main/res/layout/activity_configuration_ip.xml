@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:text="Dirección IP del servidor:"
+                android:text="@string/Direccion_IP_Servidor_EN"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <TextView
@@ -81,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Nueva dirección IP"
+                android:hint="@string/NuevaDirección_EN"
                 android:inputType="textPersonName"
                 android:textAlignment="center" />
 
@@ -90,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/holo_green_light"
-                android:text="Modificar" />
+                android:text="@string/Modificar_EN" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

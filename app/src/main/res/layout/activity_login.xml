@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:fontFamily="sans-serif-light"
-                    android:text="@string/iniciar_sesi_n"
+                    android:text="@string/iniciar_sesi_n_EN"
                     android:textColor="@color/colorPrimary"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -123,7 +123,7 @@
                     android:layout_marginStart="10dp"
                     android:ems="10"
                     android:fontFamily="sans-serif-light"
-                    android:hint="@string/contrase_a"
+                    android:hint="@string/contrase_a_EN"
                     android:inputType="textPassword"
                     android:textColor="@color/colorPrimary"
                     android:textColorHighlight="@color/colorPrimary"
@@ -156,7 +156,7 @@
                 android:backgroundTint="@android:color/holo_green_light"
                 android:fontFamily="sans-serif-light"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="INICIAR SESIÓN"
+                android:text="@string/iniciar_sesi_n_EN"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"
@@ -180,7 +180,7 @@
                 android:backgroundTint="@android:color/holo_green_light"
                 android:fontFamily="sans-serif-light"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="@string/olvid_mi_contrase_a"
+                android:text="@string/olvid_mi_contrase_a_EN"
                 tools:layout_editor_absoluteX="0dp" />
 
             <Button
@@ -193,7 +193,7 @@
                 android:backgroundTint="@android:color/holo_green_light"
                 android:fontFamily="sans-serif-light"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="@string/registrar" />
+                android:text="@string/registrar_EN" />
         </LinearLayout>
 
 
@@ -212,7 +212,7 @@
                 android:backgroundTint="@android:color/holo_green_light"
                 android:fontFamily="sans-serif-light"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="Configuración de la IP" />
+                android:text="@string/Configuracion_IP_EN" />
 
             <Button
                 android:id="@+id/BTAcerca"
@@ -224,7 +224,7 @@
                 android:backgroundTint="@android:color/holo_green_light"
                 android:fontFamily="sans-serif-light"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="Acerca de ..." />
+                android:text="@string/AcercaDe_EN" />
 
         </LinearLayout>
 
@@ -237,7 +237,7 @@
             android:layout_marginEnd="40dp"
             android:fontFamily="sans-serif-light"
             android:foreground="?attr/selectableItemBackground"
-            android:text="@string/saltar_login" />
+            android:text="@string/saltar_login_EN" />
 
         <TextView
             android:id="@+id/textView2"
@@ -246,7 +246,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="sans-serif-light"
-            android:text="@string/loguear_con_redes_sociales"
+            android:text="@string/loguear_con_redes_sociales_EN"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"
