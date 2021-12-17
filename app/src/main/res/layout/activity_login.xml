@@ -123,7 +123,7 @@
                     android:layout_marginStart="10dp"
                     android:ems="10"
                     android:fontFamily="sans-serif-light"
-                    android:hint="@string/contrase_a_EN"
+                    android:hint="@string/Contrasena_EN"
                     android:inputType="textPassword"
                     android:textColor="@color/colorPrimary"
                     android:textColorHighlight="@color/colorPrimary"

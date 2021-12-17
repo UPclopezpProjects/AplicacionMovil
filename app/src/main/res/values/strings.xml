@@ -127,6 +127,7 @@
 
     <string name="Informacion_Aguacate">Información sobre el aguacate</string>
     <string name="Informacion_Aguacate_P1"></string>
+    <string name="Contrasena">Contraseña</string>
     <!--                                                                                      -->
     <string name="app_name_EN">Avocado path</string>
     <string name="registrarme_EN">Register me</string>
@@ -190,8 +191,8 @@
     <string name="Calcular_EN">CALCULATE</string>
     <string name="Grasas_totales_EN">Total fats</string>
 
-    <string name="Direccion_IP_Servidor_EN" tools:ignore="StringEscaping">Server's IP address:</string>
-    <string name="NuevaDirección_EN">New IP address</string>
+    <string name="Direccion_IP_Servidor_EN">Server\'s IP address:</string>
+    <string name="NuevaDireccion_EN">New IP address</string>
     <string name="Modificar_EN">Modify</string>
 
     <string name="Configuracion_IP_EN">IP CONFIGURATION</string>
@@ -253,5 +254,6 @@
 
     <string name="Creditos_EN">This application was developed in the research project 8217-2019 announced in agreement between Panamerican University and COECyTJAL in the announcement FODECIJAL of Scientist Fund from Jalisco for attend to state problems</string>
 
-    <string name="Guacamole_Descripción_EN">The guacamole is mono insatured fats fill, means, they are beneficial for the heart and it's easy digestion</string>
+    <string name="Guacamole_Descripcion_EN">The guacamole is mono insatured fats fill, means, they are beneficial for the heart and it\'s easy digestion</string>
+    <string name="Contrasena_EN">Password</string>
 </resources>
